@@ -19,8 +19,4 @@ const schema = mongoose.Schema({
   },
 });
 
-schema.query.byEmail = function (email) {
-  return this.findOne({ email: email });
-};
-
 module.exports = mongoose.model('user', schema);

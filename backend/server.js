@@ -5,12 +5,14 @@ require('dotenv').config();
 
 const users = require('./routes/users');
 const auth = require('./routes/auth');
+const orgs = require('./routes/orgs');
 
 const app = express();
 app.use(express.json());
 
 app.use('/users', users);
 app.use('/auth', auth);
+app.use('/orgs', orgs);
 
 mongoose
   .connect(process.env.MONGO_URL, {

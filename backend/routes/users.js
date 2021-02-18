@@ -15,7 +15,7 @@ router.get(
   })
 );
 
-router.put(
+router.patch(
   '/me',
   authUser,
   asyncHandler(async (req, res) => {
