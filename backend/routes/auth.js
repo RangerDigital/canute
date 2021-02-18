@@ -1,82 +1,64 @@
 const express = require('express');
 const router = express.Router();
+const asyncHandler = require('express-async-handler');
 
-const handlebars = require('handlebars');
 const fs = require('fs');
+const mailer = require('../mailer');
+const handlebars = require('handlebars');
+
+const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 
-const mailer = require('../mailer');
-const jwt = require('jsonwebtoken');
 const users = require('../models/users');
 
-router.post('/magic/request', async (req, res) => {
-  const { email } = req.body;
+router.post(
+  '/magic',
+  asyncHandler(async (req, res, next) => {
+    const { email } = req.body;
 
-  // Find existing user.
-  let user = await users.findOne().byEmail(email).exec();
+    let user = await users.findOne({ email: email }).exec();
 
-  // Create a new user.
-  if (!user) {
-    user = new users({ email: email });
+    if (!user) {
+      user = new users({ email: email });
+    }
 
-    await user.validate().catch((err) => {
-      return res.status(400).json({ msg: err });
-    });
-  }
+    let magicToken = crypto.randomBytes(10).toString('hex');
+    user.auth = { magicToken: magicToken, createdAt: new Date() };
 
-  // Check for existing token.
-  if (user.auth && new Date() - user.auth.createdAt < 300000) {
-    return res.status(400).json({ msg: 'Old magic token is still active!' });
-  }
-
-  // Create and save Magic Token for user.
-  let magicToken = crypto.randomBytes(10).toString('hex');
-
-  user.auth = { magicToken: magicToken, createdAt: new Date() };
-
-  // Send Magic E-Mail
-  fs.readFile('templates/magic_pl.html', 'utf-8', function (err, template) {
-    if (err) next(err);
-
-    let magicTemplate = handlebars.compile(template);
+    let magicTemplate = handlebars.compile(fs.readFileSync('templates/magic.html', 'utf-8'));
 
     let message = {
-      from: 'Canute - Logowanie <auth@mail.canute.bednarski.dev>',
+      from: process.env.MAGIC_FROM,
       to: req.body.email,
-      subject: `Twój tymczasowy kod logowania to ${magicToken}`,
+      subject: process.env.MAGIC_SUBJECT_PREFIX + magicToken,
       html: magicTemplate({ magicToken: magicToken, magicUrlPrefix: process.env.MAGIC_URL_PREFIX }),
     };
 
-    mailer.sendMail(message, function (err) {
-      if (err) next(err);
-    });
-  });
+    mailer.sendMail(message);
 
-  console.log(user);
-  user.save();
+    user.save();
+    res.json({ msg: 'Magic token sent!' });
+  })
+);
 
-  res.json(user.exclude('auth'));
-});
+router.post(
+  '/magic/:magicToken',
+  asyncHandler(async (req, res) => {
+    const { magicToken } = req.params;
 
-router.post('/magic/:magicToken', async (req, res) => {
-  // Find existing user.
-  let user = await users.findOne({ 'auth.magicToken': req.params.magicToken }).exec();
+    let user = await users.findOne({ 'auth.magicToken': magicToken }).exec();
 
-  if (!user) {
-    return res.status(400).json({ msg: 'Invalid magic token!' });
-  }
+    if (user && new Date() - user.auth.createdAt < 300000) {
+      user.auth = {};
 
-  if (new Date() - user.auth.createdAt > 300000) {
-    return res.status(400).json({ msg: 'Expired magic token!' });
-  }
+      let authToken = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1w' });
 
-  // Delete existing magic token.
-  user.auth = {};
-  user.save();
-
-  let authToken = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1w' });
-
-  res.json({ authToken: authToken });
-});
+      user.save();
+      res.json({ authToken: authToken });
+    } else {
+      res.status(400).json({ msg: 'Invalid magic token!' });
+    }
+  })
+);
 
 module.exports = router;
