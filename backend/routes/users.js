@@ -9,7 +9,7 @@ router.get(
   '/me',
   authUser,
   asyncHandler(async (req, res) => {
-    user = await users.findById(req.auth.userId).select('-auth');
+    let user = await users.findById(req.userId).select('-auth');
 
     res.json(user);
   })
@@ -20,7 +20,8 @@ router.put(
   authUser,
   asyncHandler(async (req, res) => {
     const payload = req.body;
-    user = await users.updateOne({ _id: req.auth.userId }, payload);
+
+    let user = await users.findByIdAndUpdate(req.userId, payload, { new: true });
 
     res.json(user);
   })

@@ -11,7 +11,7 @@ function authUser(req, res, next) {
         return res.status(403).json({ msg: 'Invalid authorization Bearer token!' });
       }
 
-      req.auth.userId = data.userId;
+      req.userId = data.userId;
       next();
     });
   } else {
