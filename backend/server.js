@@ -1,4 +1,5 @@
 const express = require('express');
+const helmet = require('helmet');
 
 require('dotenv').config();
 
@@ -8,6 +9,7 @@ const orgs = require('./routes/orgs');
 
 const app = express();
 app.use(express.json());
+app.use(helmet());
 
 app.use('/users', users);
 app.use('/auth', auth);
