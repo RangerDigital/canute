@@ -1,0 +1,38 @@
+name: Test & Build Backend
+
+on:
+  push:
+    branches: [ master ]
+    paths:
+        - "backend/**"
+
+defaults:
+  run:
+    working-directory: backend
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      
+    - name: Lint backend JavaScript codebase
+      uses: github/super-linter@v3
+      env:
+        VALIDATE_HTML: false
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Use Node.js 14.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 14.x
+        
+    - name: Install all dependencies
+      run: npm ci
+    
+    - name: Run all tests
+      run: npm test
