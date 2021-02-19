@@ -50,6 +50,28 @@ describe('Magic Auth Flow', function () {
     }
   });
 
+  it('Negative: Check outdated magic token.', async () => {
+    const email = 'testing@gmail.com';
+    let user;
+
+    {
+      const res = await request.post('/auth/magic').send({ email: email });
+      user = await users.findOne({ email: email }).exec();
+
+      user.auth.createdAt = new Date(2000);
+      user.save();
+
+      expect(res.status).toBe(200);
+    }
+
+    {
+      const res = await request.post('/auth/magic/' + user.auth.magicToken);
+
+      expect(res.status).toBe(403);
+      expect(res.body.authToken).toBeFalsy();
+    }
+  });
+
   it('Negative: Check invalid magic token.', async () => {
     let authToken;
 

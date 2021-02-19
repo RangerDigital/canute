@@ -1,0 +1,44 @@
+const db = require('./db');
+const app = require('../server');
+
+const { getAuthToken } = require('./helpers');
+
+const supertest = require('supertest');
+const request = supertest(app);
+
+beforeAll(async () => await db.connect());
+beforeEach(async () => await db.clear());
+afterAll(async () => await db.close());
+
+describe('Users Resources', function () {
+  it('Positive: Check GET: /users/me', async () => {
+    {
+      let authToken = getAuthToken();
+
+      const res = await request.get('/users/me').set('Authorization', 'Bearer ' + authToken);
+      expect(res.status).toBe(200);
+    }
+  });
+
+  it('Negative: Check GET: /users/me', async () => {
+    {
+      const res = await request.get('/users/me').set('Authorization', 'Bearer Hello World');
+      expect(res.status).toBe(403);
+    }
+  });
+
+  it('Positive: Check PATCH: /users/me', async () => {
+    {
+      let authToken = getAuthToken();
+      const name = 'Adam';
+
+      const res = await request
+        .patch('/users/me')
+        .set('Authorization', 'Bearer ' + authToken)
+        .send({ name: name });
+
+      expect(res.status).toBe(200);
+      expect(res.body.name).toBe(name);
+    }
+  });
+});
