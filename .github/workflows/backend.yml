@@ -19,7 +19,10 @@ jobs:
       - name: Lint backend JavaScript codebase
         uses: github/super-linter@v3
         env:
-          VALIDATE_HTML: false
+          VALIDATE_ENV: true
+          VALIDATE_DOCKERFILE: true
+          VALIDATE_JAVASCRIPT_ES: true
+          FILTER_REGEX_INCLUDE: .*backend/.*
 
   test:
     runs-on: ubuntu-latest
