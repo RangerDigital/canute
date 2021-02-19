@@ -14,13 +14,13 @@ app.use('/auth', auth);
 app.use('/orgs', orgs);
 
 // 404 Error Handler
-app.use((req, res, next) => {
+app.use((req, res) => {
   res.status(404);
   res.json({ msg: 'This route or method is not defined!' });
 });
 
 // 500 Error Handler
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
   res.status(500);
   res.json({ msg: err.message, error: err });
 

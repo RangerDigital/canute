@@ -13,7 +13,7 @@ const users = require('../models/users');
 
 router.post(
   '/magic',
-  asyncHandler(async (req, res, next) => {
+  asyncHandler(async (req, res) => {
     const { email } = req.body;
 
     let user = await users.findOne({ email: email }).exec();
