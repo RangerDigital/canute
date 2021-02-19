@@ -4,4 +4,4 @@ COPY . .
 RUN npm install --production
 
 EXPOSE 3000
-CMD pm2-runtime start.js
+CMD ["pm2-runtime", "start.js"]

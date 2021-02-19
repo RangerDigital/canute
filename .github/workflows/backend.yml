@@ -36,3 +36,5 @@ jobs:
 
       - name: Run all tests
         run: npm test
+        env:
+          JWT_SECRET: Hello World
