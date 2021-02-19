@@ -56,5 +56,6 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          context: ./backend/
+          context: ./backend
+          file: ./backend/Dockerfile
           tags: rangerdigital/canute:latest
