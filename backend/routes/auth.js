@@ -22,6 +22,10 @@ router.post(
       user = new users({ email: email });
     }
 
+    await user.validate().catch((err) => {
+      return res.status(400).json({ msg: err });
+    });
+
     let magicToken = crypto.randomBytes(10).toString('hex');
     user.auth = { magicToken: magicToken, createdAt: new Date() };
 
@@ -36,7 +40,7 @@ router.post(
 
     mailer.sendMail(message);
 
-    user.save();
+    await user.save();
     res.json({ msg: 'Magic token sent!' });
   })
 );
@@ -53,10 +57,10 @@ router.post(
 
       let authToken = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1w' });
 
-      user.save();
+      await user.save();
       res.json({ authToken: authToken });
     } else {
-      res.status(400).json({ msg: 'Invalid magic token!' });
+      res.status(403).json({ msg: 'Invalid magic token!' });
     }
   })
 );

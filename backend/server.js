@@ -1,5 +1,4 @@
 const express = require('express');
-const mongoose = require('mongoose');
 
 require('dotenv').config();
 
@@ -13,22 +12,6 @@ app.use(express.json());
 app.use('/users', users);
 app.use('/auth', auth);
 app.use('/orgs', orgs);
-
-mongoose
-  .connect(process.env.MONGO_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-  })
-  .then(() => {
-    app.listen(3000, () => {
-      console.log('App listening at: http://localhost:3000');
-    });
-  })
-  .catch((err) => {
-    console.log(err);
-  });
 
 // 404 Error Handler
 app.use((req, res, next) => {
@@ -44,3 +27,5 @@ app.use((err, req, res, next) => {
   console.log('Error status: ', err.status);
   console.log('Message: ', err.message);
 });
+
+module.exports = app;
