@@ -3,12 +3,15 @@ const router = express.Router();
 const asyncHandler = require('express-async-handler');
 
 const checkAuth = require('../middleware/checkAuth');
+const checkOrg = require('../middleware/checkOrg');
+
 const orgs = require('../models/orgs');
 const users = require('../models/users');
 
 router.get(
   '/',
   checkAuth,
+
   asyncHandler(async (req, res) => {
     let organisations = await orgs.find({ 'users._userId': req.userId }).select('_id name');
 
@@ -19,6 +22,7 @@ router.get(
 router.post(
   '/',
   checkAuth,
+
   asyncHandler(async (req, res) => {
     const { name } = req.body;
 
@@ -29,26 +33,39 @@ router.post(
   })
 );
 
+router.get(
+  '/:orgId',
+  checkAuth,
+  checkOrg(true),
+
+  asyncHandler(async (req, res) => {
+    const organisation = req.org;
+
+    res.json(organisation);
+  })
+);
+
 router.patch(
   '/:orgId',
   checkAuth,
+  checkOrg(true),
+
   asyncHandler(async (req, res) => {
-    const { orgId } = req.params;
     const { name } = req.body;
+    const organisation = req.org;
 
-    let organisation = await orgs.findOneAndUpdate({ _id: orgId, users: { $elemMatch: { _userId: req.userId, isAdmin: true } } }, { name: name }, { new: true });
+    organisation.name = name;
+    organisation.save();
 
-    if (organisation) {
-      res.json(organisation);
-    } else {
-      res.status(400).json({ msg: 'Permissions not sufficient to edit this organisation!' });
-    }
+    res.json(organisation);
   })
 );
 
 router.get(
   '/:orgId/users',
   checkAuth,
+  checkOrg(true),
+
   asyncHandler(async (req, res) => {
     const { orgId } = req.params;
 
@@ -60,16 +77,12 @@ router.get(
 router.post(
   '/:orgId/users',
   checkAuth,
+  checkOrg(true),
+
   asyncHandler(async (req, res) => {
     const { email, notes, isAdmin } = req.body;
-    const { orgId } = req.params;
 
-    let organisation = await orgs.findOne({ _id: orgId, users: { $elemMatch: { _userId: req.userId, isAdmin: true } } });
-
-    if (!organisation) {
-      return res.status(400).json({ msg: 'Permissions not sufficient to edit this organisation!' });
-    }
-
+    let organisation = req.org;
     let user = await users.findOne({ email: email });
 
     if (!user) {
@@ -77,12 +90,12 @@ router.post(
       user.save();
     }
 
-    // Check if the user already exists in this organisation.
-    if (organisation.users.find((x) => String(x._userId) == String(user._id))) {
-      return res.status(400).json({ msg: 'Already existing user with that E-Mail!' });
-    }
-
     organisation.users.push({ _userId: user._id, isAdmin: isAdmin, notes: notes });
+
+    await organisation.validate().catch((err) => {
+      return res.status(400).json({ msg: err });
+    });
+
     organisation.save();
 
     res.json(organisation);
@@ -92,14 +105,12 @@ router.post(
 router.delete(
   '/:orgId/users/:userId',
   checkAuth,
+  checkOrg(true),
+
   asyncHandler(async (req, res) => {
-    const { orgId, userId } = req.params;
+    const { userId } = req.params;
 
-    let organisation = await orgs.findOne({ _id: orgId, users: { $elemMatch: { _userId: req.userId, isAdmin: true } } });
-
-    if (!organisation) {
-      return res.status(400).json({ msg: 'Permissions not sufficient to edit this organisation!' });
-    }
+    let organisation = req.org;
 
     organisation.users = organisation.users.filter((x) => String(x._id) !== String(userId));
     organisation.save();

@@ -19,9 +19,9 @@ router.patch(
   '/me',
   checkAuth,
   asyncHandler(async (req, res) => {
-    const payload = req.body;
+    const { name, email } = req.body;
 
-    let user = await users.findByIdAndUpdate(req.userId, payload, { new: true });
+    let user = await users.findByIdAndUpdate(req.userId, { name: name, email: email }, { new: true });
 
     res.json(user);
   })
