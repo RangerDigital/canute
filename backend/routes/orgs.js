@@ -108,4 +108,7 @@ router.delete(
   })
 );
 
+const devices = require('./devices');
+router.use('/:orgId/devices', devices);
+
 module.exports = router;
