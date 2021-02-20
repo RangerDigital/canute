@@ -2,12 +2,12 @@ const express = require('express');
 const router = express.Router();
 const asyncHandler = require('express-async-handler');
 
-const authUser = require('../middleware/authUser');
+const checkAuth = require('../middleware/checkAuth');
 const users = require('../models/users');
 
 router.get(
   '/me',
-  authUser,
+  checkAuth,
   asyncHandler(async (req, res) => {
     let user = await users.findById(req.userId).select('-auth');
 
@@ -17,7 +17,7 @@ router.get(
 
 router.patch(
   '/me',
-  authUser,
+  checkAuth,
   asyncHandler(async (req, res) => {
     const payload = req.body;
 

@@ -2,13 +2,13 @@ const express = require('express');
 const router = express.Router();
 const asyncHandler = require('express-async-handler');
 
-const authUser = require('../middleware/authUser');
+const checkAuth = require('../middleware/checkAuth');
 const orgs = require('../models/orgs');
 const users = require('../models/users');
 
 router.get(
   '/',
-  authUser,
+  checkAuth,
   asyncHandler(async (req, res) => {
     let organisations = await orgs.find({ 'users._userId': req.userId }).select('-users');
 
@@ -18,7 +18,7 @@ router.get(
 
 router.post(
   '/',
-  authUser,
+  checkAuth,
   asyncHandler(async (req, res) => {
     const { name } = req.body;
 
@@ -31,7 +31,7 @@ router.post(
 
 router.patch(
   '/:orgId',
-  authUser,
+  checkAuth,
   asyncHandler(async (req, res) => {
     const { orgId } = req.params;
     const payload = req.body;
@@ -48,7 +48,7 @@ router.patch(
 
 router.get(
   '/:orgId/users',
-  authUser,
+  checkAuth,
   asyncHandler(async (req, res) => {
     const { orgId } = req.params;
 
@@ -59,7 +59,7 @@ router.get(
 
 router.post(
   '/:orgId/users',
-  authUser,
+  checkAuth,
   asyncHandler(async (req, res) => {
     const { email, notes, isAdmin } = req.body;
     const { orgId } = req.params;
@@ -91,7 +91,7 @@ router.post(
 
 router.delete(
   '/:orgId/users/:userId',
-  authUser,
+  checkAuth,
   asyncHandler(async (req, res) => {
     const { orgId, userId } = req.params;
 

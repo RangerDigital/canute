@@ -2,12 +2,12 @@ const express = require('express');
 const router = express.Router({ mergeParams: true });
 const asyncHandler = require('express-async-handler');
 
-const authUser = require('../middleware/authUser');
+const checkAuth = require('../middleware/checkAuth');
 const devices = require('../models/devices');
 
 router.get(
   '/',
-  authUser,
+  checkAuth,
   asyncHandler(async (req, res) => {
     const { orgId } = req.params;
 

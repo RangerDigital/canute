@@ -4,15 +4,15 @@ const asyncHandler = require('express-async-handler');
 
 const crypto = require('crypto');
 
-const authUser = require('../middleware/authUser');
+const checkAuth = require('../middleware/checkAuth');
 
-const isOrgAdmin = require('../middleware/isOrgAdmin');
+const checkOrg = require('../middleware/checkOrg');
 const devices = require('../models/devices');
 
 router.get(
   '/',
-  authUser,
-  isOrgAdmin,
+  checkAuth,
+  checkOrg(true),
   asyncHandler(async (req, res) => {
     const { orgId } = req.params;
 
@@ -24,8 +24,8 @@ router.get(
 
 router.post(
   '/',
-  authUser,
-  isOrgAdmin,
+  checkAuth,
+  checkOrg(true),
   asyncHandler(async (req, res) => {
     const { name } = req.body;
     const { orgId } = req.params;
