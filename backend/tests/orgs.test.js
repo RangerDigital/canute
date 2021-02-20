@@ -22,9 +22,11 @@ describe('Orgs Resources', function () {
     }
   });
 
-  it('Positive: Check POST: /orgs. Create a new organisation', async () => {
+  it('Positive: Check POST: /orgs. Create a new organisation, then edit It', async () => {
+    const authToken = getAuthToken();
+    let orgId;
+
     {
-      const authToken = getAuthToken();
       const name = 'Vanguard';
 
       const res = await request
@@ -35,6 +37,20 @@ describe('Orgs Resources', function () {
       expect(res.status).toBe(200);
       expect(res.body.name).toBe(name);
       expect(res.body.users[0].isAdmin).toBe(true);
+
+      orgId = res.body._id;
+    }
+
+    {
+      const name = 'Black Mesa';
+
+      const res = await request
+        .patch('/orgs/' + orgId)
+        .set('Authorization', 'Bearer ' + authToken)
+        .send({ name: name });
+
+      expect(res.status).toBe(200);
+      expect(res.body.name).toBe(name);
     }
   });
 });

@@ -10,7 +10,7 @@ router.get(
   '/',
   checkAuth,
   asyncHandler(async (req, res) => {
-    let organisations = await orgs.find({ 'users._userId': req.userId }).select('-users');
+    let organisations = await orgs.find({ 'users._userId': req.userId }).select('_id name');
 
     res.json(organisations);
   })
@@ -34,9 +34,9 @@ router.patch(
   checkAuth,
   asyncHandler(async (req, res) => {
     const { orgId } = req.params;
-    const payload = req.body;
+    const { name } = req.body;
 
-    let organisation = await orgs.findOneAndUpdate({ _id: orgId, users: { $elemMatch: { _userId: req.userId, isAdmin: true } } }, payload, { new: true });
+    let organisation = await orgs.findOneAndUpdate({ _id: orgId, users: { $elemMatch: { _userId: req.userId, isAdmin: true } } }, { name: name }, { new: true });
 
     if (organisation) {
       res.json(organisation);
