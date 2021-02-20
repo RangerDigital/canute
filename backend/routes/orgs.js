@@ -111,4 +111,10 @@ router.delete(
 const devices = require('./devices');
 router.use('/:orgId/devices', devices);
 
+const shadows = require('./shadows');
+router.use('/:orgId/shadows', shadows);
+
+const roles = require('./roles');
+router.use('/:orgId/roles', roles);
+
 module.exports = router;

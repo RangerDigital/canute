@@ -4,7 +4,8 @@ const schema = mongoose.Schema({
   name: {
     type: String,
   },
-  users: [{ _userId: mongoose.Types.ObjectId, isAdmin: { type: Boolean, default: false }, notes: String }],
+  users: [{ _userId: mongoose.Types.ObjectId, isAdmin: { type: Boolean, default: false }, notes: String, roles: [mongoose.Types.ObjectId] }],
+  roles: [{ name: String, permissions: [mongoose.Types.ObjectId] }],
 });
 
 schema.virtual('users.user', {
