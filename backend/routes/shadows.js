@@ -11,9 +11,19 @@ router.get(
   asyncHandler(async (req, res) => {
     const { orgId } = req.params;
 
-    let device = await devices.find({ _orgId: orgId });
+    let deviceArray = await devices.find({ _orgId: orgId });
 
-    res.json(device.shadows);
+    let shadows = [];
+
+    for (let device of deviceArray) {
+      for (let shadow of device.shadows) {
+        // TODO: Check if user has permission to this shadow.
+
+        shadows.push(shadow);
+      }
+    }
+
+    res.json(shadows);
   })
 );
 
