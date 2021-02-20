@@ -19,7 +19,7 @@ describe('Magic Auth Flow', function () {
 
     {
       const res = await request.post('/auth/magic').send({ email: email });
-      user = await users.findOne({ email: email }).exec();
+      user = await users.findOne({ email: email });
 
       expect(res.status).toBe(200);
 
@@ -56,7 +56,7 @@ describe('Magic Auth Flow', function () {
 
     {
       const res = await request.post('/auth/magic').send({ email: email });
-      user = await users.findOne({ email: email }).exec();
+      user = await users.findOne({ email: email });
 
       user.auth.createdAt = new Date(2000);
       user.save();

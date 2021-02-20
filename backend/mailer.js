@@ -1,4 +1,6 @@
+const fs = require('fs');
 const nodemailer = require('nodemailer');
+const handlebars = require('handlebars');
 
 let mailerConfig = {
   host: process.env.SMTP_HOST,
@@ -10,4 +12,22 @@ let mailerConfig = {
   },
 };
 
-module.exports = nodemailer.createTransport(mailerConfig);
+const getTransport = nodemailer.createTransport(mailerConfig);
+
+const sendTemplate = (template, values, templateValues) => {
+  const magicTemplate = handlebars.compile(fs.readFileSync(template, 'utf-8'));
+
+  let message = {
+    from: values.from,
+    to: values.to,
+    subject: values.subject,
+    html: magicTemplate(templateValues),
+  };
+
+  getTransport.sendMail(message);
+};
+
+module.exports = {
+  getTransport,
+  sendTemplate,
+};

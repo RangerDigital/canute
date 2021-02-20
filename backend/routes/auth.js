@@ -1,50 +1,41 @@
 const express = require('express');
 const router = express.Router();
 
-const fs = require('fs');
-const mailer = require('../mailer');
-const handlebars = require('handlebars');
-
 const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
+const mailer = require('../mailer');
 
 const users = require('../models/users');
 
 router.post('/magic', async (req, res) => {
   const { email } = req.body;
 
-  let user = await users.findOne({ email: email }).exec();
+  let user = await users.findOne({ email: email });
 
   if (!user) {
     user = new users({ email: email });
   }
 
-  await user.validate().catch((err) => {
-    return res.status(400).json({ msg: err });
-  });
-
-  let magicToken = crypto.randomBytes(10).toString('hex');
+  const magicToken = crypto.randomBytes(10).toString('hex');
   user.auth = { magicToken: magicToken, createdAt: new Date() };
 
-  let magicTemplate = handlebars.compile(fs.readFileSync('templates/magic.html', 'utf-8'));
+  await user.save().catch((err) => {
+    res.status(400).json({ msg: err.message });
+  });
 
-  let message = {
-    from: process.env.MAGIC_FROM,
-    to: req.body.email,
-    subject: process.env.MAGIC_SUBJECT_PREFIX + magicToken,
-    html: magicTemplate({ magicToken: magicToken, magicUrlPrefix: process.env.MAGIC_URL_PREFIX }),
-  };
+  mailer.sendTemplate(
+    'templates/magic.html',
+    { from: process.env.MAGIC_FROM, to: req.body.email, subject: process.env.MAGIC_SUBJECT_PREFIX + magicToken },
+    { magicToken: magicToken, magicUrlPrefix: process.env.MAGIC_URL_PREFIX }
+  );
 
-  mailer.sendMail(message);
-
-  await user.save();
   res.json({ msg: 'Magic token sent!' });
 });
 
 router.post('/magic/:magicToken', async (req, res) => {
   const { magicToken } = req.params;
 
-  let user = await users.findOne({ 'auth.magicToken': magicToken }).exec();
+  let user = await users.findOne({ 'auth.magicToken': magicToken });
 
   if (user && new Date() - user.auth.createdAt < 300000) {
     user.auth = {};
