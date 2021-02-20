@@ -10,27 +10,21 @@ const orgs = require('../models/orgs');
 router.get(
   '/',
   checkAuth,
-  checkOrg,
+  checkOrg(true),
   asyncHandler(async (req, res) => {
-    const { orgId } = req.params;
-
-    let organisation = await orgs.findOne({ _id: orgId });
-
-    res.json(organisation.roles);
+    res.json(req.org.roles);
   })
 );
 
 router.post(
   '/',
   checkAuth,
-  checkOrg,
+  checkOrg(true),
   asyncHandler(async (req, res) => {
-    const { name, permissions } = req.body;
-    const { orgId } = req.params;
+    const { name, permissions, users } = req.body;
+    let organisation = req.org;
 
-    let organisation = await orgs.findOne({ _id: orgId });
-
-    organisation.roles.push({ name: name, permissions: permissions });
+    organisation.roles.push({ name: name, permissions: permissions, users: users });
 
     await organisation.validate().catch((err) => {
       return res.status(400).json({ msg: err });
