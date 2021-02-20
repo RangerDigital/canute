@@ -3,8 +3,8 @@ const router = express.Router();
 
 const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
-const mailer = require('../mailer');
 
+const mailer = require('../mailer');
 const users = require('../models/users');
 
 router.post('/magic', async (req, res) => {
@@ -23,11 +23,11 @@ router.post('/magic', async (req, res) => {
     res.status(400).json({ msg: err.message });
   });
 
-  mailer.sendTemplate(
-    'templates/magic.html',
-    { from: process.env.MAGIC_FROM, to: req.body.email, subject: process.env.MAGIC_SUBJECT_PREFIX + magicToken },
-    { magicToken: magicToken, magicUrlPrefix: process.env.MAGIC_URL_PREFIX }
-  );
+  const from = process.env.MAGIC_FROM;
+  const subject = process.env.MAGIC_SUBJECT_PREFIX + magicToken;
+  const prefix = process.env.MAGIC_URL_PREFIX;
+
+  mailer.sendTemplate('templates/magic.html', { from: from, to: req.body.email, subject: subject }, { magicToken: magicToken, magicUrlPrefix: prefix });
 
   res.json({ msg: 'Magic token sent!' });
 });
@@ -35,18 +35,17 @@ router.post('/magic', async (req, res) => {
 router.post('/magic/:magicToken', async (req, res) => {
   const { magicToken } = req.params;
 
-  let user = await users.findOne({ 'auth.magicToken': magicToken });
+  const user = await users.findOne({ 'auth.magicToken': magicToken });
 
   if (user && new Date() - user.auth.createdAt < 300000) {
-    user.auth = {};
-
-    let authToken = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1w' });
-
-    await user.save();
+    const authToken = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1w' });
     res.json({ authToken: authToken });
   } else {
     res.status(403).json({ msg: 'Invalid magic token!' });
   }
+
+  user.auth = {};
+  await user.save();
 });
 
 module.exports = router;
