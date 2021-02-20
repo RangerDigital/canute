@@ -1,5 +1,8 @@
 const app = require('./server');
 const mongoose = require('mongoose');
+const catcher = require('./catcher');
+
+catcher.connect();
 
 mongoose
   .connect(process.env.MONGO_URL, {
