@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const asyncHandler = require('express-async-handler');
 
 const checkAuth = require('../middleware/checkAuth');
 const checkOrg = require('../middleware/checkOrg');
@@ -8,116 +7,76 @@ const checkOrg = require('../middleware/checkOrg');
 const orgs = require('../models/orgs');
 const users = require('../models/users');
 
-router.get(
-  '/',
-  checkAuth,
+router.get('/', checkAuth, async (req, res) => {
+  let organisations = await orgs.find({ 'users._userId': req.userId }).select('_id name');
 
-  asyncHandler(async (req, res) => {
-    let organisations = await orgs.find({ 'users._userId': req.userId }).select('_id name');
+  res.json(organisations);
+});
 
-    res.json(organisations);
-  })
-);
+router.post('/', checkAuth, async (req, res) => {
+  const { name } = req.body;
 
-router.post(
-  '/',
-  checkAuth,
+  let organisation = new orgs({ name: name, users: [{ _userId: req.userId, isAdmin: true }] });
+  organisation.save();
 
-  asyncHandler(async (req, res) => {
-    const { name } = req.body;
+  res.json(organisation);
+});
 
-    let organisation = new orgs({ name: name, users: [{ _userId: req.userId, isAdmin: true }] });
-    organisation.save();
+router.get('/:orgId', checkAuth, checkOrg(true), async (req, res) => {
+  const organisation = req.org;
 
-    res.json(organisation);
-  })
-);
+  res.json(organisation);
+});
 
-router.get(
-  '/:orgId',
-  checkAuth,
-  checkOrg(true),
+router.patch('/:orgId', checkAuth, checkOrg(true), async (req, res) => {
+  const { name } = req.body;
+  const organisation = req.org;
 
-  asyncHandler(async (req, res) => {
-    const organisation = req.org;
+  organisation.name = name;
+  organisation.save();
 
-    res.json(organisation);
-  })
-);
+  res.json(organisation);
+});
 
-router.patch(
-  '/:orgId',
-  checkAuth,
-  checkOrg(true),
+router.get('/:orgId/users', checkAuth, checkOrg(true), async (req, res) => {
+  const { orgId } = req.params;
 
-  asyncHandler(async (req, res) => {
-    const { name } = req.body;
-    const organisation = req.org;
+  let users = await orgs.findOne({ _id: orgId, users: { $elemMatch: { _userId: req.userId, isAdmin: true } } }).populate('users.user', '-_id -__v');
+  res.json(users.users);
+});
 
-    organisation.name = name;
-    organisation.save();
+router.post('/:orgId/users', checkAuth, checkOrg(true), async (req, res) => {
+  const { email, notes, isAdmin } = req.body;
 
-    res.json(organisation);
-  })
-);
+  let organisation = req.org;
+  let user = await users.findOne({ email: email });
 
-router.get(
-  '/:orgId/users',
-  checkAuth,
-  checkOrg(true),
+  if (!user) {
+    user = new users({ email: email });
+    user.save();
+  }
 
-  asyncHandler(async (req, res) => {
-    const { orgId } = req.params;
+  organisation.users.push({ _userId: user._id, isAdmin: isAdmin, notes: notes });
 
-    let users = await orgs.findOne({ _id: orgId, users: { $elemMatch: { _userId: req.userId, isAdmin: true } } }).populate('users.user', '-_id -__v');
-    res.json(users.users);
-  })
-);
+  await organisation.validate().catch((err) => {
+    return res.status(400).json({ msg: err });
+  });
 
-router.post(
-  '/:orgId/users',
-  checkAuth,
-  checkOrg(true),
+  organisation.save();
 
-  asyncHandler(async (req, res) => {
-    const { email, notes, isAdmin } = req.body;
+  res.json(organisation);
+});
 
-    let organisation = req.org;
-    let user = await users.findOne({ email: email });
+router.delete('/:orgId/users/:userId', checkAuth, checkOrg(true), async (req, res) => {
+  const { userId } = req.params;
 
-    if (!user) {
-      user = new users({ email: email });
-      user.save();
-    }
+  let organisation = req.org;
 
-    organisation.users.push({ _userId: user._id, isAdmin: isAdmin, notes: notes });
+  organisation.users = organisation.users.filter((x) => String(x._id) !== String(userId));
+  organisation.save();
 
-    await organisation.validate().catch((err) => {
-      return res.status(400).json({ msg: err });
-    });
-
-    organisation.save();
-
-    res.json(organisation);
-  })
-);
-
-router.delete(
-  '/:orgId/users/:userId',
-  checkAuth,
-  checkOrg(true),
-
-  asyncHandler(async (req, res) => {
-    const { userId } = req.params;
-
-    let organisation = req.org;
-
-    organisation.users = organisation.users.filter((x) => String(x._id) !== String(userId));
-    organisation.save();
-
-    res.json(organisation);
-  })
-);
+  res.json(organisation);
+});
 
 const devices = require('./devices');
 router.use('/:orgId/devices', devices);

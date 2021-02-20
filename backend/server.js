@@ -2,6 +2,7 @@ const express = require('express');
 const helmet = require('helmet');
 
 require('dotenv').config();
+require('express-async-errors');
 
 const users = require('./routes/users');
 const auth = require('./routes/auth');
