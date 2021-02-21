@@ -33,4 +33,16 @@ router.post('/', checkAuth, checkOrg(true), async (req, res) => {
   res.json(device);
 });
 
+router.patch('/:deviceId', checkAuth, checkOrg(true), async (req, res) => {
+  const { name } = req.body;
+  const { orgId, deviceId } = req.params;
+
+  let device = await devices.find({ _orgId: orgId, _id: deviceId });
+
+  device.name = name;
+  device.save();
+
+  res.json(device);
+});
+
 module.exports = router;
