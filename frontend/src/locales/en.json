@@ -11,7 +11,7 @@
         "email": {
             "placeholder": "Your E-Mail",
             "action": "Get Started",
-            "sublabel": "You will receive a magic link via E-Mail"
+            "sublabel": "You will receive a magic link via E-Mail!"
         }
     }
 }

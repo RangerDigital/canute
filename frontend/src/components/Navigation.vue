@@ -1,8 +1,8 @@
 <template>
   <header>
     <div class="hidden md:flex flex-row items-center p-4 mx-auto border-b">
-      <a href="./" class="pr-2 lg:pr-8 lg:px-6 focus:outline-none">
-        <h2 class="font-semibold tracking-tighter text-gray-600 md:text-xl md:ml-8">
+      <a class="pr-2 lg:pr-8 lg:px-6 focus:outline-none cursor-pointer">
+        <h2 class="font-semibold tracking-tighter text-gray-600 md:text-xl md:ml-8" @click="$router.push('/').catch((err) => {})">
           Canute Access
         </h2>
       </a>
