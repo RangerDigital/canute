@@ -5,7 +5,7 @@
     <section class="text-gray-700 body-font">
       <div class="container flex flex-col items-center px-5 py-16 mx-auto my-30  lg:px-20 lg:py-24 md:flex-row">
         <div class="flex flex-col items-center w-full pt-0 mb-16 text-left lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 md:items-start md:text-left md:mb-0 lg:text-center">
-          <h1 class="mb-8 text-2xl font-bold tracking-tighter text-center text-black lg:text-left lg:text-5xl title-font">
+          <h1 class="my-8 text-2xl font-bold tracking-tighter text-center text-black lg:text-left lg:text-5xl title-font">
             {{ $t('home.heading') }}
           </h1>
 
