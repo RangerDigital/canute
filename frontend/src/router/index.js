@@ -12,6 +12,11 @@ const routes = [
     name: 'Auth',
     component: () => import(/* webpackChunkName: "auth" */ '../views/Auth.vue'),
   },
+  {
+    path: '/auth/wait',
+    name: 'AuthWait',
+    component: () => import(/* webpackChunkName: "authWait" */ '../views/AuthWait.vue'),
+  },
 ];
 
 const router = createRouter({

@@ -59,7 +59,9 @@
     },
     methods: {
       sendEmail() {
-        this.axios.post('/api/auth/magic', { email: this.email });
+        this.axios.post('/api/auth/magic', { email: this.email }).then(() => {
+          this.$router.push('/auth/wait');
+        });
       },
     },
   };
