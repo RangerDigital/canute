@@ -1,0 +1,17 @@
+name: Build & Deploy Frontend
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'frontend/**'
+
+defaults:
+  run:
+    working-directory: frontend
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2

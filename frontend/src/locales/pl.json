@@ -1,0 +1,17 @@
+{
+    "nav": {
+        "about": "O Canute",
+        "contact": "Kontakt",
+        "language": "English",
+        "signin": "Zaloguj Się"
+    },
+    "home": {
+        "heading": "Jedna aplikacja. Szczęśliwi mieszkańcy!",
+        "subheading": "Inteligentny system kontroli dostępu dla budynków wielorodzinnych.",
+        "email": {
+            "placeholder": "Twój E-Mail",
+            "action": "Rozpocznij",
+            "sublabel": "Otrzymasz magiczny link w E-Mail"
+        }
+    }
+}

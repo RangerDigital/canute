@@ -1,0 +1,17 @@
+{
+    "nav": {
+        "about": "About Canute",
+        "contact": "Contact",
+        "language": "Polski",
+        "signin": "Sign In"
+    },
+    "home": {
+        "heading": "One app. Every door. Happy residents!",
+        "subheading": "Multi-family building internet-connected access control system.",
+        "email": {
+            "placeholder": "Your E-Mail",
+            "action": "Get Started",
+            "sublabel": "You will receive a magic link via E-Mail"
+        }
+    }
+}
