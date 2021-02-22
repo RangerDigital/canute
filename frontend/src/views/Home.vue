@@ -17,10 +17,12 @@
             <input
               class="flex-grow w-full px-4 md:w-72 py-2 mb-4 md:mr-4 text-base text-black transition duration-1000 ease-in-out transform rounded-lg bg-gray-100 focus:outline-none focus:border-purple-500 sm:mb-0 focus:bg-white focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2"
               v-bind:placeholder="$t('home.email.placeholder')"
+              v-bind="email"
               type="email"
             />
             <button
               class="flex items-center px-6 py-2 mt-2 md:mt-auto font-semibold text-white transition duration-500 ease-in-out transform bg-black rounded-lg hover:bg-gray-900 focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2"
+              @click="sendEmail()"
             >
               {{ $t('home.email.action') }}
             </button>
@@ -49,6 +51,14 @@
     components: {
       Navigation,
       Footer,
+    },
+    data() {
+      return { email: '' };
+    },
+    methods: {
+      sendEmail() {
+        this.axios.post('/api/auth/magic', { email: this.email });
+      },
     },
   };
 </script>

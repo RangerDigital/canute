@@ -3,6 +3,8 @@ import { createI18n } from 'vue-i18n';
 
 import App from './App.vue';
 import router from './router';
+import axios from 'axios';
+import VueAxios from 'vue-axios';
 
 import './registerServiceWorker';
 import './index.css';
@@ -19,4 +21,5 @@ const i18n = createI18n({ locale: 'en', messages: messages });
 createApp(App)
   .use(router)
   .use(i18n)
+  .use(VueAxios, axios)
   .mount('#app');

@@ -17,29 +17,28 @@
             </div>
             <div class="w-full px-8 py-24 bg-white border-gray-100 rounded-lg lg:w-8/12 lg:px-24 lg:py-4 lg:rounded-l-none s">
               <div class="relative z-10 text-left ">
-                <form class="mt-6" action="#" method="POST">
-                  <div class="mt-4">
-                    <label class="block text-base font-medium leading-relaxed text-gray-700">{{ $t('home.email.placeholder') }}</label>
-                    <input
-                      type="email"
-                      name=""
-                      id=""
-                      v-bind:placeholder="$t('home.email.placeholder')"
-                      class="w-full px-4 py-2 mt-2 text-base transition duration-500 ease-in-out transform bg-gray-100 border-transparent rounded-lg focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ext-black focus:border-gray-500"
-                      autofocus
-                      autocomplete
-                      required
-                    />
-                  </div>
+                <div class="mt-4">
+                  <label class="block text-base font-medium leading-relaxed text-gray-700">{{ $t('home.email.placeholder') }}</label>
+                  <input
+                    type="email"
+                    name=""
+                    v-bind="email"
+                    v-bind:placeholder="$t('home.email.placeholder')"
+                    class="w-full px-4 py-2 mt-2 text-base transition duration-500 ease-in-out transform bg-gray-100 border-transparent rounded-lg focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ext-black focus:border-gray-500"
+                    autofocus
+                    autocomplete
+                    required
+                  />
+                </div>
 
-                  <p class="text-sm mt-3 font-semibold leading-relaxed text-gray-700 hover:text-black-700 focus:text-black-700">{{ $t('home.email.sublabel') }}</p>
+                <p class="text-sm mt-3 font-semibold leading-relaxed text-gray-700 hover:text-black-700 focus:text-black-700">{{ $t('home.email.sublabel') }}</p>
 
-                  <button
-                    type="submit"
-                    class="block w-full px-4 py-3 mt-6 font-semibold text-white transition duration-500 ease-in-out transform rounded-lg bg-gradient-to-r from-black hover:from-black to-black focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 hover:to-black"
-                    >{{ $t('home.email.action') }}</button
-                  >
-                </form>
+                <button
+                  type="submit"
+                  class="block w-full px-4 py-3 mt-6 font-semibold text-white transition duration-500 ease-in-out transform rounded-lg bg-gradient-to-r from-black hover:from-black to-black focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 hover:to-black"
+                  @click="sendEmail()"
+                  >{{ $t('home.email.action') }}</button
+                >
               </div>
             </div>
           </div>
@@ -60,6 +59,14 @@
     components: {
       Navigation,
       Footer,
+    },
+    data() {
+      return { email: '' };
+    },
+    methods: {
+      sendEmail() {
+        this.axios.post('/api/auth/magic', { email: this.email });
+      },
     },
   };
 </script>
