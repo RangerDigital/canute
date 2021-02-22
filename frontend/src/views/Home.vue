@@ -53,7 +53,9 @@
       Footer,
     },
     data() {
-      return { email: '' };
+      return {
+        email: '',
+      };
     },
     methods: {
       sendEmail() {
