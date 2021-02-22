@@ -2,9 +2,9 @@
   <section class="h-screen flex flex-col justify-between">
     <Navigation />
 
-    <section class="text-gray-700 body-font mb-60 ">
+    <section class="text-gray-700 body-font md:mb-60 ">
       <div class="container px-8 mx-auto pt-36 lg:px-4">
-        <div class="flex flex-col w-full mb-12 text-left lg:text-center">
+        <div class="flex flex-col w-full mb-12 text-center">
           <h2 class="mb-1 text-xs font-semibold tracking-widest text-blue-600 uppercase title-font">SUCCESS</h2>
           <h1 class="my-8 text-2xl font-bold tracking-tighter text-center text-black lg:text-5xl title-font">
             An E-Mail with the instruction has been sent!
