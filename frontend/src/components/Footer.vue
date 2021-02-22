@@ -2,9 +2,8 @@
   <section>
     <footer class="mt-20 bg-black">
       <div class="container flex justify-between p-5 mx-auto">
-        <p class="text-sm text-center text-gray-200 sm:text-left ">Jakub Bednarski</p>
         <button class="md:hidden text-sm text-center text-gray-200 sm:text-left focus:outline-none " @click="toggleLanguage()">
-          <svg class="inline h-6 mx-0.5 align-middle" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg class="inline h-5 mx-0.5 align-middle" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
@@ -14,7 +13,7 @@
           </svg>
           {{ $t('nav.language') }}
         </button>
-        <p class="text-sm text-center text-gray-200 sm:text-left ">© 2021</p>
+        <p class="text-sm text-center text-gray-200 sm:text-left ">Jakub Bednarski © 2021</p>
       </div>
     </footer>
   </section>
