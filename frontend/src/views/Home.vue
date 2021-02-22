@@ -17,7 +17,7 @@
             <input
               class="flex-grow w-full px-4 md:w-72 py-2 mb-4 md:mr-4 text-base text-black transition duration-1000 ease-in-out transform rounded-lg bg-gray-100 focus:outline-none focus:border-purple-500 sm:mb-0 focus:bg-white focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2"
               v-bind:placeholder="$t('home.email.placeholder')"
-              v-bind="email"
+              v-model="email"
               type="email"
             />
             <button

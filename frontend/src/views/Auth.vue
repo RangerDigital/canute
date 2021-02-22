@@ -22,7 +22,7 @@
                   <input
                     type="email"
                     name=""
-                    v-bind="email"
+                    v-model="email"
                     v-bind:placeholder="$t('home.email.placeholder')"
                     class="w-full px-4 py-2 mt-2 text-base transition duration-500 ease-in-out transform bg-gray-100 border-transparent rounded-lg focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ext-black focus:border-gray-500"
                     autofocus
