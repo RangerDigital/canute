@@ -47,7 +47,7 @@
   import Footer from '@/components/Footer.vue';
 
   export default {
-    name: 'Home',
+    name: 'Landing',
     components: {
       Navigation,
       Footer,

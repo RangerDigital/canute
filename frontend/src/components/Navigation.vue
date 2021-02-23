@@ -1,21 +1,17 @@
 <template>
   <header>
-    <div class="hidden md:flex flex-row items-center p-4 mx-auto border-b">
-      <a class="pr-2 lg:pr-8 lg:px-6 focus:outline-none cursor-pointer">
-        <h2 class="font-semibold tracking-tighter text-gray-600 md:text-xl md:ml-8" @click="$router.push('/').catch((err) => {})">
-          Canute Access
-        </h2>
-      </a>
+    <div class="flex flex-row items-center justify-between p-4 md:p-5 border-b">
+      <img src="../assets/LogoFull.svg" class="h-9 mx-2 md:h-11 md:mx-8 cursor-pointer" @click="$router.push('/').catch((err) => {})" />
 
-      <nav class="flex items-center justify-center text-base md:ml-auto md:mr-auto">
-        <router-link class="mr-5 text-sm font-semibold text-gray-600 hover:text-gray-800" to="/auth">{{ $t('nav.about') }}</router-link>
-        <router-link class="mr-5 text-sm font-semibold text-gray-600 hover:text-gray-800" to="/auth">{{ $t('nav.contact') }}</router-link>
-        <router-link class="mr-5 text-sm font-semibold text-gray-600 hover:text-gray-800" to="/auth">FAQ</router-link>
+      <nav class="hidden md:flex items-center justify-center ml-auto mr-auto">
+        <router-link class="mr-8 text-sm font-semibold text-gray-600 hover:text-gray-800" to="/auth">{{ $t('nav.services') }}</router-link>
+        <router-link class="mr-8 text-sm font-semibold text-gray-600 hover:text-gray-800" to="/auth">{{ $t('nav.contact') }}</router-link>
+        <router-link class="mr-8 text-sm font-semibold text-gray-600 hover:text-gray-800" to="/auth">FAQ</router-link>
       </nav>
 
-      <div>
-        <button class="mr-20 text-sm font-semibold text-gray-600 hover:text-gray-800 focus:outline-none " @click="toggleLanguage()">
-          <svg class="inline h-6 mx-0.5 align-middle" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <section class="hidden md:block">
+        <button class=" mr-20 text-sm font-semibold text-gray-600 hover:text-gray-800 focus:outline-none " @click="toggleLanguage()">
+          <svg class="inline h-6 mx-0.5 align-middle " fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
@@ -26,25 +22,14 @@
           {{ $t('nav.language') }}
         </button>
 
-        <button
-          class="items-center px-8 py-2 ml-auto mr-8 font-semibold text-white transition duration-500 ease-in-out transform bg-black rounded-lg hover:bg-blueGray-900 focus:ring focus:outline-none"
-          @click="$router.push('auth')"
-          >{{ $t('nav.signin') }}
-        </button>
-      </div>
-    </div>
+        <button class=" px-8 py-2 mr-8 font-semibold text-white bg-primary rounded-3xl focus:ring focus:outline-none" @click="$router.push('auth')">{{ $t('nav.signin') }} </button>
+      </section>
 
-    <div class="flex md:hidden items-center justify-between p-4 mx-auto border-b">
-      <a class="pr-2 lg:pr-8 lg:px-6 focus:outline-none cursor-pointer">
-        <h2 class="font-semibold tracking-tighter text-gray-600 md:text-xl md:ml-8" @click="$router.push('/').catch((err) => {})">
-          Canute Access
-        </h2>
-      </a>
-
-      <router-link to="/auth"
-        ><svg class="text-gray-600 inline h-6 align-middle" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg
-      ></router-link>
+      <router-link class="md:hidden mr-1 border p-1 rounded-lg" to="/auth">
+        <svg class="h-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </router-link>
     </div>
   </header>
 </template>
