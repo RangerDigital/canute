@@ -22,6 +22,11 @@ const routes = [
     name: 'AuthMagic',
     component: () => import(/* webpackChunkName: "authMagic" */ '../views/AuthMagic.vue'),
   },
+  {
+    path: '/orgs',
+    name: 'OrgsSelect',
+    component: () => import(/* webpackChunkName: "orgsSelect" */ '../views/OrgsSelect.vue'),
+  },
 ];
 
 const router = createRouter({

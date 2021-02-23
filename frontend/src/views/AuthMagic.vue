@@ -41,6 +41,8 @@
         this.axios.post('/api/auth/magic/' + this.magicToken).then((payload) => {
           this.authToken = payload.data.authToken;
           this.status = 'Logged In';
+
+          this.axios.defaults.headers.common['Authorization'] = 'Bearer ' + this.authToken;
         });
       },
     },
