@@ -22,7 +22,7 @@
 <script>
   import AppNavigation from '@/components/AppNavigation.vue';
   import SideNavigation from '@/components/SideNavigation.vue';
-  import Footer from '@/components/Footer.vue';
+  import Footer from '@/components/HomeFooter.vue';
 
   export default {
     name: 'OrgsSelect',

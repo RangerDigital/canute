@@ -20,7 +20,7 @@
 
 <script>
   import HomeNavigation from '@/components/HomeNavigation.vue';
-  import Footer from '@/components/Footer.vue';
+  import Footer from '@/components/HomeFooter.vue';
 
   export default {
     name: 'Auth',

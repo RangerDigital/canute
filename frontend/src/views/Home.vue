@@ -2,19 +2,19 @@
   <section class="h-screen flex flex-col justify-between">
     <HomeNavigation />
 
-    <Footer />
+    <HomeFooter />
   </section>
 </template>
 
 <script>
   import HomeNavigation from '@/components/HomeNavigation.vue';
-  import Footer from '@/components/Footer.vue';
+  import HomeFooter from '@/components/HomeFooter.vue';
 
   export default {
     name: 'Home',
     components: {
       HomeNavigation,
-      Footer,
+      HomeFooter,
     },
   };
 </script>

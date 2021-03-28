@@ -36,7 +36,7 @@
 </template>
 <script>
   export default {
-    name: 'Navigation',
+    name: 'HomeNavigation',
     methods: {
       toggleLanguage() {
         if (this.$i18n.locale == 'pl') {
