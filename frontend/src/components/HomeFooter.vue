@@ -12,7 +12,7 @@
           />
         </svg>
 
-        {{ $t('nav.language') }}
+        {{ $t('btn.locale') }}
       </button>
     </section>
 

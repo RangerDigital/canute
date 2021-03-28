@@ -1,17 +1,17 @@
 {
     "nav": {
         "services": "Usługi",
-        "contact": "Kontakt",
-        "language": "English",
-        "signin": "Zaloguj Się"
+        "contact": "Kontakt"
+    },
+    "btn": {
+        "login": "Zaloguj Się",
+        "locale": "English",
+        "learn": "Więcej o Canute OS"
     },
     "home": {
-        "heading": "Jedna aplikacja. Szczęśliwi mieszkańcy!",
-        "subheading": "Inteligentny system kontroli dostępu dla budynków wielorodzinnych.",
-        "email": {
-            "placeholder": "Twój E-Mail",
-            "action": "Rozpocznij",
-            "sublabel": "Otrzymasz magiczny link w E-Mail!"
-        }
+        "heading": "Canute OS + Budynek =",
+        "subheading": "Zadowoleni mieszkańcy!",
+        "about": "Inteligentny system kontroli dostępu dla budynków wielorodzinnych.",
+        "action": "Uruchom"
     }
 }

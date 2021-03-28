@@ -1,17 +1,17 @@
 {
     "nav": {
         "services": "Services",
-        "contact": "Contact",
-        "language": "Polski",
-        "signin": "Sign In"
+        "contact": "Contact"
+    },
+    "btn": {
+        "login": "Sign In",
+        "locale": "Polski",
+        "learn": "Learn More"
     },
     "home": {
-        "heading": "One app. Every door. Happy residents!",
-        "subheading": "Multi-family building internet-connected access control system.",
-        "email": {
-            "placeholder": "Your E-Mail",
-            "action": "Get Started",
-            "sublabel": "You will receive a magic link via E-Mail!"
-        }
+        "heading": "One app. Whole building.",
+        "subheading": "Happy residents!",
+        "about": "Multi-family building internet-connected access control system.",
+        "action": "Get Started"
     }
 }
