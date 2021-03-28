@@ -1,8 +1,31 @@
 module.exports = {
   purge: ['./src/**/*.{vue,js}'],
   darkMode: false,
+
   theme: {
-    extend: { colors: { primary: '#FD4E63' } },
+    colors: {
+      transparent: 'transparent',
+      current: 'currentColor',
+      white: {
+        DEFAULT: '#ffffff',
+      },
+      red: {
+        dark: '#ff344c',
+        DEFAULT: '#fd4e63',
+      },
+      gray: {
+        dark: '#212121',
+        DEFAULT: '#484B4E',
+        light: '#62676b',
+      },
+      black: {
+        dark: '#121415',
+        DEFAULT: '#151719',
+      },
+    },
+    fontFamily: {
+      sans: ['Poppins', 'sans-serif'],
+    },
   },
   variants: {
     extend: {},

@@ -1,6 +1,6 @@
 <template>
-  <section class="h-screen flex flex-col justify-between">
-    <Navigation />
+  <section class="bg-background h-screen flex flex-col justify-between">
+    <HomeNavigation />
 
     <section class="text-gray-700 body-font md:mb-60 ">
       <div class="container px-8 mx-auto pt-36 lg:px-4">
@@ -19,13 +19,13 @@
 </template>
 
 <script>
-  import Navigation from '@/components/Navigation.vue';
+  import HomeNavigation from '@/components/HomeNavigation.vue';
   import Footer from '@/components/Footer.vue';
 
   export default {
     name: 'Auth',
     components: {
-      Navigation,
+      HomeNavigation,
       Footer,
     },
     data() {
