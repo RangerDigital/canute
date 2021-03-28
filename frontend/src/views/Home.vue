@@ -2,12 +2,12 @@
   <section class="min-h-screen flex flex-col justify-between">
     <HomeNavigation />
 
-    <section class="p-5 md:px-20 xl:px-36 xl:w-10/12 flex flex-col xl:flex-row xl:self-center items-center justify-between">
+    <section class="p-5 md:px-12 xl:w-11/12 2xl:w-8/12 flex flex-col xl:flex-row xl:self-center items-center justify-between">
       <div>
-        <h1 class="my-1 md:my-5 font-semibold text-white text-2xl md:text-4xl lg:text-5xl">One app. Every door.</h1>
-        <h2 class="my-1 md:my-5 font-semibold text-red text-2xl md:text-4xl lg:text-5xl ">Happy residents!</h2>
+        <h1 class="my-1 md:my-5 font-semibold text-white text-2xl md:text-4xl 2xl:text-5xl">One app. Every door.</h1>
+        <h2 class="my-1 md:my-5 font-semibold text-red text-2xl md:text-4xl 2xl:text-5xl ">Happy residents!</h2>
 
-        <p class="my-5 md:my-10 text-sm md:text-base lg:text-lg font-medium text-gray">Multi-family building internet connected access control system.</p>
+        <p class="my-5 md:my-10 text-sm md:text-base font-medium text-gray">Multi-family building internet connected access control system.</p>
 
         <!-- Call to Action -->
         <div class="mt-16 mb-8 flex flex-row items-center justify-center md:justify-start">
@@ -19,7 +19,7 @@
         </div>
       </div>
 
-      <img class="w-100 my-10 transform -translate-x-5 xl:transform-none xl:w-3/6" src="@/assets/images/hero.png" />
+      <img class="w-100 my-10 transform -translate-x-5 xl:translate-x-0 xl:scale-125 xl:w-3/6" src="@/assets/images/hero.png" />
     </section>
 
     <HomeFooter />
