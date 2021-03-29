@@ -45,7 +45,13 @@
         this.$router.push('/');
       },
     },
-    mounted() {
+    created() {
+      console.log(localStorage.token);
+
+      if (localStorage.token) {
+        this.axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.token;
+      }
+
       this.axios
         .get('/api/users/me')
         .then((payload) => {

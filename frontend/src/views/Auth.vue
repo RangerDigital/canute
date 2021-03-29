@@ -111,8 +111,8 @@
           this.axios
             .post('/api/auth/magic/' + this.magicToken)
             .then((payload) => {
-              localStorage.token = payload.data.authToken;
               this.axios.defaults.headers.common['Authorization'] = 'Bearer ' + this.authToken;
+              localStorage.token = payload.data.authToken;
 
               this.$router.push('/dashboard');
             })
