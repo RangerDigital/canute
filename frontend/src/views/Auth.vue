@@ -7,7 +7,7 @@
         <h1 class="my-1 md:my-5 font-semibold text-white text-2xl md:text-4xl 2xl:text-5xl">Create account. Or Sign in. </h1>
         <h2 class="my-1 md:my-5 font-semibold text-red text-2xl md:text-4xl 2xl:text-5xl ">It’s the same!</h2>
 
-        <p class="my-5 md:my-8 text-sm md:text-base font-medium text-gray">No more passwords to remember!</p>
+        <p class="my-5 md:my-8 text-sm md:text-base  text-gray">No more passwords to remember!</p>
       </div>
 
       <div class="self-center">
@@ -34,7 +34,7 @@
             />
           </div>
 
-          <button class="font-semibold mx-5 my-6 lg:my-0 px-12 py-3 text-white bg-red hover:bg-red-dark rounded-md focus:outline-none" @click="requestsMagicEmail()"
+          <button class="font-semibold mx-5 my-6 lg:my-0 px-12 py-3 text-white bg-red hover:bg-red-dark rounded-md tracking-wide focus:outline-none" @click="requestsMagicEmail()"
             >Continue</button
           >
         </div>
@@ -52,7 +52,7 @@
         <h1 class="my-1 md:my-5 font-semibold text-white text-2xl md:text-4xl 2xl:text-5xl">Success 🎉 Magic E-mail sent!</h1>
         <h2 class="my-1 md:my-5 font-semibold text-red text-2xl md:text-4xl 2xl:text-5xl ">Check inbox to continue.</h2>
 
-        <p class="my-5 md:my-8 text-sm md:text-base font-medium text-gray">You can safely close this page now.</p>
+        <p class="my-5 md:my-8 text-sm md:text-base text-gray">You can safely close this page now.</p>
       </div>
 
       <div class=" h-16 lg:h-48"></div>
@@ -65,7 +65,7 @@
         <h1 class="my-1 md:my-5 font-semibold text-white text-2xl md:text-4xl 2xl:text-5xl">Sorry, Failed to sign in!</h1>
         <h2 class="my-1 md:my-5 font-semibold text-red text-2xl md:text-4xl 2xl:text-5xl ">Please try again.</h2>
 
-        <p class="my-5 md:my-8 text-sm md:text-base font-medium text-gray">This magic link is no longer active.</p>
+        <p class="my-5 md:my-8 text-sm md:text-base text-gray">This magic link is no longer active.</p>
       </div>
 
       <div class=" h-16 lg:h-48"></div>

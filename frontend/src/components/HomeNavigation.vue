@@ -12,7 +12,7 @@
 
     <!-- Language Toggler / Desktop Only -->
     <section class="hidden lg:block">
-      <button class="mx-8 text-sm font-medium text-gray hover:text-gray-light focus:outline-none" @click="toggleLanguage()">
+      <button class="mx-8 text-sm font-medium text-gray hover:text-gray-light focus:outline-none " @click="toggleLanguage()">
         <svg class="inline h-6 mx-0.5 align-middle text-red" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path
             stroke-linecap="round"
@@ -25,7 +25,7 @@
         {{ $t('btn.locale') }}
       </button>
 
-      <button v-if="!noLogin" class="font-semibold px-10 py-2 text-white bg-red hover:bg-red-dark rounded-md focus:outline-none" @click="$router.push('auth')"
+      <button v-if="!noLogin" class="font-semibold px-10 py-2 text-white bg-red hover:bg-red-dark rounded-md focus:outline-none tracking-wide" @click="$router.push('auth')"
         >{{ $t('btn.login') }}
       </button>
     </section>
