@@ -8,19 +8,9 @@ const routes = [
     component: Home,
   },
   {
-    path: '/auth',
+    path: '/auth/:magicToken?',
     name: 'Auth',
     component: () => import(/* webpackChunkName: "auth" */ '../views/Auth.vue'),
-  },
-  {
-    path: '/auth/wait',
-    name: 'AuthWait',
-    component: () => import(/* webpackChunkName: "authWait" */ '../views/AuthWait.vue'),
-  },
-  {
-    path: '/auth/magic/:magicToken',
-    name: 'AuthMagic',
-    component: () => import(/* webpackChunkName: "authMagic" */ '../views/AuthMagic.vue'),
   },
 ];
 

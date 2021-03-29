@@ -1,67 +1,63 @@
 <template>
-  <section class="h-screen flex flex-col justify-between">
-    <Navigation />
+  <section class="min-h-screen flex flex-col justify-between">
+    <HomeNavigation noLogin />
 
-    <section class="flex flex-col items-center md:flex-row">
-      <div class="container mx-auto">
-        <div class="flex justify-center px-2 py-6 ">
-          <div class="flex w-full rounded-lg xl:w-3/4 lg:w-11/12 lg:shadow-xl ">
-            <div class="relative hidden w-full h-auto bg-white bg-cover border-r rounded-l-lg lg:block lg:w-6/12">
-              <div class="relative z-10 m-12 text-left ">
-                <h2 class="mt-12 mb-2 text-2xl font-semibold tracking-tighter text-black sm:text-3xl title-font">
-                  {{ $t('home.email.action') }}
-                </h2>
+    <div class=" self-center text-center">
+      <h1 class="my-1 md:my-5 font-semibold text-white text-2xl md:text-4xl 2xl:text-5xl">Create account. Or Sign in. </h1>
+      <h2 class="my-1 md:my-5 font-semibold text-red text-2xl md:text-4xl 2xl:text-5xl ">It’s the same!</h2>
 
-                <div class="w-full mt-16 mb-8 text-base leading-relaxed text-gray-900 sm:md:w-3/3 lg:text-1xl "> Canute - {{ $t('home.subheading') }} </div>
-              </div>
-            </div>
-            <div class="w-full px-8 py-24 bg-white border-gray-100 rounded-lg lg:w-8/12 lg:px-24 lg:py-4 lg:rounded-l-none s">
-              <div class="relative z-10 text-left ">
-                <div class="mt-4">
-                  <label class="block text-base font-medium leading-relaxed text-gray-700">{{ $t('home.email.placeholder') }}</label>
-                  <input
-                    type="email"
-                    name=""
-                    v-model="email"
-                    v-bind:placeholder="$t('home.email.placeholder')"
-                    class="w-full px-4 py-2 mt-2 text-base transition duration-500 ease-in-out transform bg-gray-100 border-transparent rounded-lg focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ext-black focus:border-gray-500"
-                    autofocus
-                    autocomplete
-                  />
-                </div>
+      <p class="my-5 md:my-8 text-sm md:text-base font-medium text-gray">No more passwords to remember!</p>
+    </div>
 
-                <p class="text-sm mt-3 font-semibold leading-relaxed text-gray-700 hover:text-black-700 focus:text-black-700">{{ $t('home.email.sublabel') }}</p>
-
-                <button
-                  type="submit"
-                  class="block w-full px-4 py-3 mt-6 font-semibold text-white transition duration-500 ease-in-out transform rounded-lg bg-gradient-to-r from-black hover:from-black to-black focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 hover:to-black"
-                  @click="sendEmail()"
-                  >{{ $t('home.email.action') }}</button
-                >
-              </div>
-            </div>
-          </div>
+    <div class="self-center">
+      <div class="flex flex-col lg:flex-row justify-between items:center lg:items-end">
+        <div>
+          <label class="block my-2 text-sm font-base text-gray"
+            ><svg class="inline h-6 mx-0.5 align-middle text-gray" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.2"
+                d="M3 19v-8.93a2 2 0 01.89-1.664l7-4.666a2 2 0 012.22 0l7 4.666A2 2 0 0121 10.07V19M3 19a2 2 0 002 2h14a2 2 0 002-2M3 19l6.75-4.5M21 19l-6.75-4.5M3 10l6.75 4.5M21 10l-6.75 4.5m0 0l-1.14.76a2 2 0 01-2.22 0l-1.14-.76"
+              />
+            </svg>
+            Your Email</label
+          >
+          <input
+            type="email"
+            v-model="userEmail"
+            placeholder="hello@gmail.com"
+            class="w-full lg:w-80 block border-transparent focus:outline-none bg-gray-dark font-base tracking-wide px-3 py-3 text-gray rounded-md placeholder-gray ring-red focus:ring-1 "
+            autofocus
+            autocomplete
+          />
         </div>
-      </div>
-    </section>
 
-    <Footer />
+        <button class="font-semibold mx-5 my-6 lg:my-0 px-12 py-3 text-white bg-red hover:bg-red-dark rounded-md focus:outline-none">Continue</button>
+      </div>
+
+      <p class="text-center md:my-7 text-sm font-base text-gray">You will receive a magic login link via Email.</p>
+    </div>
+
+    <div class=" h-16"></div>
   </section>
 </template>
 
 <script>
-  import Navigation from '@/components/HomeNavigation.vue';
-  import Footer from '@/components/HomeFooter.vue';
+  import HomeNavigation from '@/components/HomeNavigation.vue';
 
   export default {
     name: 'Auth',
     components: {
-      Navigation,
-      Footer,
+      HomeNavigation,
     },
     data() {
       return {
-        email: '',
+        showLogin: true,
+        showSuccess: false,
+        showFailure: false,
+
+        userEmail: '',
       };
     },
 

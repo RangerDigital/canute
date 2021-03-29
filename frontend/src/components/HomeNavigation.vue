@@ -1,6 +1,8 @@
 <template>
   <header class="sticky md:static flex flex-row items-center justify-between p-5 md:px-20 md:py-6">
-    <h1 class="font-sans font-semibold text-red text-base md:text-xl cursor-pointer" @click="$router.push('/').catch((err) => {})">Canute <span class="text-gray">OS</span></h1>
+    <h1 class="py-2 font-sans font-semibold text-red text-base md:text-xl cursor-pointer" @click="$router.push('/').catch((err) => {})"
+      >Canute <span class="text-gray">OS</span></h1
+    >
 
     <nav class="hidden md:flex items-center justify-center">
       <router-link class="mx-7 text-sm font-medium text-gray hover:text-gray-light" to="/auth">{{ $t('nav.services') }}</router-link>
@@ -23,7 +25,9 @@
         {{ $t('btn.locale') }}
       </button>
 
-      <button class="font-semibold px-10 py-2 text-white bg-red hover:bg-red-dark rounded-md focus:outline-none" @click="$router.push('auth')">{{ $t('btn.login') }} </button>
+      <button v-if="!noLogin" class="font-semibold px-10 py-2 text-white bg-red hover:bg-red-dark rounded-md focus:outline-none" @click="$router.push('auth')"
+        >{{ $t('btn.login') }}
+      </button>
     </section>
 
     <!-- Hamburger Menu / Mobile Only -->
@@ -37,6 +41,9 @@
 <script>
   export default {
     name: 'HomeNavigation',
+    props: {
+      noLogin: Boolean,
+    },
     methods: {
       toggleLanguage() {
         if (this.$i18n.locale == 'pl') {
