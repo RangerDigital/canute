@@ -13,7 +13,7 @@
         "email": "Twój Email"
     },
     "home": {
-        "heading": "Canute OS + Budynek =",
+        "heading": "Canute + Budynek =",
         "subheading": "Zadowoleni mieszkańcy!",
         "about": "Inteligentny system kontroli dostępu dla budynków wielorodzinnych.",
         "action": "URUCHOM"
@@ -21,7 +21,7 @@
     "auth": {
         "login": {
             "heading": "Utwórz konto? Zaloguj się?",
-            "subheading": "To jest to samo!",
+            "subheading": "Kropka w kropkę!",
             "about": "Nigdy więcej haseł do zapamiętania!",
             "description": "Otrzymasz magiczny link do logowania w Email."
         },
