@@ -35,5 +35,14 @@
             "subheading": "Sprawdź swoją skrzynkę.",
             "about": "Możesz teraz bezpiecznie zamknąć tę stronę."
         }
+    },
+    "dashboard": {
+        "success": {
+            "heading": "Sukces 🎉 Zalogowano jako"
+        },
+        "failure": {
+            "heading": "Nie jesteś zalogowany!",
+            "subheading": "Sprawdź dziennik konsoli."
+        }
     }
 }

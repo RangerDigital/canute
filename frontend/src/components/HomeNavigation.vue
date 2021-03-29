@@ -1,7 +1,7 @@
 <template>
   <header class="sticky md:static flex flex-row items-center justify-between p-5 md:px-20 md:py-6">
     <h1 class="py-2 font-sans font-semibold text-red text-base md:text-xl cursor-pointer" @click="$router.push('/').catch((err) => {})"
-      >Canute <span class="text-gray">OS</span></h1
+      >Canute <span class="text-white">OS</span></h1
     >
 
     <nav class="hidden md:flex items-center justify-center">

@@ -35,5 +35,14 @@
             "subheading": "Check inbox to continue.",
             "about": "You can safely close this page now."
         }
+    },
+    "dashboard": {
+        "success": {
+            "heading": "Success 🎉 Logged in as"
+        },
+        "failure": {
+            "heading": "Sorry 🔥 Not logged in!",
+            "subheading": "Check console log."
+        }
     }
 }
