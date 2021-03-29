@@ -35,14 +35,14 @@
     },
     data() {
       return {
-        isLogged: false,
+        isLogged: true,
         userEmail: '',
       };
     },
     methods: {
       logout() {
         localStorage.removeItem('token');
-        this.$route.push('/');
+        this.$router.push('/');
       },
     },
     mounted() {

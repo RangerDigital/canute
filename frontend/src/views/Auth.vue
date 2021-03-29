@@ -114,7 +114,7 @@
               localStorage.token = payload.data.authToken;
               this.axios.defaults.headers.common['Authorization'] = 'Bearer ' + this.authToken;
 
-              this.$route.push('/dashboard');
+              this.$router.push('/dashboard');
             })
             .catch(() => {
               this.showLogin = false;
