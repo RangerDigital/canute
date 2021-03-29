@@ -32,9 +32,9 @@
         userEmail: '',
       };
     },
-    mouted() {
+    mounted() {
       this.axios
-        .get('/api/me')
+        .get('/api/users/me')
         .then((payload) => {
           this.isLogged = true;
           this.userEmail = payload.data.email;
