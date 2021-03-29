@@ -59,7 +59,7 @@
     </section>
 
     <section v-if="showFailure" class="min-h-screen flex flex-col justify-between">
-      <HomeNavigation />
+      <HomeNavigation noLogin />
 
       <div class=" self-center text-center">
         <h1 class="my-1 md:my-5 font-semibold text-white text-2xl md:text-4xl 2xl:text-5xl">Sorry, Failed to sign in!</h1>
@@ -114,7 +114,7 @@
               localStorage.token = payload.data.authToken;
               this.axios.defaults.headers.common['Authorization'] = 'Bearer ' + this.authToken;
 
-              console.log('Logged in!');
+              this.$route.push('/dashboard');
             })
             .catch(() => {
               this.showLogin = false;
