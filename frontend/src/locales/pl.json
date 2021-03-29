@@ -6,12 +6,34 @@
     "btn": {
         "login": "Zaloguj Się",
         "locale": "English",
-        "learn": "Więcej o Canute OS"
+        "learn": "Więcej o Canute OS",
+        "continue": "Kontynuuj"
+    },
+    "label": {
+        "email": "Twój Email"
     },
     "home": {
         "heading": "Canute OS + Budynek =",
         "subheading": "Zadowoleni mieszkańcy!",
         "about": "Inteligentny system kontroli dostępu dla budynków wielorodzinnych.",
         "action": "Uruchom"
+    },
+    "auth": {
+        "login": {
+            "heading": "Utwórz konto? Zaloguj się?",
+            "subheading": "To jest to samo!",
+            "about": "Nigdy więcej haseł do zapamiętania!",
+            "description": "Otrzymasz magiczny link do logowania w Email."
+        },
+        "failure": {
+            "heading": "Logowanie nie powiodło się!",
+            "subheading": "Spróbuj ponownie.",
+            "about": "Ten magiczne link nie jest już aktywny."
+        },
+        "success": {
+            "heading": "Sukces 🎉 E-mail wysłany!",
+            "subheading": "Sprawdź swoją skrzynkę.",
+            "about": "Możesz teraz bezpiecznie zamknąć tę stronę."
+        }
     }
 }

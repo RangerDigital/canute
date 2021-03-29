@@ -4,10 +4,10 @@
       <HomeNavigation noLogin />
 
       <div class=" self-center text-center">
-        <h1 class="my-1 md:my-5 font-semibold text-white text-2xl md:text-4xl 2xl:text-5xl">Create account. Or Sign in. </h1>
-        <h2 class="my-1 md:my-5 font-semibold text-red text-2xl md:text-4xl 2xl:text-5xl ">It’s the same!</h2>
+        <h1 class="my-1 md:my-5 font-semibold text-white text-2xl md:text-4xl 2xl:text-5xl">{{ $t('auth.login.heading') }}</h1>
+        <h2 class="my-1 md:my-5 font-semibold text-red text-2xl md:text-4xl 2xl:text-5xl ">{{ $t('auth.login.subheading') }}</h2>
 
-        <p class="my-5 md:my-8 text-sm md:text-base  text-gray">No more passwords to remember!</p>
+        <p class="my-5 md:my-8 text-sm md:text-base  text-gray">{{ $t('auth.login.about') }}</p>
       </div>
 
       <div class="self-center">
@@ -22,7 +22,7 @@
                   d="M3 19v-8.93a2 2 0 01.89-1.664l7-4.666a2 2 0 012.22 0l7 4.666A2 2 0 0121 10.07V19M3 19a2 2 0 002 2h14a2 2 0 002-2M3 19l6.75-4.5M21 19l-6.75-4.5M3 10l6.75 4.5M21 10l-6.75 4.5m0 0l-1.14.76a2 2 0 01-2.22 0l-1.14-.76"
                 />
               </svg>
-              Your Email</label
+              {{ $t('label.email') }}</label
             >
             <input
               type="email"
@@ -34,12 +34,14 @@
             />
           </div>
 
-          <button class="font-semibold mx-5 my-6 lg:my-0 px-12 py-3 text-white bg-red hover:bg-red-dark rounded-md tracking-wide focus:outline-none" @click="requestsMagicEmail()"
-            >Continue</button
+          <button
+            class="font-semibold mx-5 my-6 lg:my-0 px-12 py-3 text-white bg-red hover:bg-red-dark rounded-md tracking-wide focus:outline-none"
+            @click="requestsMagicEmail()"
+            >{{ $t('btn.continue') }}</button
           >
         </div>
 
-        <p class="text-center md:my-7 text-sm font-base text-gray">You will receive a magic login link via Email.</p>
+        <p class="text-center md:my-7 text-sm font-base text-gray">{{ $t('auth.login.description') }}</p>
       </div>
 
       <div class=" h-16 lg:h-48"></div>
@@ -49,10 +51,10 @@
       <HomeNavigation noLogin />
 
       <div class=" self-center text-center">
-        <h1 class="my-1 md:my-5 font-semibold text-white text-2xl md:text-4xl 2xl:text-5xl">Success 🎉 Magic E-mail sent!</h1>
-        <h2 class="my-1 md:my-5 font-semibold text-red text-2xl md:text-4xl 2xl:text-5xl ">Check inbox to continue.</h2>
+        <h1 class="my-1 md:my-5 font-semibold text-white text-2xl md:text-4xl 2xl:text-5xl">{{ $t('auth.success.heading') }}</h1>
+        <h2 class="my-1 md:my-5 font-semibold text-red text-2xl md:text-4xl 2xl:text-5xl ">{{ $t('auth.success.subheading') }}</h2>
 
-        <p class="my-5 md:my-8 text-sm md:text-base text-gray">You can safely close this page now.</p>
+        <p class="my-5 md:my-8 text-sm md:text-base text-gray">{{ $t('auth.success.about') }}</p>
       </div>
 
       <div class=" h-16 lg:h-48"></div>
@@ -62,10 +64,10 @@
       <HomeNavigation noLogin />
 
       <div class=" self-center text-center">
-        <h1 class="my-1 md:my-5 font-semibold text-white text-2xl md:text-4xl 2xl:text-5xl">Sorry, Failed to sign in!</h1>
-        <h2 class="my-1 md:my-5 font-semibold text-red text-2xl md:text-4xl 2xl:text-5xl ">Please try again.</h2>
+        <h1 class="my-1 md:my-5 font-semibold text-white text-2xl md:text-4xl 2xl:text-5xl">{{ $t('auth.failure.heading') }}</h1>
+        <h2 class="my-1 md:my-5 font-semibold text-red text-2xl md:text-4xl 2xl:text-5xl ">{{ $t('auth.failure.subheading') }}</h2>
 
-        <p class="my-5 md:my-8 text-sm md:text-base text-gray">This magic link is no longer active.</p>
+        <p class="my-5 md:my-8 text-sm md:text-base text-gray">{{ $t('auth.failure.about') }}</p>
       </div>
 
       <div class=" h-16 lg:h-48"></div>

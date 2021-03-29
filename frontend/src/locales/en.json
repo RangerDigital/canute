@@ -6,12 +6,34 @@
     "btn": {
         "login": "Sign In",
         "locale": "Polski",
-        "learn": "Learn More"
+        "learn": "Learn More",
+        "continue": "Continue"
+    },
+    "label": {
+        "email": "Your Email"
     },
     "home": {
         "heading": "One app. Whole building.",
         "subheading": "Happy residents!",
         "about": "Multi-family building internet-connected access control system.",
         "action": "Get Started"
+    },
+    "auth": {
+        "login": {
+            "heading": "Create account. Or Sign in.",
+            "subheading": "It’s the same!",
+            "about": "No more passwords to remember!",
+            "description": "You will receive a magic login link via Email."
+        },
+        "failure": {
+            "heading": "Sorry, Failed to sign in!",
+            "subheading": "Please try again.",
+            "about": "This magic link is no longer active."
+        },
+        "success": {
+            "heading": "Success 🎉 Magic E-mail sent!",
+            "subheading": "Check inbox to continue.",
+            "about": "You can safely close this page now."
+        }
     }
 }
