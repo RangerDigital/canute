@@ -4,10 +4,10 @@
         "contact": "Contact"
     },
     "btn": {
-        "login": "Sign In",
+        "login": "SIGN IN",
         "locale": "Polski",
         "learn": "Learn More",
-        "continue": "Continue"
+        "continue": "CONTINUE"
     },
     "label": {
         "email": "Your Email"
@@ -16,7 +16,7 @@
         "heading": "One app. Whole building.",
         "subheading": "Happy residents!",
         "about": "Multi-family building internet-connected access control system.",
-        "action": "Get Started"
+        "action": "GET STARTED"
     },
     "auth": {
         "login": {

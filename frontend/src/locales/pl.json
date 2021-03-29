@@ -4,10 +4,10 @@
         "contact": "Kontakt"
     },
     "btn": {
-        "login": "Zaloguj Się",
+        "login": "ZALOGUJ SIĘ",
         "locale": "English",
         "learn": "Więcej o Canute OS",
-        "continue": "Kontynuuj"
+        "continue": "KONTYNUUJ"
     },
     "label": {
         "email": "Twój Email"
@@ -16,7 +16,7 @@
         "heading": "Canute OS + Budynek =",
         "subheading": "Zadowoleni mieszkańcy!",
         "about": "Inteligentny system kontroli dostępu dla budynków wielorodzinnych.",
-        "action": "Uruchom"
+        "action": "URUCHOM"
     },
     "auth": {
         "login": {
@@ -38,7 +38,7 @@
     },
     "dashboard": {
         "success": {
-            "heading": "Sukces 🎉 Zalogowano jako"
+            "heading": "Sukces 🎉 Witaj,"
         },
         "failure": {
             "heading": "Nie jesteś zalogowany!",
