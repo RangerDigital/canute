@@ -1,17 +1,17 @@
 <template>
-  <header class="sticky md:static flex flex-row items-center justify-between p-5 md:px-20 md:py-6">
+  <header class="static flex flex-row items-center justify-between p-5 md:px-20 md:py-6">
     <h1 class="py-2 font-sans font-semibold text-red text-base md:text-xl cursor-pointer" @click="$router.push('/').catch((err) => {})"
       >Canute <span class="text-white">OS</span></h1
     >
 
-    <nav class="hidden md:flex items-center justify-center">
+    <nav v-if="!noNav" class="hidden md:flex items-center justify-center">
       <router-link class="mx-7 text-sm font-medium text-gray hover:text-gray-light" to="/auth">{{ $t('nav.services') }}</router-link>
       <router-link class="mx-7 text-sm font-medium text-gray hover:text-gray-light" to="/auth">FAQ</router-link>
       <router-link class="mx-7 text-sm font-medium text-gray hover:text-gray-light" to="/auth">{{ $t('nav.contact') }}</router-link>
     </nav>
 
     <!-- Language Toggler / Desktop Only -->
-    <section class="hidden lg:block">
+    <section class="hidden lg:flex flex-row">
       <button class="mx-8 text-sm font-medium text-gray hover:text-gray-light focus:outline-none " @click="toggleLanguage()">
         <svg class="inline h-6 mx-0.5 align-middle text-red" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path
@@ -28,6 +28,8 @@
       <button v-if="!noLogin" class="font-semibold px-10 py-2 text-white bg-red hover:bg-red-dark rounded-md focus:outline-none tracking-wide" @click="$router.push('auth')"
         >{{ $t('btn.login') }}
       </button>
+
+      <p v-if="loggedAs" class="mx-7 text-sm font-medium text-gray">{{ $t('nav.logged') }} <span class="text-red">kuba07071999@gmail.com</span></p>
     </section>
 
     <!-- Hamburger Menu / Mobile Only -->
@@ -43,6 +45,8 @@
     name: 'HomeNavigation',
     props: {
       noLogin: Boolean,
+      noNav: Boolean,
+      loggedAs: String,
     },
     methods: {
       toggleLanguage() {

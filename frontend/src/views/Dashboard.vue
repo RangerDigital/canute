@@ -1,22 +1,38 @@
 <template>
   <section class="min-h-screen flex flex-col justify-between">
-    <HomeNavigation noLogin />
+    <HomeNavigation noLogin noNav v-bind:loggedAs="userEmail" />
 
-    <div v-if="isLogged" class=" self-center text-center">
-      <h1 class="my-1 md:my-5 font-semibold text-white text-2xl md:text-4xl 2xl:text-5xl">{{ $t('dashboard.success.heading') }}</h1>
-      <h2 class="my-1 md:my-5 font-semibold text-red text-2xl md:text-4xl 2xl:text-5xl ">{{ this.userEmail }}</h2>
-    </div>
+    <!-- Horizontal Main Container -->
+    <div class="flex flex-row justify-between md:px-20 md:py-6">
+      <!-- Left Bar-->
+      <nav class="flex flex-col">
+        <!-- Organisation -->
+        <div class="my-12 flex flex-row">
+          <div class="bg-gray-dark w-px mr-5 rounded-full"></div>
 
-    <button
-      v-if="isLogged"
-      class="self-center max-w-lg font-semibold mx-5 my-6 lg:my-0 px-12 py-3 text-white bg-red hover:bg-red-dark rounded-md focus:outline-none"
-      @click="logout()"
-      >Logout</button
-    >
+          <div class="flex flex-col justify-around">
+            <h2 class="py-2 font-sans font-semibold text-white text-xl">Hello! <span class="text-red">Sun Park</span></h2>
+            <p class="my-2 text-sm font-medium text-gray">Rosłońskiego, Przemyśl</p>
+          </div>
+        </div>
 
-    <div v-if="!isLogged" class=" self-center text-center">
-      <h1 class="my-1 md:my-5 font-semibold text-white text-2xl md:text-4xl 2xl:text-5xl">{{ $t('dashboard.failure.heading') }}</h1>
-      <h2 class="my-1 md:my-5 font-semibold text-red text-2xl md:text-4xl 2xl:text-5xl ">{{ $t('dashboard.failure.subheading') }}</h2>
+        <!-- Navigation -->
+        <div class="my-12 flex flex-row">
+          <div class="bg-gray-dark w-px mr-5 rounded-full"></div>
+
+          <div class="flex flex-col justify-around">
+            <div class="my-12 flex flex-col justify-around">
+              <router-link class="my-2 text-sm font-medium text-gray hover:text-gray-light" to="/auth">Things</router-link>
+              <router-link class="my-2 text-sm font-medium text-gray hover:text-gray-light" to="/auth">Dashboard</router-link>
+            </div>
+            <div class="my-12 flex flex-col justify-around">
+              <router-link class="my-2 text-sm font-medium text-gray hover:text-gray-light" to="/auth">Profile</router-link>
+              <router-link class="my-2 text-sm font-medium text-gray hover:text-gray-light" to="/auth">Settings</router-link>
+              <router-link class="my-2 text-sm font-medium text-gray hover:text-gray-light" to="/auth">Organisations</router-link>
+            </div>
+          </div>
+        </div>
+      </nav>
     </div>
 
     <HomeFooter />
@@ -35,34 +51,33 @@
     },
     data() {
       return {
-        isLogged: true,
+        userOrganisation: '',
         userEmail: '',
       };
     },
     methods: {
-      logout() {
-        localStorage.removeItem('token');
-        this.$router.push('/');
+      getUser() {
+        this.axios
+          .get('/api/users/me')
+          .then((payload) => {
+            this.userEmail = payload.data.email;
+          })
+          .catch(() => {
+            this.isLogged = false;
+            this.$router.push('/guard');
+          });
       },
     },
-    created() {
-      console.log(localStorage.token);
+    mounted() {
+      console.log(localStorage.organisation);
 
-      if (localStorage.token) {
-        this.axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.token;
+      if (localStorage.organisation) {
+        this.userOrganisation = localStorage.organisation;
+      } else {
+        this.$router.push('/orgs');
       }
 
-      this.axios
-        .get('/api/users/me')
-        .then((payload) => {
-          this.isLogged = true;
-          this.userEmail = payload.data.email;
-          console.log(payload);
-        })
-        .catch((err) => {
-          this.isLogged = false;
-          console.log(err);
-        });
+      this.getUser();
     },
   };
 </script>

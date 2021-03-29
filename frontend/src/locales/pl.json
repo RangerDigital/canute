@@ -1,7 +1,8 @@
 {
     "nav": {
         "services": "Usługi",
-        "contact": "Kontakt"
+        "contact": "Kontakt",
+        "logged": "Zalogowany jako"
     },
     "btn": {
         "login": "ZALOGUJ SIĘ",
