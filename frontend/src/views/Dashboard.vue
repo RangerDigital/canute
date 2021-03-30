@@ -3,7 +3,7 @@
     <HomeNavigation noLogin noNav v-bind:loggedAs="userEmail" />
 
     <!-- Horizontal Main Container -->
-    <div class="flex flex-col lg:flex-row justify-between md:px-20 md:py-6">
+    <div class="flex flex-col xl:flex-row justify-between xl:px-6 xl:py-6">
       <AppNavigation v-bind:organisation="userOrganisation" />
       <ThingsList />
 
@@ -52,7 +52,7 @@
       if (localStorage.organisation) {
         this.userOrganisation = localStorage.organisation;
       } else {
-        this.$router.push('/orgs');
+        this.$router.push('/organisations');
       }
 
       this.getUser();

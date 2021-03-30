@@ -42,6 +42,7 @@
     methods: {
       logout() {
         localStorage.removeItem('token');
+        localStorage.removeItem('organisation');
         this.$router.push('/');
       },
     },

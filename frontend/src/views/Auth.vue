@@ -44,7 +44,7 @@
         <p class="text-center md:my-7 text-sm font-base text-gray">{{ $t('auth.login.description') }}</p>
       </div>
 
-      <div class=" h-16 lg:h-48"></div>
+      <div class=" h-16 2xl:h-48"></div>
     </section>
 
     <section v-if="showSuccess" class="min-h-screen flex flex-col justify-between">
