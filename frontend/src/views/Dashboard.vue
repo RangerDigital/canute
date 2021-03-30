@@ -1,6 +1,6 @@
 <template>
   <section class="min-h-screen flex flex-col justify-between">
-    <HomeNavigation noLogin noNav v-bind:loggedAs="userEmail" />
+    <HomeNavigation noLogin noNav />
 
     <!-- Horizontal Main Container -->
     <div class="flex flex-col xl:flex-row justify-between xl:px-6 xl:py-6">

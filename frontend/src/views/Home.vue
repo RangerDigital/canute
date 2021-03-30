@@ -11,11 +11,11 @@
 
         <!-- Call to Action -->
         <div class="mt-16 mb-8 flex flex-row items-center justify-center md:justify-start">
-          <button class="tracking-wide font-semibold px-12 py-3 text-white bg-red hover:bg-red-dark rounded-md focus:outline-none" @click="$router.push('auth')">{{
+          <button class="tracking-wide font-semibold px-12 py-3 text-white bg-red hover:bg-red-dark rounded-md focus:outline-none" @click="callToAction()">{{
             $t('home.action')
           }}</button>
 
-          <button class="hidden md:block ml-6 font-medium px-7 py-3 text-gray focus:outline-none tracking-wide" @click="$router.push('auth')">{{ $t('btn.learn') }} </button>
+          <button class="hidden md:block ml-6 font-medium px-7 py-3 text-gray focus:outline-none tracking-wide" @click="$router.push('/learn')">{{ $t('btn.learn') }} </button>
         </div>
       </div>
 
@@ -35,6 +35,15 @@
     components: {
       HomeNavigation,
       HomeFooter,
+    },
+    methods: {
+      callToAction() {
+        if (localStorage.token) {
+          this.$router.push('/dashboard');
+        } else {
+          this.$router.push('/auth');
+        }
+      },
     },
   };
 </script>

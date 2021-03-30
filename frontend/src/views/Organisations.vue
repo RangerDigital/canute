@@ -1,6 +1,6 @@
 <template>
   <section class="min-h-screen flex flex-col justify-between">
-    <HomeNavigation noLogin noNav v-bind:loggedAs="userEmail" />
+    <HomeNavigation noLogin noNav />
 
     <div class=" self-center text-center">
       <h1 class="my-1 md:my-5 font-semibold text-red text-2xl md:text-4xl 2xl:text-5xl">Select <span class="text-white">your</span> organisation. </h1>
@@ -13,7 +13,7 @@
       <div class="flex flex-col justify-center">
         <!-- Organisation -->
 
-        <div v-for="item in organisations" :key="item._id" class="flex flex-row justify-between cursor-pointer" @click="selectOrganisation(item._id)">
+        <div v-for="item in organisations" :key="item._id" class="flex flex-row justify-between cursor-pointer" @click="selectOrganisation(item)">
           <div class="w-full flex flex-row justify-between items-center">
             <div class="my-2 xl:my-5 2xl:my-12 flex flex-row">
               <div class="bg-red w-px mr-5 rounded-full"></div>
@@ -52,31 +52,20 @@
     },
     data() {
       return {
-        selectedOrganisation: '',
-        userEmail: '',
         organisations: [],
       };
     },
     methods: {
-      getUser() {
-        this.axios
-          .get('/api/users/me')
-          .then((payload) => {
-            this.userEmail = payload.data.email;
-          })
-          .catch(() => {
-            this.isLogged = false;
-            this.$router.push('/guard');
-          });
-      },
       getOrganisations() {
         this.axios.get('/api/orgs').then((payload) => {
           this.organisations = payload.data;
         });
       },
-      selectOrganisation(id) {
-        localStorage.organisation = id;
-        console.log('Selected ', id);
+      selectOrganisation(organisation) {
+        localStorage.organisation = organisation._id;
+        localStorage.organisationName = organisation.name;
+        localStorage.organisationAddress = organisation.address;
+
         this.$router.push('/dashboard');
       },
     },
@@ -86,7 +75,6 @@
       }
 
       this.getOrganisations();
-      this.getUser();
     },
   };
 </script>

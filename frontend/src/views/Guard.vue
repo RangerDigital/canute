@@ -43,6 +43,8 @@
       logout() {
         localStorage.removeItem('token');
         localStorage.removeItem('organisation');
+        localStorage.removeItem('email');
+
         this.$router.push('/');
       },
     },
