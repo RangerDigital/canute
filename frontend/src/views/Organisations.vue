@@ -20,13 +20,13 @@
 
               <div class="flex flex-col justify-around">
                 <h2 class="py-2 font-sans text-red text-base lg:text-lg">{{ item.name }}</h2>
-                <p class="my-2 text-sm font-medium text-gray">{{ item._id }}</p>
+                <p class="my-2 text-sm  text-gray">{{ item._id }}</p>
               </div>
             </div>
 
-            <button class="my-2 text-sm font-medium text-gray focus:outline-none"
+            <button class="my-2 text-sm font-medium text-gray-dark focus:outline-none"
               >Select
-              <svg class="inline h-6 mx-0.5 align-middle text-gray" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg class="inline h-6 mx-0.5 align-middle text-gray-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M9 5l7 7-7 7" /></svg
             ></button>
           </div>
