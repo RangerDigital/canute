@@ -19,7 +19,7 @@
               <div class="bg-red w-px mr-5 rounded-full"></div>
 
               <div class="flex flex-col justify-around">
-                <h2 class="py-2 font-sans text-red text-lg">{{ item.name }}</h2>
+                <h2 class="py-2 font-sans text-red text-base lg:text-lg">{{ item.name }}</h2>
                 <p class="my-2 text-sm font-medium text-gray">{{ item._id }}</p>
               </div>
             </div>
