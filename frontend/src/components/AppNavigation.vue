@@ -20,7 +20,7 @@
           <router-link class="my-2 text-sm font-medium text-gray hover:text-gray-light" to="/dashboard">Dashboard</router-link>
         </div>
         <div class="my-5 2xl:my-12 flex flex-col justify-around">
-          <router-link class="my-2 text-sm font-medium text-gray hover:text-gray-light" to="/settings">Settings</router-link>
+          <router-link class="my-2 text-sm font-medium text-gray hover:text-gray-light" to="/guard">Settings</router-link>
           <router-link class="my-2 text-sm font-medium text-gray hover:text-gray-light" to="/organisations">Organisations</router-link>
         </div>
       </div>
