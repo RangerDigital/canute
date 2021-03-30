@@ -14,9 +14,9 @@ router.get('/', checkAuth, async (req, res) => {
 });
 
 router.post('/', checkAuth, async (req, res) => {
-  const { name } = req.body;
+  const { name, address } = req.body;
 
-  let organisation = new orgs({ name: name, users: [{ _userId: req.userId, isAdmin: true }] });
+  let organisation = new orgs({ name: name, address: address, users: [{ _userId: req.userId, isAdmin: true }] });
   organisation.save();
 
   res.json(organisation);
@@ -29,10 +29,13 @@ router.get('/:orgId', checkAuth, checkOrg(true), async (req, res) => {
 });
 
 router.patch('/:orgId', checkAuth, checkOrg(true), async (req, res) => {
-  const { name } = req.body;
+  const { name, address } = req.body;
   const organisation = req.org;
 
+  // TODO! It's not PATCH anymore
   organisation.name = name;
+  organisation.address = address;
+
   organisation.save();
 
   res.json(organisation);
