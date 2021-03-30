@@ -5,8 +5,18 @@
     <!-- Horizontal Main Container -->
     <div class="flex flex-col xl:flex-row justify-between xl:px-6 xl:py-6">
       <AppNavigation />
-      <ThingsList class="self-start" />
 
+      <!-- Locks List -->
+      <div class="self-center w-full md:max-w-md p-5">
+        <p class="my-2 text-sm text-gray-dark ">Locks</p>
+        <div class="h-px bg-gray-dark rounded-full"></div>
+
+        <div class="flex flex-col xl:justify-center">
+          <Lock v-for="item in locks" :key="item._id" v-bind:lock="item" />
+        </div>
+      </div>
+
+      <!-- Counterweight -->
       <div class="w-60"></div>
     </div>
 
@@ -19,7 +29,7 @@
   import AppNavigation from '@/components/AppNavigation.vue';
   import HomeFooter from '@/components/HomeFooter.vue';
 
-  import ThingsList from '@/components/app/ThingsList.vue';
+  import Lock from '@/components/app/Lock.vue';
 
   export default {
     name: 'Dashboard',
@@ -27,16 +37,22 @@
       HomeNavigation,
       HomeFooter,
       AppNavigation,
-      ThingsList,
+      Lock,
     },
     data() {
-      return {};
+      return {
+        locks: [{ name: 'West Gate' }, { name: 'Front Door' }, { name: 'Front Door' }, { name: 'Front Door' }, { name: 'Front Door' }],
+      };
     },
-    methods: {},
+    methods: {
+      getLocks() {},
+    },
     mounted() {
       if (!localStorage.organisation) {
         this.$router.push('/organisations');
       }
+
+      this.getLocks();
     },
   };
 </script>

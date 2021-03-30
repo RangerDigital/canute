@@ -1,0 +1,23 @@
+<template>
+  <div class="w-full px-6 py-4 my-3 border rounded-lg border-gray-dark flex flex-col justify-between cursor-pointer hover:border-red">
+    <h2 class="py-2  text-white ">{{ lock.name }}</h2>
+    <p class="my-1 text-sm  text-red">Engage</p>
+  </div>
+</template>
+
+<script>
+  export default {
+    name: 'Lock',
+    props: {
+      lock: Object,
+    },
+    data() {
+      return {
+        isEngaged: false,
+      };
+    },
+    methods: {
+      engageLock() {},
+    },
+  };
+</script>

@@ -4,11 +4,19 @@
 
     <LoadingSpinner v-if="!isLoaded" class="self-center" />
 
-    <div v-if="isLoaded" class=" self-center text-center">
+    <div v-if="isLoaded && !organisations.length" class=" self-center text-center">
+      <h1 class="my-1 md:my-5 font-semibold text-white text-2xl md:text-4xl 2xl:text-5xl"
+        ><span class="text-red">Sorry,</span> You don't belong to any organizations <span class="text-red">yet!</span></h1
+      >
+
+      <p class="my-5 md:my-8 text-sm md:text-base text-gray">Ask your building admin about access.</p>
+    </div>
+
+    <div v-if="isLoaded && organisations.length" class=" self-center text-center">
       <h1 class="my-1 md:my-5 font-semibold text-red text-2xl md:text-4xl 2xl:text-5xl">Select <span class="text-white">your</span> organisation. </h1>
     </div>
 
-    <div v-if="isLoaded" class="self-center w-full md:max-w-md p-5">
+    <div v-if="isLoaded && organisations.length" class="self-center w-full md:max-w-md p-5">
       <p class="my-2 text-sm  text-gray-dark ">Organisations</p>
       <div class="h-px bg-gray-dark rounded-full"></div>
 
@@ -36,7 +44,7 @@
       </div>
     </div>
 
-    <div v-if="isLoaded"></div>
+    <div v-if="isLoaded && organisations.length"></div>
 
     <HomeFooter />
   </section>
