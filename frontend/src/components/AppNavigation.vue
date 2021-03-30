@@ -7,7 +7,7 @@
 
       <div class="flex flex-col justify-around">
         <h2 class="py-2 font-sans font-semibold text-red text-xl">{{ organisationName }}</h2>
-        <p class="my-2 text-sm font-medium text-gray">{{ organisationAddress }}</p>
+        <p class="my-2 text-sm  text-gray">{{ organisationAddress }}</p>
       </div>
     </div>
 

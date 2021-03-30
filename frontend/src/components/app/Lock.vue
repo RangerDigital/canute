@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full px-6 py-4 my-3 border rounded-lg border-gray-dark flex flex-col justify-between cursor-pointer hover:border-red">
+  <div class="w-full px-4 py-2 my-2 xl:px-6 xl:py-4 xl:my-3 border rounded-lg border-gray-dark flex flex-col justify-between cursor-pointer hover:border-red">
     <h2 class="py-2  text-white ">{{ lock.name }}</h2>
     <p class="my-1 text-sm  text-red">Engage</p>
   </div>
