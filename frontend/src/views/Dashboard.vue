@@ -41,7 +41,7 @@
     },
     data() {
       return {
-        locks: [{ name: 'West Gate' }, { name: 'Front Door' }, { name: 'Front Door' }, { name: 'Front Door' }, { name: 'Front Door' }],
+        locks: [{ name: 'West Gate' }, { name: 'Front Door' }],
       };
     },
     methods: {
