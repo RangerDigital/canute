@@ -2,11 +2,13 @@
   <section class="min-h-screen flex flex-col justify-between">
     <HomeNavigation noLogin noNav />
 
-    <div class=" self-center text-center">
+    <LoadingSpinner v-if="!isLoaded" class="self-center" />
+
+    <div v-if="isLoaded" class=" self-center text-center">
       <h1 class="my-1 md:my-5 font-semibold text-red text-2xl md:text-4xl 2xl:text-5xl">Select <span class="text-white">your</span> organisation. </h1>
     </div>
 
-    <div class="self-center  w-full md:max-w-md p-5">
+    <div v-if="isLoaded" class="self-center  w-full md:max-w-md p-5">
       <p class="my-2 text-sm  text-gray-dark ">Organisations</p>
       <div class="h-px bg-gray-dark rounded-full"></div>
 
@@ -34,7 +36,7 @@
       </div>
     </div>
 
-    <div></div>
+    <div v-if="isLoaded"></div>
 
     <HomeFooter />
   </section>
@@ -44,21 +46,27 @@
   import HomeNavigation from '@/components/HomeNavigation.vue';
   import HomeFooter from '@/components/HomeFooter.vue';
 
+  import LoadingSpinner from '@/components/app/LoadingSpinner.vue';
+
   export default {
     name: 'Organisation',
     components: {
       HomeNavigation,
       HomeFooter,
+      LoadingSpinner,
     },
     data() {
       return {
         organisations: [],
+        isLoaded: false,
       };
     },
     methods: {
       getOrganisations() {
         this.axios.get('/api/orgs').then((payload) => {
           this.organisations = payload.data;
+
+          this.isLoaded = true;
         });
       },
       selectOrganisation(organisation) {

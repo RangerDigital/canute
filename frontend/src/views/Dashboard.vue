@@ -4,8 +4,8 @@
 
     <!-- Horizontal Main Container -->
     <div class="flex flex-col xl:flex-row justify-between xl:px-6 xl:py-6">
-      <AppNavigation v-bind:organisation="userOrganisation" />
-      <ThingsList />
+      <AppNavigation />
+      <ThingsList class="self-start" />
 
       <div class="w-60"></div>
     </div>
@@ -30,32 +30,13 @@
       ThingsList,
     },
     data() {
-      return {
-        userOrganisation: '',
-        userEmail: '',
-      };
+      return {};
     },
-    methods: {
-      getUser() {
-        this.axios
-          .get('/api/users/me')
-          .then((payload) => {
-            this.userEmail = payload.data.email;
-          })
-          .catch(() => {
-            this.isLogged = false;
-            this.$router.push('/guard');
-          });
-      },
-    },
+    methods: {},
     mounted() {
-      if (localStorage.organisation) {
-        this.userOrganisation = localStorage.organisation;
-      } else {
+      if (!localStorage.organisation) {
         this.$router.push('/organisations');
       }
-
-      this.getUser();
     },
   };
 </script>
