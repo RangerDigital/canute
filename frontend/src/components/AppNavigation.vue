@@ -1,6 +1,6 @@
 <template
   ><!-- Left Bar-->
-  <nav class="flex flex-col w-60">
+  <nav class="flex flex-col w-60 justify-center">
     <!-- Organisation -->
     <div class="my-2 xl:my-5 2xl:my-12 flex flex-row cursor-pointer" @click="$router.push('/organisations')">
       <div class="bg-gray-dark w-px mr-5 rounded-full"></div>
