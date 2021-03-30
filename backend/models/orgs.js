@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const schema = mongoose.Schema({
   name: String,
-  users: [{ _userId: { type: mongoose.Types.ObjectId, unique: true }, isAdmin: { type: Boolean, default: false }, notes: String }],
+  users: [{ _userId: { type: mongoose.Types.ObjectId }, isAdmin: { type: Boolean, default: false }, notes: String }],
   roles: [{ name: String, permissions: [mongoose.Types.ObjectId], users: [mongoose.Types.ObjectId] }],
 });
 
