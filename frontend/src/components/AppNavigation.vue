@@ -2,7 +2,7 @@
   ><!-- Left Bar-->
   <nav class="flex flex-col w-60">
     <!-- Organisation -->
-    <div class="my-2 xl:my-5 2xl:my-12 flex flex-row">
+    <div class="my-2 xl:my-5 2xl:my-12 flex flex-row cursor-pointer" @click="$router.push('/organisations')">
       <div class="bg-gray-dark w-px mr-5 rounded-full"></div>
 
       <div class="flex flex-col justify-around">

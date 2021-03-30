@@ -8,29 +8,29 @@
       <h1 class="my-1 md:my-5 font-semibold text-red text-2xl md:text-4xl 2xl:text-5xl">Select <span class="text-white">your</span> organisation. </h1>
     </div>
 
-    <div v-if="isLoaded" class="self-center  w-full md:max-w-md p-5">
+    <div v-if="isLoaded" class="self-center w-full md:max-w-md p-5">
       <p class="my-2 text-sm  text-gray-dark ">Organisations</p>
       <div class="h-px bg-gray-dark rounded-full"></div>
 
-      <div class="flex flex-col justify-center">
+      <div class="flex flex-col">
         <!-- Organisation -->
 
-        <div v-for="item in organisations" :key="item._id" class="flex flex-row justify-between cursor-pointer" @click="selectOrganisation(item)">
+        <div v-for="item in organisations" :key="item._id" class="my-4 md:my-1 flex flex-row justify-between cursor-pointer" @click="selectOrganisation(item)">
           <div class="w-full flex flex-row justify-between items-center">
             <div class="my-2 xl:my-5 2xl:my-12 flex flex-row">
               <div class="bg-red w-px mr-5 rounded-full"></div>
 
               <div class="flex flex-col justify-around">
                 <h2 class="py-2 font-sans text-red text-base lg:text-lg">{{ item.name }}</h2>
-                <p class="my-2 text-sm  text-gray">{{ item._id }}</p>
+                <p class="my-2 text-sm  text-gray">{{ item.address }}</p>
               </div>
             </div>
 
-            <button class="my-2 text-sm font-medium text-gray-dark focus:outline-none"
+            <p class="my-2 text-sm font-medium text-gray-dark focus:outline-none"
               >Select
               <svg class="inline h-6 mx-0.5 align-middle text-gray-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M9 5l7 7-7 7" /></svg
-            ></button>
+            ></p>
           </div>
         </div>
       </div>

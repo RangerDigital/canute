@@ -2,7 +2,7 @@
   <footer class="flex flex-row items-center justify-between lg:justify-end p-5 md:px-20 md:py-6">
     <!-- Language Toggler / Desktop Only -->
     <section class="lg:hidden">
-      <button class="text-sm text-gray hover:text-gray-light focus:outline-none" @click="toggleLanguage()">
+      <button class="text-sm text-gray-dark hover:text-gray focus:outline-none" @click="toggleLanguage()">
         <svg class="inline h-6 mx-0.5 align-middle text-red" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path
             stroke-linecap="round"
@@ -16,7 +16,7 @@
       </button>
     </section>
 
-    <a class="text-sm text-gray hover:text-gray-light cursor-pointer" href="https://bednarski.dev">Jakub Bednarski © 2021</a>
+    <a class="text-sm text-gray-dark hover:text-gray cursor-pointer" href="https://bednarski.dev">Jakub Bednarski © 2021</a>
   </footer>
 </template>
 
