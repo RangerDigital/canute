@@ -7,7 +7,7 @@
       <AppNavigation v-bind:organisation="userOrganisation" />
       <ThingsList />
 
-      <div></div>
+      <div class="w-60"></div>
     </div>
 
     <HomeFooter />
