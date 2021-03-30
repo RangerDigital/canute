@@ -8,7 +8,7 @@ const orgs = require('../models/orgs');
 const users = require('../models/users');
 
 router.get('/', checkAuth, async (req, res) => {
-  let organisations = await orgs.find({ 'users._userId': req.userId }).select('_id name');
+  let organisations = await orgs.find({ 'users._userId': req.userId }).select('_id name address');
 
   res.json(organisations);
 });
