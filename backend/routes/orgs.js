@@ -61,7 +61,26 @@ router.get('/:orgId/users', checkAuth, checkOrg(true), async (req, res) => {
   const { orgId } = req.params;
 
   let users = await orgs.findOne({ _id: orgId, users: { $elemMatch: { _userId: req.userId, isAdmin: true } } }).populate('users.user', '-_id -__v');
-  res.json(users.users);
+  let response = [];
+
+  // Add roles to users for this partculat organisation.
+  // Need for Users frontend view.
+  for (let user of users.users.toObject()) {
+    let roles = [];
+
+    for (let role of req.org.roles) {
+      if (role.users.includes(user._id)) {
+        roles.push({ _id: role._id, name: role.name, permissions: role.permissions });
+      }
+    }
+
+    user = user;
+    user.roles = roles;
+
+    response.push(user);
+  }
+
+  res.json(response);
 });
 
 router.post('/:orgId/users', checkAuth, checkOrg(true), async (req, res) => {
