@@ -22,7 +22,7 @@
         </div>
 
         <div class="justify-items-center grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 3xl:grid-cols-4 lg:gap-6">
-          <User class="max-w-sm xl:mx-4" v-for="item in users" :key="item._id" v-bind:user="item" />
+          <User class="max-w-sm xl:mx-4" v-for="item in searchedUsers" :key="item._id" v-bind:user="item" />
         </div>
       </div>
     </div>
@@ -38,6 +38,8 @@
 
   import User from '@/components/app/User.vue';
 
+  const FlexSearch = require('flexsearch');
+
   export default {
     name: 'Users',
     components: {
@@ -50,6 +52,8 @@
       return {
         users: [],
         organisation: null,
+        search: '',
+        searchedUsers: [],
       };
     },
     methods: {
@@ -58,6 +62,7 @@
           .get('/api/orgs/' + this.organisation + '/users')
           .then((payload) => {
             this.users = payload.data;
+            this.searchedUsers = payload.data;
           })
           .catch((err) => {
             console.log(err);
@@ -72,6 +77,34 @@
       }
 
       this.getUsers();
+    },
+    watch: {
+      search: {
+        immediate: true,
+        handler(x) {
+          console.log(x.length);
+
+          if (x.length == 0) {
+            console.log('All Users');
+
+            this.searchedUsers = this.users;
+            return;
+          }
+
+          var index = new FlexSearch({
+            tokenize: 'full',
+            depth: 3,
+            doc: {
+              id: '_id',
+              field: ['user:email'],
+            },
+          });
+
+          index.add(this.users);
+
+          this.searchedUsers = index.search(x);
+        },
+      },
     },
   };
 </script>
