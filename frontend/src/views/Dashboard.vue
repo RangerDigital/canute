@@ -3,11 +3,11 @@
     <HomeNavigation noLogin noNav />
 
     <!-- Horizontal Main Container -->
-    <div class="flex flex-col xl:flex-row justify-between xl:px-6 xl:py-6">
+    <div class="self-center xl:self-auto w-full md:max-w-md xl:max-w-full flex flex-col xl:flex-row justify-between xl:px-6 xl:py-6">
       <AppNavigation />
 
       <!-- Locks List -->
-      <div class="self-center w-full md:max-w-md p-5">
+      <div class="self-center xl:self-auto w-full md:max-w-md p-5">
         <p class="my-2 text-sm text-gray-dark ">Locks</p>
         <div class="h-px bg-gray-dark rounded-full"></div>
 

@@ -3,7 +3,7 @@
     <!-- Language Toggler / Desktop Only -->
     <section class="lg:hidden">
       <button class="text-sm text-gray-dark hover:text-gray focus:outline-none" @click="toggleLanguage()">
-        <svg class="inline h-6 mx-0.5 align-middle text-red" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg class="inline h-6 mx-0.5 align-middle text-gray-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path
             stroke-linecap="round"
             stroke-linejoin="round"
