@@ -8,20 +8,28 @@ const devices = require('../models/devices');
 router.get('/', checkAuth, checkOrg(), async (req, res) => {
   const { orgId } = req.params;
 
+  console.log('WTF');
+
   let deviceArray = await devices.find({ _orgId: orgId });
 
-  let shadows = [];
+  let locks = [];
+
+  console.log(deviceArray);
 
   for (let device of deviceArray) {
     for (let shadow of device.shadows) {
       // Check if users have a role with permission to this shadow.
       if (req.org.roles.filter((x) => x.permissions.includes(shadow._id) && x.users.includes(req.user._id))) {
-        shadows.push(shadow);
+        console.log(shadow);
+        // Check if shadow class == lock.
+        if (shadow.class === 'lock') {
+          locks.push(shadow);
+        }
       }
     }
   }
 
-  res.json(shadows);
+  res.json(locks);
 });
 
 module.exports = router;

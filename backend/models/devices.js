@@ -5,7 +5,7 @@ const schema = mongoose.Schema({
   _orgId: mongoose.Types.ObjectId,
   auth: { clientId: String, clientToken: String },
   acl: { publish: [String], subscribe: [String], pubsub: [String] },
-  shadows: [{ name: String, topic: String, reported: String }],
+  shadows: [{ name: String, topic: String, reported: String, class: String }],
 });
 
 module.exports = mongoose.model('device', schema);

@@ -84,8 +84,8 @@ router.delete('/:orgId/users/:userId', checkAuth, checkOrg(true), async (req, re
 const devices = require('./devices');
 router.use('/:orgId/devices', devices);
 
-const shadows = require('./shadows');
-router.use('/:orgId/shadows', shadows);
+const locks = require('./locks');
+router.use('/:orgId/locks', locks);
 
 const roles = require('./roles');
 router.use('/:orgId/roles', roles);
