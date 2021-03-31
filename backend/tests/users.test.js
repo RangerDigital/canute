@@ -26,19 +26,4 @@ describe('Users Resources', function () {
       expect(res.status).toBe(403);
     }
   });
-
-  it('Positive: Check PATCH: /users/me', async () => {
-    {
-      let authToken = getAuthToken();
-      const name = 'Adam';
-
-      const res = await request
-        .patch('/users/me')
-        .set('Authorization', 'Bearer ' + authToken)
-        .send({ name: name });
-
-      expect(res.status).toBe(200);
-      expect(res.body.name).toBe(name);
-    }
-  });
 });
