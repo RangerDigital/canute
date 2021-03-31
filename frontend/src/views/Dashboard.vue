@@ -41,15 +41,27 @@
     },
     data() {
       return {
-        locks: [{ name: 'West Gate' }, { name: 'Front Door' }],
+        locks: [],
+        organisation: null,
       };
     },
     methods: {
-      getLocks() {},
+      getLocks() {
+        this.axios
+          .get('/api/orgs/' + this.organisation + '/locks')
+          .then((payload) => {
+            this.locks = payload.data;
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      },
     },
     mounted() {
       if (!localStorage.organisation) {
         this.$router.push('/organisations');
+      } else {
+        this.organisation = localStorage.organisation;
       }
 
       this.getLocks();
