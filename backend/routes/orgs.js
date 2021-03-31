@@ -8,9 +8,25 @@ const orgs = require('../models/orgs');
 const users = require('../models/users');
 
 router.get('/', checkAuth, async (req, res) => {
-  let organisations = await orgs.find({ 'users._userId': req.userId }).select('_id name address');
+  // let organisations = await orgs.find({ 'users._userId': req.userId }).select('_id name address');
+  let organisations = await orgs.find({ 'users._userId': req.userId });
 
-  res.json(organisations);
+  let response = [];
+
+  // Check if a logged user is an admin in this organisation.
+  for (let organisation of organisations) {
+    let isAdmin = false;
+    for (let user of organisation.users) {
+      if (user._userId == req.userId && user.isAdmin == true) {
+        isAdmin = true;
+      }
+    }
+
+    // Filter out unnecessary fields.
+    response.push({ _id: organisation._id, name: organisation.name, address: organisation.address, isAdmin: isAdmin });
+  }
+
+  res.json(response);
 });
 
 router.post('/', checkAuth, async (req, res) => {
