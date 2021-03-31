@@ -16,10 +16,6 @@
         this.axios.get('/api/users/me').then((payload) => {
           localStorage.email = payload.data.email;
         });
-
-        this.axios.get('/api/orgs/' + this.organisation).then((payload) => {
-          this.name = payload.data.name;
-        });
       }
 
       // Get active organisation.
