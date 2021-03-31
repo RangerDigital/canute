@@ -71,6 +71,8 @@
     },
     methods: {
       getOrganisations() {
+        this.axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.token;
+
         this.axios.get('/api/orgs').then((payload) => {
           this.organisations = payload.data;
 
@@ -86,10 +88,6 @@
       },
     },
     created() {
-      if (localStorage.organisation) {
-        this.selectedOrganisation = localStorage.organisation;
-      }
-
       this.getOrganisations();
     },
   };
