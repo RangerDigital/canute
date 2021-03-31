@@ -26,6 +26,11 @@ module.exports = {
     fontFamily: {
       sans: ['Poppins', 'sans-serif'],
     },
+    extend: {
+      screens: {
+        '3xl': '2000px',
+      },
+    },
   },
   variants: {
     extend: {},
