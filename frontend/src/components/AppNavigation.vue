@@ -3,7 +3,7 @@
   <nav class="flex flex-col xl:w-60 justify-center">
     <!-- Organisation -->
     <div class="w-full my-2 xl:my-5 2xl:my-12 flex flex-row cursor-pointer" @click="$router.push('/organisations')">
-      <div class="mx-5 xl:mx-0 xl:mr-5 bg-red w-px rounded-full"></div>
+      <div class="mx-5 xl:mx-0 xl:mr-5 bg-gray-dark w-px rounded-full"></div>
 
       <div class="flex flex-col justify-around">
         <h2 class="py-2 font-sans font-semibold text-red text-xl">{{ organisationName }}</h2>
