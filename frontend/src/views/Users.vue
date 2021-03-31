@@ -61,8 +61,22 @@
         this.axios
           .get('/api/orgs/' + this.organisation + '/users')
           .then((payload) => {
-            this.users = payload.data;
-            this.searchedUsers = payload.data;
+            // Create tokens by flattering roles array for search.
+            for (let user of payload.data) {
+              if (user.isAdmin) {
+                user.tokens = 'Admin';
+              } else {
+                user.tokens = '';
+              }
+
+              for (let role of user.roles) {
+                user.tokens += ' ' + role.name;
+              }
+
+              this.users.push(user);
+            }
+
+            this.searchedUsers = this.users;
           })
           .catch((err) => {
             console.log(err);
@@ -82,11 +96,7 @@
       search: {
         immediate: true,
         handler(x) {
-          console.log(x.length);
-
           if (x.length == 0) {
-            console.log('All Users');
-
             this.searchedUsers = this.users;
             return;
           }
@@ -96,7 +106,7 @@
             depth: 3,
             doc: {
               id: '_id',
-              field: ['user:email'],
+              field: ['user:email', 'roles:name', 'tokens'],
             },
           });
 
