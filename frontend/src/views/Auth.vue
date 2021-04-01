@@ -28,17 +28,15 @@
               type="email"
               v-model="userEmail"
               placeholder="hello@gmail.com"
-              class="w-full lg:w-80 block border-transparent focus:outline-none bg-gray-dark font-base tracking-wide px-3 py-3 text-gray rounded-md placeholder-gray ring-red focus:ring-1 "
+              class="w-full lg:w-80 block border-transparent focus:outline-none bg-gray-dark font-base text-sm tracking-wide px-3 py-3 text-gray rounded-md placeholder-gray ring-red focus:ring-1 "
               autofocus
               autocomplete
             />
           </div>
 
-          <button
-            class="font-semibold mx-5 my-6 lg:my-0 px-12 py-3 text-white bg-red hover:bg-red-dark rounded-md tracking-wide focus:outline-none"
-            @click="requestsMagicEmail()"
-            >{{ $t('btn.continue') }}</button
-          >
+          <button class="font-medium text-sm mx-5 my-6 lg:my-0 px-8 py-3 text-white bg-red hover:bg-red-dark rounded-md focus:outline-none" @click="requestsMagicEmail()">{{
+            $t('btn.continue')
+          }}</button>
         </div>
 
         <p class="text-center md:my-7 text-sm font-base text-gray">{{ $t('auth.login.description') }}</p>

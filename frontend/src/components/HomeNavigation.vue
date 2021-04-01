@@ -27,7 +27,7 @@
 
       <button
         v-if="!noLogin && !userEmail"
-        class="font-semibold px-10 py-2 text-white bg-red hover:bg-red-dark rounded-md focus:outline-none tracking-wide"
+        class="font-medium text-sm px-8 py-2.5 text-white bg-red hover:bg-red-dark rounded-md focus:outline-none tracking-wide"
         @click="$router.push('auth')"
         >{{ $t('btn.login') }}
       </button>
