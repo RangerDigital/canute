@@ -2,7 +2,9 @@
   <section class="min-h-screen flex flex-col justify-between">
     <HomeNavigation noLogin noNav />
 
-    <Navigation class="p-6 max-w-md" />
+    <AppNavigation class="p-1 w-full self-center max-w-md" />
+
+    <Navigation class="p-6 w-full self-center max-w-md" />
 
     <HomeFooter />
   </section>
@@ -12,6 +14,7 @@
   import HomeNavigation from '@/components/HomeNavigation.vue';
   import HomeFooter from '@/components/HomeFooter.vue';
 
+  import AppNavigation from '@/components/AppNavigation.vue';
   import Navigation from '@/components/app/Navigation.vue';
 
   export default {
@@ -20,6 +23,7 @@
       HomeNavigation,
       HomeFooter,
       Navigation,
+      AppNavigation,
     },
   };
 </script>
