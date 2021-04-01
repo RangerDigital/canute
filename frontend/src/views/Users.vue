@@ -4,7 +4,7 @@
 
     <!-- Horizontal Main Container -->
     <div class="self-center xl:self-auto w-full h-full flex-grow md:max-w-md xl:max-w-full flex flex-col xl:flex-row justify-start xl:justify-between xl:px-6 xl:py-6">
-      <AppNavigation />
+      <AppNavigation class="hidden xl:flex" />
 
       <!-- Vertical Container -->
       <div class="w-full p-4 xl:p-12  xl:mx-0 2xl:mx-20 flex flex-col justify-start">
