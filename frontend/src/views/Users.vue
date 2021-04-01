@@ -1,22 +1,33 @@
 <template>
-  <section class="min-h-screen flex flex-col justify-between">
+  <section class="min-h-screen h-full flex flex-col justify-between">
     <HomeNavigation noLogin noNav />
 
     <!-- Horizontal Main Container -->
-    <div class="self-center xl:self-auto w-full md:max-w-md xl:max-w-full flex flex-col xl:flex-row justify-between xl:px-6 xl:py-6">
-      <AppNavigation />
+    <div class="self-center xl:self-auto w-full md:max-w-md xl:max-w-full flex flex-col h-full xl:flex-row justify-start xl:justify-between xl:px-6 xl:py-6">
+      <AppNavigation class="hidden xl:block" />
 
       <!-- Vertical Container -->
       <div class="w-full p-4 xl:p-12 xl:mx-20 flex flex-col justify-start">
         <div>
-          <div class="w-full flex flex-col xl:flex-row justify-between">
+          <div class="w-full flex flex-row justify-between">
             <input
               v-model="search"
               placeholder="Search"
               class="w-full xl:w-96 xl:mx-12 block border-transparent focus:outline-none bg-gray-dark font-base tracking-wide px-3 py-3 text-gray rounded-md placeholder-gray ring-red focus:ring-1 "
             />
 
-            <button class="font-semibold mx-5 my-6 lg:my-0 px-12 py-2.5 text-white bg-red hover:bg-red-dark rounded-md tracking-wide focus:outline-none">ADD USER</button>
+            <button class="hidden xl:block font-semibold mx-5 my-6 lg:my-0 px-12 py-2.5 text-white bg-red hover:bg-red-dark rounded-md tracking-wide focus:outline-none"
+              >ADD USER</button
+            >
+            <button class="xl:hidden ml-3 px-3 text-white bg-red hover:bg-red-dark rounded-md focus:outline-none"
+              ><svg class="inline h-6 mx-0.5 align-middle text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"
+                /></svg
+            ></button>
           </div>
           <div class="xl:block bg-gray-dark my-5 h-px w-full rounded-full"></div>
         </div>
