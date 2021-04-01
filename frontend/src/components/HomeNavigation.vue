@@ -36,7 +36,7 @@
     </section>
 
     <!-- Hamburger Menu / Mobile Only -->
-    <router-link class="text-red border border-gray-dark p-1.5 rounded-md lg:hidden" to="/home-navigation">
+    <router-link class="text-red border border-gray-dark p-1.5 rounded-md lg:hidden" to="/navigation">
       <svg class="h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
       </svg>

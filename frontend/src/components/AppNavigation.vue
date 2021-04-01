@@ -12,33 +12,17 @@
       </div>
     </div>
 
-    <!-- Navigation -->
-    <div class="hidden my-2 xl:my-5 2xl:my-12 xl:flex flex-row">
-      <div class="bg-gray-dark w-px mr-5 rounded-full"></div>
-
-      <div class="flex flex-col justify-around">
-        <div class="my-5 2xl:my-12 flex flex-col justify-around">
-          <router-link class="my-2 text-sm font-medium text-gray hover:text-gray-light" to="/dashboard">Dashboard</router-link>
-        </div>
-
-        <!-- Admin Navigation -->
-        <div v-if="organisationAdmin" class="flex flex-col justify-around">
-          <router-link class="my-2 text-sm font-medium text-gray hover:text-gray-light" to="/roles">Roles</router-link>
-          <router-link class="my-2 text-sm font-medium text-gray hover:text-gray-light" to="/users">Users</router-link>
-          <router-link class="my-2 text-sm font-medium text-gray hover:text-gray-light" to="/devices">Devices</router-link>
-        </div>
-
-        <div class="my-5 2xl:my-12 flex flex-col justify-around">
-          <router-link class="my-2 text-sm font-medium text-gray hover:text-gray-light" to="/guard">Settings</router-link>
-          <router-link class="my-2 text-sm font-medium text-gray hover:text-gray-light" to="/organisations">Organisations</router-link>
-        </div>
-      </div>
-    </div>
+    <Navigation class="hidden xl:flex my-2 xl:my-5 2xl:my-12" />
   </nav>
 </template>
 <script>
+  import Navigation from '@/components/app/Navigation.vue';
+
   export default {
     name: 'AppNavigation',
+    components: {
+      Navigation,
+    },
     data() {
       return {
         organisationName: '',

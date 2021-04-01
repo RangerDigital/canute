@@ -23,6 +23,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "users" */ '../views/Users.vue'),
   },
   {
+    path: '/navigation',
+    name: 'MobileNavigation',
+    component: () => import(/* webpackChunkName: "mobileNavigation" */ '../views/MobileNavigation.vue'),
+  },
+  {
     path: '/guard',
     name: 'Guard',
     component: () => import(/* webpackChunkName: "guard" */ '../views/Guard.vue'),
