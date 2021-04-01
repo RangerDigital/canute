@@ -3,7 +3,7 @@
     <HomeNavigation noLogin noNav />
 
     <!-- Horizontal Main Container -->
-    <div class="self-center xl:self-auto w-full h-full flex-grow md:max-w-md xl:max-w-full flex flex-col xl:flex-row justify-between xl:px-6 xl:py-6">
+    <div class="self-center xl:self-auto w-full h-full flex-grow md:max-w-md xl:max-w-full flex flex-col xl:flex-row justify-start xl:justify-between  xl:px-6 xl:py-6">
       <AppNavigation />
 
       <!-- Locks List -->
