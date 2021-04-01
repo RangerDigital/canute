@@ -2,7 +2,7 @@
   <section class="min-h-screen flex flex-col justify-between">
     <HomeNavigation noLogin noNav />
 
-    <Navigation class="p-6" />
+    <Navigation class="p-6 max-w-md" />
 
     <HomeFooter />
   </section>
