@@ -14,15 +14,15 @@
         "email": "Twój Email"
     },
     "home": {
-        "heading": "Canute + Budynek =",
-        "subheading": "Zadowoleni mieszkańcy!",
+        "heading": "Kreujemy lepsze miejsca",
+        "subheading": "do życia oraz pracy.",
         "about": "Inteligentny system kontroli dostępu dla budynków wielorodzinnych.",
-        "action": "URUCHOM"
+        "action": "ROZPOCZNIJ"
     },
     "auth": {
         "login": {
             "heading": "Utwórz konto? Zaloguj się?",
-            "subheading": "Kropka w kropkę!",
+            "subheading": "W ten sam sposób!",
             "about": "Nigdy więcej haseł do zapamiętania!",
             "description": "Otrzymasz magiczny link do logowania w Email."
         },
