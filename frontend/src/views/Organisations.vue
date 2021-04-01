@@ -62,14 +62,6 @@
           this.isLoaded = true;
         });
       },
-      selectOrganisation(organisation) {
-        localStorage.organisation = organisation._id;
-        localStorage.organisationName = organisation.name;
-        localStorage.organisationAddress = organisation.address;
-        localStorage.organisationAdmin = organisation.isAdmin;
-
-        this.$router.push('/dashboard');
-      },
     },
     created() {
       this.getOrganisations();
