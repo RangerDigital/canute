@@ -36,9 +36,15 @@
     </section>
 
     <!-- Hamburger Menu / Mobile Only -->
-    <router-link class="text-red border border-gray-dark p-1.5 rounded-md lg:hidden" to="/navigation">
+    <router-link v-if="userEmail" class="text-red border border-gray-dark p-1.5 rounded-md lg:hidden" to="/navigation">
       <svg class="h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </router-link>
+
+    <router-link v-if="!userEmail" class="text-red border border-gray-dark p-1.5 rounded-md lg:hidden" to="/auth">
+      <svg class="h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M9 5l7 7-7 7" />
       </svg>
     </router-link>
   </header>
