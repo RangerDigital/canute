@@ -21,26 +21,7 @@
       <div class="h-px bg-gray-dark rounded-full"></div>
 
       <div class="flex flex-col">
-        <!-- Organisation -->
-
-        <div v-for="item in organisations" :key="item._id" class="my-4 md:my-1 flex flex-row justify-between cursor-pointer" @click="selectOrganisation(item)">
-          <div class="w-full flex flex-row justify-between items-center">
-            <div class="my-2 xl:my-5 2xl:my-12 flex flex-row">
-              <div class="bg-red w-px mr-5 rounded-full"></div>
-
-              <div class="flex flex-col justify-around">
-                <h2 class="py-2 font-sans text-red text-base lg:text-lg">{{ item.name }}</h2>
-                <p class="my-2 text-sm  text-gray">{{ item.address }}</p>
-              </div>
-            </div>
-
-            <p class="my-2 text-sm font-medium text-gray-dark focus:outline-none"
-              >Select
-              <svg class="inline h-6 mx-0.5 align-middle text-gray-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M9 5l7 7-7 7" /></svg
-            ></p>
-          </div>
-        </div>
+        <Organisation v-for="item in organisations" :key="item._id" v-bind:organisation="item" />
       </div>
     </div>
 
@@ -54,14 +35,16 @@
   import HomeNavigation from '@/components/HomeNavigation.vue';
   import HomeFooter from '@/components/HomeFooter.vue';
 
+  import Organisation from '@/components/app/Organisation.vue';
   import LoadingSpinner from '@/components/app/LoadingSpinner.vue';
 
   export default {
-    name: 'Organisation',
+    name: 'Organisations',
     components: {
       HomeNavigation,
       HomeFooter,
       LoadingSpinner,
+      Organisation,
     },
     data() {
       return {
