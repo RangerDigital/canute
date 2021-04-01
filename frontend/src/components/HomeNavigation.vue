@@ -32,7 +32,9 @@
         >{{ $t('btn.login') }}
       </button>
 
-      <p v-if="userEmail" class="mx-7 text-sm font-medium text-gray">{{ $t('nav.logged') }} <span class="text-red">kuba07071999@gmail.com</span></p>
+      <p v-if="userEmail" class="mx-7 text-sm font-medium text-gray cursor-pointer" @click="$router.push('/dashboard').catch((err) => {})"
+        >{{ $t('nav.logged') }} <span class="text-red">{{ userEmail }}</span></p
+      >
     </section>
 
     <!-- Hamburger Menu / Mobile Only -->
