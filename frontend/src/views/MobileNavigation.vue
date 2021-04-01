@@ -2,9 +2,9 @@
   <section class="min-h-screen flex flex-col justify-between">
     <HomeNavigation noLogin noNav />
 
-    <AppNavigation class="p-1 w-full self-center max-w-md" />
+    <AppNavigation class="w-full self-center max-w-md" />
 
-    <Navigation class="p-6 w-full self-center max-w-md" />
+    <Navigation class="p-5 w-full self-center max-w-md" />
 
     <HomeFooter />
   </section>
