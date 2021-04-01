@@ -4,7 +4,7 @@
       >Canute <span class="text-white">OS</span></h1
     >
 
-    <nav v-if="!noNav" class="hidden md:flex items-center justify-center">
+    <nav v-if="!noNav" class="hidden xl:flex items-center justify-center">
       <router-link class="mx-7 text-sm font-medium text-gray hover:text-gray-light" to="/auth">{{ $t('nav.services') }}</router-link>
       <router-link class="mx-7 text-sm font-medium text-gray hover:text-gray-light" to="/auth">FAQ</router-link>
       <router-link class="mx-7 text-sm font-medium text-gray hover:text-gray-light" to="/auth">{{ $t('nav.contact') }}</router-link>
