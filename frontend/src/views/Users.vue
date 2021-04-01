@@ -7,18 +7,17 @@
       <AppNavigation class="hidden xl:block" />
 
       <!-- Vertical Container -->
-      <div class="w-full p-4 xl:p-12 xl:mx-20 flex flex-col justify-start">
+      <div class="w-full p-4 xl:p-12  xl:mx-0 2xl:mx-20 flex flex-col justify-start">
         <div>
           <div class="w-full flex flex-row justify-between">
             <input
               v-model="search"
               placeholder="Search"
-              class="w-full xl:w-96 xl:mx-12 block border-transparent focus:outline-none bg-gray-dark font-base tracking-wide px-3 py-3 text-gray rounded-md placeholder-gray ring-red focus:ring-1 "
+              class="w-full xl:w-96 xl:mx-12 block border-transparent focus:outline-none bg-gray-dark font-base tracking-wide px-3 py-2.5 text-gray rounded-md placeholder-gray ring-red focus:ring-1 "
             />
 
-            <button class="hidden xl:block font-semibold mx-5 my-6 lg:my-0 px-12 py-2.5 text-white bg-red hover:bg-red-dark rounded-md tracking-wide focus:outline-none"
-              >ADD USER</button
-            >
+            <button class="hidden xl:block font-medium text-sm mx-5 my-6 py-2.5 lg:my-0 px-9 text-white bg-red hover:bg-red-dark rounded-md  focus:outline-none">ADD USER</button>
+
             <button class="xl:hidden ml-3 px-3 text-white bg-red hover:bg-red-dark rounded-md focus:outline-none"
               ><svg class="inline h-6 mx-0.5 align-middle text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path
