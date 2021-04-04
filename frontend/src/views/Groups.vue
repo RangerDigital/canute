@@ -9,6 +9,8 @@
       <!-- Vertical Container -->
       <div class="w-full p-4 xl:p-12  xl:mx-0 2xl:mx-20 flex flex-col justify-start">
         <div>
+          <h1 class="xl:mx-5 py-2 font-sans text-gray text-sm">Manage Groups</h1>
+
           <div class="w-full flex flex-row justify-between">
             <input
               v-model="search"
@@ -24,7 +26,7 @@
                   stroke-width="1.5"
                   d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
                 /></svg
-              ><span class="hidden lg:inline">ADD GROUP</span></button
+              ><span class="hidden xl:inline">ADD GROUP</span></button
             >
           </div>
           <div class="xl:block bg-gray-dark my-5 h-px w-full rounded-full"></div>
