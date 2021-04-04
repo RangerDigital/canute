@@ -10,7 +10,7 @@
 
       <!-- Admin Navigation -->
       <div v-if="organisationAdmin" class="w-full flex flex-col justify-around">
-        <router-link class="py-4 xl:py-2 text-sm font-medium text-gray hover:text-gray-light" active-class="text-gray-light" to="/roles">Roles</router-link>
+        <router-link class="py-4 xl:py-2 text-sm font-medium text-gray hover:text-gray-light" active-class="text-gray-light" to="/groups">Groups</router-link>
         <router-link class="py-4 xl:py-2 text-sm font-medium text-gray hover:text-gray-light" active-class="text-gray-light" to="/users">Users</router-link>
         <router-link class="py-4 xl:py-2 text-sm font-medium text-gray hover:text-gray-light" active-class="text-gray-light" to="/devices">Devices</router-link>
       </div>
