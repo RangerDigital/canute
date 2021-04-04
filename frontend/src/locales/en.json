@@ -14,7 +14,8 @@
         "login": "SIGN IN",
         "locale": "Polski",
         "learn": "Learn More",
-        "continue": "CONTINUE"
+        "continue": "CONTINUE",
+        "open": "Open"
     },
     "label": {
         "email": "Your Email",
