@@ -84,7 +84,7 @@ router.get('/:orgId/users', checkAuth, checkOrg(true), async (req, res) => {
 });
 
 router.post('/:orgId/users', checkAuth, checkOrg(true), async (req, res) => {
-  const { email, notes, isAdmin } = req.body;
+  const { email, annotation, isAdmin } = req.body;
 
   let organisation = req.org;
   let user = await users.findOne({ email: email });
@@ -94,7 +94,7 @@ router.post('/:orgId/users', checkAuth, checkOrg(true), async (req, res) => {
     user.save();
   }
 
-  organisation.users.push({ _userId: user._id, isAdmin: isAdmin, notes: notes });
+  organisation.users.push({ _userId: user._id, isAdmin: isAdmin, annotation: annotation });
 
   await organisation.validate().catch((err) => {
     return res.status(400).json({ msg: err });
