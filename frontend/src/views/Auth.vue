@@ -122,7 +122,11 @@
               localStorage.token = payload.data.authToken;
 
               this.axios
-                .get('/api/users/me')
+                .get('/api/users/me', {
+                  headers: {
+                    Authorization: 'Bearer ' + payload.data.authToken,
+                  },
+                })
                 .then((payload) => {
                   localStorage.email = payload.data.email;
                 })
