@@ -2,7 +2,13 @@
     "nav": {
         "services": "Services",
         "contact": "Contact",
-        "logged": "Logged In as"
+        "logged": "Logged In as",
+        "dashboard": "Dashboard",
+        "groups": "Groups",
+        "users": "Users",
+        "devices": "Devices",
+        "settings": "Settings",
+        "organisations": "Organisations"
     },
     "btn": {
         "login": "SIGN IN",

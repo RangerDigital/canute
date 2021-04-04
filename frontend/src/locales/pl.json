@@ -2,7 +2,13 @@
     "nav": {
         "services": "Usługi",
         "contact": "Kontakt",
-        "logged": "Zalogowany jako"
+        "logged": "Zalogowany jako",
+        "dashboard": "Dashboard",
+        "groups": "Grupy",
+        "users": "Użytkownicy",
+        "devices": "Urządzenia",
+        "settings": "Ustawienia",
+        "organisations": "Organizacje"
     },
     "btn": {
         "login": "ZALOGUJ SIĘ",
