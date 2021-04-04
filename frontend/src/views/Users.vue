@@ -115,7 +115,7 @@
             depth: 3,
             doc: {
               id: '_id',
-              field: ['user:email', 'roles:name', 'tokens'],
+              field: ['user:email', 'roles:name', 'tokens', 'annotation'],
             },
           });
 
