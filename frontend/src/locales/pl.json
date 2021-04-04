@@ -11,7 +11,8 @@
         "continue": "KONTYNUUJ"
     },
     "label": {
-        "email": "Twój Email"
+        "email": "Twój Email",
+        "organisations": "Organizacje"
     },
     "home": {
         "heading": "Budujemy lepsze miejsca",
@@ -44,6 +45,13 @@
         "failure": {
             "heading": "Nie jesteś zalogowany!",
             "subheading": "Sprawdź dziennik konsoli."
+        }
+    },
+    "organisations": {
+        "heading": "Wybierz <span class='text-white'>swoją</span> organizacje. ",
+        "error": {
+            "heading": "<span class='text-red'>Nie należysz </span> jeszcze do żadnej <span class='text-red'>organizacji.</span>",
+            "about": "Zapytaj się administratora o dostęp."
         }
     }
 }

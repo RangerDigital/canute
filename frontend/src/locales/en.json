@@ -11,7 +11,8 @@
         "continue": "CONTINUE"
     },
     "label": {
-        "email": "Your Email"
+        "email": "Your Email",
+        "organisations": "Organisations"
     },
     "home": {
         "heading": "One app. Whole building.",
@@ -44,6 +45,13 @@
         "failure": {
             "heading": "Sorry 🔥 Not logged in!",
             "subheading": "Check console log."
+        }
+    },
+    "organisations": {
+        "heading": "Select <span class='text-white'>your</span> organisation. ",
+        "error": {
+            "heading": "<span class='text-red'>Sorry,</span> You don't belong to any organizations <span class='text-red'>yet!</span>",
+            "about": "Ask your building admin about access."
         }
     }
 }
