@@ -33,7 +33,8 @@ module.exports = {
     },
   },
   variants: {
-    extend: {},
+    backgroundColor: ({ after }) => after(['disabled']),
+    textColor: ({ after }) => after(['disabled']),
   },
   plugins: [],
 };

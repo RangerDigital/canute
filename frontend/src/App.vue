@@ -7,6 +7,8 @@
     mounted() {
       if (localStorage.locale) {
         this.$i18n.locale = localStorage.locale;
+      } else {
+        this.$i18n.locale = navigator.language.split('-')[0];
       }
 
       // Get user information.

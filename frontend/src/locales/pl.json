@@ -7,7 +7,7 @@
         "groups": "Grupy",
         "users": "Użytkownicy",
         "devices": "Urządzenia",
-        "settings": "Ustawienia",
+        "settings": "Wyloguj Się",
         "organisations": "Organizacje"
     },
     "btn": {
@@ -17,7 +17,7 @@
         "continue": "KONTYNUUJ"
     },
     "label": {
-        "email": "Twój Email",
+        "email": "Adres Email",
         "organisations": "Organizacje"
     },
     "home": {
@@ -28,8 +28,8 @@
     },
     "auth": {
         "login": {
-            "heading": "Utwórz konto? Zaloguj się?",
-            "subheading": "W ten sam sposób!",
+            "heading": "Aby rozpocząć lub kontynuować,",
+            "subheading": "Podaj swój adres email.",
             "about": "Nigdy więcej haseł do zapamiętania!",
             "description": "Otrzymasz magiczny link do logowania w Email."
         },
@@ -54,7 +54,7 @@
         }
     },
     "organisations": {
-        "heading": "Wybierz <span class='text-white'>swoją</span> organizacje. ",
+        "heading": "Wybierz <span class='text-white'>aktywną</span> organizacje. ",
         "error": {
             "heading": "<span class='text-red'>Nie należysz </span> jeszcze do żadnej <span class='text-red'>organizacji.</span>",
             "about": "Zapytaj się administratora o dostęp."
