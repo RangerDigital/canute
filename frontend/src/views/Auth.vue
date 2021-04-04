@@ -121,7 +121,14 @@
               this.axios.defaults.headers.common['Authorization'] = 'Bearer ' + this.authToken;
               localStorage.token = payload.data.authToken;
 
-              this.$router.push('/dashboard');
+              this.axios
+                .get('/api/users/me')
+                .then((payload) => {
+                  localStorage.email = payload.data.email;
+                })
+                .then(() => {
+                  this.$router.push('/dashboard');
+                });
             })
             .catch(() => {
               this.showLogin = false;
