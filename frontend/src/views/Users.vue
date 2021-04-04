@@ -16,17 +16,16 @@
               class="w-full xl:w-96 xl:mx-12 block border-transparent focus:outline-none text-sm bg-gray-dark font-base tracking-wide px-3 py-2.5 text-gray rounded-md placeholder-gray ring-red focus:ring-1 "
             />
 
-            <button class="hidden xl:block font-medium text-sm mx-5 my-6 py-3 lg:my-0 px-9 text-white bg-red hover:bg-red-dark rounded-md focus:outline-none">ADD USER</button>
-
-            <button class="xl:hidden ml-3 px-3 text-white bg-red hover:bg-red-dark rounded-md focus:outline-none"
-              ><svg class="inline h-6 mx-0.5 align-middle text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <button class="font-medium text-sm ml-2 lg:mx-5  py-3 lg:my-0 px-3 xl:px-9 text-white bg-red hover:bg-red-dark rounded-md focus:outline-none"
+              ><svg class="inline xl:transform xl:scale-125 h-6 xl:h-4 xl:mr-4 align-middle text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   stroke-width="1.5"
                   d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"
                 /></svg
-            ></button>
+              ><span class="hidden lg:inline">ADD USER</span></button
+            >
           </div>
           <div class="xl:block bg-gray-dark my-5 h-px w-full rounded-full"></div>
         </div>
