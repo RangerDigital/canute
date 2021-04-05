@@ -16,6 +16,13 @@ module.exports = {
   pwa: {
     short_name: 'Canute',
     name: 'Canute OS',
+    iconPaths: {
+      favicon32: null,
+      favicon16: null,
+      appleTouchIcon: null,
+      maskIcon: null,
+      msTileImage: null,
+    },
     icons: [
       {
         src: '/maskable_icon.png',
