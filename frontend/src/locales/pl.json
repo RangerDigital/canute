@@ -15,11 +15,13 @@
         "locale": "English",
         "learn": "Więcej o Canute OS",
         "continue": "KONTYNUUJ",
-        "open": "Otwórz"
+        "open": "Otwórz",
+        "inprogress": "W Trakcie"
     },
     "label": {
         "email": "Adres Email",
-        "organisations": "Organizacje"
+        "organisations": "Organizacje",
+        "locks": "Zamki"
     },
     "home": {
         "heading": "Budujemy lepsze miejsca",

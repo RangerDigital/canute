@@ -15,11 +15,13 @@
         "locale": "Polski",
         "learn": "Learn More",
         "continue": "CONTINUE",
-        "open": "Open"
+        "open": "Open",
+        "inprogress": "In Progress"
     },
     "label": {
         "email": "Your Email",
-        "organisations": "Organisations"
+        "organisations": "Organisations",
+        "locks": "Locks"
     },
     "home": {
         "heading": "One app. Whole building.",
