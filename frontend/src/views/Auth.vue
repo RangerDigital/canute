@@ -28,7 +28,7 @@
               type="email"
               v-model="userEmail"
               placeholder="... @gmail.com"
-              class="w-full lg:w-80 block border-transparent focus:outline-none bg-gray-dark font-base text-sm tracking-wide px-3 py-3 text-gray rounded-md placeholder-gray ring-red focus:ring-1 "
+              class="w-full lg:w-80 block border-transparent focus:outline-none bg-gray-dark font-base text-sm tracking-wide px-3 py-3 text-white rounded-md placeholder-gray ring-red focus:ring-1 "
               autofocus
               autocomplete
             />
