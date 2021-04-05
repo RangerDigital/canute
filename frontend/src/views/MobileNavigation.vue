@@ -1,6 +1,6 @@
 <template>
   <section class="min-h-screen flex flex-col justify-between">
-    <HomeNavigation noLogin noNav />
+    <HomeNavigation noLogin noNav showBackHamburger />
 
     <AppNavigation class="w-full self-center max-w-md" />
 

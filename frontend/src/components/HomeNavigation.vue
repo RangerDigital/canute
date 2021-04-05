@@ -38,11 +38,17 @@
     </section>
 
     <!-- Hamburger Menu / Mobile Only -->
-    <router-link v-if="userEmail" class="text-red border border-gray-dark p-1.5 rounded-md lg:hidden" to="/navigation">
+    <router-link v-if="userEmail && !showBackHamburger" class="text-red border border-gray-dark p-1.5 rounded-md lg:hidden" to="/navigation">
       <svg class="h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
       </svg>
     </router-link>
+
+    <a v-if="userEmail && showBackHamburger" class="text-red border border-gray-dark p-1.5 rounded-md lg:hidden" @click="$router.go(-1)">
+      <svg class="h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </a>
 
     <router-link v-if="!userEmail" class="text-red border border-gray-dark p-1.5 rounded-md lg:hidden" to="/auth">
       <svg class="h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -58,6 +64,7 @@
       noLogin: Boolean,
       noNav: Boolean,
       showUser: Boolean,
+      showBackHamburger: Boolean,
     },
     data() {
       return {
