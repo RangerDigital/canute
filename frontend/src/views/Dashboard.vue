@@ -59,7 +59,7 @@
     },
     mounted() {
       if (!localStorage.organisation) {
-        this.$router.push('/organisations');
+        this.$router.push('/organisations/autoSelect');
       } else {
         this.organisation = localStorage.organisation;
       }

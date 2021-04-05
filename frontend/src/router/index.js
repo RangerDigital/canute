@@ -43,7 +43,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "guard" */ '../views/Guard.vue'),
   },
   {
-    path: '/organisations',
+    path: '/organisations/:autoSelect?',
     name: 'Organisations',
     component: () => import(/* webpackChunkName: "organisations" */ '../views/Organisations.vue'),
   },

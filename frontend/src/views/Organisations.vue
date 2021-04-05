@@ -48,6 +48,7 @@
       return {
         organisations: [],
         isLoaded: false,
+        autoSelect: false,
       };
     },
     methods: {
@@ -57,11 +58,25 @@
         this.axios.get('/api/orgs').then((payload) => {
           this.organisations = payload.data;
 
+          if (this.autoSelect && this.organisations.length == 1) {
+            let organisation = this.organisations[0];
+
+            localStorage.organisation = organisation._id;
+            localStorage.organisationName = organisation.name;
+            localStorage.organisationAddress = organisation.address;
+            localStorage.organisationAdmin = organisation.isAdmin;
+
+            this.$router.push('/dashboard');
+          }
+
           this.isLoaded = true;
         });
       },
     },
     created() {
+      if (this.$route.params.autoSelect.length) {
+        this.autoSelect = true;
+      }
       this.getOrganisations();
     },
   };
