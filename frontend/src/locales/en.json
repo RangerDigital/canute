@@ -7,8 +7,8 @@
         "groups": "Groups",
         "users": "Users",
         "devices": "Devices",
-        "settings": "Settings",
-        "organisations": "Organisations"
+        "settings": "Sign Out",
+        "organisations": "Switch Organisations"
     },
     "btn": {
         "login": "SIGN IN",

@@ -7,7 +7,9 @@
       <h2 class="my-1 md:my-5 font-semibold text-red text-2xl md:text-4xl 2xl:text-5xl ">{{ this.userEmail }}</h2>
     </div>
 
-    <button v-if="isLogged" class="self-center font-medium text-sm px-8 py-3 text-white bg-red hover:bg-red-dark rounded-md focus:outline-none" @click="logout()">Logout</button>
+    <button v-if="isLogged" class="self-center font-medium text-sm px-8 py-3 text-white bg-red hover:bg-red-dark rounded-md focus:outline-none" @click="logout()">{{
+      $t('nav.settings')
+    }}</button>
 
     <div v-if="!isLogged" class=" self-center text-center">
       <h1 class="my-1 md:my-5 font-semibold text-white text-2xl md:text-4xl 2xl:text-5xl">{{ $t('dashboard.failure.heading') }}</h1>
