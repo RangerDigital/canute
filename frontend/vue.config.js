@@ -24,6 +24,11 @@ module.exports = {
           sizes: '1024x1024',
           purpose: 'maskable',
         },
+        {
+          src: '/icon-144.png',
+          type: 'image/png',
+          sizes: '144x144',
+        },
       ],
       start_url: '/dashboard',
       background_color: '#151719',
