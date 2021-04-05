@@ -15,7 +15,7 @@
             <input
               v-model="search"
               placeholder="Search"
-              class="w-full xl:w-96 xl:mx-5 block border-transparent focus:outline-none text-sm bg-gray-dark font-base tracking-wide px-3 py-2.5 text-gray rounded-md placeholder-gray ring-red focus:ring-1 "
+              class="w-full xl:w-96 xl:mx-5 block border-transparent focus:outline-none text-sm bg-gray-dark font-base tracking-wide px-3 py-2.5 text-white rounded-md placeholder-gray ring-red focus:ring-1 "
             />
 
             <button class="font-medium text-sm ml-2 lg:mx-5  py-3 lg:my-0 px-3 xl:px-9 text-white bg-red hover:bg-red-dark rounded-md focus:outline-none">
