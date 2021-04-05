@@ -5,10 +5,10 @@
         "logged": "Zalogowany jako",
         "dashboard": "Dashboard",
         "groups": "Grupy",
-        "users": "Użytkownicy",
+        "users": "Mieszkańcy",
         "devices": "Urządzenia",
         "settings": "Wyloguj Się",
-        "organisations": "Organizacje"
+        "organisations": "Zmień Organizacje"
     },
     "btn": {
         "login": "ZALOGUJ SIĘ",
@@ -55,7 +55,7 @@
         }
     },
     "organisations": {
-        "heading": "Wybierz <span class='text-white'>aktywną</span> organizacje. ",
+        "heading": "Wybierz <span class='text-white'>swoją aktywną</span> organizacje. ",
         "error": {
             "heading": "<span class='text-red'>Nie należysz </span> jeszcze do żadnej <span class='text-red'>organizacji.</span>",
             "about": "Zapytaj się administratora o dostęp."
