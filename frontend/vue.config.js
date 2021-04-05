@@ -14,8 +14,23 @@ module.exports = {
     },
   },
   pwa: {
-    short_name: 'Canute',
-    name: 'Canute OS',
+    manifestOptions: {
+      short_name: 'Canute',
+      name: 'Canute OS',
+      icons: [
+        {
+          src: '/maskable_icon.png',
+          type: 'image/png',
+          sizes: '1024x1024',
+          purpose: 'maskable',
+        },
+      ],
+      start_url: '/dashboard',
+      background_color: '#151719',
+      display: 'standalone',
+      scope: '/',
+    },
+
     iconPaths: {
       favicon32: null,
       favicon16: null,
@@ -23,18 +38,7 @@ module.exports = {
       maskIcon: null,
       msTileImage: null,
     },
-    icons: [
-      {
-        src: '/maskable_icon.png',
-        type: 'image/png',
-        sizes: '1024x1024',
-        purpose: 'maskable',
-      },
-    ],
-    start_url: '/dashboard',
-    background_color: '#151719',
-    display: 'standalone',
-    scope: '/',
-    theme_color: '#151719',
+
+    themeColor: '#151719',
   },
 };
