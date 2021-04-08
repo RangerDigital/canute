@@ -9,13 +9,22 @@
       <!-- Vertical Container -->
       <div class="w-full p-4 xl:p-12  xl:mx-0 2xl:mx-20 flex flex-col justify-start">
         <div>
-          <h1 class="xl:mx-5 py-2 font-sans text-gray-dark text-sm">Manage Users</h1>
+          <h1 class="xl:mx-5 py-2 font-sans text-gray-dark text-sm"
+            ><svg class="inline mr-2 h-5 w-5 text-gray-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.2"
+                d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
+              /></svg
+            >Manage Users</h1
+          >
 
           <div class="w-full flex flex-row justify-between">
             <input
               v-model="search"
               placeholder="Search"
-              class="w-full xl:w-96 xl:mx-5 block border-transparent focus:outline-none text-sm bg-gray-darker font-base tracking-wide px-3 py-2.5 text-white rounded-md placeholder-gray-dark ring-red focus:ring-1 "
+              class="w-full xl:max-w-md xl:mx-5 block border-transparent focus:outline-none text-sm bg-gray-darker font-base tracking-wide px-3 py-2.5 text-white rounded-md placeholder-gray-dark ring-red focus:ring-1 "
             />
 
             <button class="font-medium text-sm ml-2 lg:mx-5  py-3 lg:my-0 px-3 xl:px-9 text-white bg-red hover:bg-red-dark rounded-md focus:outline-none"
