@@ -11,13 +11,13 @@ module.exports = {
       },
       red: {
         dark: '#ff344c',
-        DEFAULT: '#fd4e63',
+        DEFAULT: '#FD445A',
       },
       gray: {
         darker: '#1B1B1D',
         dark: '#27282b',
         DEFAULT: '#3A3C40',
-        light: '#525151',
+        light: '#3F4146',
       },
       black: {
         dark: '#121415',
