@@ -16,7 +16,7 @@
       </button>
     </section>
 
-    <a class="text-sm text-gray-dark hover:text-gray cursor-pointer" href="https://bednarski.dev">Jakub Bednarski © 2021</a>
+    <a class="text-sm text-gray-dark hover:text-gray cursor-pointer" href="https://bednarski.dev">Canute © 2021</a>
   </footer>
 </template>
 

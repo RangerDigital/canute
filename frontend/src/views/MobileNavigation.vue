@@ -1,5 +1,5 @@
 <template>
-  <section class="min-h-screen flex flex-col justify-between">
+  <section class="min-h-screen flex flex-col justify-start">
     <HomeNavigation noLogin noNav showBackHamburger />
 
     <AppNavigation class="w-full self-center max-w-md" />

@@ -33,7 +33,7 @@
         "login": {
             "heading": "Aby rozpocząć lub kontynuować,",
             "subheading": "Podaj swój adres email.",
-            "about": "Nigdy więcej dodatkowych haseł do zapamiętania!",
+            "about": "Nigdy więcej haseł do zapamiętania!",
             "description": "Otrzymasz magiczny link do logowania w wiadomości E-Mail."
         },
         "failure": {
