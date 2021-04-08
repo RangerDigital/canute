@@ -4,14 +4,14 @@
 
     <section class="p-5 md:px-12 xl:w-11/12 2xl:w-9/12 flex flex-col xl:flex-row xl:self-center items-center justify-between">
       <div>
-        <h1 class="my-1 md:my-5 font-semibold text-white text-2xl md:text-4xl 2xl:text-5xl">{{ $t('home.heading') }}</h1>
-        <h2 class="my-1 md:my-5 font-semibold text-red text-2xl md:text-4xl 2xl:text-5xl ">{{ $t('home.subheading') }}</h2>
+        <h1 class="my-1 md:my-5 font-semibold text-white text-2xl md:text-4xl 2xl:text-5xl 3xl:text-6xl">{{ $t('home.heading') }}</h1>
+        <h2 class="my-1 md:my-5 font-semibold text-red text-2xl md:text-4xl 2xl:text-5xl 3xl:text-6xl">{{ $t('home.subheading') }}</h2>
 
-        <p class="my-5 md:my-8 text-sm md:text-base  text-gray">{{ $t('home.about') }}</p>
+        <p class="my-5 md:my-8 text-sm xl:text-base text-gray">{{ $t('home.about') }}</p>
 
         <!-- Call to Action -->
         <div class="mt-16 mb-8 flex flex-row items-center justify-center md:justify-start">
-          <button class="font-medium text-sm px-8 py-3 text-white bg-red hover:bg-red-dark rounded-md focus:outline-none" @click="callToAction()">{{ $t('home.action') }}</button>
+          <button class="font-medium text-sm px-8 py-3 text-white bg-red hover:bg-red-dark rounded focus:outline-none" @click="callToAction()">{{ $t('home.action') }}</button>
 
           <button class="hidden md:block ml-6 font-medium text-sm px-7 py-3 text-gray focus:outline-none hover:text-gray-light" @click="$router.push('/learn')"
             >{{ $t('btn.learn') }}

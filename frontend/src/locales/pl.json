@@ -11,15 +11,15 @@
         "organisations": "Zmień Organizacje"
     },
     "btn": {
-        "login": "ZALOGUJ SIĘ",
+        "login": "Zaloguj Się",
         "locale": "English",
         "learn": "Więcej o Canute OS",
-        "continue": "KONTYNUUJ",
+        "continue": "Kontynuuj",
         "open": "Otwórz",
         "inprogress": "W Trakcie"
     },
     "label": {
-        "email": "Adres Email",
+        "email": "Adres E-Mail",
         "organisations": "Organizacje",
         "locks": "Klucze"
     },
@@ -27,14 +27,14 @@
         "heading": "Budujemy lepsze miejsca",
         "subheading": "do życia oraz pracy.",
         "about": "Inteligentny system kontroli dostępu dla budynków wielorodzinnych.",
-        "action": "ROZPOCZNIJ"
+        "action": "Rozpocznij"
     },
     "auth": {
         "login": {
             "heading": "Aby rozpocząć lub kontynuować,",
             "subheading": "Podaj swój adres email.",
-            "about": "Nigdy więcej haseł do zapamiętania!",
-            "description": "Otrzymasz magiczny link do logowania w Email."
+            "about": "Nigdy więcej dodatkowych haseł do zapamiętania!",
+            "description": "Otrzymasz magiczny link do logowania w wiadomości E-Mail."
         },
         "failure": {
             "heading": "Logowanie nie powiodło się!",
