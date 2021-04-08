@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full px-4 py-2 my-3 xl:px-6 xl:py-4 border rounded-lg border-gray-dark flex flex-col justify-between cursor-pointer hover:border-red" @click="editUser()">
+  <div class="w-full px-4 py-2 my-3 xl:px-6 xl:py-4 border rounded-lg border-gray-dark flex flex-col justify-between cursor-pointer hover:border-red" @click="viewUser()">
     <h2 class="py-2  text-white ">{{ user.user.email }}</h2>
     <p class="my-1 text-sm  text-red">{{ user.annotation }}</p>
     <p class="my-1 text-sm truncate text-gray-dark">
@@ -16,7 +16,9 @@
       user: Object,
     },
     methods: {
-      editUser() {},
+      viewUser() {
+        this.$router.push('/users/' + this.user._id);
+      },
     },
   };
 </script>
