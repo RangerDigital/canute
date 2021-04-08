@@ -20,7 +20,7 @@
       <div class="w-60"></div>
     </div>
 
-    <HomeFooter />
+    <HomeFooter class="hidden xl:flex" />
   </section>
 </template>
 
