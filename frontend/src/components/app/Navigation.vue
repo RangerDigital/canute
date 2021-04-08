@@ -1,7 +1,7 @@
 <template>
   <!-- Navigation -->
   <div class="flex flex-row">
-    <div class="bg-gray-dark w-px mr-5 rounded-full"></div>
+    <div class="bg-gray-darker w-px mr-5 rounded-full"></div>
 
     <div class="w-full flex flex-col justify-around">
       <div class="my-5 2xl:my-12 flex flex-col justify-around">

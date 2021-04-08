@@ -9,7 +9,7 @@
       <!-- Locks List -->
       <div class="self-center xl:self-auto w-full md:max-w-md p-5">
         <p class="my-2 text-sm text-gray-dark ">{{ $t('label.locks') }}</p>
-        <div class="h-px bg-gray-dark rounded-full"></div>
+        <div class="h-px bg-gray-darker rounded-full"></div>
 
         <div class="flex flex-col xl:justify-center">
           <Lock v-for="item in locks" :key="item._id" v-bind:lock="item" />

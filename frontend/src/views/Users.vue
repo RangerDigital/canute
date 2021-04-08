@@ -9,13 +9,13 @@
       <!-- Vertical Container -->
       <div class="w-full p-4 xl:p-12  xl:mx-0 2xl:mx-20 flex flex-col justify-start">
         <div>
-          <h1 class="xl:mx-5 py-2 font-sans text-gray text-sm">Manage Users</h1>
+          <h1 class="xl:mx-5 py-2 font-sans text-gray-dark text-sm">Manage Users</h1>
 
           <div class="w-full flex flex-row justify-between">
             <input
               v-model="search"
               placeholder="Search"
-              class="w-full xl:w-96 xl:mx-5 block border-transparent focus:outline-none text-sm bg-gray-dark font-base tracking-wide px-3 py-2.5 text-white rounded-md placeholder-gray ring-red focus:ring-1 "
+              class="w-full xl:w-96 xl:mx-5 block border-transparent focus:outline-none text-sm bg-gray-darker font-base tracking-wide px-3 py-2.5 text-white rounded-md placeholder-gray-dark ring-red focus:ring-1 "
             />
 
             <button class="font-medium text-sm ml-2 lg:mx-5  py-3 lg:my-0 px-3 xl:px-9 text-white bg-red hover:bg-red-dark rounded-md focus:outline-none"
@@ -29,7 +29,7 @@
               ><span class="hidden xl:inline">ADD USER</span></button
             >
           </div>
-          <div class="xl:block bg-gray-dark my-5 h-px w-full rounded-full"></div>
+          <div class="xl:block bg-gray-darker my-5 h-px w-full rounded-full"></div>
         </div>
 
         <div class="justify-items-center grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 3xl:grid-cols-4 lg:gap-6">

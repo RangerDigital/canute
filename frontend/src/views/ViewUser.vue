@@ -12,7 +12,7 @@
           <div class="w-full flex flex-row justify-between">
             <button class="font-medium text-sm ml-2 lg:mx-5  py-3 lg:my-0 px-3 xl:px-9 text-white bg-red hover:bg-red-dark rounded-md focus:outline-none">SAVE</button>
           </div>
-          <div class="xl:block bg-gray-dark my-5 h-px w-full rounded-full"></div>
+          <div class="xl:block bg-gray-darker my-5 h-px w-full rounded-full"></div>
         </div>
       </div>
     </div>

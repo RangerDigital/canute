@@ -16,7 +16,7 @@
 
     <div v-if="isLoaded && organisations.length" class="self-center w-full md:max-w-md p-5">
       <p class="my-2 text-sm  text-gray-dark ">{{ $t('label.organisations') }}</p>
-      <div class="h-px bg-gray-dark rounded-full"></div>
+      <div class="h-px bg-gray-darker rounded-full"></div>
 
       <div class="flex flex-col">
         <Organisation v-for="item in organisations" :key="item._id" v-bind:organisation="item" />

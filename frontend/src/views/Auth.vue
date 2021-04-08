@@ -28,14 +28,14 @@
               type="email"
               v-model="userEmail"
               placeholder="... @gmail.com"
-              class="w-full lg:w-80 block border-transparent focus:outline-none bg-gray-dark font-base text-sm tracking-wide px-3 py-3 text-white rounded-md placeholder-gray ring-red focus:ring-1 "
+              class="w-full lg:w-80 block border-transparent focus:outline-none bg-gray-darker font-base text-sm tracking-wide px-3 py-3 text-white rounded-md placeholder-gray-dark ring-red focus:ring-1 "
               autofocus
               autocomplete
             />
           </div>
 
           <button
-            class="font-medium text-sm mx-5 my-6 lg:my-0 px-8 py-3 text-white bg-red hover:bg-red-dark rounded-md disabled:bg-gray-dark disabled:text-gray focus:outline-none"
+            class="font-medium text-sm mx-5 my-6 lg:my-0 px-8 py-3 text-white bg-red hover:bg-red-dark rounded-md disabled:bg-gray-darker disabled:text-gray focus:outline-none"
             @click="requestsMagicEmail()"
             :disabled="!userEmail.length"
             >{{ $t('btn.continue') }}</button
