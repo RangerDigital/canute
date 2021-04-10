@@ -16,7 +16,7 @@ module.exports = {
   pwa: {
     manifestOptions: {
       short_name: 'Canute',
-      name: 'Canute OS',
+      name: 'Canute',
       icons: [
         {
           src: '/maskable_icon.png',
@@ -32,7 +32,7 @@ module.exports = {
       ],
       start_url: '/dashboard',
       background_color: '#151719',
-      display: 'standalone',
+      display: 'minimal-ui',
       scope: '/',
     },
 
