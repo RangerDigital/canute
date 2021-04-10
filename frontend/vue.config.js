@@ -32,7 +32,7 @@ module.exports = {
       ],
       start_url: '/dashboard',
       background_color: '#151719',
-      display: 'browser',
+      display: 'standalone',
       scope: '/',
     },
 
