@@ -8,11 +8,61 @@
 
       <!-- Vertical Container -->
       <div class="w-full p-4 xl:p-12  xl:mx-0 2xl:mx-20 flex flex-col justify-start">
-        <div>
-          <div class="w-full flex flex-row justify-between">
-            <button class="font-medium text-sm ml-2 lg:mx-5  py-3 lg:my-0 px-3 xl:px-9 text-white bg-red hover:bg-red-dark rounded-md focus:outline-none">SAVE</button>
+        <div class="w-full flex flex-row justify-between items-center">
+          <h1 class=" py-2 font-sans text-gray-dark text-sm">Add/View User</h1>
+
+          <div>
+            <button class="font-medium text-sm ml-2 lg:mx-5  py-3 lg:my-0 px-3 xl:px-9 text-gray border border-gray-dark rounded-md focus:outline-none">Cancel</button>
+            <button class="font-medium text-sm ml-2 lg:mx-5  py-3 lg:my-0 px-3 xl:px-9 text-white bg-red hover:bg-red-dark rounded-md focus:outline-none">Save User</button>
           </div>
-          <div class="xl:block bg-gray-darker my-5 h-px w-full rounded-full"></div>
+        </div>
+        <div class="xl:block bg-gray-darker my-5 h-px w-full rounded-full"></div>
+
+        <div class="flex flex-col xl:flex-row w-full justify-between">
+          <div class="flex flex-col justify-start w-full">
+            <h1 class="py-2 font-sans text-gray text-sm">Adding new user to organisation. Will send E-Mail</h1>
+
+            <div class="my-3">
+              <label class="block my-2  text-sm font-base text-gray-dark"> E-Mail</label>
+              <input
+                type="email"
+                v-model="userEmail"
+                placeholder="... @gmail.com"
+                class="w-full lg:max-w-lg block border-transparent focus:outline-none bg-gray-darker font-base text-sm tracking-wide px-3 py-3 text-white rounded-md placeholder-gray-dark ring-red focus:ring-1 "
+                autofocus
+                autocomplete
+              />
+            </div>
+
+            <div class="my-3">
+              <label class="block my-2  text-sm font-base text-gray-dark"> Annotation</label>
+              <input
+                v-model="userEmail"
+                placeholder="3C 24/03"
+                class="w-full lg:max-w-lg block border-transparent focus:outline-none bg-gray-darker font-base text-sm tracking-wide px-3 py-3 text-white rounded-md placeholder-gray-dark ring-red focus:ring-1 "
+                autofocus
+                autocomplete
+              />
+            </div>
+
+            <div class="my-3 flex flex-row items-center ">
+              <p class="mr-4 py-2.5 w-16 text-center rounded-lg border border-gray-darker text-gray-dark cursor-pointer">Yes</p>
+              <p class="mr-4 py-2.5 w-16 text-center rounded-lg border border-red text-red cursor-pointer">No</p>
+
+              <label class="block my-2 text-sm font-base text-gray"> Is Admin?</label>
+            </div>
+          </div>
+
+          <!-- Divider -->
+          <div class="bg-gray-darker my-5 mx-5 w-px h-full rounded-full"></div>
+
+          <!-- Groups -->
+          <div class="w-full">
+            <h1 class="xl:mx-5 py-2 font-sans text-gray-dark text-sm">User Groups</h1>
+            <div class=" w-full xl:grid-cols-2 2xl:grid-cols-3 lg:gap-6">
+              <Group class="max-w-sm xl:mx-4" v-for="item in groups" :key="item._id" v-bind:group="item" />
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -26,12 +76,15 @@
   import AppNavigation from '@/components/AppNavigation.vue';
   import HomeFooter from '@/components/HomeFooter.vue';
 
+  import Group from '@/components/app/Group.vue';
+
   export default {
     name: 'ViewUser',
     components: {
       HomeNavigation,
       HomeFooter,
       AppNavigation,
+      Group,
     },
     data() {
       return {
