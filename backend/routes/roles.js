@@ -34,6 +34,32 @@ router.patch('/:roleId', checkAuth, checkOrg(true), async (req, res) => {
   res.json(roles);
 });
 
+router.post('/:roleId/users/:userId', checkAuth, checkOrg(true), async (req, res) => {
+  const { roleId, userId } = req.params;
+
+  let organisation = req.org;
+
+  // Check if userId is in organisation
+
+  organisation.roles.find((x) => x._id == roleId).users.push(userId);
+
+  organisation.save();
+
+  res.json(organisation);
+});
+
+router.delete('/:roleId/users/:userId', checkAuth, checkOrg(true), async (req, res) => {
+  const { roleId, userId } = req.params;
+
+  let organisation = req.org;
+
+  organisation.roles.find((x) => x._id == roleId).users = organisation.roles.find((x) => x._id == roleId).users.filter((y) => String(y) !== String(userId));
+
+  organisation.save();
+
+  res.json(organisation);
+});
+
 router.delete('/:roleId', checkAuth, checkOrg(true), async (req, res) => {
   const { orgId, roleId } = req.params;
 
