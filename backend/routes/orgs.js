@@ -118,9 +118,9 @@ router.get('/:orgId/users/:userId', checkAuth, checkOrg(true), async (req, res) 
 
 router.patch('/:orgId/users/:userId', checkAuth, checkOrg(true), async (req, res) => {
   const { orgId, userId } = req.params;
-  const { annotation } = req.body;
+  const { annotation, isAdmin } = req.body;
 
-  let users = await orgs.updateOne({ _id: orgId, 'users._id': userId }, { $set: { 'users.$.annotation': annotation } });
+  let users = await orgs.updateOne({ _id: orgId, 'users._id': userId }, { $set: { 'users.$.annotation': annotation, 'users.$.isAdmin': isAdmin } });
 
   res.json(users);
 });

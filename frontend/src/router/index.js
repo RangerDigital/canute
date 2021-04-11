@@ -28,6 +28,12 @@ const routes = [
     component: () => import(/* webpackChunkName: "createUsers" */ '../views/CreateUser.vue'),
   },
   {
+    path: '/users/:userID',
+    name: 'CreateUser',
+    component: () => import(/* webpackChunkName: "createUsers" */ '../views/CreateUser.vue'),
+    props: { editMode: true },
+  },
+  {
     path: '/groups',
     name: 'Groups',
     component: () => import(/* webpackChunkName: "groups" */ '../views/Groups.vue'),

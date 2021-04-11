@@ -9,7 +9,8 @@
       <!-- Vertical Container -->
       <div class="w-full p-4 xl:p-12  xl:mx-0 2xl:mx-20 flex flex-col justify-start">
         <div class="w-full flex flex-row justify-between items-center">
-          <h1 class=" py-2 font-sans text-gray-dark text-sm">Create User</h1>
+          <h1 v-if="!editMode" class=" py-2 font-sans text-gray-dark text-sm">Create User</h1>
+          <h1 v-if="editMode" class=" py-2 font-sans text-gray-dark text-sm">Edit User</h1>
 
           <div>
             <button class="font-medium text-sm ml-2 lg:mx-5  py-3 lg:my-0 px-3 xl:px-9 text-gray border border-gray-dark rounded-md focus:outline-none" @click="$router.go(-1)"
@@ -99,11 +100,15 @@
     data() {
       return {
         groups: [],
+        deletedGroups: [],
         activeGroups: [],
         user: {},
 
         organisation: null,
       };
+    },
+    props: {
+      editMode: Boolean,
     },
     methods: {
       getGroups() {
@@ -120,8 +125,16 @@
       toggleSelectGroup(groupId) {
         if (this.activeGroups.includes(groupId)) {
           this.activeGroups = this.activeGroups.filter((x) => String(x) !== String(groupId));
+
+          if (this.editMode) {
+            this.deletedGroups.push(groupId);
+          }
         } else {
           this.activeGroups.push(groupId);
+
+          if (this.editMode) {
+            this.deletedGroups = this.deletedGroups.filter((x) => String(x) !== String(groupId));
+          }
         }
       },
 
@@ -140,10 +153,50 @@
       },
 
       createUser() {
+        if (this.editMode) {
+          this.axios
+            .patch('/api/orgs/' + this.organisation + '/users/' + this.user._id, this.user)
+            .then(() => {
+              this.updateGroups();
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+
+          return;
+        }
+
         this.axios
           .post('/api/orgs/' + this.organisation + '/users', this.user)
           .then((payload) => {
             this.addGroups(payload.data._id);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      },
+
+      updateGroups() {
+        for (let group of this.activeGroups) {
+          this.axios.post('/api/orgs/' + this.organisation + '/roles/' + group + '/users/' + this.user._id).then(() => {});
+        }
+
+        for (let group of this.deletedGroups) {
+          this.axios.delete('/api/orgs/' + this.organisation + '/roles/' + group + '/users/' + this.user._id).then(() => {});
+        }
+
+        this.$router.go(-1);
+      },
+
+      getUser(userID) {
+        this.axios
+          .get('/api/orgs/' + this.organisation + '/users/' + userID)
+          .then((payload) => {
+            this.user = payload.data;
+
+            for (let role of payload.data.roles) {
+              this.activeGroups.push(role._id);
+            }
           })
           .catch((err) => {
             console.log(err);
@@ -155,6 +208,10 @@
         this.$router.push('/organisations');
       } else {
         this.organisation = localStorage.organisation;
+      }
+
+      if (this.editMode) {
+        this.getUser(this.$route.params.userID);
       }
 
       this.getGroups();
