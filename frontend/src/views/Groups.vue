@@ -33,7 +33,7 @@
         </div>
 
         <div class="justify-items-center grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 3xl:grid-cols-4 lg:gap-6">
-          <Group class="max-w-sm xl:mx-4" v-for="item in searchedGroups" :key="item._id" v-bind:group="item" />
+          <Group class="max-w-sm xl:mx-4 xl:hover:border-red" v-for="item in searchedGroups" :key="item._id" v-bind:group="item" />
         </div>
       </div>
     </div>

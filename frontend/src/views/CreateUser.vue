@@ -63,7 +63,7 @@
             <h1 class="xl:mx-5 py-2 font-sans text-gray-dark text-sm">User Groups</h1>
             <div class=" w-full grid grid-cols-1 2xl:grid-cols-2 3xl:grid-cols-3 lg:gap-6">
               <Group
-                class="max-w-sm xl:mx-4"
+                class="max-w-sm xl:mx-4 xl:hover:border-red"
                 v-for="item in groups"
                 :key="item._id"
                 v-bind:group="item"
