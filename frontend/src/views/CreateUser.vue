@@ -8,15 +8,19 @@
 
       <!-- Vertical Container -->
       <div class="w-full p-4 xl:p-12  xl:mx-0 2xl:mx-20 flex flex-col justify-start">
-        <div class="w-full flex flex-row justify-between items-center">
+        <div class="w-full flex flex-col xl:flex-row justify-between xl:items-center">
           <h1 v-if="!editMode" class=" py-2 font-sans text-gray-dark text-sm">Create User</h1>
           <h1 v-if="editMode" class=" py-2 font-sans text-gray-dark text-sm">Edit User</h1>
 
-          <div>
-            <button class="font-medium text-sm ml-2 lg:mx-5  py-3 lg:my-0 px-3 xl:px-9 text-gray border border-gray-dark rounded-md focus:outline-none" @click="$router.go(-1)"
+          <div class="flex flex-row xl:block">
+            <button
+              class="font-medium w-full xl:w-auto text-sm mx-1 lg:mx-5  py-3 lg:my-0 px-3 xl:px-9 text-gray border border-gray-dark rounded-md focus:outline-none"
+              @click="$router.go(-1)"
               >Cancel</button
             >
-            <button class="font-medium text-sm ml-2 lg:mx-5  py-3 lg:my-0 px-3 xl:px-9 text-white bg-red hover:bg-red-dark rounded-md focus:outline-none" @click="createUser()"
+            <button
+              class="font-medium w-full xl:w-auto text-sm mx-1 lg:mx-5  py-3 lg:my-0 px-3 xl:px-9 text-white bg-red hover:bg-red-dark rounded-md focus:outline-none"
+              @click="createUser()"
               >Save User</button
             >
           </div>
