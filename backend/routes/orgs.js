@@ -76,7 +76,9 @@ router.get('/:orgId/users', checkAuth, checkOrg(true), async (req, res) => {
 
     user = user;
     user.roles = roles;
+    user.email = user.user.email;
 
+    delete user.user;
     response.push(user);
   }
 
