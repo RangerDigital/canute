@@ -38,7 +38,7 @@
       </div>
 
       <div class="justify-items-center grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 3xl:grid-cols-4 lg:gap-6">
-        <User class="max-w-sm xl:mx-4" v-for="item in searchedUsers" :key="item._id" v-bind:user="item" />
+        <User class="max-w-sm xl:mx-4" v-for="item in searchedUsers" :key="item._id" v-bind:user="item" @click="$router.push('/users/' + item._id)" />
       </div>
     </div>
   </HorizontalLayout>
@@ -115,7 +115,7 @@
             depth: 3,
             doc: {
               id: '_id',
-              field: ['user:email', 'roles:name', 'tokens', 'annotation'],
+              field: ['email', 'roles:name', 'tokens', 'annotation'],
             },
           });
 
