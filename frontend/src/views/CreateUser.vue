@@ -198,6 +198,10 @@
             }
           });
         }
+
+        if (counter == 0) {
+          this.$router.go(-1);
+        }
       },
 
       getUser(userID) {
