@@ -4,6 +4,8 @@ const router = express.Router({ mergeParams: true });
 const checkAuth = require('../middleware/checkAuth');
 const checkOrg = require('../middleware/checkOrg');
 
+const orgs = require('../models/orgs');
+
 router.get('/', checkAuth, checkOrg(true), async (req, res) => {
   res.json(req.org.roles);
 });
@@ -23,8 +25,25 @@ router.post('/', checkAuth, checkOrg(true), async (req, res) => {
   res.json(organisation.roles);
 });
 
-// TODO: PATCH: /roles
+router.patch('/:roleId', checkAuth, checkOrg(true), async (req, res) => {
+  const { name } = req.body;
+  const { orgId, roleId } = req.params;
 
-// TODO: DELETE: /roles
+  let roles = await orgs.updateOne({ _id: orgId, 'roles._id': roleId }, { $set: { 'roles.$.name': name } });
+
+  res.json(roles);
+});
+
+router.delete('/:roleId', checkAuth, checkOrg(true), async (req, res) => {
+  const { orgId, roleId } = req.params;
+
+  let organisation = await orgs.findOne({ _id: orgId, 'roles._id': roleId });
+
+  organisation.roles = organisation.roles.filter((x) => String(x._id) !== String(roleId));
+
+  organisation.save();
+
+  res.json(organisation.roles);
+});
 
 module.exports = router;
