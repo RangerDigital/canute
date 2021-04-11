@@ -139,7 +139,7 @@ router.post('/:orgId/users', checkAuth, checkOrg(true), async (req, res) => {
 
   organisation.save();
 
-  res.json(organisation);
+  res.json(organisation.users[organisation.users.length - 1]);
 });
 
 router.delete('/:orgId/users/:userId', checkAuth, checkOrg(true), async (req, res) => {
