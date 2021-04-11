@@ -28,12 +28,9 @@
             <div class="my-3">
               <label class="block my-2  text-sm font-base text-gray-dark"> E-Mail</label>
               <input
-                type="email"
                 v-model="user.email"
                 placeholder="... @gmail.com"
                 class="w-full lg:max-w-lg block border-transparent focus:outline-none bg-gray-darker font-base text-sm tracking-wide px-3 py-3 text-white rounded-md placeholder-gray-dark ring-red focus:ring-1 "
-                autofocus
-                autocomplete
               />
             </div>
 
@@ -43,8 +40,6 @@
                 v-model="user.annotation"
                 placeholder="3C 24/03"
                 class="w-full lg:max-w-lg block border-transparent focus:outline-none bg-gray-darker font-base text-sm tracking-wide px-3 py-3 text-white rounded-md placeholder-gray-dark ring-red focus:ring-1 "
-                autofocus
-                autocomplete
               />
             </div>
 
