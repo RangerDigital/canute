@@ -12,8 +12,12 @@
           <h1 class=" py-2 font-sans text-gray-dark text-sm">Add User</h1>
 
           <div>
-            <button class="font-medium text-sm ml-2 lg:mx-5  py-3 lg:my-0 px-3 xl:px-9 text-gray border border-gray-dark rounded-md focus:outline-none">Cancel</button>
-            <button class="font-medium text-sm ml-2 lg:mx-5  py-3 lg:my-0 px-3 xl:px-9 text-white bg-red hover:bg-red-dark rounded-md focus:outline-none">Save User</button>
+            <button class="font-medium text-sm ml-2 lg:mx-5  py-3 lg:my-0 px-3 xl:px-9 text-gray border border-gray-dark rounded-md focus:outline-none" @click="$router.go(-1)"
+              >Cancel</button
+            >
+            <button class="font-medium text-sm ml-2 lg:mx-5  py-3 lg:my-0 px-3 xl:px-9 text-white bg-red hover:bg-red-dark rounded-md focus:outline-none" @click="createUser()"
+              >Save User</button
+            >
           </div>
         </div>
         <div class="xl:block bg-gray-darker my-5 h-px w-full rounded-full"></div>
@@ -24,7 +28,7 @@
               <label class="block my-2  text-sm font-base text-gray-dark"> E-Mail</label>
               <input
                 type="email"
-                v-model="userEmail"
+                v-model="user.email"
                 placeholder="... @gmail.com"
                 class="w-full lg:max-w-lg block border-transparent focus:outline-none bg-gray-darker font-base text-sm tracking-wide px-3 py-3 text-white rounded-md placeholder-gray-dark ring-red focus:ring-1 "
                 autofocus
@@ -35,7 +39,7 @@
             <div class="my-3">
               <label class="block my-2  text-sm font-base text-gray-dark"> Annotation</label>
               <input
-                v-model="userEmail"
+                v-model="user.annotation"
                 placeholder="3C 24/03"
                 class="w-full lg:max-w-lg block border-transparent focus:outline-none bg-gray-darker font-base text-sm tracking-wide px-3 py-3 text-white rounded-md placeholder-gray-dark ring-red focus:ring-1 "
                 autofocus
@@ -44,7 +48,7 @@
             </div>
 
             <div class="my-3 flex flex-row items-center ">
-              <Checkbox v-model="isAdmin" class="mr-5" />
+              <Checkbox v-model="user.isAdmin" class="mr-5" />
 
               <label class="block my-2 text-sm font-base text-gray"> Is Admin?</label>
             </div>
@@ -88,6 +92,8 @@
     data() {
       return {
         groups: [],
+        userId: null,
+        user: {},
         organisation: null,
         isAdmin: true,
       };
@@ -103,6 +109,21 @@
             console.log(err);
           });
       },
+
+      createUser() {
+        this.axios
+          .post('/api/orgs/' + this.organisation + '/users', this.user)
+          .then(() => {
+            this.$router.go(-1);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      },
+
+      getUser() {
+        // TODO
+      },
     },
     mounted() {
       if (!localStorage.organisation) {
@@ -112,6 +133,12 @@
       }
 
       this.getGroups();
+
+      this.userId = this.$route.params.userID;
+
+      if (this.userId != 'create') {
+        this.getUser();
+      }
     },
   };
 </script>
