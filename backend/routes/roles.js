@@ -41,11 +41,15 @@ router.post('/:roleId/users/:userId', checkAuth, checkOrg(true), async (req, res
 
   // Check if userId is in organisation
 
+  if (organisation.roles.find((x) => x._id == roleId).users.includes(userId)) {
+    res.json(organisation.roles);
+    return;
+  }
   organisation.roles.find((x) => x._id == roleId).users.push(userId);
 
   organisation.save();
 
-  res.json(organisation);
+  res.json(organisation.roles);
 });
 
 router.delete('/:roleId/users/:userId', checkAuth, checkOrg(true), async (req, res) => {
