@@ -57,7 +57,7 @@ router.delete('/:roleId/users/:userId', checkAuth, checkOrg(true), async (req, r
 
   let organisation = req.org;
 
-  organisation.roles.find((x) => x._id == roleId).users = organisation.roles.find((x) => x._id == roleId).users.filter((y) => String(y) !== String(userId));
+  organisation.roles.find((x) => x._id == roleId).users.pull(userId);
 
   organisation.save();
 
