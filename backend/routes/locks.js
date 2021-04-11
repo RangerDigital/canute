@@ -14,12 +14,14 @@ router.get('/', checkAuth, checkOrg(), async (req, res) => {
 
   let locks = [];
 
-  console.log(deviceArray);
+  console.log(req.org.roles);
 
   for (let device of deviceArray) {
     for (let shadow of device.shadows) {
       // Check if users have a role with permission to this shadow.
-      if (req.org.roles.filter((x) => x.permissions.includes(shadow._id) && x.users.includes(req.user._id))) {
+
+      console.log(req.org.roles.filter((x) => x.permissions.includes(shadow._id) && x.users.includes(req.user._id)).length);
+      if (req.org.roles.filter((x) => x.permissions.includes(shadow._id) && x.users.includes(req.user._id)).length) {
         console.log(shadow);
         // Check if shadow class == lock.
         if (shadow.class === 'lock') {
