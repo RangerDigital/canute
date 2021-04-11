@@ -177,15 +177,27 @@
       },
 
       updateGroups() {
+        let counter = this.activeGroups.length + this.deletedGroups.length;
+
         for (let group of this.activeGroups) {
-          this.axios.post('/api/orgs/' + this.organisation + '/roles/' + group + '/users/' + this.user._id).then(() => {});
+          this.axios.post('/api/orgs/' + this.organisation + '/roles/' + group + '/users/' + this.user._id).then(() => {
+            --counter;
+
+            if (counter == 0) {
+              this.$router.go(-1);
+            }
+          });
         }
 
         for (let group of this.deletedGroups) {
-          this.axios.delete('/api/orgs/' + this.organisation + '/roles/' + group + '/users/' + this.user._id).then(() => {});
-        }
+          this.axios.delete('/api/orgs/' + this.organisation + '/roles/' + group + '/users/' + this.user._id).then(() => {
+            --counter;
 
-        this.$router.go(-1);
+            if (counter == 0) {
+              this.$router.go(-1);
+            }
+          });
+        }
       },
 
       getUser(userID) {
