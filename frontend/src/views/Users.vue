@@ -27,7 +27,9 @@
               class="w-full xl:max-w-md xl:mx-5 block border-transparent focus:outline-none text-sm bg-gray-darker font-base tracking-wide px-3 py-2.5 text-white rounded-md placeholder-gray-dark ring-red focus:ring-1 "
             />
 
-            <button class="font-medium text-sm ml-2 lg:mx-5  py-3 lg:my-0 px-3 xl:px-9 text-white bg-red hover:bg-red-dark rounded-md focus:outline-none"
+            <button
+              class="font-medium text-sm ml-2 lg:mx-5  py-3 lg:my-0 px-3 xl:px-9 text-white bg-red hover:bg-red-dark rounded-md focus:outline-none"
+              @click="$router.push('/users/create')"
               ><svg class="inline xl:transform xl:scale-125 h-6 xl:h-4 xl:mr-4 align-middle text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path
                   stroke-linecap="round"

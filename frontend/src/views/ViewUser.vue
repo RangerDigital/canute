@@ -9,7 +9,7 @@
       <!-- Vertical Container -->
       <div class="w-full p-4 xl:p-12  xl:mx-0 2xl:mx-20 flex flex-col justify-start">
         <div class="w-full flex flex-row justify-between items-center">
-          <h1 class=" py-2 font-sans text-gray-dark text-sm">Add/View User</h1>
+          <h1 class=" py-2 font-sans text-gray-dark text-sm">Add User</h1>
 
           <div>
             <button class="font-medium text-sm ml-2 lg:mx-5  py-3 lg:my-0 px-3 xl:px-9 text-gray border border-gray-dark rounded-md focus:outline-none">Cancel</button>
@@ -20,8 +20,6 @@
 
         <div class="flex flex-col xl:flex-row w-full justify-between">
           <div class="flex flex-col justify-start w-full">
-            <h1 class="py-2 font-sans text-gray text-sm">Adding new user to organisation. Will send E-Mail</h1>
-
             <div class="my-3">
               <label class="block my-2  text-sm font-base text-gray-dark"> E-Mail</label>
               <input
@@ -46,8 +44,7 @@
             </div>
 
             <div class="my-3 flex flex-row items-center ">
-              <p class="mr-4 py-2.5 w-16 text-center rounded-lg border border-gray-darker text-gray-dark cursor-pointer">Yes</p>
-              <p class="mr-4 py-2.5 w-16 text-center rounded-lg border border-red text-red cursor-pointer">No</p>
+              <Checkbox v-model="isAdmin" class="mr-5" />
 
               <label class="block my-2 text-sm font-base text-gray"> Is Admin?</label>
             </div>
@@ -77,6 +74,7 @@
   import HomeFooter from '@/components/HomeFooter.vue';
 
   import Group from '@/components/app/Group.vue';
+  import Checkbox from '@/components/inputs/Checkbox.vue';
 
   export default {
     name: 'ViewUser',
@@ -85,11 +83,13 @@
       HomeFooter,
       AppNavigation,
       Group,
+      Checkbox,
     },
     data() {
       return {
         groups: [],
         organisation: null,
+        isAdmin: true,
       };
     },
     methods: {
