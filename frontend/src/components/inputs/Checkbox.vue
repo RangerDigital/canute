@@ -1,6 +1,6 @@
 <template>
-  <div class="h-8 w-8 border-gray-dark bg-gray-darker rounded-lg cursor-pointer" :class="{ border: !modelValue }" @click="toggle()">
-    <div v-if="modelValue" class="w-full h-full flex items-center  justify-center bg-red rounded-lg">
+  <div class="w-8 h-8 rounded-lg cursor-pointer border-gray-dark bg-gray-darker" :class="{ border: !modelValue }" @click="toggle()">
+    <div v-if="modelValue" class="flex items-center justify-center w-full h-full rounded-lg bg-red">
       <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.3" d="M5 13l4 4L19 7" />
       </svg>

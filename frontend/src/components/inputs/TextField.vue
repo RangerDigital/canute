@@ -2,7 +2,7 @@
   <input
     v-model="value"
     v-bind:placeholder="placeholder"
-    class="w-full lg:max-w-lg block border-transparent focus:outline-none bg-gray-darker font-base text-sm tracking-wide px-3 py-3 text-white rounded-md placeholder-gray-dark ring-red focus:ring-1 "
+    class="block w-full px-3 py-3 text-sm tracking-wide text-white border-transparent rounded-md lg:max-w-lg focus:outline-none bg-gray-darker font-base placeholder-gray-dark ring-red focus:ring-1 "
   />
 </template>
 
