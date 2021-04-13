@@ -1,52 +1,46 @@
 <template>
-  <section class="min-h-screen h-full flex flex-col justify-between">
-    <HomeNavigation noLogin noNav />
+  <HorizontalLayout>
+    <!-- Vertical Container -->
+    <div class="w-full p-4 xl:p-12  xl:mx-0 2xl:mx-20 flex flex-col justify-start">
+      <div>
+        <h1 class="xl:mx-5 py-2 font-sans text-gray-dark text-sm">
+          <svg class="inline mr-2 h-5 w-5 text-gray-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.2"
+              d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+            /></svg
+          >{{ $t('devices.title') }}</h1
+        >
 
-    <!-- Horizontal Main Container -->
-    <div class="self-center xl:self-auto w-full h-full flex-grow md:max-w-md xl:max-w-full flex flex-col xl:flex-row justify-start xl:justify-between xl:px-6 xl:py-6">
-      <AppNavigation class="hidden xl:flex" />
+        <div class="w-full flex flex-row justify-between">
+          <input
+            v-model="search"
+            v-bind:placeholder="$t('label.search')"
+            class="w-full xl:max-w-md xl:mx-5 block border-transparent focus:outline-none text-sm bg-gray-darker font-base tracking-wide px-3 py-2.5 text-white rounded-md placeholder-gray-dark ring-red focus:ring-1 "
+          />
 
-      <!-- Vertical Container -->
-      <div class="w-full p-4 xl:p-12  xl:mx-0 2xl:mx-20 flex flex-col justify-start">
-        <div>
-          <h1 class="xl:mx-5 py-2 font-sans text-gray-dark text-sm">Manage Devices</h1>
-
-          <div class="w-full flex flex-row justify-between">
-            <input
-              v-model="search"
-              placeholder="Search"
-              class="w-full xl:w-96 xl:mx-5 block border-transparent focus:outline-none text-sm bg-gray-darker font-base tracking-wide px-3 py-2.5 text-white rounded-md placeholder-gray-dark ring-red focus:ring-1 "
-            />
-
-            <button class="font-medium text-sm ml-2 lg:mx-5  py-3 lg:my-0 px-3 xl:px-9 text-white bg-red hover:bg-red-dark rounded-md focus:outline-none">
-              <svg class="inline xl:transform xl:scale-125 h-6 xl:h-4 xl:mr-4 align-middle text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.5"
-                  d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"
-                /></svg
-              ><span class="hidden xl:inline">ADD DEVICE</span></button
-            >
-          </div>
-          <div class="xl:block bg-gray-darker my-5 h-px w-full rounded-full"></div>
+          <button
+            class="font-medium text-sm ml-2 lg:mx-5  py-3 lg:my-0 px-3 xl:px-9 text-white bg-red hover:bg-red-dark rounded-md focus:outline-none"
+            @click="$router.push('/devices/create')"
+            ><svg class="inline xl:transform xl:scale-125 h-6 xl:h-4 xl:mr-4 align-middle text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6m0 0v6m0-6h6m-6 0H6" /></svg
+            ><span class="hidden xl:inline">{{ $t('devices.add') }}</span></button
+          >
         </div>
+        <div class="xl:block bg-gray-darker my-5 h-px w-full rounded-full"></div>
+      </div>
 
-        <div class="justify-items-center grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 3xl:grid-cols-4 lg:gap-6">
-          <Device class="max-w-sm xl:mx-4" v-for="item in searchedDevices" :key="item._id" v-bind:device="item" />
-        </div>
+      <div class="justify-items-center grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 3xl:grid-cols-4 lg:gap-6">
+        <Device class="max-w-sm xl:mx-4 xl:hover:border-red" v-for="item in searchedDevices" :key="item._id" v-bind:device="item" @click="$router.push('/devices/' + item._id)" />
       </div>
     </div>
-
-    <HomeFooter />
-  </section>
+  </HorizontalLayout>
 </template>
 
 <script>
-  import HomeNavigation from '@/components/HomeNavigation.vue';
-  import AppNavigation from '@/components/AppNavigation.vue';
-  import HomeFooter from '@/components/HomeFooter.vue';
-
+  import HorizontalLayout from '@/components/layouts/HorizontalLayout.vue';
   import Device from '@/components/app/Device.vue';
 
   const FlexSearch = require('flexsearch');
@@ -54,9 +48,7 @@
   export default {
     name: 'Devices',
     components: {
-      HomeNavigation,
-      HomeFooter,
-      AppNavigation,
+      HorizontalLayout,
       Device,
     },
     data() {

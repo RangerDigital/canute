@@ -1,77 +1,81 @@
 {
-    "nav": {
-        "services": "Services",
-        "contact": "Contact",
-        "logged": "Logged In as",
-        "dashboard": "Dashboard",
-        "groups": "Groups",
-        "users": "Users",
-        "devices": "Devices",
-        "settings": "Sign Out",
-        "organisations": "Switch Organisations"
+  "nav": {
+    "services": "Services",
+    "contact": "Contact",
+    "logged": "Logged In as",
+    "dashboard": "Dashboard",
+    "groups": "Groups",
+    "users": "Users",
+    "devices": "Devices",
+    "settings": "Sign Out",
+    "organisations": "Switch Organisations"
+  },
+  "btn": {
+    "login": "SIGN IN",
+    "locale": "Polski",
+    "learn": "Learn More",
+    "continue": "CONTINUE",
+    "open": "Open",
+    "inprogress": "In Progress"
+  },
+  "label": {
+    "email": "Your Email",
+    "organisations": "Organisations",
+    "locks": "Locks",
+    "search": "Search"
+  },
+  "home": {
+    "heading": "One app. Whole building.",
+    "subheading": "Happy residents!",
+    "about": "Multi-family building internet-connected access control system.",
+    "action": "GET STARTED"
+  },
+  "auth": {
+    "login": {
+      "heading": "Create account. Or Sign in.",
+      "subheading": "It’s the same!",
+      "about": "No more passwords to remember!",
+      "description": "You will receive a magic login link via Email."
     },
-    "btn": {
-        "login": "SIGN IN",
-        "locale": "Polski",
-        "learn": "Learn More",
-        "continue": "CONTINUE",
-        "open": "Open",
-        "inprogress": "In Progress"
+    "failure": {
+      "heading": "Sorry, Failed to sign in!",
+      "subheading": "Please try again.",
+      "about": "This magic link is no longer active."
     },
-    "label": {
-        "email": "Your Email",
-        "organisations": "Organisations",
-        "locks": "Locks",
-        "search": "Search"
-    },
-    "home": {
-        "heading": "One app. Whole building.",
-        "subheading": "Happy residents!",
-        "about": "Multi-family building internet-connected access control system.",
-        "action": "GET STARTED"
-    },
-    "auth": {
-        "login": {
-            "heading": "Create account. Or Sign in.",
-            "subheading": "It’s the same!",
-            "about": "No more passwords to remember!",
-            "description": "You will receive a magic login link via Email."
-        },
-        "failure": {
-            "heading": "Sorry, Failed to sign in!",
-            "subheading": "Please try again.",
-            "about": "This magic link is no longer active."
-        },
-        "success": {
-            "heading": "Success 🎉 Magic E-mail sent!",
-            "subheading": "Check inbox to continue.",
-            "about": "You can safely close this page now."
-        }
-    },
-    "dashboard": {
-        "success": {
-            "heading": "Success 🎉 Logged in as"
-        },
-        "failure": {
-            "heading": "Sorry 🔥 Not logged in!",
-            "subheading": "Check console log."
-        }
-    },
-    "organisations": {
-        "heading": "Select <span class='text-white'>your</span> organisation. ",
-        "error": {
-            "heading": "<span class='text-red'>Sorry,</span> You don't belong to any organizations <span class='text-red'>yet!</span>",
-            "about": "Ask your building admin about access."
-        }
-    },
-    "users": {
-        "title": "Manage Users",
-        "add": "Add User"
-    },
-    "groups": {
-        "title": "Manage Groups",
-        "add": "Add Group",
-        "users": "Users",
-        "permissions": "Permissions"
+    "success": {
+      "heading": "Success 🎉 Magic E-mail sent!",
+      "subheading": "Check inbox to continue.",
+      "about": "You can safely close this page now."
     }
+  },
+  "dashboard": {
+    "success": {
+      "heading": "Success 🎉 Logged in as"
+    },
+    "failure": {
+      "heading": "Sorry 🔥 Not logged in!",
+      "subheading": "Check console log."
+    }
+  },
+  "organisations": {
+    "heading": "Select <span class='text-white'>your</span> organisation. ",
+    "error": {
+      "heading": "<span class='text-red'>Sorry,</span> You don't belong to any organizations <span class='text-red'>yet!</span>",
+      "about": "Ask your building admin about access."
+    }
+  },
+  "users": {
+    "title": "Manage Users",
+    "add": "Add User"
+  },
+  "groups": {
+    "title": "Manage Groups",
+    "add": "Add Group",
+    "users": "Users",
+    "permissions": "Permissions"
+  },
+  "devices": {
+    "title": "Manage Devices",
+    "add": "Add Device"
+  }
 }

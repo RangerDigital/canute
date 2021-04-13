@@ -1,77 +1,81 @@
 {
-    "nav": {
-        "services": "Usługi",
-        "contact": "Kontakt",
-        "logged": "Zalogowany jako",
-        "dashboard": "Pulpit",
-        "groups": "Grupy",
-        "users": "Mieszkańcy",
-        "devices": "Urządzenia",
-        "settings": "Wyloguj Się",
-        "organisations": "Zmień Organizacje"
+  "nav": {
+    "services": "Usługi",
+    "contact": "Kontakt",
+    "logged": "Zalogowany jako",
+    "dashboard": "Pulpit",
+    "groups": "Grupy",
+    "users": "Mieszkańcy",
+    "devices": "Urządzenia",
+    "settings": "Wyloguj Się",
+    "organisations": "Zmień Organizacje"
+  },
+  "btn": {
+    "login": "Zaloguj Się",
+    "locale": "English",
+    "learn": "Więcej o Canute OS",
+    "continue": "Kontynuuj",
+    "open": "Otwórz",
+    "inprogress": "W Trakcie"
+  },
+  "label": {
+    "email": "Adres E-Mail",
+    "organisations": "Organizacje",
+    "locks": "Klucze",
+    "search": "Szukaj"
+  },
+  "home": {
+    "heading": "Budujemy lepsze miejsca",
+    "subheading": "do życia oraz pracy.",
+    "about": "Inteligentny system kontroli dostępu dla budynków wielorodzinnych.",
+    "action": "Rozpocznij"
+  },
+  "auth": {
+    "login": {
+      "heading": "Aby rozpocząć lub kontynuować,",
+      "subheading": "Podaj swój adres email.",
+      "about": "Nigdy więcej haseł do zapamiętania!",
+      "description": "Otrzymasz magiczny link do logowania w wiadomości E-Mail."
     },
-    "btn": {
-        "login": "Zaloguj Się",
-        "locale": "English",
-        "learn": "Więcej o Canute OS",
-        "continue": "Kontynuuj",
-        "open": "Otwórz",
-        "inprogress": "W Trakcie"
+    "failure": {
+      "heading": "Logowanie nie powiodło się!",
+      "subheading": "Spróbuj ponownie.",
+      "about": "Ten magiczne link nie jest już aktywny."
     },
-    "label": {
-        "email": "Adres E-Mail",
-        "organisations": "Organizacje",
-        "locks": "Klucze",
-        "search": "Szukaj"
-    },
-    "home": {
-        "heading": "Budujemy lepsze miejsca",
-        "subheading": "do życia oraz pracy.",
-        "about": "Inteligentny system kontroli dostępu dla budynków wielorodzinnych.",
-        "action": "Rozpocznij"
-    },
-    "auth": {
-        "login": {
-            "heading": "Aby rozpocząć lub kontynuować,",
-            "subheading": "Podaj swój adres email.",
-            "about": "Nigdy więcej haseł do zapamiętania!",
-            "description": "Otrzymasz magiczny link do logowania w wiadomości E-Mail."
-        },
-        "failure": {
-            "heading": "Logowanie nie powiodło się!",
-            "subheading": "Spróbuj ponownie.",
-            "about": "Ten magiczne link nie jest już aktywny."
-        },
-        "success": {
-            "heading": "Sukces 🎉 E-mail wysłany!",
-            "subheading": "Sprawdź swoją skrzynkę.",
-            "about": "Możesz teraz bezpiecznie zamknąć tą stronę."
-        }
-    },
-    "dashboard": {
-        "success": {
-            "heading": "Witaj, 🎉"
-        },
-        "failure": {
-            "heading": "Nie jesteś zalogowany!",
-            "subheading": "Sprawdź dziennik konsoli."
-        }
-    },
-    "organisations": {
-        "heading": "Wybierz <span class='text-white'>swoją aktywną</span> organizacje. ",
-        "error": {
-            "heading": "<span class='text-red'>Nie należysz </span> jeszcze do żadnej <span class='text-red'>organizacji.</span>",
-            "about": "Zapytaj się administratora o dostęp."
-        }
-    },
-    "users": {
-        "title": "Zarządzaj Mieszkańcami",
-        "add": "Dodaj Mieszkańca"
-    },
-    "groups": {
-        "title": "Zarządzaj Grupami",
-        "add": "Dodaj Grupe",
-        "users": "Użytkowników",
-        "permissions": "Uprawnień"
+    "success": {
+      "heading": "Sukces 🎉 E-mail wysłany!",
+      "subheading": "Sprawdź swoją skrzynkę.",
+      "about": "Możesz teraz bezpiecznie zamknąć tą stronę."
     }
+  },
+  "dashboard": {
+    "success": {
+      "heading": "Witaj, 🎉"
+    },
+    "failure": {
+      "heading": "Nie jesteś zalogowany!",
+      "subheading": "Sprawdź dziennik konsoli."
+    }
+  },
+  "organisations": {
+    "heading": "Wybierz <span class='text-white'>swoją aktywną</span> organizacje. ",
+    "error": {
+      "heading": "<span class='text-red'>Nie należysz </span> jeszcze do żadnej <span class='text-red'>organizacji.</span>",
+      "about": "Zapytaj się administratora o dostęp."
+    }
+  },
+  "users": {
+    "title": "Zarządzaj Mieszkańcami",
+    "add": "Dodaj Mieszkańca"
+  },
+  "groups": {
+    "title": "Zarządzaj Grupami",
+    "add": "Dodaj Grupe",
+    "users": "Użytkowników",
+    "permissions": "Uprawnień"
+  },
+  "devices": {
+    "add": "Dodaj Urządzenie",
+    "title": "Zarządzaj Urządzeniami"
+  }
 }
