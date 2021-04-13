@@ -67,5 +67,11 @@
     "users": {
         "title": "Manage Users",
         "add": "Add User"
+    },
+    "groups": {
+        "title": "Manage Groups",
+        "add": "Add Group",
+        "users": "Users",
+        "permissions": "Permissions"
     }
 }

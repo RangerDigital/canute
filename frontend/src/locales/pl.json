@@ -67,5 +67,11 @@
     "users": {
         "title": "Zarządzaj Mieszkańcami",
         "add": "Dodaj Mieszkańca"
+    },
+    "groups": {
+        "title": "Zarządzaj Grupami",
+        "add": "Dodaj Grupe",
+        "users": "Użytkowników",
+        "permissions": "Uprawnień"
     }
 }
