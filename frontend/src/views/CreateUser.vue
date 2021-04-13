@@ -14,7 +14,7 @@
 
           <div class="flex flex-row xl:block">
             <button
-              class="font-medium w-full xl:w-auto text-sm mx-1 lg:mx-5  py-3 lg:my-0 px-3 xl:px-9 text-gray border border-gray-dark rounded-md focus:outline-none"
+              class="font-medium w-full xl:w-auto text-sm mx-1 lg:mx-5  py-3 lg:my-0 px-3 xl:px-9 text-gray border border-gray-darker rounded-md focus:outline-none"
               @click="$router.go(-1)"
               >Cancel</button
             >
@@ -32,10 +32,13 @@
             <div class="my-3">
               <label class="block my-2  text-sm font-base text-gray-dark"> E-Mail</label>
               <input
+                v-if="!editMode"
                 v-model="user.email"
                 placeholder="... @gmail.com"
                 class="w-full lg:max-w-lg block border-transparent focus:outline-none bg-gray-darker font-base text-sm tracking-wide px-3 py-3 text-white rounded-md placeholder-gray-dark ring-red focus:ring-1 "
               />
+
+              <p v-if="editMode" class="font-base text-sm tracking-wide mx-3 my-3 text-white">{{ user.email }}</p>
             </div>
 
             <div class="my-3">
@@ -50,7 +53,7 @@
             <div class="my-3 flex flex-row items-center ">
               <Checkbox v-model="user.isAdmin" class="mr-5" />
 
-              <label class="block my-2 text-sm font-base text-gray"> Is Admin?</label>
+              <label class="block my-2 text-sm font-base text-gray"> Administrator - Should be able to manage users?</label>
             </div>
           </div>
 
