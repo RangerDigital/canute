@@ -21,7 +21,8 @@
     "label": {
         "email": "Your Email",
         "organisations": "Organisations",
-        "locks": "Locks"
+        "locks": "Locks",
+        "search": "Search"
     },
     "home": {
         "heading": "One app. Whole building.",
@@ -62,5 +63,9 @@
             "heading": "<span class='text-red'>Sorry,</span> You don't belong to any organizations <span class='text-red'>yet!</span>",
             "about": "Ask your building admin about access."
         }
+    },
+    "users": {
+        "title": "Manage Users",
+        "add": "Add User"
     }
 }

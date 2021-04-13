@@ -11,13 +11,13 @@
               stroke-width="1.2"
               d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
             /></svg
-          >Manage Users</h1
+          >{{ $t('users.title') }}</h1
         >
 
         <div class="w-full flex flex-row justify-between">
           <input
             v-model="search"
-            placeholder="Search"
+            v-bind:placeholder="$t('label.search')"
             class="w-full xl:max-w-md xl:mx-5 block border-transparent focus:outline-none text-sm bg-gray-darker font-base tracking-wide px-3 py-2.5 text-white rounded-md placeholder-gray-dark ring-red focus:ring-1 "
           />
 
@@ -31,7 +31,7 @@
                 stroke-width="1.5"
                 d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"
               /></svg
-            ><span class="hidden xl:inline">ADD USER</span></button
+            ><span class="hidden xl:inline">{{ $t('users.add') }}</span></button
           >
         </div>
         <div class="xl:block bg-gray-darker my-5 h-px w-full rounded-full"></div>

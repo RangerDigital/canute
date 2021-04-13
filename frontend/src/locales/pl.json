@@ -21,7 +21,8 @@
     "label": {
         "email": "Adres E-Mail",
         "organisations": "Organizacje",
-        "locks": "Klucze"
+        "locks": "Klucze",
+        "search": "Szukaj"
     },
     "home": {
         "heading": "Budujemy lepsze miejsca",
@@ -62,5 +63,9 @@
             "heading": "<span class='text-red'>Nie należysz </span> jeszcze do żadnej <span class='text-red'>organizacji.</span>",
             "about": "Zapytaj się administratora o dostęp."
         }
+    },
+    "users": {
+        "title": "Zarządzaj Mieszkańcami",
+        "add": "Dodaj Mieszkańca"
     }
 }
