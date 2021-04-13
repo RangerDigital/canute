@@ -50,7 +50,7 @@
     },
     "dashboard": {
         "success": {
-            "heading": "Sukces 🎉 Witaj,"
+            "heading": "Witaj, 🎉"
         },
         "failure": {
             "heading": "Nie jesteś zalogowany!",
