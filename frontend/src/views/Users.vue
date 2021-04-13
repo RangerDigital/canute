@@ -1,7 +1,6 @@
 <template>
   <HorizontalLayout>
-    <!-- Vertical Container -->
-    <div class="w-full p-4 xl:p-12  xl:mx-0 2xl:mx-20 flex flex-col justify-start">
+    <VerticalContainer>
       <div>
         <h1 class="xl:mx-5 py-2 font-sans text-gray-dark text-sm"
           ><svg class="inline mr-2 h-5 w-5 text-gray-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -15,15 +14,9 @@
         >
 
         <div class="w-full flex flex-row justify-between">
-          <input
-            v-model="search"
-            v-bind:placeholder="$t('label.search')"
-            class="w-full xl:max-w-md xl:mx-5 block border-transparent focus:outline-none text-sm bg-gray-darker font-base tracking-wide px-3 py-2.5 text-white rounded-md placeholder-gray-dark ring-red focus:ring-1 "
-          />
+          <TextField class="w-full xl:mx-5" v-model="search" v-bind:placeholder="$t('label.search')" />
 
-          <button
-            class="font-medium text-sm ml-2 lg:mx-5  py-3 lg:my-0 px-3 xl:px-9 text-white bg-red hover:bg-red-dark rounded-md focus:outline-none"
-            @click="$router.push('/users/create')"
+          <Button tiny @click="$router.push('/users/create')"
             ><svg class="inline xl:transform xl:scale-125 h-6 xl:h-4 xl:mr-4 align-middle text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path
                 stroke-linecap="round"
@@ -31,7 +24,7 @@
                 stroke-width="1.5"
                 d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"
               /></svg
-            ><span class="hidden xl:inline">{{ $t('users.add') }}</span></button
+            ><span class="hidden xl:inline">{{ $t('users.add') }}</span></Button
           >
         </div>
         <div class="xl:block bg-gray-darker my-5 h-px w-full rounded-full"></div>
@@ -40,12 +33,16 @@
       <div class="justify-items-center grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 3xl:grid-cols-4 lg:gap-6">
         <User class="max-w-sm xl:mx-4" v-for="item in searchedUsers" :key="item._id" v-bind:user="item" @click="$router.push('/users/' + item._id)" />
       </div>
-    </div>
+    </VerticalContainer>
   </HorizontalLayout>
 </template>
 
 <script>
   import HorizontalLayout from '@/components/layouts/HorizontalLayout.vue';
+  import VerticalContainer from '@/components/layouts/VerticalContainer.vue';
+
+  import Button from '@/components/inputs/Button.vue';
+  import TextField from '@/components/inputs/TextField.vue';
 
   import User from '@/components/app/User.vue';
 
@@ -56,6 +53,9 @@
     components: {
       User,
       HorizontalLayout,
+      Button,
+      TextField,
+      VerticalContainer,
     },
     data() {
       return {
