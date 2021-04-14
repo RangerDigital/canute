@@ -46,7 +46,7 @@
 
               <div class="flex flex-row items-center my-5 ">
                 <Checkbox v-model="user.isAdmin" class="flex-shrink-0" />
-                <p class="mx-3 my-2 text-sm text-gray">Administrator - Should be able to manage users?</p>
+                <p class="mx-3 my-2 text-sm text-gray-dark">Administrator - Should be able to manage users?</p>
               </div>
             </div>
           </section>
