@@ -2,8 +2,7 @@
   <HorizontalLayout>
     <VerticalContainer>
       <div class="flex flex-col justify-between w-full xl:flex-row xl:items-center">
-        <h1 v-if="!editMode" class="py-2 font-sans text-sm text-gray-dark">Creating new User</h1>
-        <h1 v-if="editMode" class="py-2 font-sans text-sm text-gray-dark">Editing existing User</h1>
+        <h1 class="py-2 font-sans text-sm text-gray-dark"> {{ editMode ? 'Editing existing User' : 'Creating new User' }}</h1>
 
         <div class="flex flex-row xl:block">
           <Button ghost @click="$router.go(-1)">Cancel</Button>
@@ -56,7 +55,7 @@
               v-for="item in groups"
               :key="item._id"
               v-bind:group="item"
-              v-bind:isActive="isSelected(item._id)"
+              v-bind:isActive="activeGroups.includes(item._id)"
               @click="toggleSelectGroup(item._id)"
             />
           </div>
@@ -100,14 +99,19 @@
     },
     methods: {
       getGroups() {
-        this.axios
-          .get('/api/orgs/' + this.organisation + '/roles')
-          .then((payload) => {
-            this.groups = payload.data;
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+        this.axios.get('/api/orgs/' + this.organisation + '/roles').then((payload) => {
+          this.groups = payload.data;
+        });
+      },
+
+      getExistingUser(userID) {
+        this.axios.get('/api/orgs/' + this.organisation + '/users/' + userID).then((payload) => {
+          this.user = payload.data;
+
+          for (let role of payload.data.roles) {
+            this.activeGroups.push(role._id);
+          }
+        });
       },
 
       deleteUser() {
@@ -130,10 +134,6 @@
             this.deletedGroups = this.deletedGroups.filter((x) => String(x) !== String(groupId));
           }
         }
-      },
-
-      isSelected(groupId) {
-        return this.activeGroups.includes(groupId);
       },
 
       addGroups(userId) {
@@ -197,21 +197,6 @@
           this.$router.go(-1);
         }
       },
-
-      getUser(userID) {
-        this.axios
-          .get('/api/orgs/' + this.organisation + '/users/' + userID)
-          .then((payload) => {
-            this.user = payload.data;
-
-            for (let role of payload.data.roles) {
-              this.activeGroups.push(role._id);
-            }
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      },
     },
     mounted() {
       if (!localStorage.organisation) {
@@ -221,7 +206,7 @@
       }
 
       if (this.editMode) {
-        this.getUser(this.$route.params.userID);
+        this.getExistingUser(this.$route.params.userID);
       }
 
       this.getGroups();
