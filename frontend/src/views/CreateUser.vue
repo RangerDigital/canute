@@ -2,8 +2,8 @@
   <HorizontalLayout>
     <VerticalContainer>
       <div class="flex flex-col justify-between w-full xl:flex-row xl:items-center">
-        <h1 v-if="!editMode" class="py-2 font-sans text-sm text-gray-dark">Create User</h1>
-        <h1 v-if="editMode" class="py-2 font-sans text-sm text-gray-dark">Edit User</h1>
+        <h1 v-if="!editMode" class="py-2 font-sans text-sm text-gray-dark">Creating new User</h1>
+        <h1 v-if="editMode" class="py-2 font-sans text-sm text-gray-dark">Editing existing User</h1>
 
         <div class="flex flex-row xl:block">
           <Button ghost @click="$router.go(-1)">Cancel</Button>
