@@ -1,9 +1,9 @@
 <template>
   <HorizontalLayout>
     <VerticalContainer>
-      <div class="w-full flex flex-col xl:flex-row justify-between xl:items-center">
-        <h1 v-if="!editMode" class=" py-2 font-sans text-gray-dark text-sm">Create User</h1>
-        <h1 v-if="editMode" class=" py-2 font-sans text-gray-dark text-sm">Edit User</h1>
+      <div class="flex flex-col justify-between w-full xl:flex-row xl:items-center">
+        <h1 v-if="!editMode" class="py-2 font-sans text-sm text-gray-dark">Create User</h1>
+        <h1 v-if="editMode" class="py-2 font-sans text-sm text-gray-dark">Edit User</h1>
 
         <div class="flex flex-row xl:block">
           <Button ghost @click="$router.go(-1)">Cancel</Button>
@@ -11,36 +11,46 @@
         </div>
       </div>
 
-      <div class="xl:block bg-gray-darker my-5 h-px w-full rounded-full"></div>
+      <div class="w-full h-px my-5 rounded-full xl:block bg-gray-darker"></div>
 
-      <div class="flex flex-col xl:flex-row w-full justify-between">
+      <div class="flex flex-col justify-between w-full xl:flex-row">
         <div class="flex flex-col justify-start w-full">
           <div class="my-3">
-            <label class="block my-2  text-sm font-base text-gray-dark"> E-Mail</label>
+            <label class="block my-2 text-sm font-base text-gray-dark"> E-Mail</label>
             <TextField v-if="!editMode" v-model="user.email" placeholder="... @gmail.com" />
 
-            <p v-if="editMode" class="font-base text-sm tracking-wide mx-3 my-3 text-white">{{ user.email }}</p>
+            <div v-if="editMode" class="flex flex-row">
+              <div class="w-px rounded-full bg-red"></div>
+              <p class="mx-3 my-3 text-sm tracking-wide text-white font-base">{{ user.email }}</p>
+            </div>
           </div>
 
           <div class="my-3">
-            <label class="block my-2  text-sm font-base text-gray-dark"> Annotation</label>
+            <label class="block my-2 text-sm font-base text-gray-dark"> Annotation</label>
             <TextField v-model="user.annotation" placeholder="3C 24/03" />
           </div>
 
-          <div class="my-3 flex flex-row items-center ">
+          <div class="flex flex-row items-center my-3 ">
             <Checkbox v-model="user.isAdmin" class="mr-5" />
 
-            <label class="block my-2 text-sm font-base text-gray"> Administrator - Should be able to manage users?</label>
+            <label class="block my-2 text-sm font-base text-gray">Should be able to manage users?</label>
+          </div>
+
+          <div class="w-full h-px my-5 rounded-full xl:block bg-gray-darker"></div>
+
+          <div class="flex flex-col items-center my-4 xl:flex-row">
+            <Button ghost @click="deleteUser()">Delete User</Button>
+            <label class="my-2 text-sm font-base text-red">Remove user from organisation.</label>
           </div>
         </div>
 
         <!-- Divider -->
-        <div class="bg-gray-darker my-5 mx-5 w-px h-full rounded-full"></div>
+        <div class="w-px h-full mx-5 my-5 rounded-full bg-gray-darker"></div>
 
         <!-- Groups -->
         <div class="w-full">
-          <h1 class="xl:mx-5 py-2 font-sans text-gray-dark text-sm">User Groups</h1>
-          <div class=" w-full grid grid-cols-1 2xl:grid-cols-2 3xl:grid-cols-3 lg:gap-6">
+          <h1 class="py-2 font-sans text-sm xl:mx-5 text-gray-dark">User Groups</h1>
+          <div class="grid w-full grid-cols-1 2xl:grid-cols-2 3xl:grid-cols-3 lg:gap-6">
             <Group
               class="max-w-sm xl:mx-4 xl:hover:border-red"
               v-for="item in groups"
@@ -98,6 +108,12 @@
           .catch((err) => {
             console.log(err);
           });
+      },
+
+      deleteUser() {
+        this.axios.delete('/api/orgs/' + this.organisation + '/users/' + this.user._id).then(() => {
+          this.$router.go(-1);
+        });
       },
 
       toggleSelectGroup(groupId) {
