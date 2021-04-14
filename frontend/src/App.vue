@@ -4,6 +4,26 @@
 
 <script>
   export default {
+    methods: {
+      createInterceptors() {
+        const that = this;
+
+        this.axios.interceptors.response.use(
+          function(response) {
+            return response;
+          },
+          function(error) {
+            if (error.response.status == 401) {
+              localStorage.clear();
+
+              that.$router.push('/auth');
+            }
+            return Promise.reject(error);
+          }
+        );
+      },
+    },
+
     mounted() {
       // Set active user locale.
       if (localStorage.locale) {
@@ -12,18 +32,15 @@
         this.$i18n.locale = navigator.language.split('-')[0];
       }
 
+      this.createInterceptors();
+
       // Get user information.
       if (localStorage.token) {
         this.axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.token;
 
-        this.axios
-          .get('/api/users/me')
-          .then((payload) => {
-            localStorage.email = payload.data.email;
-          })
-          .catch(() => {
-            localStorage.clear();
-          });
+        this.axios.get('/api/users/me').then((payload) => {
+          localStorage.email = payload.data.email;
+        });
       }
 
       // Get active organisation.
