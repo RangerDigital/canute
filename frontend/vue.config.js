@@ -41,7 +41,7 @@ module.exports = {
         },
       ],
       start_url: '/dashboard',
-      background_color: '#151719',
+      background_color: '#141414',
       display: 'standalone',
       scope: '/',
     },
@@ -54,6 +54,6 @@ module.exports = {
       msTileImage: null,
     },
 
-    themeColor: '#151719',
+    themeColor: '#141414',
   },
 };
