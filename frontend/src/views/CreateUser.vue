@@ -2,7 +2,7 @@
   <HorizontalLayout v-bind:loading="isLoading">
     <VerticalContainer>
       <nav class="flex flex-col justify-between w-full xl:flex-row xl:items-center">
-        <div class="my-5 xl:mx-0">
+        <div class="mb-5 xl:mb-0">
           <h1 class="my-2 text-md xl:text-lg xl:mx-5 text-red">{{ $t('users.title') }}</h1>
           <p class="my-2 text-sm xl:mx-5 text-gray-dark">{{ $t('users.subheading') }}</p>
         </div>
