@@ -6,7 +6,7 @@
 
         <div class="flex flex-row xl:block">
           <Button ghost @click="$router.go(-1)">Cancel</Button>
-          <Button solid @click="createUser()">Save User</Button>
+          <Button solid @click="upsertUser()">Save User</Button>
         </div>
       </div>
 
@@ -137,37 +137,29 @@
       },
 
       addGroups(userId) {
-        for (let [i, group] of this.activeGroups.entries()) {
-          this.axios.post('/api/orgs/' + this.organisation + '/roles/' + group + '/users/' + userId).then(() => {
-            if (i == this.activeGroups.length - 1) {
-              this.$router.go(-1);
-            }
-          });
+        let requests = [];
+
+        for (let group of this.activeGroups) {
+          requests.push(this.axios.post('/api/orgs/' + this.organisation + '/roles/' + group + '/users/' + userId));
         }
+
+        this.axios.all(requests).then(() => {
+          this.$router.go(-1);
+        });
       },
 
-      createUser() {
+      upsertUser() {
         if (this.editMode) {
-          this.axios
-            .patch('/api/orgs/' + this.organisation + '/users/' + this.user._id, this.user)
-            .then(() => {
-              this.updateGroups();
-            })
-            .catch((err) => {
-              console.log(err);
-            });
+          this.axios.patch('/api/orgs/' + this.organisation + '/users/' + this.user._id, this.user).then(() => {
+            this.updateGroups();
+          });
 
           return;
         }
 
-        this.axios
-          .post('/api/orgs/' + this.organisation + '/users', this.user)
-          .then((payload) => {
-            this.addGroups(payload.data._id);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+        this.axios.post('/api/orgs/' + this.organisation + '/users', this.user).then((payload) => {
+          this.addGroups(payload.data._id);
+        });
       },
 
       updateGroups() {
