@@ -1,17 +1,17 @@
 <template>
   <header class="static flex flex-row items-center justify-between p-5 md:px-20 md:py-6">
-    <h1 class="py-2 font-sans font-semibold text-red text-base md:text-xl cursor-pointer" @click="$router.push('/').catch((err) => {})"
+    <h1 class="py-2 font-sans text-base font-semibold cursor-pointer text-red md:text-xl" @click="$router.push('/').catch((err) => {})"
       >Canute <span class="text-white">OS</span></h1
     >
 
-    <nav v-if="!noNav" class="hidden xl:flex items-center justify-center">
-      <router-link class="mx-7 text-sm font-medium text-gray hover:text-gray-light" to="/auth">{{ $t('nav.services') }}</router-link>
-      <router-link class="mx-7 text-sm font-medium text-gray hover:text-gray-light" to="/auth">FAQ</router-link>
-      <router-link class="mx-7 text-sm font-medium text-gray hover:text-gray-light" to="/auth">{{ $t('nav.contact') }}</router-link>
+    <nav v-if="!noNav" class="items-center justify-center hidden xl:flex">
+      <router-link class="text-sm font-medium mx-7 text-gray hover:text-gray-light" to="/auth">{{ $t('nav.services') }}</router-link>
+      <router-link class="text-sm font-medium mx-7 text-gray hover:text-gray-light" to="/auth">FAQ</router-link>
+      <router-link class="text-sm font-medium mx-7 text-gray hover:text-gray-light" to="/auth">{{ $t('nav.contact') }}</router-link>
     </nav>
 
     <!-- Language Toggler / Desktop Only -->
-    <section class="hidden lg:flex flex-row">
+    <section class="flex-row hidden lg:flex">
       <button class="mx-8 text-sm font-medium text-gray hover:text-gray-light focus:outline-none " @click="toggleLanguage()">
         <svg class="inline h-6 mx-0.5 align-middle text-red" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path
@@ -32,7 +32,7 @@
         >{{ $t('btn.login') }}
       </button>
 
-      <p v-if="userEmail" class="mx-7 text-sm font-medium text-gray cursor-pointer" @click="$router.push('/dashboard').catch((err) => {})"
+      <p v-if="userEmail" class="text-sm font-medium cursor-pointer mx-7 text-gray" @click="$router.push('/dashboard').catch((err) => {})"
         >{{ $t('nav.logged') }} <span class="text-red">{{ userEmail }}</span></p
       >
     </section>

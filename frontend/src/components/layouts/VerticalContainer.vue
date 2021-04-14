@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full p-4 xl:p-12  xl:mx-0 2xl:mx-20 flex flex-col justify-start">
+  <div class="flex flex-col justify-start w-full p-4 xl:p-12 xl:mx-0 2xl:mx-20">
     <slot></slot>
   </div>
 </template>

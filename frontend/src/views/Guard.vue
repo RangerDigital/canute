@@ -1,19 +1,19 @@
 <template>
-  <section class="min-h-screen flex flex-col justify-between">
+  <section class="flex flex-col justify-between min-h-screen">
     <HomeNavigation noLogin />
 
-    <div v-if="isLogged" class=" self-center text-center">
-      <h1 class="my-1 md:my-5 font-semibold text-white text-2xl md:text-4xl 2xl:text-5xl">{{ $t('dashboard.success.heading') }}</h1>
-      <h2 class="my-1 md:my-5 font-semibold text-red text-2xl md:text-4xl 2xl:text-5xl ">{{ this.userEmail }}</h2>
+    <div v-if="isLogged" class="self-center text-center ">
+      <h1 class="my-1 text-2xl font-semibold text-white md:my-5 md:text-4xl 2xl:text-5xl">{{ $t('dashboard.success.heading') }}</h1>
+      <h2 class="my-1 text-2xl font-semibold md:my-5 text-red md:text-4xl 2xl:text-5xl ">{{ this.userEmail }}</h2>
     </div>
 
-    <button v-if="isLogged" class="self-center font-medium text-sm px-8 py-3 text-white bg-red hover:bg-red-dark rounded-md focus:outline-none" @click="logout()">{{
+    <button v-if="isLogged" class="self-center px-8 py-3 text-sm font-medium text-white rounded-md bg-red hover:bg-red-dark focus:outline-none" @click="logout()">{{
       $t('nav.settings')
     }}</button>
 
-    <div v-if="!isLogged" class=" self-center text-center">
-      <h1 class="my-1 md:my-5 font-semibold text-white text-2xl md:text-4xl 2xl:text-5xl">{{ $t('dashboard.failure.heading') }}</h1>
-      <h2 class="my-1 md:my-5 font-semibold text-red text-2xl md:text-4xl 2xl:text-5xl ">{{ $t('dashboard.failure.subheading') }}</h2>
+    <div v-if="!isLogged" class="self-center text-center ">
+      <h1 class="my-1 text-2xl font-semibold text-white md:my-5 md:text-4xl 2xl:text-5xl">{{ $t('dashboard.failure.heading') }}</h1>
+      <h2 class="my-1 text-2xl font-semibold md:my-5 text-red md:text-4xl 2xl:text-5xl ">{{ $t('dashboard.failure.subheading') }}</h2>
     </div>
 
     <HomeFooter />

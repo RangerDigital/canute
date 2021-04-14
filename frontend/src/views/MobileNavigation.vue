@@ -1,11 +1,11 @@
 <template>
-  <section class="min-h-screen flex flex-col justify-between">
-    <div class="h-full flex flex-col justify-start">
+  <section class="flex flex-col justify-between min-h-screen">
+    <div class="flex flex-col justify-start h-full">
       <HomeNavigation noLogin noNav showBackHamburger />
 
-      <AppNavigation class="w-full self-center max-w-md" />
+      <AppNavigation class="self-center w-full max-w-md" />
 
-      <Navigation class="p-5 w-full self-center max-w-md" />
+      <Navigation class="self-center w-full max-w-md p-5" />
     </div>
 
     <HomeFooter />

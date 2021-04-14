@@ -1,22 +1,22 @@
 <template>
-  <section class="min-h-screen flex flex-col justify-between">
+  <section class="flex flex-col justify-between min-h-screen">
     <HomeNavigation noLogin noNav />
 
     <LoadingSpinner v-if="!isLoaded" class="self-center" />
 
-    <div v-if="isLoaded && !organisations.length" class=" self-center text-center">
-      <h1 class="my-1 md:my-5 font-semibold text-white text-2xl md:text-4xl 2xl:text-5xl" v-html="$t('organisations.error.heading')"></h1>
+    <div v-if="isLoaded && !organisations.length" class="self-center text-center ">
+      <h1 class="my-1 text-2xl font-semibold text-white md:my-5 md:text-4xl 2xl:text-5xl" v-html="$t('organisations.error.heading')"></h1>
 
-      <p class="my-5 md:my-8 text-sm md:text-base text-gray">{{ $t('organisations.error.about') }}</p>
+      <p class="my-5 text-sm md:my-8 md:text-base text-gray">{{ $t('organisations.error.about') }}</p>
     </div>
 
-    <div v-if="isLoaded && organisations.length" class=" self-center text-center">
-      <h1 class="my-1 md:my-5 font-semibold text-red text-2xl md:text-4xl 2xl:text-5xl" v-html="$t('organisations.heading')"></h1>
+    <div v-if="isLoaded && organisations.length" class="self-center text-center ">
+      <h1 class="my-1 text-2xl font-semibold md:my-5 text-red md:text-4xl 2xl:text-5xl" v-html="$t('organisations.heading')"></h1>
     </div>
 
-    <div v-if="isLoaded && organisations.length" class="self-center w-full md:max-w-md p-5">
-      <p class="my-2 text-sm  text-gray-dark ">{{ $t('label.organisations') }}</p>
-      <div class="h-px bg-gray-darker rounded-full"></div>
+    <div v-if="isLoaded && organisations.length" class="self-center w-full p-5 md:max-w-md">
+      <p class="my-2 text-sm text-gray-dark ">{{ $t('label.organisations') }}</p>
+      <div class="h-px rounded-full bg-gray-darker"></div>
 
       <div class="flex flex-col">
         <Organisation v-for="item in organisations" :key="item._id" v-bind:organisation="item" />

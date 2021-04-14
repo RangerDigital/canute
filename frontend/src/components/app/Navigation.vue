@@ -1,23 +1,23 @@
 <template>
   <!-- Navigation -->
   <div class="flex flex-row">
-    <div class="bg-gray-darker w-px mr-5 rounded-full"></div>
+    <div class="w-px mr-5 rounded-full bg-gray-darker"></div>
 
-    <div class="w-full flex flex-col justify-around">
-      <div class="my-5 2xl:my-12 flex flex-col justify-around">
+    <div class="flex flex-col justify-around w-full">
+      <div class="flex flex-col justify-around my-5 2xl:my-12">
         <router-link class="py-3.5 xl:py-2 text-sm font-medium text-gray hover:text-gray-light" active-class="text-gray-light" to="/dashboard">{{
           $t('nav.dashboard')
         }}</router-link>
       </div>
 
       <!-- Admin Navigation -->
-      <div v-if="organisationAdmin" class="w-full flex flex-col justify-around">
+      <div v-if="organisationAdmin" class="flex flex-col justify-around w-full">
         <router-link class="py-3.5 xl:py-2 text-sm font-medium text-gray hover:text-gray-light" active-class="text-gray-light" to="/groups">{{ $t('nav.groups') }}</router-link>
         <router-link class="py-3.5 xl:py-2 text-sm font-medium text-gray hover:text-gray-light" active-class="text-gray-light" to="/users">{{ $t('nav.users') }}</router-link>
         <router-link class="py-3.5 xl:py-2 text-sm font-medium text-gray hover:text-gray-light" active-class="text-gray-light" to="/devices">{{ $t('nav.devices') }}</router-link>
       </div>
 
-      <div class="my-6 2xl:my-12 flex flex-col justify-around">
+      <div class="flex flex-col justify-around my-6 2xl:my-12">
         <router-link class="py-3.5 xl:py-2 text-sm font-medium text-gray hover:text-gray-light" active-class="text-gray-light" to="/guard">{{ $t('nav.settings') }}</router-link>
         <router-link class="py-3.5 xl:py-2 text-sm font-medium text-gray hover:text-gray-light" active-class="text-gray-light" to="/organisations">{{
           $t('nav.organisations')

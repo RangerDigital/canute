@@ -1,10 +1,10 @@
 <template>
   <HorizontalLayout>
     <!-- Vertical Container -->
-    <div class="w-full p-4 xl:p-12  xl:mx-0 2xl:mx-20 flex flex-col justify-start">
+    <div class="flex flex-col justify-start w-full p-4 xl:p-12 xl:mx-0 2xl:mx-20">
       <div>
-        <h1 class="xl:mx-5 py-2 font-sans text-gray-dark text-sm">
-          <svg class="inline mr-2 h-5 w-5 text-gray-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <h1 class="py-2 font-sans text-sm xl:mx-5 text-gray-dark">
+          <svg class="inline w-5 h-5 mr-2 text-gray-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
@@ -14,7 +14,7 @@
           >{{ $t('devices.title') }}</h1
         >
 
-        <div class="w-full flex flex-row justify-between">
+        <div class="flex flex-row justify-between w-full">
           <input
             v-model="search"
             v-bind:placeholder="$t('label.search')"
@@ -22,17 +22,17 @@
           />
 
           <button
-            class="font-medium text-sm ml-2 lg:mx-5  py-3 lg:my-0 px-3 xl:px-9 text-white bg-red hover:bg-red-dark rounded-md focus:outline-none"
+            class="px-3 py-3 ml-2 text-sm font-medium text-white rounded-md lg:mx-5 lg:my-0 xl:px-9 bg-red hover:bg-red-dark focus:outline-none"
             @click="$router.push('/devices/create')"
-            ><svg class="inline xl:transform xl:scale-125 h-6 xl:h-4 xl:mr-4 align-middle text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            ><svg class="inline h-6 text-white align-middle xl:transform xl:scale-125 xl:h-4 xl:mr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6m0 0v6m0-6h6m-6 0H6" /></svg
             ><span class="hidden xl:inline">{{ $t('devices.add') }}</span></button
           >
         </div>
-        <div class="xl:block bg-gray-darker my-5 h-px w-full rounded-full"></div>
+        <div class="w-full h-px my-5 rounded-full xl:block bg-gray-darker"></div>
       </div>
 
-      <div class="justify-items-center grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 3xl:grid-cols-4 lg:gap-6">
+      <div class="grid grid-cols-1 justify-items-center xl:grid-cols-2 2xl:grid-cols-3 3xl:grid-cols-4 lg:gap-6">
         <Device class="max-w-sm xl:mx-4 xl:hover:border-red" v-for="item in searchedDevices" :key="item._id" v-bind:device="item" @click="$router.push('/devices/' + item._id)" />
       </div>
     </div>

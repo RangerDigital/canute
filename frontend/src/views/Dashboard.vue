@@ -1,15 +1,15 @@
 <template>
-  <section class="min-h-screen flex flex-col justify-between">
+  <section class="flex flex-col justify-between min-h-screen">
     <HomeNavigation noLogin noNav />
 
     <!-- Horizontal Main Container -->
-    <div class="self-center xl:self-auto w-full h-full flex-grow md:max-w-md xl:max-w-full flex flex-col xl:flex-row justify-start xl:justify-between  xl:px-6 xl:py-6">
+    <div class="flex flex-col self-center justify-start flex-grow w-full h-full xl:self-auto md:max-w-md xl:max-w-full xl:flex-row xl:justify-between xl:px-6 xl:py-6">
       <AppNavigation />
 
       <!-- Locks List -->
-      <div class="self-center xl:self-auto w-full md:max-w-md p-5">
+      <div class="self-center w-full p-5 xl:self-auto md:max-w-md">
         <p class="my-2 text-sm text-gray-dark ">{{ $t('label.locks') }}</p>
-        <div class="h-px bg-gray-darker rounded-full"></div>
+        <div class="h-px rounded-full bg-gray-darker"></div>
 
         <div class="flex flex-col xl:justify-center">
           <Lock v-for="item in locks" :key="item._id" v-bind:lock="item" />
