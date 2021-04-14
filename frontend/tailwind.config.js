@@ -7,20 +7,20 @@ module.exports = {
       transparent: 'transparent',
       current: 'currentColor',
       white: {
-        DEFAULT: '#ffffff',
+        DEFAULT: '#F3F3F4',
       },
       red: {
         dark: '#ff344c',
         DEFAULT: '#FD445A',
       },
       gray: {
-        darker: '#1B1B1D',
-        dark: '#27282b',
-        DEFAULT: '#3A3C40',
-        light: '#3F4146',
+        darker: '#171717',
+        dark: '#2F3131',
+        DEFAULT: '#393A3C',
+        light: '#45464A',
       },
       black: {
-        DEFAULT: '#151719',
+        DEFAULT: '#141414',
       },
     },
     fontFamily: {
