@@ -66,7 +66,8 @@
   },
   "users": {
     "title": "Manage Users",
-    "add": "Add User"
+    "add": "Add User",
+    "subheading": "This page allows you to invite new users."
   },
   "groups": {
     "title": "Manage Groups",

@@ -65,7 +65,8 @@
     }
   },
   "users": {
-    "title": "Zarządzaj Mieszkańcami",
+    "title": "Mieszkańcy",
+    "subheading": "Zaproś nowych mieszkańców oraz zarządzaj istniejącymi.",
     "add": "Zaproś Mieszkańca"
   },
   "groups": {

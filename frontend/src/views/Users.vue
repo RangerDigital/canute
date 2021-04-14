@@ -2,18 +2,11 @@
   <HorizontalLayout v-bind:loading="isLoading">
     <VerticalContainer>
       <div>
-        <h1 class="py-2 font-sans text-sm xl:mx-5 text-gray-dark"
-          ><svg class="inline w-5 h-5 mr-2 text-gray-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="1.2"
-              d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
-            /></svg
-          >{{ $t('users.title') }}</h1
-        >
+        <h1 class="my-2 text-md xl:text-lg xl:mx-5 text-red">{{ $t('users.title') }}</h1>
 
-        <div class="flex flex-row justify-between w-full">
+        <p class="my-2 text-sm mb-7 xl:mx-5 text-gray-dark">{{ $t('users.subheading') }}</p>
+
+        <div class="flex flex-row items-center justify-between w-full">
           <TextField class="w-full xl:mx-5" v-model="search" v-bind:placeholder="$t('label.search')" />
 
           <Button tiny @click="$router.push('/users/create')"
@@ -30,7 +23,7 @@
         <div class="w-full h-px my-5 rounded-full xl:block bg-gray-darker"></div>
       </div>
 
-      <div class="grid grid-cols-1 justify-items-center xl:grid-cols-2 2xl:grid-cols-3 3xl:grid-cols-4 lg:gap-6">
+      <div class="grid grid-cols-1 justify-items-center xl:grid-cols-2 2xl:grid-cols-3 3xl:grid-cols-4 lg:gap-2">
         <User class="max-w-sm xl:mx-4" v-for="item in searchedUsers" :key="item._id" v-bind:user="item" @click="$router.push('/users/' + item._id)" />
       </div>
     </VerticalContainer>
