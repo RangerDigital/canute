@@ -2,8 +2,8 @@
   <footer class="flex flex-row items-center justify-between p-5 lg:justify-end md:px-20 md:py-6">
     <!-- Language Toggler / Desktop Only -->
     <section class="lg:hidden">
-      <button class="text-sm text-gray-dark hover:text-gray focus:outline-none" @click="toggleLanguage()">
-        <svg class="inline h-6 mx-0.5 align-middle text-gray-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <button class="text-sm text-gray-darker xl:text-gray-dark xl:hover:text-gray focus:outline-none" @click="toggleLanguage()">
+        <svg class="inline h-6 mx-0.5 align-middle text-gray-darker xl:text-gray-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path
             stroke-linecap="round"
             stroke-linejoin="round"
@@ -16,7 +16,7 @@
       </button>
     </section>
 
-    <a class="text-sm cursor-pointer text-gray-dark hover:text-gray" href="https://bednarski.dev">Canute OS © 2021</a>
+    <a class="text-sm cursor-pointer text-gray-darker xl:text-gray-dark xl:hover:text-gray" href="https://bednarski.dev">Canute OS © 2021</a>
   </footer>
 </template>
 
