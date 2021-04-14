@@ -66,7 +66,7 @@
 
             <!-- Form Section -->
             <div class="flex flex-col justify-start w-full 2xl:flex-row 2xl:items-center">
-              <p class="my-2 text-sm text-gray-dark">Delete user from organisation.</p>
+              <div></div>
 
               <div class="my-3.5 2xl:order-first">
                 <Button solid @click="deleteUser()">Remove User</Button>
