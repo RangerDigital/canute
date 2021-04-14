@@ -8,7 +8,7 @@ function checkAuth(req, res, next) {
 
     jwt.verify(authToken, process.env.JWT_SECRET, (err, data) => {
       if (err) {
-        return res.status(403).json({ msg: 'Invalid authorization Bearer token!' });
+        return res.status(401).json({ msg: 'Invalid authorization Bearer token!' });
       }
 
       req.userId = data.userId;
