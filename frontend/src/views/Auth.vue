@@ -27,6 +27,7 @@
             <input
               type="email"
               v-model="userEmail"
+              v-on:keyup.enter="requestsMagicEmail()"
               placeholder="... @gmail.com"
               class="block w-full px-3 py-3 text-sm tracking-wide text-white border-transparent rounded-md lg:w-80 focus:outline-none bg-gray-darker font-base placeholder-gray-dark ring-red focus:ring-1 "
               autofocus
