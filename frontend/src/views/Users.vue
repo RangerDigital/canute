@@ -2,8 +2,8 @@
   <HorizontalLayout>
     <VerticalContainer>
       <div>
-        <h1 class="xl:mx-5 py-2 font-sans text-gray-dark text-sm"
-          ><svg class="inline mr-2 h-5 w-5 text-gray-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <h1 class="py-2 font-sans text-sm xl:mx-5 text-gray-dark"
+          ><svg class="inline w-5 h-5 mr-2 text-gray-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
@@ -13,11 +13,11 @@
           >{{ $t('users.title') }}</h1
         >
 
-        <div class="w-full flex flex-row justify-between">
+        <div class="flex flex-row justify-between w-full">
           <TextField class="w-full xl:mx-5" v-model="search" v-bind:placeholder="$t('label.search')" />
 
           <Button tiny @click="$router.push('/users/create')"
-            ><svg class="inline xl:transform xl:scale-125 h-6 xl:h-4 xl:mr-4 align-middle text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            ><svg class="inline h-6 text-white align-middle xl:transform xl:scale-125 xl:h-4 xl:mr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -27,10 +27,10 @@
             ><span class="hidden xl:inline">{{ $t('users.add') }}</span></Button
           >
         </div>
-        <div class="xl:block bg-gray-darker my-5 h-px w-full rounded-full"></div>
+        <div class="w-full h-px my-5 rounded-full xl:block bg-gray-darker"></div>
       </div>
 
-      <div class="justify-items-center grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 3xl:grid-cols-4 lg:gap-6">
+      <div class="grid grid-cols-1 justify-items-center xl:grid-cols-2 2xl:grid-cols-3 3xl:grid-cols-4 lg:gap-6">
         <User class="max-w-sm xl:mx-4" v-for="item in searchedUsers" :key="item._id" v-bind:user="item" @click="$router.push('/users/' + item._id)" />
       </div>
     </VerticalContainer>
@@ -46,8 +46,6 @@
 
   import User from '@/components/app/User.vue';
 
-  const FlexSearch = require('flexsearch');
-
   export default {
     name: 'Users',
     components: {
@@ -61,37 +59,45 @@
       return {
         users: [],
         organisation: null,
+
         search: '',
+        searchIndex: null,
         searchedUsers: [],
       };
     },
     methods: {
       getUsers() {
-        this.axios
-          .get('/api/orgs/' + this.organisation + '/users')
-          .then((payload) => {
-            // Create tokens by flattering roles array for search.
-            for (let user of payload.data) {
-              if (user.isAdmin) {
-                user.tokens = 'Admin';
-              } else {
-                user.tokens = '';
-              }
+        this.axios.get('/api/orgs/' + this.organisation + '/users').then((payload) => {
+          // Generate tags for searching from roles and admin.
+          for (let user of payload.data) {
+            user.tags = '';
 
-              for (let role of user.roles) {
-                user.tokens += ' ' + role.name;
-              }
-
-              this.users.push(user);
+            if (user.isAdmin) {
+              user.tokens += 'Admin';
             }
 
-            this.searchedUsers = this.users;
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+            for (let role of user.roles) {
+              user.tags += ' ' + role.name;
+            }
+
+            this.users.push(user);
+          }
+          this.searchedUsers = this.users;
+        });
+      },
+
+      createIndex() {
+        this.searchIndex = require('flexsearch').create({
+          profile: 'match',
+          depth: 3,
+          doc: {
+            id: '_id',
+            field: ['email', 'tags', 'annotation'],
+          },
+        });
       },
     },
+
     mounted() {
       if (!localStorage.organisation) {
         this.$router.push('/organisations');
@@ -100,28 +106,18 @@
       }
 
       this.getUsers();
+      this.createIndex();
     },
     watch: {
       search: {
         immediate: true,
-        handler(x) {
-          if (x.length == 0) {
-            this.searchedUsers = this.users;
-            return;
+        handler(query) {
+          if (query.length == 0) {
+            return (this.searchedUsers = this.users);
           }
 
-          var index = new FlexSearch({
-            tokenize: 'full',
-            depth: 3,
-            doc: {
-              id: '_id',
-              field: ['email', 'roles:name', 'tokens', 'annotation'],
-            },
-          });
-
-          index.add(this.users);
-
-          this.searchedUsers = index.search(x);
+          this.searchIndex.add(this.users);
+          this.searchedUsers = this.searchIndex.search(query);
         },
       },
     },
