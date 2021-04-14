@@ -1,5 +1,5 @@
 <template>
-  <HorizontalLayout>
+  <HorizontalLayout v-bind:loading="isLoading">
     <VerticalContainer>
       <div>
         <h1 class="py-2 font-sans text-sm xl:mx-5 text-gray-dark"
@@ -59,6 +59,7 @@
       return {
         users: [],
         organisation: null,
+        isLoading: true,
 
         search: '',
         searchIndex: null,
@@ -83,6 +84,7 @@
             this.users.push(user);
           }
           this.searchedUsers = this.users;
+          this.isLoading = false;
         });
       },
 

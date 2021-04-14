@@ -1,11 +1,13 @@
 <template>
-  <section class="min-h-screen h-full flex flex-col justify-between">
+  <section class="flex flex-col justify-between h-full min-h-screen">
     <HomeNavigation noLogin noNav />
 
-    <div class="self-center xl:self-auto w-full h-full flex-grow md:max-w-md xl:max-w-full flex flex-col xl:flex-row justify-start xl:justify-between xl:px-6 xl:py-6">
+    <div class="flex flex-col self-center justify-start flex-grow w-full h-full xl:self-auto md:max-w-md xl:max-w-full xl:flex-row xl:justify-between xl:px-6 xl:py-6">
       <AppNavigation class="hidden xl:flex" />
 
-      <slot></slot>
+      <div v-if="loading" class="flex items-center justify-center flex-grow"> <LoadingSpinner /></div>
+
+      <slot v-if="!loading"></slot>
     </div>
 
     <HomeFooter />
@@ -16,6 +18,7 @@
   import HomeNavigation from '@/components/HomeNavigation.vue';
   import HomeFooter from '@/components/HomeFooter.vue';
   import AppNavigation from '@/components/AppNavigation.vue';
+  import LoadingSpinner from '@/components/app/LoadingSpinner.vue';
 
   export default {
     name: 'HorizontalLayout',
@@ -23,6 +26,10 @@
       HomeNavigation,
       HomeFooter,
       AppNavigation,
+      LoadingSpinner,
+    },
+    props: {
+      loading: Boolean,
     },
   };
 </script>

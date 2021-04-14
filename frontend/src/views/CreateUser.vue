@@ -1,5 +1,5 @@
 <template>
-  <HorizontalLayout>
+  <HorizontalLayout v-bind:loading="isLoading">
     <VerticalContainer>
       <div class="flex flex-col justify-between w-full xl:flex-row xl:items-center">
         <h1 class="py-2 font-sans text-sm text-gray-dark"> {{ editMode ? 'Editing existing User' : 'Creating new User' }}</h1>
@@ -89,6 +89,7 @@
         organisation: null,
         organisationGroups: [],
         user: {},
+        isLoading: true,
 
         activeGroups: [],
         modifiedGroups: [],
@@ -110,6 +111,8 @@
       getGroups() {
         this.axios.get('/api/orgs/' + this.organisation + '/roles').then((payload) => {
           this.organisationGroups = payload.data;
+
+          this.isLoading = false;
         });
       },
 
