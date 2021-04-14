@@ -1,53 +1,85 @@
 <template>
   <HorizontalLayout v-bind:loading="isLoading">
     <VerticalContainer>
-      <div class="flex flex-col justify-between w-full xl:flex-row xl:items-center">
-        <h1 class="py-2 font-sans text-sm text-gray-dark"> {{ editMode ? 'Editing existing User' : 'Creating new User' }}</h1>
+      <nav class="flex flex-col justify-between w-full xl:flex-row xl:items-center">
+        <div class="my-5 xl:mx-0">
+          <h1 class="my-2 text-md xl:text-lg xl:mx-5 text-red">{{ $t('users.title') }}</h1>
+          <p class="my-2 text-sm xl:mx-5 text-gray-dark">{{ $t('users.subheading') }}</p>
+        </div>
 
-        <div class="flex flex-row xl:block">
+        <div class="flex flex-row">
           <Button ghost @click="$router.go(-1)">Cancel</Button>
           <Button solid @click="upsertUser()">Save User</Button>
         </div>
-      </div>
-
+      </nav>
+      <!-- Dashboard Horizontal Divider -->
       <div class="w-full h-px my-5 rounded-full xl:block bg-gray-darker"></div>
 
+      <!-- Horizontal Container Forms/Groups -->
       <div class="flex flex-col justify-between w-full xl:flex-row">
-        <div class="flex flex-col justify-start w-full">
-          <div class="my-3">
-            <label class="block my-2 text-sm font-base text-gray-dark"> E-Mail</label>
-            <TextField v-if="!editMode" v-model="user.email" placeholder="... @gmail.com" />
+        <!-- Forms Vertical Container-->
+        <div class="flex flex-col w-full">
+          <!-- Basic Information -->
+          <section class="flex flex-row w-full ">
+            <!-- Description Section -->
+            <div class="hidden 2xl:flex 2xl:ml-5">
+              <div class="w-2/7">
+                <h1 class="my-2 text-md xl:text-lg text-red">Basic Information</h1>
+                <p class="my-2 text-sm text-gray-dark">Email adress will be used for login and security. You can't update it again.</p>
+              </div>
 
-            <div v-if="editMode" class="flex flex-row">
-              <div class="w-px rounded-full bg-red"></div>
-              <p class="mx-3 my-3 text-sm tracking-wide text-white font-base">{{ user.email }}</p>
+              <!-- Vertical Divider -->
+              <div class="w-px h-full mx-5 my-5 rounded-full bg-gray-darker"></div>
             </div>
-          </div>
 
-          <div class="my-3">
-            <label class="block my-2 text-sm font-base text-gray-dark"> Annotation</label>
-            <TextField v-model="user.annotation" placeholder="3C 24/03" />
-          </div>
+            <!-- Form Section -->
+            <div class="flex flex-col justify-start w-full">
+              <div class="my-3.5">
+                <p class="my-2 text-sm text-gray-dark">E-Mail</p>
+                <TextField v-bind:readonly="editMode" v-model="user.email" placeholder="... @gmail.com" />
+              </div>
 
-          <div class="flex flex-row items-center my-3 ">
-            <Checkbox v-model="user.isAdmin" class="mr-5" />
+              <div class="my-3.5">
+                <p class="my-2 text-sm text-gray-dark">Annotation</p>
+                <TextField v-model="user.annotation" placeholder="3C 24/03" />
+              </div>
 
-            <label class="block my-2 text-sm font-base text-gray">Should be able to manage users?</label>
-          </div>
+              <div class="flex flex-row items-center my-5 ">
+                <Checkbox v-model="user.isAdmin" class="flex-shrink-0" />
+                <p class="mx-3 my-2 text-sm text-gray">Administrator - Should be able to manage users?</p>
+              </div>
+            </div>
+          </section>
 
-          <div class="w-full h-px my-5 rounded-full xl:block bg-gray-darker"></div>
+          <!-- User Deletion -->
+          <section class="flex flex-row w-full my-10">
+            <!-- Description Section -->
+            <div class="hidden 2xl:flex 2xl:ml-5">
+              <div class="w-2/7">
+                <h1 class="my-2 text-md xl:text-lg text-red">Manage User</h1>
+                <p class="my-2 text-sm text-gray-dark">Email adress will be used for login and security. You can't update it again.</p>
+              </div>
 
-          <div v-if="editMode" class="flex flex-col items-center my-4 xl:flex-row">
-            <Button ghost @click="deleteUser()">Delete User</Button>
-            <p class="my-2 text-sm font-base text-red">Remove user from organisation.</p>
-          </div>
+              <!-- Vertical Divider -->
+              <div class="w-px h-full mx-5 my-5 rounded-full bg-gray-darker"></div>
+            </div>
+
+            <!-- Form Section -->
+            <div class="flex flex-col justify-start w-full 2xl:flex-row 2xl:items-center">
+              <p class="my-2 text-sm text-gray-dark">Delete user from organisation.</p>
+
+              <div class="my-3.5 2xl:order-first">
+                <Button solid @click="deleteUser()">Remove User</Button>
+              </div>
+            </div>
+          </section>
         </div>
 
-        <!-- Divider -->
+        <!-- Vertical Divider -->
         <div class="w-px h-full mx-5 my-5 rounded-full bg-gray-darker"></div>
 
-        <!-- Groups -->
-        <div class="w-full">
+        <!-- Groups List -->
+        <div class="w-full ">
           <h1 class="py-2 font-sans text-sm xl:mx-5 text-gray-dark">User Groups</h1>
           <div class="grid w-full grid-cols-1 2xl:grid-cols-2 3xl:grid-cols-3 lg:gap-6">
             <Group

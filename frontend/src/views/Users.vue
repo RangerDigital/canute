@@ -3,7 +3,6 @@
     <VerticalContainer>
       <div>
         <h1 class="my-2 text-md xl:text-lg xl:mx-5 text-red">{{ $t('users.title') }}</h1>
-
         <p class="my-2 text-sm mb-7 xl:mx-5 text-gray-dark">{{ $t('users.subheading') }}</p>
 
         <div class="flex flex-row items-center justify-between w-full">
