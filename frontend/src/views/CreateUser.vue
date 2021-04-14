@@ -37,9 +37,9 @@
 
           <div class="w-full h-px my-5 rounded-full xl:block bg-gray-darker"></div>
 
-          <div class="flex flex-col items-center my-4 xl:flex-row">
+          <div v-if="editMode" class="flex flex-col items-center my-4 xl:flex-row">
             <Button ghost @click="deleteUser()">Delete User</Button>
-            <label class="my-2 text-sm font-base text-red">Remove user from organisation.</label>
+            <p class="my-2 text-sm font-base text-red">Remove user from organisation.</p>
           </div>
         </div>
 
@@ -52,11 +52,11 @@
           <div class="grid w-full grid-cols-1 2xl:grid-cols-2 3xl:grid-cols-3 lg:gap-6">
             <Group
               class="max-w-sm xl:mx-4 xl:hover:border-red"
-              v-for="item in groups"
+              v-for="item in organisationGroups"
               :key="item._id"
               v-bind:group="item"
-              v-bind:isActive="activeGroups.includes(item._id)"
-              @click="toggleSelectGroup(item._id)"
+              v-bind:isActive="modifiedGroups.includes(item._id)"
+              @click="selectGroup(item._id)"
             />
           </div>
         </div>
@@ -86,31 +86,43 @@
     },
     data() {
       return {
-        groups: [],
-        deletedGroups: [],
-        activeGroups: [],
+        organisation: null,
+        organisationGroups: [],
         user: {},
 
-        organisation: null,
+        activeGroups: [],
+        modifiedGroups: [],
       };
     },
     props: {
       editMode: Boolean,
     },
     methods: {
+      // Hangle toggling modified groups.
+      selectGroup(groupId) {
+        if (this.modifiedGroups.includes(groupId)) {
+          this.modifiedGroups = this.modifiedGroups.filter((x) => String(x) !== String(groupId));
+        } else {
+          this.modifiedGroups.push(groupId);
+        }
+      },
+
       getGroups() {
         this.axios.get('/api/orgs/' + this.organisation + '/roles').then((payload) => {
-          this.groups = payload.data;
+          this.organisationGroups = payload.data;
         });
       },
 
-      getExistingUser(userID) {
-        this.axios.get('/api/orgs/' + this.organisation + '/users/' + userID).then((payload) => {
+      // When editing existing user.
+      getUser(id) {
+        this.axios.get('/api/orgs/' + this.organisation + '/users/' + id).then((payload) => {
           this.user = payload.data;
 
           for (let role of payload.data.roles) {
             this.activeGroups.push(role._id);
           }
+
+          this.modifiedGroups = this.modifiedGroups.concat(this.activeGroups);
         });
       },
 
@@ -120,74 +132,40 @@
         });
       },
 
-      toggleSelectGroup(groupId) {
-        if (this.activeGroups.includes(groupId)) {
-          this.activeGroups = this.activeGroups.filter((x) => String(x) !== String(groupId));
+      upsertUser() {
+        if (this.editMode) {
+          this.axios.patch('/api/orgs/' + this.organisation + '/users/' + this.user._id, this.user).then(() => {
+            this.synchronizeGroups();
+          });
+        }
 
-          if (this.editMode) {
-            this.deletedGroups.push(groupId);
-          }
-        } else {
-          this.activeGroups.push(groupId);
+        if (!this.editMode) {
+          this.axios.post('/api/orgs/' + this.organisation + '/users', this.user).then((payload) => {
+            this.user._id = payload.data._id;
 
-          if (this.editMode) {
-            this.deletedGroups = this.deletedGroups.filter((x) => String(x) !== String(groupId));
-          }
+            this.synchronizeGroups();
+          });
         }
       },
 
-      addGroups(userId) {
+      synchronizeGroups() {
         let requests = [];
 
-        for (let group of this.activeGroups) {
-          requests.push(this.axios.post('/api/orgs/' + this.organisation + '/roles/' + group + '/users/' + userId));
+        for (let group of this.organisationGroups) {
+          // Create all groups that were selected as new by user.
+          if (!this.activeGroups.some((x) => x == group._id) && this.modifiedGroups.some((x) => x == group._id)) {
+            requests.push(this.axios.post('/api/orgs/' + this.organisation + '/roles/' + group._id + '/users/' + this.user._id));
+          }
+
+          // Delete all groups that were unselected by user.
+          if (this.activeGroups.some((x) => x == group._id) && !this.modifiedGroups.some((x) => x == group._id)) {
+            requests.push(this.axios.delete('/api/orgs/' + this.organisation + '/roles/' + group._id + '/users/' + this.user._id));
+          }
         }
 
         this.axios.all(requests).then(() => {
           this.$router.go(-1);
         });
-      },
-
-      upsertUser() {
-        if (this.editMode) {
-          this.axios.patch('/api/orgs/' + this.organisation + '/users/' + this.user._id, this.user).then(() => {
-            this.updateGroups();
-          });
-
-          return;
-        }
-
-        this.axios.post('/api/orgs/' + this.organisation + '/users', this.user).then((payload) => {
-          this.addGroups(payload.data._id);
-        });
-      },
-
-      updateGroups() {
-        let counter = this.activeGroups.length + this.deletedGroups.length;
-
-        for (let group of this.activeGroups) {
-          this.axios.post('/api/orgs/' + this.organisation + '/roles/' + group + '/users/' + this.user._id).then(() => {
-            --counter;
-
-            if (counter == 0) {
-              this.$router.go(-1);
-            }
-          });
-        }
-
-        for (let group of this.deletedGroups) {
-          this.axios.delete('/api/orgs/' + this.organisation + '/roles/' + group + '/users/' + this.user._id).then(() => {
-            --counter;
-
-            if (counter == 0) {
-              this.$router.go(-1);
-            }
-          });
-        }
-
-        if (counter == 0) {
-          this.$router.go(-1);
-        }
       },
     },
     mounted() {
@@ -198,7 +176,7 @@
       }
 
       if (this.editMode) {
-        this.getExistingUser(this.$route.params.userID);
+        this.getUser(this.$route.params.userID);
       }
 
       this.getGroups();
