@@ -86,7 +86,7 @@ describe('Magic Auth Flow', function () {
 
     {
       const res = await request.get('/users/me').set('Authorization', 'Bearer ' + authToken);
-      expect(res.status).toBe(403);
+      expect(res.status).toBe(401);
     }
   });
 });

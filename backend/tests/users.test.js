@@ -23,7 +23,7 @@ describe('Users Resources', function () {
   it('Negative: Check GET: /users/me', async () => {
     {
       const res = await request.get('/users/me').set('Authorization', 'Bearer Hello World');
-      expect(res.status).toBe(403);
+      expect(res.status).toBe(401);
     }
   });
 });
