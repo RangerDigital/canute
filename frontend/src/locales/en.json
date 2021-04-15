@@ -59,7 +59,9 @@
     "failure": {
       "heading": "Sorry 🔥 Not logged in!",
       "subheading": "Check console log."
-    }
+    },
+    "title": "Dashboard",
+    "subheading": "Overview of your whole organisation. "
   },
   "organisations": {
     "heading": "Select <span class='text-white'>your</span> organisation. ",

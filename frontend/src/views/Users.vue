@@ -1,5 +1,5 @@
 <template>
-  <HorizontalLayout v-bind:loading="isLoading">
+  <HorizontalLayout>
     <VerticalContainer>
       <div>
         <h1 class="my-2 text-md xl:text-lg xl:mx-5 text-red">{{ $t('users.title') }}</h1>
@@ -51,7 +51,6 @@
       return {
         users: [],
         organisation: null,
-        isLoading: true,
 
         search: '',
         searchIndex: null,
@@ -76,7 +75,6 @@
             this.users.push(user);
           }
           this.searchedUsers = this.users;
-          this.isLoading = false;
         });
       },
 

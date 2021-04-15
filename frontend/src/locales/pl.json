@@ -59,7 +59,9 @@
     "failure": {
       "heading": "Nie jesteś zalogowany!",
       "subheading": "Sprawdź dziennik konsoli."
-    }
+    },
+    "title": "Pulpit Główny",
+    "subheading": " Przegląd całej Twojej organizacji."
   },
   "organisations": {
     "heading": "Wybierz <span class='text-white'>swoją aktywną</span> organizacje. ",
