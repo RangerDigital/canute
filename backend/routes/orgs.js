@@ -153,6 +153,17 @@ router.delete('/:orgId/users/:userId', checkAuth, checkOrg(true), async (req, re
   let organisation = req.org;
 
   organisation.users = organisation.users.filter((x) => String(x._id) !== String(userId));
+
+  let roles = [];
+
+  // Remove deleted user from all roles.
+  for (let role of organisation.roles) {
+    role.users = role.users.filter((x) => String(x._id) !== String(userId));
+    roles.push(role);
+  }
+
+  organisation.roles = roles;
+
   organisation.save();
 
   res.json(organisation);
