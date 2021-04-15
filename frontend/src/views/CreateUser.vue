@@ -4,12 +4,12 @@
       <nav class="flex flex-col justify-between w-full xl:flex-row xl:items-center">
         <div class="mb-5 xl:mb-0">
           <h1 class="my-2 text-md xl:text-lg 2xl:mx-5 text-red">{{ $t('users.title') }}</h1>
-          <p class="my-2 text-sm 2xl:mx-5 text-gray-dark">{{ $t('users.subheading') }}</p>
+          <p class="my-2 text-sm 2xl:mx-5 text-gray-dark">{{ $t('users.create.subheading') }}</p>
         </div>
 
         <div class="flex flex-row">
-          <Button ghost @click="$router.go(-1)">Cancel</Button>
-          <Button solid @click="upsertUser()">Save User</Button>
+          <Button ghost @click="$router.go(-1)">{{ $t('btn.cancel') }}</Button>
+          <Button solid @click="upsertUser()">{{ $t('btn.save') }}</Button>
         </div>
       </nav>
       <!-- Dashboard Horizontal Divider -->
@@ -22,10 +22,10 @@
           <!-- Basic Information -->
           <section class="flex flex-row w-full ">
             <!-- Description Section -->
-            <div class="hidden 2xl:flex 2xl:ml-5">
+            <div class="hidden 2xl:w-5/6 2xl:flex 2xl:ml-5">
               <div class="w-2/7">
-                <h1 class="my-2 text-md xl:text-lg text-red">Basic Information</h1>
-                <p class="my-2 text-sm text-gray-dark">Email adress will be used for login and security. You can't update it again.</p>
+                <h1 class="my-2 text-md xl:text-lg text-red">{{ $t('users.form.basic.header') }}</h1>
+                <p class="my-2 text-sm text-gray-dark">{{ $t('users.form.basic.description') }}</p>
               </div>
 
               <!-- Vertical Divider -->
@@ -35,18 +35,18 @@
             <!-- Form Section -->
             <div class="flex flex-col justify-start w-full">
               <div class="my-3.5">
-                <p class="my-2 text-sm text-gray-dark">E-Mail</p>
+                <p class="my-2 text-sm text-gray-dark">{{ $t('label.email') }}</p>
                 <TextField v-bind:readonly="editMode" v-model="user.email" placeholder="... @gmail.com" />
               </div>
 
               <div class="my-3.5">
-                <p class="my-2 text-sm text-gray-dark">Annotation</p>
+                <p class="my-2 text-sm text-gray-dark">{{ $t('label.annotation') }}</p>
                 <TextField v-model="user.annotation" placeholder="3C 24/03" />
               </div>
 
               <div class="flex flex-row items-center my-5 ">
                 <Checkbox v-model="user.isAdmin" class="flex-shrink-0" />
-                <p class="mx-3 my-2 text-sm text-gray-dark">Administrator - Should be able to manage users?</p>
+                <p class="mx-3 my-2 text-sm text-gray-dark"> {{ $t('users.form.basic.isadmin') }}</p>
               </div>
             </div>
           </section>
@@ -54,10 +54,10 @@
           <!-- User Deletion -->
           <section v-if="editMode" class="flex flex-row w-full my-10 ">
             <!-- Description Section -->
-            <div class="hidden 2xl:flex 2xl:ml-5">
+            <div class="hidden 2xl:flex 2xl:ml-5 2xl:w-5/6">
               <div class="w-2/7">
-                <h1 class="my-2 text-md xl:text-lg text-red">Manage User</h1>
-                <p class="my-2 text-sm text-gray-dark">Email adress will be used for login and security. You can't update it again.</p>
+                <h1 class="my-2 text-md xl:text-lg text-red">{{ $t('users.form.manage.header') }}</h1>
+                <p class="my-2 text-sm text-gray-dark">{{ $t('users.form.manage.subheader') }}</p>
               </div>
 
               <!-- Vertical Divider -->
@@ -66,10 +66,12 @@
 
             <!-- Form Section -->
             <div class="flex flex-col justify-start w-full 3xl:flex-row 3xl:items-center">
-              <p class="3xl:mx-3.5 my-2 text-sm text-gray-dark">Email adress will be used for login and security. You can't update it again.</p>
+              <p class="3xl:mx-3.5 my-2 text-sm text-gray-dark">{{ $t('users.form.basic.destription') }}</p>
 
               <div class="my-3.5 3xl:order-first">
-                <Button ghost @click="deleteUser()"><span class="font-normal text-red">Deactivate User</span></Button>
+                <Button ghost @click="deleteUser()"
+                  ><span class="font-normal text-red">{{ $t('btn.deactivate') }}</span></Button
+                >
               </div>
             </div>
           </section>
@@ -80,7 +82,7 @@
 
         <!-- Groups List -->
         <div class="w-full ">
-          <h1 class="py-2 font-sans text-sm xl:mx-5 text-gray-dark">User Groups</h1>
+          <h1 class="py-2 font-sans text-sm xl:mx-5 text-gray-dark">{{ $t('groups.title') }}</h1>
           <div class="grid w-full grid-cols-1 2xl:grid-cols-2 3xl:grid-cols-3 lg:gap-6">
             <Group
               class="max-w-sm xl:mx-4 xl:hover:border-red"

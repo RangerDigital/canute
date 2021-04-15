@@ -16,13 +16,17 @@
     "learn": "Learn More",
     "continue": "CONTINUE",
     "open": "Open",
-    "inprogress": "In Progress"
+    "inprogress": "In Progress",
+    "cancel": "Cancel",
+    "save": "Save",
+    "deactivate": "Deactivate"
   },
   "label": {
     "email": "Your Email",
     "organisations": "Organisations",
     "locks": "Locks",
-    "search": "Search"
+    "search": "Search",
+    "annotation": "Annotation"
   },
   "home": {
     "heading": "One app. Whole building.",
@@ -67,7 +71,22 @@
   "users": {
     "title": "Manage Users",
     "add": "Add User",
-    "subheading": "This page allows you to invite new users."
+    "subheading": "This page allows you to invite new users.",
+    "create": {
+      "subheading": "Edit or create a new member of organisation."
+    },
+    "form": {
+      "basic": {
+        "header": "Basic Information",
+        "description": "Annotation could include the unit, name, or any other information for a quick search.",
+        "isadmin": "Administrator - Should be able to manage users?",
+        "destription": "Action will delete the user from an active organisation."
+      },
+      "manage": {
+        "header": "Actions",
+        "subheader": "Actions on this user include deactivation."
+      }
+    }
   },
   "groups": {
     "title": "Manage Groups",
