@@ -9,15 +9,15 @@
 
         <!-- Organisation Stats -->
         <div v-if="organisationAdmin" class="flex-row items-center justify-start hidden w-full my-5 2xl:flex xl:px-5">
-          <div class="w-2/12 max-w-xs p-4 mr-5 border rounded-lg cursor-pointer bg-gray-darker border-gray-darker hover:border-red">
+          <div class="w-2/12 max-w-xs p-4 mr-5 border rounded-md cursor-pointer bg-gray-darker border-gray-darker hover:border-red">
             <p class="text-2xl text-white">25</p>
             <h1 class="text-sm text-red">Mieszkańcy</h1>
           </div>
-          <div class="w-2/12 max-w-xs p-4 mr-5 border rounded-lg cursor-pointer bg-gray-darker border-gray-darker hover:border-red">
+          <div class="w-2/12 max-w-xs p-4 mr-5 border rounded-md cursor-pointer bg-gray-darker border-gray-darker hover:border-red">
             <p class="text-2xl text-white">1</p>
             <h1 class="text-sm text-red">Urządzenia</h1>
           </div>
-          <div class="w-2/12 max-w-xs p-4 mr-5 border rounded-lg cursor-pointer bg-gray-darker border-gray-darker hover:border-red">
+          <div class="w-2/12 max-w-xs p-4 mr-5 border rounded-md cursor-pointer bg-gray-darker border-gray-darker hover:border-red">
             <p class="text-2xl text-white">6</p>
             <h1 class="text-sm text-red">Grupy</h1>
           </div>
