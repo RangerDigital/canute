@@ -8,7 +8,7 @@
         <div class="flex flex-row items-center justify-between w-full xl:px-5">
           <TextField class="w-full xl:mx-5" v-model="search" v-bind:placeholder="$t('label.search')" />
 
-          <Button tiny @click="$router.push('/users/create')"
+          <Button tiny @click="$router.push('/groups/create')"
             ><svg class="inline h-6 text-white align-middle xl:transform xl:scale-125 xl:h-4 xl:mr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path
                 stroke-linecap="round"
