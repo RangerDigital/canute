@@ -3,7 +3,7 @@
     <div class="flex flex-col justify-start h-full">
       <HomeNavigation noLogin noNav showBackHamburger />
 
-      <OrganisationPreview class="self-center w-full max-w-md mt-3 ml-10" />
+      <OrganisationPreview class="self-center w-full max-w-md pl-5 mt-3" />
 
       <Navigation class="self-center w-full max-w-md p-5" />
     </div>
