@@ -5,10 +5,10 @@
     "logged": "Logged In as",
     "dashboard": "Dashboard",
     "groups": "Groups",
-    "users": "Users",
+    "users": "Residents",
     "devices": "Devices",
     "settings": "Sign Out",
-    "organisations": "Switch Organisations"
+    "organisations": "Switch Organisation"
   },
   "btn": {
     "login": "SIGN IN",
@@ -32,7 +32,7 @@
     "heading": "One app. Whole building.",
     "subheading": "Happy residents!",
     "about": "Multi-family building internet-connected access control system.",
-    "action": "GET STARTED"
+    "action": "Get Started"
   },
   "auth": {
     "login": {
@@ -53,13 +53,6 @@
     }
   },
   "dashboard": {
-    "success": {
-      "heading": "Success 🎉 Logged in as"
-    },
-    "failure": {
-      "heading": "Sorry 🔥 Not logged in!",
-      "subheading": "Check console log."
-    },
     "title": "Dashboard",
     "subheading": "Overview of your whole organisation. "
   },
@@ -72,8 +65,8 @@
   },
   "users": {
     "title": "Residents",
-    "add": "Add User",
-    "subheading": "This page allows you to invite new users.",
+    "add": "Invite Resident",
+    "subheading": "This page allows you to invite new residents.",
     "create": {
       "subheading": "Edit or create a new member of organisation."
     },
@@ -81,12 +74,12 @@
       "basic": {
         "header": "Basic Information",
         "description": "Annotation could include the unit, name, or any other information for a quick search.",
-        "isadmin": "Administrator - Should be able to manage users?",
-        "destription": "Action will delete the user from an active organisation."
+        "isadmin": "Administrator - Should be able to manage organisation?",
+        "destription": "Action will delete the resident from an active organisation."
       },
       "manage": {
         "header": "Actions",
-        "subheader": "Actions on this user include deactivation."
+        "subheader": "Actions on this resident include deactivation."
       }
     }
   },

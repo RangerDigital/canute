@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router';
+
 import Home from '../views/Home.vue';
-import MobileNavigation from '../views/MobileNavigation.vue';
 import Dashboard from '../views/Dashboard.vue';
+import MobileNavigation from '../views/MobileNavigation.vue';
 
 const routes = [
   {
@@ -32,13 +33,13 @@ const routes = [
   {
     path: '/users/create',
     name: 'CreateUser',
-    component: () => import(/* webpackChunkName: "createUsers" */ '../views/CreateUser.vue'),
+    component: () => import(/* webpackChunkName: "users" */ '../views/CreateUser.vue'),
   },
   {
     path: '/users/:userID',
     name: 'ViewUser',
     props: { editMode: true },
-    component: () => import(/* webpackChunkName: "createUsers" */ '../views/CreateUser.vue'),
+    component: () => import(/* webpackChunkName: "users" */ '../views/CreateUser.vue'),
   },
   {
     path: '/groups',
@@ -49,11 +50,6 @@ const routes = [
     path: '/devices',
     name: 'Devices',
     component: () => import(/* webpackChunkName: "devices" */ '../views/Devices.vue'),
-  },
-  {
-    path: '/guard',
-    name: 'Guard',
-    component: () => import(/* webpackChunkName: "guard" */ '../views/Guard.vue'),
   },
   {
     path: '/organisations/:autoSelect?',
