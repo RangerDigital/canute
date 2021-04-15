@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../views/Home.vue';
+import MobileNavigation from '../views/MobileNavigation.vue';
+import Dashboard from '../views/Dashboard.vue';
 
 const routes = [
   {
@@ -8,14 +10,19 @@ const routes = [
     component: Home,
   },
   {
-    path: '/auth/:magicToken?',
-    name: 'Auth',
-    component: () => import(/* webpackChunkName: "auth" */ '../views/Auth.vue'),
+    path: '/navigation',
+    name: 'MobileNavigation',
+    component: MobileNavigation,
   },
   {
     path: '/dashboard',
     name: 'Dashboard',
-    component: () => import(/* webpackChunkName: "dashboard" */ '../views/Dashboard.vue'),
+    component: Dashboard,
+  },
+  {
+    path: '/auth/:magicToken?',
+    name: 'Auth',
+    component: () => import(/* webpackChunkName: "auth" */ '../views/Auth.vue'),
   },
   {
     path: '/users',
@@ -42,11 +49,6 @@ const routes = [
     path: '/devices',
     name: 'Devices',
     component: () => import(/* webpackChunkName: "devices" */ '../views/Devices.vue'),
-  },
-  {
-    path: '/navigation',
-    name: 'MobileNavigation',
-    component: () => import(/* webpackChunkName: "mobileNavigation" */ '../views/MobileNavigation.vue'),
   },
   {
     path: '/guard',
