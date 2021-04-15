@@ -26,9 +26,6 @@ router.post('/', checkAuth, checkOrg(true), async (req, res) => {
   device.auth.clientToken = crypto.randomBytes(16).toString('hex');
   device.acl.pubsub.push('things/' + device.auth.clientId + '/#');
 
-  // DEVELOPER ONLY
-  // device.shadows.push({ name: 'Front Gate', topic: 'things/' + device.auth.clientId + '/locks/0', reported: 'standby', class: 'lock' });
-
   device.save();
 
   res.json(device);

@@ -164,6 +164,9 @@ router.use('/:orgId/devices', devices);
 const locks = require('./locks');
 router.use('/:orgId/locks', locks);
 
+const shadows = require('./shadows');
+router.use('/:orgId/shadows', shadows);
+
 const roles = require('./roles');
 router.use('/:orgId/roles', roles);
 
