@@ -71,7 +71,7 @@
     }
   },
   "users": {
-    "title": "Manage Users",
+    "title": "Residents",
     "add": "Add User",
     "subheading": "This page allows you to invite new users.",
     "create": {
@@ -91,14 +91,14 @@
     }
   },
   "groups": {
-    "title": "Manage Groups",
+    "title": "Groups",
     "add": "Create Group",
     "users": "Users",
     "permissions": "Permissions",
     "subheading": "This page allows you to create new groups."
   },
   "devices": {
-    "title": "Manage Devices",
+    "title": "Devices",
     "add": "Create Device",
     "subheading": "This page allows you to create new devices."
   }

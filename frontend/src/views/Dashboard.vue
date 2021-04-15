@@ -9,17 +9,19 @@
 
         <!-- Organisation Stats -->
         <div v-if="organisationAdmin" class="flex-row items-center justify-start hidden w-full my-5 2xl:flex xl:px-5">
-          <div class="w-2/12 max-w-xs p-4 mr-5 border rounded-md cursor-pointer bg-gray-darker border-gray-darker hover:border-red">
-            <p class="text-2xl text-white">25</p>
-            <h1 class="text-sm text-red">Mieszkańcy</h1>
+          <div class="w-2/12 max-w-xs p-4 mr-5 border-b border-r rounded-md cursor-pointer border-gray-darker" @click="$router.push('/users')">
+            <p class="text-2xl text-white">{{ organisationObject.users.length }}</p>
+            <p class="mt-1.5 text-sm text-red">{{ $t('users.title') }}</p>
           </div>
-          <div class="w-2/12 max-w-xs p-4 mr-5 border rounded-md cursor-pointer bg-gray-darker border-gray-darker hover:border-red">
-            <p class="text-2xl text-white">1</p>
-            <h1 class="text-sm text-red">Urządzenia</h1>
+
+          <div class="w-2/12 max-w-xs p-4 mr-5 border-b border-r rounded-md cursor-pointer border-gray-darker" @click="$router.push('/devices')">
+            <p class="text-2xl text-white">{{ devices.length }}</p>
+            <p class=" mt-1.5 text-sm text-red">{{ $t('devices.title') }}</p>
           </div>
-          <div class="w-2/12 max-w-xs p-4 mr-5 border rounded-md cursor-pointer bg-gray-darker border-gray-darker hover:border-red">
-            <p class="text-2xl text-white">6</p>
-            <h1 class="text-sm text-red">Grupy</h1>
+
+          <div class="w-2/12 max-w-xs p-4 mr-5 border-b border-r rounded-md cursor-pointer border-gray-darker" @click="$router.push('/groups')">
+            <p class="text-2xl text-white">{{ organisationObject.roles.length }}</p>
+            <p class=" mt-1.5 text-sm text-red">{{ $t('groups.title') }}</p>
           </div>
         </div>
 
@@ -28,7 +30,7 @@
 
       <div class="grid grid-cols-1 justify-items-center xl:grid-cols-2 2xl:grid-cols-4 3xl:grid-cols-5 lg:gap-7">
         <!-- Locks List -->
-        <div class="w-full md:max-w-sm">
+        <div v-if="locks.length" class="w-full md:max-w-sm">
           <p class="my-2 text-sm text-gray-dark ">{{ $t('label.locks') }}</p>
           <div class="h-px rounded-full bg-gray-darker"></div>
 
@@ -61,18 +63,27 @@
         locks: [],
         organisation: null,
         organisationAdmin: false,
+        organisationObject: {},
+        devices: [],
       };
     },
     methods: {
       getLocks() {
-        this.axios
-          .get('/api/orgs/' + this.organisation + '/locks')
-          .then((payload) => {
-            this.locks = payload.data;
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+        this.axios.get('/api/orgs/' + this.organisation + '/locks').then((payload) => {
+          this.locks = payload.data;
+        });
+      },
+
+      getOrganisation() {
+        this.axios.get('/api/orgs/' + this.organisation).then((payload) => {
+          this.organisationObject = payload.data;
+        });
+      },
+
+      getDevices() {
+        this.axios.get('/api/orgs/' + this.organisation + '/devices').then((payload) => {
+          this.devices = payload.data;
+        });
       },
     },
     mounted() {
@@ -87,6 +98,8 @@
       }
 
       this.getLocks();
+      this.getDevices();
+      this.getOrganisation();
     },
   };
 </script>
