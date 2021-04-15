@@ -91,10 +91,11 @@
     }
   },
   "groups": {
-    "title": "Zarządzaj Grupami",
-    "add": "Dodaj Grupe",
+    "title": "Grupy",
+    "add": "Stwórz Grupe",
     "users": "Użytkowników",
-    "permissions": "Uprawnień"
+    "permissions": "Uprawnień",
+    "subheading": "Ta strona umożliwia tworzenie nowych grup."
   },
   "devices": {
     "add": "Dodaj Urządzenie",

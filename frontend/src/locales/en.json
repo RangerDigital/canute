@@ -92,9 +92,10 @@
   },
   "groups": {
     "title": "Manage Groups",
-    "add": "Add Group",
+    "add": "Create Group",
     "users": "Users",
-    "permissions": "Permissions"
+    "permissions": "Permissions",
+    "subheading": "This page allows you to create new groups."
   },
   "devices": {
     "title": "Manage Devices",
