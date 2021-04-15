@@ -9,7 +9,10 @@ const auth = require('./routes/auth');
 const orgs = require('./routes/orgs');
 
 const app = express();
+
 app.use(express.json());
+app.use(express.urlencoded());
+
 app.use(helmet());
 
 app.use('/users', users);
