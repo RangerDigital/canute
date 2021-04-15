@@ -98,8 +98,11 @@
       }
 
       this.getLocks();
-      this.getDevices();
-      this.getOrganisation();
+
+      if (this.organisationAdmin) {
+        this.getDevices();
+        this.getOrganisation();
+      }
     },
   };
 </script>
