@@ -22,15 +22,15 @@
           <!-- Basic Information -->
           <section class="flex flex-row w-full ">
             <!-- Description Section -->
-            <div class="hidden 2xl:w-5/6 2xl:flex 2xl:ml-5">
+            <div class="flex-grow-0 hidden 2xl:w-4/6 2xl:flex 2xl:ml-5">
               <div class="w-2/7">
                 <h1 class="my-2 text-md xl:text-lg text-red">{{ $t('users.form.basic.header') }}</h1>
                 <p class="my-2 text-sm text-gray-dark">{{ $t('users.form.basic.description') }}</p>
               </div>
-
-              <!-- Vertical Divider -->
-              <div class="w-px h-full mx-5 my-5 rounded-full bg-gray-darker"></div>
             </div>
+
+            <!-- Vertical Divider -->
+            <div class="hidden w-px h-full mx-5 my-5 rounded-full 2xl:flex bg-gray-darker"></div>
 
             <!-- Form Section -->
             <div class="flex flex-col justify-start w-full">
@@ -54,15 +54,15 @@
           <!-- User Deletion -->
           <section v-if="editMode" class="flex flex-row w-full my-10 ">
             <!-- Description Section -->
-            <div class="hidden 2xl:flex 2xl:ml-5 2xl:w-5/6">
+            <div class="flex-grow-0 hidden 2xl:flex 2xl:ml-5 2xl:w-4/6">
               <div class="w-2/7">
                 <h1 class="my-2 text-md xl:text-lg text-red">{{ $t('users.form.manage.header') }}</h1>
                 <p class="my-2 text-sm text-gray-dark">{{ $t('users.form.manage.subheader') }}</p>
               </div>
-
-              <!-- Vertical Divider -->
-              <div class="w-px h-full mx-5 my-5 rounded-full bg-gray-darker"></div>
             </div>
+
+            <!-- Vertical Divider -->
+            <div class="hidden w-px h-full mx-5 my-5 rounded-full 2xl:flex bg-gray-darker"></div>
 
             <!-- Form Section -->
             <div class="flex flex-col justify-start w-full 3xl:flex-row 3xl:items-center">
