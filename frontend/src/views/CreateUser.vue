@@ -9,7 +9,7 @@
 
         <div class="flex flex-row">
           <Button ghost @click="$router.go(-1)">{{ $t('btn.cancel') }}</Button>
-          <Button solid @click="upsertUser()">{{ $t('btn.save') }}</Button>
+          <Button solid @click="upsertUser()" :disabled="!user.email.length">{{ $t('btn.save') }}</Button>
         </div>
       </nav>
       <!-- Dashboard Horizontal Divider -->
@@ -122,7 +122,7 @@
       return {
         organisation: null,
         organisationGroups: [],
-        user: {},
+        user: { email: '' },
         isLoading: true,
 
         activeGroups: [],

@@ -78,7 +78,7 @@
     "form": {
       "basic": {
         "header": "Podstawowe Dane",
-        "description": "Adnotacja może zawierać mieszkanie, imię lub inne informacje potrzebne do szybkiego wyszukiwania.",
+        "description": "Adnotacja może zawierać numer mieszkania, imię lub inne tagi potrzebne do szybkiego wyszukiwania.",
         "isadmin": "Administrator - Czy powinien móc zarządzać organizacją?",
         "destription": "Działanie spowoduje usunięcie mieszkańca z aktywnej organizacji."
       },
