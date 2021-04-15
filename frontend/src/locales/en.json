@@ -99,6 +99,7 @@
   },
   "devices": {
     "title": "Manage Devices",
-    "add": "Add Device"
+    "add": "Create Device",
+    "subheading": "This page allows you to create new devices."
   }
 }

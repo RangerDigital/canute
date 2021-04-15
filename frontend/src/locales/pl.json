@@ -98,7 +98,8 @@
     "subheading": "Ta strona umożliwia tworzenie nowych grup."
   },
   "devices": {
-    "add": "Dodaj Urządzenie",
-    "title": "Zarządzaj Urządzeniami"
+    "add": "Stwórz Urządzenie",
+    "title": "Urządzenia",
+    "subheading": "Ta strona umożliwia tworzenie nowych urządzeń."
   }
 }
