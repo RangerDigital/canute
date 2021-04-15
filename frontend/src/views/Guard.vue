@@ -46,8 +46,6 @@
       },
     },
     created() {
-      console.log(localStorage.token);
-
       if (localStorage.token) {
         this.axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.token;
       }
@@ -57,11 +55,9 @@
         .then((payload) => {
           this.isLogged = true;
           this.userEmail = payload.data.email;
-          console.log(payload);
         })
-        .catch((err) => {
+        .catch(() => {
           this.isLogged = false;
-          console.log(err);
         });
     },
   };
