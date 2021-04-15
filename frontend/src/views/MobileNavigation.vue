@@ -3,7 +3,7 @@
     <div class="flex flex-col justify-start h-full">
       <HomeNavigation noLogin noNav showBackHamburger />
 
-      <AppNavigation class="self-center w-full max-w-md" />
+      <OrganisationPreview class="self-center w-full max-w-md ml-10" />
 
       <Navigation class="self-center w-full max-w-md p-5" />
     </div>
@@ -16,7 +16,7 @@
   import HomeNavigation from '@/components/HomeNavigation.vue';
   import HomeFooter from '@/components/HomeFooter.vue';
 
-  import AppNavigation from '@/components/AppNavigation.vue';
+  import OrganisationPreview from '@/components/OrganisationPreview.vue';
   import Navigation from '@/components/app/Navigation.vue';
 
   export default {
@@ -25,7 +25,7 @@
       HomeNavigation,
       HomeFooter,
       Navigation,
-      AppNavigation,
+      OrganisationPreview,
     },
   };
 </script>
