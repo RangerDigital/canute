@@ -63,7 +63,7 @@
         locks: [],
         organisation: null,
         organisationAdmin: false,
-        organisationObject: {},
+        organisationObject: { roles: [], users: [] },
         devices: [],
       };
     },
