@@ -3,8 +3,8 @@
     <VerticalContainer>
       <nav class="flex flex-col justify-between w-full xl:flex-row xl:items-center">
         <div class="mb-5 xl:mb-0">
-          <h1 class="my-2 text-md xl:text-lg xl:mx-5 text-red">{{ $t('users.title') }}</h1>
-          <p class="my-2 text-sm xl:mx-5 text-gray-dark">{{ $t('users.subheading') }}</p>
+          <h1 class="my-2 text-md xl:text-lg 2xl:mx-5 text-red">{{ $t('users.title') }}</h1>
+          <p class="my-2 text-sm 2xl:mx-5 text-gray-dark">{{ $t('users.subheading') }}</p>
         </div>
 
         <div class="flex flex-row">
@@ -52,7 +52,7 @@
           </section>
 
           <!-- User Deletion -->
-          <section class="flex flex-row w-full my-10">
+          <section v-if="editMode" class="flex flex-row w-full my-10 ">
             <!-- Description Section -->
             <div class="hidden 2xl:flex 2xl:ml-5">
               <div class="w-2/7">
@@ -65,11 +65,11 @@
             </div>
 
             <!-- Form Section -->
-            <div class="flex flex-col justify-start w-full 2xl:flex-row 2xl:items-center">
-              <div></div>
+            <div class="flex flex-col justify-start w-full 3xl:flex-row 3xl:items-center">
+              <p class="3xl:mx-3.5 my-2 text-sm text-gray-dark">Email adress will be used for login and security. You can't update it again.</p>
 
-              <div class="my-3.5 2xl:order-first">
-                <Button solid @click="deleteUser()">Remove User</Button>
+              <div class="my-3.5 3xl:order-first">
+                <Button ghost @click="deleteUser()"><span class="font-normal text-red">Deactivate User</span></Button>
               </div>
             </div>
           </section>
