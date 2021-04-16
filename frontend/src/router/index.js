@@ -47,6 +47,17 @@ const routes = [
     component: () => import(/* webpackChunkName: "groups" */ '../views/Groups.vue'),
   },
   {
+    path: '/groups/create',
+    name: 'CreateGroup',
+    component: () => import(/* webpackChunkName: "groups" */ '../views/CreateGroup.vue'),
+  },
+  {
+    path: '/groups/:groupID',
+    name: 'ViewGroup',
+    props: { editMode: true },
+    component: () => import(/* webpackChunkName: "groups" */ '../views/CreateGroup.vue'),
+  },
+  {
     path: '/devices',
     name: 'Devices',
     component: () => import(/* webpackChunkName: "devices" */ '../views/Devices.vue'),
