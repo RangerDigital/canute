@@ -36,7 +36,32 @@
             <div class="flex flex-col justify-start w-full">
               <div class="my-3.5">
                 <p class="my-2 text-sm text-gray-dark">{{ $t('label.name') }}</p>
-                <TextField v-model="group.bane" placeholder="Group A-B" />
+                <TextField v-model="group.name" placeholder="Group A-B" />
+              </div>
+            </div>
+          </section>
+
+          <!-- Group Deletion -->
+          <section v-if="editMode" class="flex flex-row w-full my-10 ">
+            <!-- Description Section -->
+            <div class="flex-grow-0 hidden 2xl:flex 2xl:ml-5 2xl:w-10/12 3xl:w-4/6">
+              <div class="w-2/7">
+                <h1 class="my-2 text-md xl:text-lg text-red">{{ $t('groups.form.manage.header') }}</h1>
+                <p class="my-2 text-sm text-gray-dark">{{ $t('groups.form.manage.subheader') }}</p>
+              </div>
+            </div>
+
+            <!-- Vertical Divider -->
+            <div class="hidden w-px h-full mx-5 my-5 rounded-full 2xl:flex bg-gray-darker"></div>
+
+            <!-- Form Section -->
+            <div class="flex flex-col justify-start w-full 3xl:flex-row 3xl:items-center">
+              <p class="3xl:mx-3.5 my-2 text-sm text-gray-dark">{{ $t('groups.form.basic.destription') }}</p>
+
+              <div class="my-3.5 3xl:order-first">
+                <Button ghost @click="deleteGroup()"
+                  ><span class="font-normal text-red">{{ $t('btn.deactivate') }}</span></Button
+                >
               </div>
             </div>
           </section>
@@ -51,7 +76,7 @@
           <div class="grid w-full grid-cols-1 2xl:grid-cols-2 3xl:grid-cols-3 lg:gap-6">
             <Shadow
               class="max-w-sm xl:mx-4 xl:hover:border-red"
-              v-bind:isActive="activeShadows.includes(item._id)"
+              v-bind:isActive="group.permissions.includes(item._id)"
               v-for="item in organisationShadows"
               :key="item._id"
               v-bind:shadow="item"
@@ -85,10 +110,8 @@
       return {
         organisation: null,
         organisationShadows: [],
-        group: { name: '' },
+        group: { name: '', permissions: [] },
         isLoading: true,
-
-        activeShadows: [],
       };
     },
     props: {
@@ -96,17 +119,22 @@
     },
     methods: {
       selectShadow(shadowId) {
-        if (this.activeGroups.includes(shadowId)) {
-          this.activeGroups = this.activeGroups.filter((x) => String(x) !== String(shadowId));
+        if (this.group.permissions.includes(shadowId)) {
+          this.group.permissions = this.group.permissions.filter((x) => String(x) !== String(shadowId));
         } else {
-          this.activeGroups.push(shadowId);
+          this.group.permissions.push(shadowId);
         }
+      },
+
+      deleteGroup() {
+        this.axios.delete('/api/orgs/' + this.organisation + '/roles/' + this.group._id).then(() => {
+          this.$router.go(-1);
+        });
       },
 
       getShadows() {
         this.axios.get('/api/orgs/' + this.organisation + '/shadows').then((payload) => {
           this.organisationShadows = payload.data;
-
           this.isLoading = false;
         });
       },
