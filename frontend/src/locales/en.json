@@ -26,7 +26,9 @@
     "organisations": "Organisations",
     "locks": "Locks",
     "search": "Search",
-    "annotation": "Annotation"
+    "annotation": "Annotation",
+    "name": "Name",
+    "shadows": "Permissions"
   },
   "home": {
     "heading": "One app. Whole building.",
@@ -86,13 +88,34 @@
   "groups": {
     "title": "Groups",
     "add": "Create Group",
-    "users": "Users",
     "permissions": "Permissions",
-    "subheading": "This page allows you to create new groups."
+    "subheading": "This page allows you to create new groups.",
+    "create": {
+      "subheading": "Edit or create a new member of organisation."
+    },
+    "form": {
+      "basic": {
+        "description": "The name allows you to find this group.",
+        "destription": "Action will delete the group from an active organisation."
+      },
+      "manage": {
+        "header": "Operacje",
+        "subheader": "Actions on existing group."
+      }
+    }
   },
   "devices": {
     "title": "Devices",
     "add": "Create Device",
-    "subheading": "This page allows you to create new devices."
+    "subheading": "This page allows you to create new devices.",
+    "form": {
+      "basic": {
+        "description": "The name allows you to find this device on site.",
+        "header": "Basic Information"
+      }
+    },
+    "create": {
+      "subheading": " Modify a device in the organization."
+    }
   }
 }

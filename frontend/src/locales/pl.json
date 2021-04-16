@@ -26,7 +26,9 @@
     "organisations": "Organizacje",
     "locks": "Klucze",
     "search": "Szukaj",
-    "annotation": "Adnotacja"
+    "annotation": "Adnotacja",
+    "name": "Nazwa",
+    "shadows": "Uprawnienia"
   },
   "home": {
     "heading": "Budujemy lepsze miejsca",
@@ -86,13 +88,33 @@
   "groups": {
     "title": "Grupy",
     "add": "Stwórz Grupe",
-    "users": "Użytkowników",
     "permissions": "Uprawnień",
-    "subheading": "Dodaj oraz zarządzaj grupami mieszkańców."
+    "subheading": "Dodaj oraz zarządzaj grupami mieszkańców.",
+    "create": {
+      "subheading": "Modyfikuj grupę w organizacji."
+    },
+    "form": {
+      "basic": {
+        "description": "Nazwa pozwala znaleźć tę grupę.",
+        "destription": "Spowoduje usunięcie grupy z organizacji."
+      },
+      "manage": {
+        "subheader": "Działania na istniejącej grupie."
+      }
+    }
   },
   "devices": {
     "add": "Stwórz Urządzenie",
     "title": "Urządzenia",
-    "subheading": "Dodaj oraz zarządzaj urządzeniami."
+    "subheading": "Dodaj oraz zarządzaj urządzeniami.",
+    "form": {
+      "basic": {
+        "description": "Nazwa pozwala znaleźć to urządzenie.",
+        "header": "Dane Podstawowe"
+      }
+    },
+    "create": {
+      "subheading": "Modyfikuj urządzenie w organizacji."
+    }
   }
 }
