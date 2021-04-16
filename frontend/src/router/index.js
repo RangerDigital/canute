@@ -52,6 +52,17 @@ const routes = [
     component: () => import(/* webpackChunkName: "devices" */ '../views/Devices.vue'),
   },
   {
+    path: '/devices/create',
+    name: 'CreateDevice',
+    component: () => import(/* webpackChunkName: "devices" */ '../views/CreateDevice.vue'),
+  },
+  {
+    path: '/devices/:deviceID',
+    name: 'ViewDevice',
+    props: { editMode: true },
+    component: () => import(/* webpackChunkName: "devices" */ '../views/CreateDevice.vue'),
+  },
+  {
     path: '/organisations/:autoSelect?',
     name: 'Organisations',
     component: () => import(/* webpackChunkName: "organisations" */ '../views/Organisations.vue'),
