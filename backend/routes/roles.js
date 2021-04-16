@@ -10,6 +10,14 @@ router.get('/', checkAuth, checkOrg(true), async (req, res) => {
   res.json(req.org.roles);
 });
 
+router.get('/:roleId', checkAuth, checkOrg(true), async (req, res) => {
+  const { roleId } = req.params;
+
+  let role = req.org.roles.filter((x) => String(x._id) == String(roleId));
+
+  res.json(role[0]);
+});
+
 router.post('/', checkAuth, checkOrg(true), async (req, res) => {
   const { name, permissions, users } = req.body;
   let organisation = req.org;
@@ -26,10 +34,10 @@ router.post('/', checkAuth, checkOrg(true), async (req, res) => {
 });
 
 router.patch('/:roleId', checkAuth, checkOrg(true), async (req, res) => {
-  const { name } = req.body;
+  const { name, permissions } = req.body;
   const { orgId, roleId } = req.params;
 
-  let roles = await orgs.updateOne({ _id: orgId, 'roles._id': roleId }, { $set: { 'roles.$.name': name } });
+  let roles = await orgs.updateOne({ _id: orgId, 'roles._id': roleId }, { $set: { 'roles.$.name': name, 'roles.$.permissions': permissions } });
 
   res.json(roles);
 });
