@@ -28,7 +28,8 @@
     "search": "Szukaj",
     "annotation": "Adnotacja",
     "name": "Nazwa",
-    "shadows": "Uprawnienia"
+    "shadows": "Cienie",
+    "permissions": "Uprawnienia"
   },
   "home": {
     "heading": "Budujemy lepsze miejsca",

@@ -28,7 +28,8 @@
     "search": "Search",
     "annotation": "Annotation",
     "name": "Name",
-    "shadows": "Permissions"
+    "shadows": "Shadows",
+    "permissions": "Permissions"
   },
   "home": {
     "heading": "One app. Whole building.",
