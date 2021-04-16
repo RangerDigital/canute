@@ -16,6 +16,14 @@ router.get('/', checkAuth, checkOrg(true), async (req, res) => {
   res.json(device);
 });
 
+router.get('/:deviceId', checkAuth, checkOrg(true), async (req, res) => {
+  const { orgId, deviceId } = req.params;
+
+  let device = await devices.findOne({ _orgId: orgId, _id: deviceId });
+
+  res.json(device);
+});
+
 router.post('/', checkAuth, checkOrg(true), async (req, res) => {
   const { name } = req.body;
   const { orgId } = req.params;
