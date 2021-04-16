@@ -22,7 +22,7 @@
           <!-- Basic Information -->
           <section class="flex flex-row w-full ">
             <!-- Description Section -->
-            <div class="flex-grow-0 hidden 2xl:w-4/6 2xl:flex 2xl:ml-5">
+            <div class="flex-grow-0 hidden 2xl:w-10/12 2xl:flex 2xl:ml-5 3xl:w-4/6">
               <div class="w-2/7">
                 <h1 class="my-2 text-md xl:text-lg text-red">{{ $t('users.form.basic.header') }}</h1>
                 <p class="my-2 text-sm text-gray-dark">{{ $t('users.form.basic.description') }}</p>
@@ -54,7 +54,7 @@
           <!-- User Deletion -->
           <section v-if="editMode" class="flex flex-row w-full my-10 ">
             <!-- Description Section -->
-            <div class="flex-grow-0 hidden 2xl:flex 2xl:ml-5 2xl:w-4/6">
+            <div class="flex-grow-0 hidden 2xl:flex 2xl:ml-5 2xl:w-10/12 3xl:w-4/6">
               <div class="w-2/7">
                 <h1 class="my-2 text-md xl:text-lg text-red">{{ $t('users.form.manage.header') }}</h1>
                 <p class="my-2 text-sm text-gray-dark">{{ $t('users.form.manage.subheader') }}</p>
