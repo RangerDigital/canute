@@ -3,7 +3,7 @@
     <VerticalContainer>
       <nav class="flex flex-col justify-between w-full xl:flex-row xl:items-center">
         <div class="mb-5 xl:mb-0">
-          <h1 class="my-2 text-md xl:text-lg 2xl:mx-5 text-red">{{ $t('users.title') }}</h1>
+          <h1 class="my-2 font-medium text-md xl:text-lg 2xl:mx-5 text-red">{{ $t('users.title') }}</h1>
           <p class="my-2 text-sm 2xl:mx-5 text-gray">{{ $t('users.create.subheading') }}</p>
         </div>
 

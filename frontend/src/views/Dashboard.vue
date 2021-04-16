@@ -4,7 +4,7 @@
       <OrganisationPreview class="mb-7 xl:hidden" />
 
       <div class="hidden xl:block">
-        <h1 class="my-2 text-md xl:text-lg xl:mx-5 text-red">{{ $t('dashboard.title') }}</h1>
+        <h1 class="my-2 font-medium text-md xl:text-lg xl:mx-5 text-red">{{ $t('dashboard.title') }}</h1>
         <p class="my-2 text-sm mb-7 xl:mx-5 text-gray">{{ $t('dashboard.subheading') }}</p>
 
         <!-- Organisation Stats -->

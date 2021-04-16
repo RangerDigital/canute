@@ -38,7 +38,7 @@
     "login": {
       "heading": "Aby kontynuować,",
       "subheading": "Podaj swój adres email.",
-      "about": "Nigdy więcej haseł do zapamiętania!",
+      "about": "Żadnych haseł do zapamiętania!",
       "description": "Otrzymasz magiczny link do logowania w wiadomości E-Mail."
     },
     "failure": {
@@ -53,15 +53,8 @@
     }
   },
   "dashboard": {
-    "success": {
-      "heading": "Witaj, 🎉"
-    },
-    "failure": {
-      "heading": "Nie jesteś zalogowany!",
-      "subheading": "Sprawdź dziennik konsoli."
-    },
     "title": "Pulpit Główny",
-    "subheading": " Przegląd całej Twojej organizacji."
+    "subheading": "Przegląd całej Twojej organizacji."
   },
   "organisations": {
     "heading": "Wybierz <span class='text-white'>swoją aktywną</span> organizacje. ",
@@ -72,21 +65,21 @@
   },
   "users": {
     "title": "Mieszkańcy",
-    "subheading": "Zaproś nowych mieszkańców oraz zarządzaj istniejącymi.",
-    "add": "Zaproś Mieszkańca",
+    "subheading": "Dodaj oraz zarządzaj mieszkańcami.",
+    "add": "Dodaj Mieszkańca",
     "create": {
-      "subheading": "Dodaj lub modyfikuj mieszkańca w organizacji."
+      "subheading": "Modyfikuj mieszkańca w organizacji."
     },
     "form": {
       "basic": {
         "header": "Podstawowe Dane",
-        "description": "Adnotacja może zawierać numer mieszkania, imię lub inne tagi potrzebne do szybkiego wyszukiwania.",
+        "description": "Adnotacja może zawierać tagi, np: imię lub numer mieszkania, wykorzystywane do wyszukiwania.",
         "isadmin": "Administrator - Czy powinien móc zarządzać organizacją?",
-        "destription": "Działanie spowoduje usunięcie mieszkańca z aktywnej organizacji."
+        "destription": "Spowoduje usunięcie mieszkańca z organizacji."
       },
       "manage": {
-        "header": "Działania",
-        "subheader": "Działania na tym użytkowniku obejmują dezaktywację."
+        "header": "Operacje",
+        "subheader": "Działania na istniejącym mieszkańcu."
       }
     }
   },
@@ -95,11 +88,11 @@
     "add": "Stwórz Grupe",
     "users": "Użytkowników",
     "permissions": "Uprawnień",
-    "subheading": "Ta strona umożliwia tworzenie nowych grup."
+    "subheading": "Dodaj oraz zarządzaj grupami mieszkańców."
   },
   "devices": {
     "add": "Stwórz Urządzenie",
     "title": "Urządzenia",
-    "subheading": "Ta strona umożliwia tworzenie nowych urządzeń."
+    "subheading": "Dodaj oraz zarządzaj urządzeniami."
   }
 }
