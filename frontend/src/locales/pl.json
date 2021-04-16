@@ -110,12 +110,13 @@
     "subheading": "Dodaj oraz zarządzaj urządzeniami.",
     "form": {
       "basic": {
-        "description": "Nazwa pozwala znaleźć to urządzenie.",
+        "description": "Nazwa pozwala znaleźć to urządzenie.  Cienie urządzenia reprezentują jego możliwości.",
         "header": "Dane Podstawowe"
       }
     },
     "create": {
-      "subheading": "Modyfikuj urządzenie w organizacji."
+      "subheading": "Modyfikuj urządzenie w organizacji.",
+      "shadows": "Cienie urządzenia zostaną utworzone automatycznie po podłączeniu do sieci."
     }
   }
 }

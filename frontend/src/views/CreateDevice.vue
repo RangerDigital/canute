@@ -50,6 +50,10 @@
           <h1 class="py-2 font-sans text-sm xl:mx-5 text-gray-dark">{{ $t('label.shadows') }}</h1>
           <div class="grid w-full grid-cols-1 2xl:grid-cols-2 3xl:grid-cols-3 lg:gap-6">
             <Shadow class="max-w-sm xl:mx-4 xl:hover:border-red" v-for="item in device.shadows" :key="item._id" v-bind:shadow="item" />
+
+            <div v-if="!device.shadows.length" class="flex flex-col items-center justify-center h-full 2xl:col-span-2 3xl:col-span-3">
+              <p class="my-12 text-sm text-center 2xl:mx-5 text-gray-dark">{{ $t('devices.create.shadows') }}</p>
+            </div>
           </div>
         </div>
       </div>
@@ -78,7 +82,7 @@
       return {
         organisation: null,
         organisationShadows: [],
-        device: { name: '' },
+        device: { name: '', shadows: [] },
         isLoading: true,
       };
     },
