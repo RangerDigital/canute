@@ -3,7 +3,7 @@
     <VerticalContainer>
       <div>
         <h1 class="my-2 text-md xl:text-lg xl:mx-5 text-red">{{ $t('groups.title') }}</h1>
-        <p class="my-2 text-sm mb-7 xl:mx-5 text-gray-dark">{{ $t('groups.subheading') }}</p>
+        <p class="my-2 text-sm mb-7 xl:mx-5 text-gray">{{ $t('groups.subheading') }}</p>
 
         <div class="flex flex-row items-center justify-between w-full xl:px-5">
           <TextField class="w-full xl:mx-5" v-model="search" v-bind:placeholder="$t('label.search')" />

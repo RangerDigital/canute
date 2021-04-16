@@ -5,7 +5,7 @@
 
       <div class="hidden xl:block">
         <h1 class="my-2 text-md xl:text-lg xl:mx-5 text-red">{{ $t('dashboard.title') }}</h1>
-        <p class="my-2 text-sm mb-7 xl:mx-5 text-gray-dark">{{ $t('dashboard.subheading') }}</p>
+        <p class="my-2 text-sm mb-7 xl:mx-5 text-gray">{{ $t('dashboard.subheading') }}</p>
 
         <!-- Organisation Stats -->
         <div v-if="organisationAdmin" class="flex-row items-center justify-start hidden w-full my-5 2xl:flex xl:px-5">
