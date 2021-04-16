@@ -30,9 +30,8 @@ router.post('/', checkAuth, checkOrg(true), async (req, res) => {
 
   let device = new devices({ name: name, _orgId: orgId });
 
-  device.auth.clientId = String(device._id);
-  device.auth.clientToken = crypto.randomBytes(16).toString('hex');
-  device.acl.pubsub.push('things/' + device.auth.clientId + '/#');
+  device.auth.clientId = crypto.randomBytes(16).toString('hex');
+  device.auth.clientToken = crypto.randomBytes(32).toString('hex');
 
   device.save();
 

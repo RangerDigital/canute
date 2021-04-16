@@ -103,7 +103,7 @@
 
         if (!this.editMode) {
           this.axios.post('/api/orgs/' + this.organisation + '/devices', this.device).then((payload) => {
-            this.user._id = payload.data._id;
+            console.log(payload.data.auth);
 
             this.$router.go(-1);
           });
