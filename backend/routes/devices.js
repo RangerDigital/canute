@@ -70,7 +70,7 @@ router.patch('/:deviceId', checkAuth, checkOrg(true), async (req, res) => {
   const { name } = req.body;
   const { orgId, deviceId } = req.params;
 
-  let device = await devices.find({ _orgId: orgId, _id: deviceId });
+  let device = await devices.findOne({ _orgId: orgId, _id: deviceId });
 
   device.name = name;
   device.save();
