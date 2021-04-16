@@ -1,4 +1,5 @@
 <template>
+  <div id="modals" class="absolute"></div>
   <router-view class="bg-black" />
 </template>
 

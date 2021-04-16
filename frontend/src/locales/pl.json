@@ -19,7 +19,8 @@
     "inprogress": "W Trakcie",
     "cancel": "Anuluj",
     "save": "Zapisz",
-    "deactivate": "Deaktywuj"
+    "deactivate": "Deaktywuj",
+    "done": "Zrobione"
   },
   "label": {
     "email": "Adres E-Mail",
@@ -117,6 +118,11 @@
     "create": {
       "subheading": "Modyfikuj urządzenie w organizacji.",
       "shadows": "Cienie urządzenia zostaną utworzone automatycznie po podłączeniu do sieci."
+    },
+    "success": {
+      "heading": "Sukces! 🎉 Urządzenie stworzone!",
+      "subheading": "Skopiuj tokeny, zanim przejdziesz dalej!",
+      "description": "Już ich nie zobaczysz!"
     }
   }
 }

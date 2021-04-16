@@ -58,6 +58,25 @@
         </div>
       </div>
     </VerticalContainer>
+
+    <Modal v-if="showAuthModal" v-on:hide="this.$router.go(-1)">
+      <h1 class="my-2 text-3xl font-semibold text-red ">{{ $t('devices.success.heading') }}</h1>
+      <h2 class="my-2 text-sm text-gray">{{ $t('devices.success.subheading') }} {{ $t('devices.success.description') }}</h2>
+
+      <div class="my-6">
+        <p class="my-2 text-sm text-gray-dark">Client ID</p>
+        <TextField readonly v-model="device.auth.clientId" />
+      </div>
+
+      <div class="my-6">
+        <p class="my-2 text-sm text-gray-dark">Client Token</p>
+        <TextField readonly v-model="device.auth.clientToken" />
+      </div>
+
+      <h2 class="mb-6 text-sm text-gray-dark"></h2>
+
+      <Button solid @click="this.$router.go(-1)">{{ $t('btn.done') }}</Button>
+    </Modal>
   </HorizontalLayout>
 </template>
 
@@ -67,6 +86,7 @@
 
   import Shadow from '@/components/app/Shadow.vue';
   import Button from '@/components/inputs/Button.vue';
+  import Modal from '@/components/app/Modal.vue';
   import TextField from '@/components/inputs/TextField.vue';
 
   export default {
@@ -75,6 +95,7 @@
       HorizontalLayout,
       VerticalContainer,
       Shadow,
+      Modal,
       Button,
       TextField,
     },
@@ -84,6 +105,7 @@
         organisationShadows: [],
         device: { name: '', shadows: [] },
         isLoading: true,
+        showAuthModal: false,
       };
     },
     props: {
@@ -107,9 +129,9 @@
 
         if (!this.editMode) {
           this.axios.post('/api/orgs/' + this.organisation + '/devices', this.device).then((payload) => {
-            console.log(payload.data.auth);
+            this.device = payload.data;
 
-            this.$router.go(-1);
+            this.showAuthModal = true;
           });
         }
       },

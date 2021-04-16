@@ -19,7 +19,9 @@
     "inprogress": "In Progress",
     "cancel": "Cancel",
     "save": "Save",
-    "deactivate": "Deactivate"
+    "deactivate": "Deactivate",
+    "ready": "Ready",
+    "done": "Done"
   },
   "label": {
     "email": "Your Email",
@@ -118,6 +120,11 @@
     "create": {
       "subheading": " Modify a device in the organization.",
       "shadows": "Device shadows will be created automatically."
+    },
+    "success": {
+      "heading": "Success 🎉 Device created!",
+      "subheading": "Copy tokens before proceeding!",
+      "description": "You won't see them again!"
     }
   }
 }
