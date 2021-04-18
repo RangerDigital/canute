@@ -5,9 +5,9 @@
     >
 
     <nav v-if="!noNav" class="items-center justify-center hidden xl:flex">
-      <router-link class="text-sm font-medium mx-7 text-gray hover:text-gray-light" to="/auth">{{ $t('nav.services') }}</router-link>
-      <router-link class="text-sm font-medium mx-7 text-gray hover:text-gray-light" to="/auth">FAQ</router-link>
-      <router-link class="text-sm font-medium mx-7 text-gray hover:text-gray-light" to="/auth">{{ $t('nav.contact') }}</router-link>
+      <router-link class="text-sm mx-7 text-gray hover:text-gray-light" to="/auth">{{ $t('nav.services') }}</router-link>
+      <router-link class="text-sm mx-7 text-gray hover:text-gray-light" to="/auth">FAQ</router-link>
+      <router-link class="text-sm mx-7 text-gray hover:text-gray-light" to="/auth">{{ $t('nav.contact') }}</router-link>
     </nav>
 
     <!-- Language Toggler / Desktop Only -->
@@ -27,7 +27,7 @@
 
       <button
         v-if="!noLogin && !userEmail"
-        class="font-medium text-sm px-8 py-2.5 text-white bg-red hover:bg-red-dark rounded-md focus:outline-none tracking-wide"
+        class=" text-sm px-8 py-2.5 text-white bg-red hover:bg-red-dark rounded-md focus:outline-none tracking-wide"
         @click="$router.push('auth')"
         >{{ $t('btn.login') }}
       </button>

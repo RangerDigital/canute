@@ -15,9 +15,7 @@
             $t('home.action')
           }}</button>
 
-          <button class="hidden py-3 ml-6 text-sm font-medium md:block px-7 text-gray focus:outline-none hover:text-gray-light" @click="$router.push('/learn')"
-            >{{ $t('btn.learn') }}
-          </button>
+          <button class="hidden py-3 ml-6 text-sm md:block px-7 text-gray focus:outline-none hover:text-gray-light" @click="$router.push('/learn')">{{ $t('btn.learn') }} </button>
         </div>
       </div>
 
