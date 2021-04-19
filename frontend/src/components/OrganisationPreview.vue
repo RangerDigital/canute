@@ -4,8 +4,8 @@
 
     <div class="flex flex-col justify-around">
       <h2 class="py-2 font-sans text-base font-medium text-white">{{ organisationName }}</h2>
-      <p class="my-1 text-sm text-red">{{ organisationAddress }}</p>
-      <p v-if="organisationAdmin" class="my-2 text-sm text-gray-dark">Admin</p>
+      <p class="my-1 text-sm text-primary">{{ organisationAddress }}</p>
+      <p v-if="organisationAdmin" class="my-2 text-sm 2xl:font-medium text-gray-dark">Admin</p>
     </div>
   </div>
 </template>

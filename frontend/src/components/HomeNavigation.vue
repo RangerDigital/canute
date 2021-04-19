@@ -1,6 +1,6 @@
 <template>
   <header class="static flex flex-row items-center justify-between p-5 md:px-20 md:py-6">
-    <h1 class="py-2 font-sans text-base font-semibold cursor-pointer text-red md:text-xl" @click="$router.push('/').catch((err) => {})"
+    <h1 class="py-2 font-sans text-base font-semibold cursor-pointer text-primary md:text-xl" @click="$router.push('/').catch((err) => {})"
       >Canute <span class="text-white">OS</span></h1
     >
 
@@ -13,7 +13,7 @@
     <!-- Language Toggler / Desktop Only -->
     <section class="flex-row hidden lg:flex">
       <button class="mx-8 text-sm font-medium text-gray hover:text-gray-light focus:outline-none " @click="toggleLanguage()">
-        <svg class="inline h-6 mx-0.5 align-middle text-red" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg class="inline h-6 mx-0.5 align-middle text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path
             stroke-linecap="round"
             stroke-linejoin="round"
@@ -27,30 +27,30 @@
 
       <button
         v-if="!noLogin && !userEmail"
-        class=" text-sm px-8 py-2.5 text-white bg-red hover:bg-red-dark rounded-md focus:outline-none tracking-wide"
+        class=" text-sm px-8 py-2.5 text-white bg-primary hover:bg-primary-dark rounded-md focus:outline-none tracking-wide"
         @click="$router.push('auth')"
         >{{ $t('btn.login') }}
       </button>
 
       <p v-if="userEmail" class="text-sm font-medium cursor-pointer mx-7 text-gray" @click="$router.push('/dashboard').catch((err) => {})"
-        >{{ $t('nav.logged') }} <span class="text-red">{{ userEmail }}</span></p
+        >{{ $t('nav.logged') }} <span class="text-primary">{{ userEmail }}</span></p
       >
     </section>
 
     <!-- Hamburger Menu / Mobile Only -->
-    <router-link v-if="userEmail && !showBackHamburger" class="text-red p-1.5  xl:hidden" to="/navigation">
+    <router-link v-if="userEmail && !showBackHamburger" class="text-primary p-1.5  xl:hidden" to="/navigation">
       <svg class="h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
       </svg>
     </router-link>
 
-    <a v-if="userEmail && showBackHamburger" class="text-red p-1.5  xl:hidden" @click="$router.go(-1)">
+    <a v-if="userEmail && showBackHamburger" class="text-primary p-1.5  xl:hidden" @click="$router.go(-1)">
       <svg class="h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
       </svg>
     </a>
 
-    <router-link v-if="!userEmail" class="text-red p-1.5  xl:hidden" to="/auth">
+    <router-link v-if="!userEmail" class="text-primary p-1.5  xl:hidden" to="/auth">
       <svg class="h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M9 5l7 7-7 7" />
       </svg>

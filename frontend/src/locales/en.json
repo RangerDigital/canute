@@ -64,7 +64,7 @@
   "organisations": {
     "heading": "Select <span class='text-white'>your</span> organisation. ",
     "error": {
-      "heading": "<span class='text-red'>Sorry,</span> You don't belong to any organizations <span class='text-red'>yet!</span>",
+      "heading": "<span class='text-primary'>Sorry,</span> You don't belong to any organizations <span class='text-primary'>yet!</span>",
       "about": "Ask your building admin about access."
     }
   },

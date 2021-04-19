@@ -4,24 +4,24 @@
       <OrganisationPreview class="mb-7 xl:hidden" />
 
       <div class="hidden xl:block">
-        <h1 class="my-2 font-medium text-md xl:text-lg xl:mx-5 text-red">{{ $t('dashboard.title') }}</h1>
-        <p class="my-2 text-sm font-medium mb-7 xl:mx-5 text-gray">{{ $t('dashboard.subheading') }}</p>
+        <h1 class="my-2 font-medium text-md xl:text-lg xl:mx-5 text-primary">{{ $t('dashboard.title') }}</h1>
+        <p class="my-2 text-sm 2xl:font-medium mb-7 xl:mx-5 text-gray">{{ $t('dashboard.subheading') }}</p>
 
         <!-- Organisation Stats -->
         <div v-if="organisationAdmin" class="flex-row items-center justify-start hidden w-full my-5 2xl:flex xl:px-5">
           <div class="w-2/12 max-w-xs p-4 mr-5 cursor-pointer" @click="$router.push('/users')">
             <p class="text-2xl text-white">{{ organisationObject.users.length }}</p>
-            <p class="mt-1.5 text-sm text-red">{{ $t('users.title') }}</p>
+            <p class="mt-1.5 text-sm text-primary">{{ $t('users.title') }}</p>
           </div>
 
           <div class="w-2/12 max-w-xs p-4 mr-5 cursor-pointer" @click="$router.push('/devices')">
             <p class="text-2xl text-white">{{ devices.length }}</p>
-            <p class=" mt-1.5 text-sm text-red">{{ $t('devices.title') }}</p>
+            <p class=" mt-1.5 text-sm text-primary">{{ $t('devices.title') }}</p>
           </div>
 
           <div class="w-2/12 max-w-xs p-4 mr-5 cursor-pointer" @click="$router.push('/groups')">
             <p class="text-2xl text-white">{{ organisationObject.roles.length }}</p>
-            <p class=" mt-1.5 text-sm text-red">{{ $t('groups.title') }}</p>
+            <p class=" mt-1.5 text-sm text-primary">{{ $t('groups.title') }}</p>
           </div>
         </div>
 

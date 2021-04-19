@@ -63,7 +63,7 @@
   "organisations": {
     "heading": "Wybierz <span class='text-white'>swoją aktywną</span> organizacje. ",
     "error": {
-      "heading": "<span class='text-red'>Nie należysz </span> jeszcze do żadnej <span class='text-red'>organizacji.</span>",
+      "heading": "<span class='text-primary'>Nie należysz </span> jeszcze do żadnej <span class='text-primary'>organizacji.</span>",
       "about": "Zapytaj się administratora o dostęp."
     }
   },

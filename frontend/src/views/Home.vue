@@ -5,13 +5,13 @@
     <section class="flex flex-col items-center justify-between p-5 md:px-12 xl:w-11/12 2xl:w-9/12 xl:flex-row xl:self-center">
       <div>
         <h1 class="my-1 text-2xl font-semibold text-white md:my-5 md:text-4xl 2xl:text-5xl 3xl:text-6xl">{{ $t('home.heading') }}</h1>
-        <h2 class="my-1 text-2xl font-semibold md:my-5 text-red md:text-4xl 2xl:text-5xl 3xl:text-6xl">{{ $t('home.subheading') }}</h2>
+        <h2 class="my-1 text-2xl font-semibold md:my-5 text-primary md:text-4xl 2xl:text-5xl 3xl:text-6xl">{{ $t('home.subheading') }}</h2>
 
         <p class="my-5 text-sm md:my-8 xl:text-base text-gray">{{ $t('home.about') }}</p>
 
         <!-- Call to Action -->
         <div class="flex flex-row items-center justify-center mt-16 mb-8 md:justify-start">
-          <button class="px-24 py-3 text-sm font-medium text-white rounded-md md:px-8 bg-red hover:bg-red-dark focus:outline-none" @click="callToAction()">{{
+          <button class="px-24 py-3 text-sm font-medium text-white rounded-md md:px-8 bg-primary hover:bg-primary-dark focus:outline-none" @click="callToAction()">{{
             $t('home.action')
           }}</button>
 

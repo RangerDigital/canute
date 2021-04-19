@@ -11,7 +11,7 @@
     </div>
 
     <div v-if="isLoaded && organisations.length" class="self-center text-center ">
-      <h1 class="my-1 text-2xl font-semibold md:my-5 text-red md:text-4xl 2xl:text-5xl" v-html="$t('organisations.heading')"></h1>
+      <h1 class="my-1 text-2xl font-semibold md:my-5 text-primary md:text-4xl 2xl:text-5xl" v-html="$t('organisations.heading')"></h1>
     </div>
 
     <div v-if="isLoaded && organisations.length" class="self-center w-full p-5 md:max-w-md">

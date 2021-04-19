@@ -2,8 +2,8 @@
   <HorizontalLayout>
     <VerticalContainer>
       <div>
-        <h1 class="my-2 font-medium text-md xl:text-lg xl:mx-5 text-red">{{ $t('groups.title') }}</h1>
-        <p class="my-2 text-sm mb-7 xl:mx-5 text-gray">{{ $t('groups.subheading') }}</p>
+        <h1 class="my-2 font-medium text-md xl:text-lg xl:mx-5 text-primary">{{ $t('groups.title') }}</h1>
+        <p class="my-2 text-sm mb-7 2xl:font-medium xl:mx-5 text-gray">{{ $t('groups.subheading') }}</p>
 
         <div class="flex flex-row items-center justify-between w-full xl:px-5">
           <TextField class="w-full xl:mx-5" v-model="search" v-bind:placeholder="$t('label.search')" />
@@ -23,7 +23,7 @@
       </div>
 
       <div class="grid grid-cols-1 justify-items-center xl:grid-cols-2 2xl:grid-cols-4 3xl:grid-cols-5 lg:gap-2">
-        <Group class="max-w-sm xl:mx-4 xl:hover:border-red" v-for="item in searchedGroups" :key="item._id" v-bind:group="item" @click="$router.push('/groups/' + item._id)" />
+        <Group class="max-w-sm xl:mx-4 xl:hover:border-primary" v-for="item in searchedGroups" :key="item._id" v-bind:group="item" @click="$router.push('/groups/' + item._id)" />
       </div>
     </VerticalContainer>
   </HorizontalLayout>

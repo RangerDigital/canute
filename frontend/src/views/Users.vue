@@ -2,8 +2,8 @@
   <HorizontalLayout>
     <VerticalContainer>
       <div>
-        <h1 class="my-2 font-medium text-md xl:text-lg xl:mx-5 text-red">{{ $t('users.title') }}</h1>
-        <p class="my-2 text-sm mb-7 xl:mx-5 text-gray">{{ $t('users.subheading') }}</p>
+        <h1 class="my-2 font-medium text-md xl:text-lg xl:mx-5 text-primary">{{ $t('users.title') }}</h1>
+        <p class="my-2 text-sm mb-7 2xl:font-medium xl:mx-5 text-gray">{{ $t('users.subheading') }}</p>
 
         <div class="flex flex-row items-center justify-between w-full xl:px-5">
           <TextField class="w-full xl:mx-5" v-model="search" v-bind:placeholder="$t('label.search')" />

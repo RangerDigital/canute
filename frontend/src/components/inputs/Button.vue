@@ -3,7 +3,7 @@
     v-if="solid"
     @click="$emit('click')"
     v-bind:disabled="disabled"
-    class="w-full px-3 py-3 mx-1 text-sm font-medium text-white rounded-md whitespace-nowrap xl:w-auto xl:px-9 bg-red hover:bg-red-dark focus:outline-none disabled:bg-gray-darker disabled:text-gray "
+    class="w-full px-3 py-3 mx-1 text-sm font-medium text-white rounded-md whitespace-nowrap xl:w-auto xl:px-9 bg-primary hover:bg-primary-dark focus:outline-none disabled:bg-gray-darker disabled:text-gray "
   >
     <slot></slot>
   </button>
@@ -20,7 +20,7 @@
     v-if="tiny"
     @click="$emit('click')"
     v-bind:disabled="disabled"
-    class="px-3 py-3 ml-2 text-sm font-medium text-white rounded-md whitespace-nowrap xl:px-9 bg-red hover:bg-red-dark focus:outline-none disabled:bg-gray-darker disabled:text-gray "
+    class="px-3 py-3 ml-2 text-sm font-medium text-white rounded-md whitespace-nowrap xl:px-9 bg-primary hover:bg-primary-dark focus:outline-none disabled:bg-gray-darker disabled:text-gray "
   >
     <slot></slot>
   </button>

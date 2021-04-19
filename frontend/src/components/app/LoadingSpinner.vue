@@ -1,6 +1,6 @@
 <template>
   <div>
-    <svg class="animate-spin h-16 mx-0.5 align-middle text-red" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <svg class="animate-spin h-16 mx-0.5 align-middle text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path
         stroke-linecap="round"
         stroke-linejoin="round"

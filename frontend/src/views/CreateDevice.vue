@@ -3,8 +3,8 @@
     <VerticalContainer>
       <nav class="flex flex-col justify-between w-full xl:flex-row xl:items-center">
         <div class="mb-5 xl:mb-0">
-          <h1 class="my-2 font-medium text-md xl:text-lg 2xl:mx-5 text-red">{{ $t('devices.title') }}</h1>
-          <p class="my-2 text-sm 2xl:mx-5 text-gray">{{ $t('devices.create.subheading') }}</p>
+          <h1 class="my-2 font-medium text-md xl:text-lg 2xl:mx-5 text-primary">{{ $t('devices.title') }}</h1>
+          <p class="my-2 text-sm 2xl:mx-5 2xl:font-medium text-gray">{{ $t('devices.create.subheading') }}</p>
         </div>
 
         <div class="flex flex-row">
@@ -24,7 +24,7 @@
             <!-- Description Section -->
             <div class="flex-grow-0 hidden 2xl:w-10/12 2xl:flex 2xl:ml-5 3xl:w-4/6">
               <div class="w-2/7">
-                <h1 class="my-2 text-md xl:text-lg text-red">{{ $t('devices.form.basic.header') }}</h1>
+                <h1 class="my-2 text-md xl:text-lg text-primary">{{ $t('devices.form.basic.header') }}</h1>
                 <p class="my-2 text-sm text-gray-dark">{{ $t('devices.form.basic.description') }}</p>
               </div>
             </div>
@@ -49,7 +49,7 @@
         <div class="w-full ">
           <h1 class="py-2 font-sans text-sm xl:mx-5 text-gray-dark">{{ $t('label.shadows') }}</h1>
           <div class="grid w-full grid-cols-1 2xl:grid-cols-2 3xl:grid-cols-3 lg:gap-6">
-            <Shadow class="max-w-sm xl:mx-4 xl:hover:border-red" v-for="item in device.shadows" :key="item._id" v-bind:shadow="item" />
+            <Shadow class="max-w-sm xl:mx-4 xl:hover:border-primary" v-for="item in device.shadows" :key="item._id" v-bind:shadow="item" />
 
             <div v-if="!device.shadows.length" class="flex flex-col items-center justify-center h-full 2xl:col-span-2 3xl:col-span-3">
               <p class="my-12 text-sm text-center 2xl:mx-5 text-gray-dark">{{ $t('devices.create.shadows') }}</p>
@@ -60,7 +60,7 @@
     </VerticalContainer>
 
     <Modal v-if="showAuthModal" v-on:hide="this.$router.go(-1)">
-      <h1 class="my-2 text-3xl font-semibold text-red ">{{ $t('devices.success.heading') }}</h1>
+      <h1 class="my-2 text-3xl font-semibold text-primary ">{{ $t('devices.success.heading') }}</h1>
       <h2 class="my-2 text-sm text-gray">{{ $t('devices.success.subheading') }} {{ $t('devices.success.description') }}</h2>
 
       <div class="my-6">
