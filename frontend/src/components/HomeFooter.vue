@@ -1,5 +1,5 @@
 <template>
-  <footer class="flex flex-row items-center justify-between p-5 lg:justify-end md:px-20 md:py-6">
+  <footer class="flex-row items-center justify-between hidden p-5 lg:flex lg:justify-end md:px-20 md:py-6">
     <!-- Language Toggler / Desktop Only -->
     <section class="lg:hidden">
       <button class="text-sm text-gray-darker xl:text-gray-dark xl:hover:text-gray focus:outline-none" @click="toggleLanguage()">
