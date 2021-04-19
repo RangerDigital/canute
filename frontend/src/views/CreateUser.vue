@@ -25,7 +25,7 @@
             <div class="flex-grow-0 hidden 2xl:w-10/12 2xl:flex 2xl:ml-5 3xl:w-4/6">
               <div class="w-2/7">
                 <h1 class="my-2 text-md xl:text-lg text-primary">{{ $t('users.form.basic.header') }}</h1>
-                <p class="my-2 text-sm text-gray-dark">{{ $t('users.form.basic.description') }}</p>
+                <p class="my-2 text-sm text-gray">{{ $t('users.form.basic.description') }}</p>
               </div>
             </div>
 
@@ -35,18 +35,18 @@
             <!-- Form Section -->
             <div class="flex flex-col justify-start w-full">
               <div class="my-3.5">
-                <p class="my-2 text-sm text-gray-dark">{{ $t('label.email') }}</p>
+                <p class="my-2 text-sm text-gray">{{ $t('label.email') }}</p>
                 <TextField v-bind:readonly="editMode" v-model="user.email" placeholder="... @gmail.com" />
               </div>
 
               <div class="my-3.5">
-                <p class="my-2 text-sm text-gray-dark">{{ $t('label.annotation') }}</p>
+                <p class="my-2 text-sm text-gray">{{ $t('label.annotation') }}</p>
                 <TextField v-model="user.annotation" placeholder="3C 24/03" />
               </div>
 
               <div class="flex flex-row items-center my-5 ">
                 <Checkbox v-model="user.isAdmin" class="flex-shrink-0" />
-                <p class="mx-3 my-2 text-sm text-gray-dark"> {{ $t('users.form.basic.isadmin') }}</p>
+                <p class="mx-3 my-2 text-sm text-gray"> {{ $t('users.form.basic.isadmin') }}</p>
               </div>
             </div>
           </section>
@@ -57,7 +57,7 @@
             <div class="flex-grow-0 hidden 2xl:flex 2xl:ml-5 2xl:w-10/12 3xl:w-4/6">
               <div class="w-2/7">
                 <h1 class="my-2 text-md xl:text-lg text-primary">{{ $t('users.form.manage.header') }}</h1>
-                <p class="my-2 text-sm text-gray-dark">{{ $t('users.form.manage.subheader') }}</p>
+                <p class="my-2 text-sm text-gray">{{ $t('users.form.manage.subheader') }}</p>
               </div>
             </div>
 
@@ -66,7 +66,7 @@
 
             <!-- Form Section -->
             <div class="flex flex-col justify-start w-full 3xl:flex-row 3xl:items-center">
-              <p class="3xl:mx-3.5 my-2 text-sm text-gray-dark">{{ $t('users.form.basic.destription') }}</p>
+              <p class="3xl:mx-3.5 my-2 text-sm text-gray">{{ $t('users.form.basic.destription') }}</p>
 
               <div class="my-3.5 3xl:order-first">
                 <Button ghost @click="deleteUser()"
@@ -82,7 +82,7 @@
 
         <!-- Groups List -->
         <div class="w-full ">
-          <h1 class="py-2 font-sans text-sm xl:mx-5 text-gray-dark">{{ $t('groups.title') }}</h1>
+          <h1 class="py-2 font-sans text-sm xl:mx-5 text-gray">{{ $t('groups.title') }}</h1>
           <div class="grid w-full grid-cols-1 2xl:grid-cols-2 3xl:grid-cols-3 lg:gap-6">
             <Group
               class="max-w-sm xl:mx-4 xl:hover:border-primary"

@@ -31,7 +31,7 @@
       <div class="grid grid-cols-1 xl:mx-5 justify-items-center xl:grid-cols-2 2xl:grid-cols-4 3xl:grid-cols-5 lg:gap-7">
         <!-- Locks List -->
         <div v-if="locks.length" class="w-full md:max-w-sm">
-          <p class="my-2 text-sm text-gray-dark ">{{ $t('label.locks') }}</p>
+          <p class="my-2 text-sm text-gray ">{{ $t('label.locks') }}</p>
           <div class="h-px rounded-full bg-gray-darker"></div>
 
           <div class="flex flex-col xl:justify-center">

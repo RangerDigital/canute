@@ -13,8 +13,8 @@
       <div class="self-center mx-4">
         <div class="flex flex-col justify-between lg:flex-row items:center lg:items-end">
           <div>
-            <label class="block my-2 text-sm font-base text-gray-dark"
-              ><svg class="inline h-6 mx-0.5 align-middle text-gray-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <label class="block my-2 text-sm font-base text-gray"
+              ><svg class="inline h-6 mx-0.5 align-middle text-gray" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path
                   stroke-linecap="round"
                   stroke-linejoin="round"
@@ -43,7 +43,7 @@
           >
         </div>
 
-        <p class="text-sm text-center md:my-7 font-base text-gray-dark">{{ $t('auth.login.description') }}</p>
+        <p class="text-sm text-center md:my-7 font-base text-gray">{{ $t('auth.login.description') }}</p>
       </div>
 
       <div class="h-16 2xl:h-48"></div>
