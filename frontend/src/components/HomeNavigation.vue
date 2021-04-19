@@ -12,7 +12,7 @@
 
     <!-- Language Toggler / Desktop Only -->
     <section class="flex-row hidden lg:flex">
-      <button class="mx-8 text-sm font-medium text-gray hover:text-gray-light focus:outline-none " @click="toggleLanguage()">
+      <button class="mx-8 text-sm text-gray hover:text-gray-light focus:outline-none " @click="toggleLanguage()">
         <svg class="inline h-6 mx-0.5 align-middle text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path
             stroke-linecap="round"
@@ -32,7 +32,7 @@
         >{{ $t('btn.login') }}
       </button>
 
-      <p v-if="userEmail" class="text-sm font-medium cursor-pointer mx-7 text-gray" @click="$router.push('/dashboard').catch((err) => {})"
+      <p v-if="userEmail" class="text-sm cursor-pointer mx-7 text-gray" @click="$router.push('/dashboard').catch((err) => {})"
         >{{ $t('nav.logged') }} <span class="text-primary">{{ userEmail }}</span></p
       >
     </section>
