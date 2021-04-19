@@ -10,17 +10,17 @@ module.exports = {
         DEFAULT: '#F3F3F4',
       },
       red: {
-        dark: '#ff344c',
-        DEFAULT: '#FD445A',
+        dark: '#ff813b',
+        DEFAULT: '#FF6E3D',
       },
       gray: {
-        darker: '#171717',
-        dark: '#595959',
-        DEFAULT: '#595959',
+        darker: '#171716',
+        dark: '#424242',
+        DEFAULT: '#595654',
         light: '#636363',
       },
       black: {
-        DEFAULT: '#141414',
+        DEFAULT: '#151414',
       },
     },
     fontFamily: {
