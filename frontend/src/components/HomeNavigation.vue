@@ -4,11 +4,11 @@
       >Canute <span class="text-white">OS</span></h1
     >
 
-    <nav v-if="!noNav" class="items-center justify-center hidden xl:flex">
+    <!-- <nav v-if="!noNav" class="items-center justify-center hidden xl:flex">
       <router-link class="text-sm mx-7 text-gray hover:text-gray-light" to="/auth">{{ $t('nav.services') }}</router-link>
       <router-link class="text-sm mx-7 text-gray hover:text-gray-light" to="/auth">FAQ</router-link>
       <router-link class="text-sm mx-7 text-gray hover:text-gray-light" to="/auth">{{ $t('nav.contact') }}</router-link>
-    </nav>
+    </nav> -->
 
     <!-- Language Toggler / Desktop Only -->
     <section class="flex-row hidden lg:flex">
