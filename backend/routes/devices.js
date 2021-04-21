@@ -24,6 +24,14 @@ router.get('/:deviceId', checkAuth, checkOrg(true), async (req, res) => {
   res.json(device);
 });
 
+router.delete('/:deviceId', checkAuth, checkOrg(true), async (req, res) => {
+  const { orgId, deviceId } = req.params;
+
+  let device = await devices.deleteOne({ _orgId: orgId, _id: deviceId });
+
+  res.json(device);
+});
+
 router.post('/', checkAuth, checkOrg(true), async (req, res) => {
   const { name } = req.body;
   const { orgId } = req.params;
@@ -31,7 +39,7 @@ router.post('/', checkAuth, checkOrg(true), async (req, res) => {
   let device = new devices({ name: name, _orgId: orgId });
 
   device.auth.clientId = crypto.randomBytes(16).toString('hex');
-  device.auth.clientToken = crypto.randomBytes(32).toString('hex');
+  device.auth.clientToken = crypto.randomBytes(16).toString('hex');
 
   device.save();
 
