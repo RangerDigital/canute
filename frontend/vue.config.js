@@ -34,14 +34,9 @@ module.exports = {
           type: 'image/png',
           sizes: '512x512',
         },
-        {
-          src: '/icon_192.png',
-          type: 'image/png',
-          sizes: '192x192',
-        },
       ],
       start_url: '/dashboard',
-      background_color: '#141414',
+      background_color: '#151414',
       display: 'standalone',
       scope: '/',
     },
@@ -54,6 +49,6 @@ module.exports = {
       msTileImage: null,
     },
 
-    themeColor: '#141414',
+    themeColor: '#151414',
   },
 };
