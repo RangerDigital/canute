@@ -7,6 +7,10 @@ const devices = require('../models/devices');
 router.post('/auth', async (req, res) => {
   const { client, username, password } = req.body;
 
+  if (username == process.env.MQTT_USERNAME && password == process.env.MQTT_PASSWORD) {
+    return res.json({ msg: 'Access Granted!' });
+  }
+
   let device = await devices.findOne({ 'auth.clientId': client, 'auth.clientToken': password });
 
   if (device) {
