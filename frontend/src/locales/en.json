@@ -21,7 +21,8 @@
     "save": "Save",
     "deactivate": "Deactivate",
     "ready": "Ready",
-    "done": "Done"
+    "done": "Done",
+    "delete": "Delete"
   },
   "label": {
     "email": "Your Email",
@@ -125,6 +126,7 @@
       "heading": "Success 🎉 Device created!",
       "subheading": "Copy tokens before proceeding!",
       "description": "You won't see them again!"
-    }
+    },
+    "device": "Device"
   }
 }

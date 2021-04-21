@@ -40,6 +40,27 @@
               </div>
             </div>
           </section>
+
+          <!-- Devices Deletion -->
+          <section v-if="editMode" class="flex flex-row w-full my-10 ">
+            <!-- Description Section -->
+            <div class="flex-grow-0 hidden 2xl:flex 2xl:ml-5 2xl:w-10/12 3xl:w-4/6">
+              <div class="w-2/7">
+                <h1 class="my-2 text-md xl:text-lg text-primary">{{ $t('users.form.manage.header') }}</h1>
+                <p class="my-2 text-sm text-gray">{{ $t('users.form.manage.subheader') }}</p>
+              </div>
+            </div>
+
+            <!-- Vertical Divider -->
+            <div class="hidden w-px h-full mx-5 my-5 rounded-full 2xl:flex bg-gray-darker"></div>
+
+            <!-- Form Section -->
+            <div class="flex flex-col justify-start w-full 3xl:flex-row 3xl:items-center">
+              <Button ghost @click="deleteDevice()"
+                ><span class="font-normal text-primary">{{ $t('btn.delete') }} {{ $t('devices.device') }}</span></Button
+              >
+            </div>
+          </section>
         </div>
 
         <!-- Vertical Divider -->
@@ -117,6 +138,12 @@
         this.axios.get('/api/orgs/' + this.organisation + '/devices/' + id).then((payload) => {
           this.device = payload.data;
           this.isLoading = false;
+        });
+      },
+
+      deleteDevice() {
+        this.axios.delete('/api/orgs/' + this.organisation + '/devices/' + this.device._id).then(() => {
+          this.$router.go(-1);
         });
       },
 

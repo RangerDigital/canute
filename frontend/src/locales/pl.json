@@ -20,7 +20,8 @@
     "cancel": "Anuluj",
     "save": "Zapisz",
     "deactivate": "Deaktywuj",
-    "done": "Zrobione"
+    "done": "Zrobione",
+    "delete": "Usuń"
   },
   "label": {
     "email": "Adres E-Mail",
@@ -123,6 +124,7 @@
       "heading": "Sukces! 🎉 Urządzenie stworzone!",
       "subheading": "Skopiuj tokeny, zanim przejdziesz dalej!",
       "description": "Już ich nie zobaczysz!"
-    }
+    },
+    "device": "Urządzenie"
   }
 }
