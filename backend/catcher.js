@@ -4,7 +4,7 @@ const devices = require('./models/devices');
 let client;
 
 const connect = () => {
-  client = mqtt.connect(process.env.MQTT_URL);
+  client = mqtt.connect(process.env.MQTT_URL, { username: process.env.MQTT_USERNAME, password: process.env.MQTT_PASSWORD });
 
   client.on('error', (err) => {
     console.log(err);

@@ -5,7 +5,11 @@ const devices = require('../models/devices');
 
 // Endpoint for MQTT Broker
 router.post('/auth', async (req, res) => {
-  const { client, password } = req.body;
+  const { client, username, password } = req.body;
+
+  if (username == process.env.MQTT_USERNAME && password == process.env.MQTT_PASSWORD) {
+    return res.json({ msg: 'Access Granted!' });
+  }
 
   let device = await devices.findOne({ 'auth.clientId': client, 'auth.clientToken': password });
 
@@ -17,7 +21,11 @@ router.post('/auth', async (req, res) => {
 });
 
 router.post('/acl', async (req, res) => {
-  const { client, topic } = req.body;
+  const { client, username, topic } = req.body;
+
+  if (username == process.env.MQTT_USERNAME) {
+    return res.json({ msg: 'Access Granted!' });
+  }
 
   let levels = topic.split('/');
 
