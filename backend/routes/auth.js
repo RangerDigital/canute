@@ -8,7 +8,7 @@ const mailer = require('../mailer');
 const users = require('../models/users');
 
 router.post('/magic', async (req, res) => {
-  const { email } = req.body;
+  const { email, locale } = req.body;
 
   let user = await users.findOne({ email: email });
 
@@ -24,10 +24,13 @@ router.post('/magic', async (req, res) => {
   });
 
   const from = process.env.MAGIC_FROM;
-  const subject = process.env.MAGIC_SUBJECT_PREFIX + magicToken;
   const prefix = process.env.MAGIC_URL_PREFIX;
 
-  mailer.sendTemplate('templates/magic.html', { from: from, to: req.body.email, subject: subject }, { magicToken: magicToken, magicUrlPrefix: prefix });
+  if (locale == 'pl') {
+    mailer.sendTemplate('templates/magic_pl.html', { from: from, to: req.body.email, subject: 'Canute OS - Zaloguj Się' }, { magicToken: magicToken, magicUrlPrefix: prefix });
+  } else {
+    mailer.sendTemplate('templates/magic_en.html', { from: from, to: req.body.email, subject: 'Canute OS - Sign In' }, { magicToken: magicToken, magicUrlPrefix: prefix });
+  }
 
   res.json({ msg: 'Magic token sent!' });
 });
