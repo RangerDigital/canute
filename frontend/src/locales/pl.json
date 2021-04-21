@@ -43,7 +43,7 @@
     "login": {
       "heading": "Aby kontynuować,",
       "subheading": "Podaj swój adres email.",
-      "about": "Żadnych haseł do zapamiętania!",
+      "about": "Żadnych nowych haseł do zapamiętania!",
       "description": "Otrzymasz magiczny link do logowania w wiadomości E-Mail."
     },
     "failure": {
@@ -79,7 +79,7 @@
       "basic": {
         "header": "Podstawowe Dane",
         "description": "Adnotacja może zawierać tagi, np: imię lub numer mieszkania, wykorzystywane do wyszukiwania.",
-        "isadmin": "Administrator - Czy powinien móc zarządzać organizacją?",
+        "isadmin": "Czy powinien móc zarządzać organizacją?",
         "destription": "Spowoduje usunięcie mieszkańca z organizacji."
       },
       "manage": {
@@ -90,7 +90,7 @@
   },
   "groups": {
     "title": "Grupy",
-    "add": "Stwórz Grupe",
+    "add": "Dodaj Grupe",
     "permissions": "Uprawnień",
     "subheading": "Dodaj oraz zarządzaj grupami mieszkańców.",
     "create": {
@@ -104,10 +104,11 @@
       "manage": {
         "subheader": "Działania na istniejącej grupie."
       }
-    }
+    },
+    "group": "Grupe"
   },
   "devices": {
-    "add": "Stwórz Urządzenie",
+    "add": "Dodaj Urządzenie",
     "title": "Urządzenia",
     "subheading": "Dodaj oraz zarządzaj urządzeniami.",
     "form": {
@@ -121,10 +122,20 @@
       "shadows": "Cienie urządzenia zostaną utworzone automatycznie po podłączeniu do sieci."
     },
     "success": {
-      "heading": "Sukces! 🎉 Urządzenie stworzone!",
+      "heading": "Sukces!",
       "subheading": "Skopiuj tokeny, zanim przejdziesz dalej!",
       "description": "Już ich nie zobaczysz!"
     },
     "device": "Urządzenie"
+  },
+  "forms": {
+    "multiselect": "Wielokrotny Wybór",
+    "actions": {
+      "subheader": "Akcje na istniejącym obiekcie.",
+      "title": "Operacje"
+    }
+  },
+  "user": {
+    "user": "Mieszkańca"
   }
 }

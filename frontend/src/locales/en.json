@@ -80,7 +80,7 @@
       "basic": {
         "header": "Basic Information",
         "description": "Annotation could include the unit, name, or any other information for a quick search.",
-        "isadmin": "Administrator - Should be able to manage organisation?",
+        "isadmin": "Should be able to manage organisation?",
         "destription": "Action will delete the resident from an active organisation."
       },
       "manage": {
@@ -106,7 +106,8 @@
         "header": "Operacje",
         "subheader": "Actions on existing group."
       }
-    }
+    },
+    "group": "Group"
   },
   "devices": {
     "title": "Devices",
@@ -128,5 +129,15 @@
       "description": "You won't see them again!"
     },
     "device": "Device"
+  },
+  "forms": {
+    "multiselect": "Select Multiple",
+    "actions": {
+      "subheader": "Action on an existing object.",
+      "title": "Actions"
+    }
+  },
+  "user": {
+    "user": "Resident"
   }
 }

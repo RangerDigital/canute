@@ -46,8 +46,8 @@
             <!-- Description Section -->
             <div class="flex-grow-0 hidden 2xl:flex 2xl:ml-5 2xl:w-10/12 3xl:w-4/6">
               <div class="w-2/7">
-                <h1 class="my-2 text-md xl:text-lg text-primary">{{ $t('users.form.manage.header') }}</h1>
-                <p class="my-2 text-sm text-gray">{{ $t('users.form.manage.subheader') }}</p>
+                <h1 class="my-2 text-md xl:text-lg text-primary">{{ $t('forms.actions.title') }}</h1>
+                <p class="my-2 text-sm text-gray">{{ $t('forms.actions.subheader') }}</p>
               </div>
             </div>
 
@@ -81,20 +81,18 @@
     </VerticalContainer>
 
     <Modal v-if="showAuthModal" v-on:hide="this.$router.go(-1)">
-      <h1 class="my-2 text-3xl font-semibold text-primary ">{{ $t('devices.success.heading') }}</h1>
-      <h2 class="my-2 text-sm text-gray">{{ $t('devices.success.subheading') }} {{ $t('devices.success.description') }}</h2>
+      <h1 class="my-1 text-3xl font-semibold text-primary ">{{ $t('devices.success.heading') }}</h1>
+      <h2 class="my-2 text-sm text-gray">{{ $t('devices.success.subheading') }}</h2>
 
-      <div class="my-6">
+      <div class="my-10">
         <p class="my-2 text-sm text-gray">Client ID</p>
-        <TextField readonly v-model="device.auth.clientId" />
+        <p class="my-2 text-white">{{ device.auth.clientId }}</p>
       </div>
 
-      <div class="my-6">
+      <div class="my-10">
         <p class="my-2 text-sm text-gray">Client Token</p>
-        <TextField readonly v-model="device.auth.clientToken" />
+        <p class="my-2 text-white">{{ device.auth.clientToken }}</p>
       </div>
-
-      <h2 class="mb-6 text-sm text-gray"></h2>
 
       <Button solid @click="this.$router.go(-1)">{{ $t('btn.done') }}</Button>
     </Modal>

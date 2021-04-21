@@ -5,7 +5,6 @@
   >
     <h2 class="py-2 text-white ">{{ shadow.name }}</h2>
     <p class="my-1 text-sm capitalize text-primary">{{ shadow.class }}</p>
-    <p class="my-1 text-sm truncate text-gray-dark">{{ shadow.topic }}</p>
   </div>
 </template>
 

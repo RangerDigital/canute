@@ -56,13 +56,9 @@
 
             <!-- Form Section -->
             <div class="flex flex-col justify-start w-full 3xl:flex-row 3xl:items-center">
-              <p class="3xl:mx-3.5 my-2 text-sm text-gray">{{ $t('groups.form.basic.destription') }}</p>
-
-              <div class="my-3.5 3xl:order-first">
-                <Button ghost @click="deleteGroup()"
-                  ><span class="font-normal text-primary">{{ $t('btn.deactivate') }}</span></Button
-                >
-              </div>
+              <Button ghost @click="deleteGroup()"
+                ><span class="font-normal text-primary">{{ $t('btn.delete') }} {{ $t('groups.group') }}</span></Button
+              >
             </div>
           </section>
         </div>
@@ -72,7 +68,7 @@
 
         <!-- Shadows List -->
         <div class="w-full ">
-          <h1 class="py-2 font-sans text-sm xl:mx-5 text-gray">{{ $t('label.permissions') }}</h1>
+          <h1 class="py-2 font-sans text-sm xl:mx-5 text-gray">{{ $t('label.permissions') }} ({{ $t('forms.multiselect') }})</h1>
           <div class="grid w-full grid-cols-1 2xl:grid-cols-2 3xl:grid-cols-3 lg:gap-6">
             <Shadow
               class="max-w-sm xl:mx-4 xl:hover:border-primary"

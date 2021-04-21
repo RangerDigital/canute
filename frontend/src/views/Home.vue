@@ -11,9 +11,7 @@
 
         <!-- Call to Action -->
         <div class="flex flex-row items-center justify-center mt-16 mb-8 md:justify-start">
-          <button class="px-24 py-3 text-sm font-medium text-white rounded-md md:px-8 bg-primary hover:bg-primary-dark focus:outline-none" @click="callToAction()">{{
-            $t('home.action')
-          }}</button>
+          <Button solid @click="callToAction()">{{ $t('home.action') }}</Button>
 
           <!-- <button class="hidden py-3 ml-6 text-sm md:block px-7 text-gray focus:outline-none hover:text-gray-light" @click="$router.push('/learn')">{{ $t('btn.learn') }} </button> -->
         </div>
@@ -30,11 +28,14 @@
   import HomeNavigation from '@/components/HomeNavigation.vue';
   import HomeFooter from '@/components/HomeFooter.vue';
 
+  import Button from '@/components/inputs/Button.vue';
+
   export default {
     name: 'Home',
     components: {
       HomeNavigation,
       HomeFooter,
+      Button,
     },
     methods: {
       callToAction() {
