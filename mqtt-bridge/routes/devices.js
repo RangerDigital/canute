@@ -7,10 +7,6 @@ const devices = require('../models/devices');
 router.post('/auth', async (req, res) => {
   const { client, username, password } = req.body;
 
-  if (username == process.env.MQTT_USERNAME && password == process.env.MQTT_PASSWORD) {
-    return res.json({ msg: 'Access Granted!' });
-  }
-
   let device = await devices.findOne({ 'auth.clientId': client, 'auth.clientToken': password });
 
   if (device) {
@@ -20,12 +16,18 @@ router.post('/auth', async (req, res) => {
   return res.status(403).json({ msg: 'Access Denied!' });
 });
 
-router.post('/acl', async (req, res) => {
-  const { client, username, topic } = req.body;
+router.post('/super', async (req, res) => {
+  const { username, password } = req.body;
 
-  if (username == process.env.MQTT_USERNAME) {
+  if (username == process.env.MQTT_USERNAME && password == process.env.MQTT_PASSWORD) {
     return res.json({ msg: 'Access Granted!' });
   }
+
+  return res.status(403).json({ msg: 'Access Denied!' });
+});
+
+router.post('/acl', async (req, res) => {
+  const { client, topic } = req.body;
 
   let levels = topic.split('/');
 
