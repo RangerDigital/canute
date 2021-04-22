@@ -48,4 +48,8 @@ const publish = (topic, message) => {
   return client.publish(topic, message);
 };
 
-module.exports = { connect, subscribe, publish };
+const connected = () => {
+  return client.connected;
+};
+
+module.exports = { connect, subscribe, publish, connected };
