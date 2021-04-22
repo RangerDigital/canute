@@ -93,7 +93,7 @@
         }
 
         this.axios
-          .post('/api/auth/magic', { email: this.userEmail, locale: localStorage.locale })
+          .post('/api/auth/magic', { email: this.userEmail, locale: this.$i18n.locale })
           .then(() => {
             this.showLogin = false;
             this.showSuccess = true;
