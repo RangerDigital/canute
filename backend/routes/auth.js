@@ -27,9 +27,17 @@ router.post('/magic', async (req, res) => {
   const prefix = process.env.MAGIC_URL_PREFIX;
 
   if (locale == 'pl') {
-    mailer.sendTemplate('templates/magic_pl.html', { from: from, to: req.body.email, subject: 'Canute OS - Zaloguj Się' }, { magicToken: magicToken, magicUrlPrefix: prefix });
+    mailer.sendTemplate(
+      'templates/magic_pl.html',
+      { from: from, to: req.body.email, subject: 'Canute OS - Zaloguj Się - Kod: ' + magicToken },
+      { magicToken: magicToken, magicUrlPrefix: prefix }
+    );
   } else {
-    mailer.sendTemplate('templates/magic_en.html', { from: from, to: req.body.email, subject: 'Canute OS - Sign In' }, { magicToken: magicToken, magicUrlPrefix: prefix });
+    mailer.sendTemplate(
+      'templates/magic_en.html',
+      { from: from, to: req.body.email, subject: 'Canute OS - Sign In - Code: ' + magicToken },
+      { magicToken: magicToken, magicUrlPrefix: prefix }
+    );
   }
 
   res.json({ msg: 'Magic token sent!' });
