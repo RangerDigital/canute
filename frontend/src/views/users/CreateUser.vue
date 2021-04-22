@@ -78,7 +78,7 @@
 
         <!-- Groups List -->
         <div class="w-full ">
-          <h1 class="py-2 font-sans text-sm xl:mx-5 text-gray">{{ $t('groups.title') }} ({{ $t('forms.multiselect') }})</h1>
+          <h1 class="py-2 font-sans text-xs xl:mx-5 text-gray">{{ $t('groups.title') }} ({{ $t('forms.multiselect') }})</h1>
           <div class="grid w-full grid-cols-1 2xl:grid-cols-2 3xl:grid-cols-3 lg:gap-6">
             <Group
               class="max-w-sm xl:mx-4 xl:hover:border-primary"

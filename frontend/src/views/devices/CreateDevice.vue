@@ -68,7 +68,7 @@
 
         <!-- Shadows List -->
         <div class="w-full ">
-          <h1 class="py-2 font-sans text-sm xl:mx-5 text-gray">{{ $t('label.shadows') }}</h1>
+          <h1 class="py-2 font-sans text-xs xl:mx-5 text-gray">{{ $t('label.shadows') }}</h1>
           <div class="grid w-full grid-cols-1 2xl:grid-cols-2 3xl:grid-cols-3 lg:gap-6">
             <Shadow class="max-w-sm xl:mx-4 xl:hover:border-primary" v-for="item in device.shadows" :key="item._id" v-bind:shadow="item" />
 

@@ -25,7 +25,7 @@
             <div class="flex-grow-0 hidden 2xl:w-10/12 2xl:flex 2xl:ml-5 3xl:w-4/6">
               <div class="w-2/7">
                 <h1 class="my-2 text-md xl:text-lg text-primary">{{ $t('users.form.basic.header') }}</h1>
-                <p class="my-2 text-sm text-gray">{{ $t('groups.form.basic.description') }}</p>
+                <p class="my-2 text-xs text-gray">{{ $t('groups.form.basic.description') }}</p>
               </div>
             </div>
 
@@ -47,7 +47,7 @@
             <div class="flex-grow-0 hidden 2xl:flex 2xl:ml-5 2xl:w-10/12 3xl:w-4/6">
               <div class="w-2/7">
                 <h1 class="my-2 text-md xl:text-lg text-primary">{{ $t('groups.form.manage.header') }}</h1>
-                <p class="my-2 text-sm text-gray">{{ $t('groups.form.manage.subheader') }}</p>
+                <p class="my-2 text-xs text-gray">{{ $t('groups.form.manage.subheader') }}</p>
               </div>
             </div>
 
@@ -68,7 +68,7 @@
 
         <!-- Shadows List -->
         <div class="w-full ">
-          <h1 class="py-2 font-sans text-sm xl:mx-5 text-gray">{{ $t('label.permissions') }} ({{ $t('forms.multiselect') }})</h1>
+          <h1 class="py-2 font-sans text-xs xl:mx-5 text-gray">{{ $t('label.permissions') }} ({{ $t('forms.multiselect') }})</h1>
           <div class="grid w-full grid-cols-1 2xl:grid-cols-2 3xl:grid-cols-3 lg:gap-6">
             <Shadow
               class="max-w-sm xl:mx-4 xl:hover:border-primary"

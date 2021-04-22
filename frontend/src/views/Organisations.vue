@@ -15,7 +15,7 @@
     </div>
 
     <div v-if="isLoaded && organisations.length" class="self-center w-full p-5 md:max-w-md">
-      <p class="my-2 text-sm text-gray-dark ">{{ $t('label.organisations') }}</p>
+      <p class="my-2 text-xs text-gray-dark ">{{ $t('label.organisations') }}</p>
       <div class="h-px rounded-full bg-gray-darker"></div>
 
       <div class="flex flex-col">
