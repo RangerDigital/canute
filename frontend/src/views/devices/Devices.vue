@@ -9,12 +9,12 @@
           <TextField class="w-full xl:mx-5" v-model="search" v-bind:placeholder="$t('label.search')" />
 
           <Button tiny @click="$router.push('/devices/create')"
-            ><svg class="inline h-6 text-white align-middle xl:transform xl:scale-125 xl:h-4 xl:mr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            ><svg class="inline h-5 text-white align-middle xl:hidden " fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                stroke-width="1.9"
-                d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"
+                stroke-width="1.6"
+                d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"
               /></svg
             ><span class="hidden xl:inline">{{ $t('devices.add') }}</span></Button
           >
