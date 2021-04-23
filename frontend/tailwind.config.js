@@ -10,8 +10,8 @@ module.exports = {
         DEFAULT: '#F3F3F4',
       },
       primary: {
-        dark: '#ff813b',
-        DEFAULT: '#FF6E3D',
+        dark: '#f93934',
+        DEFAULT: '#F94943',
       },
       gray: {
         darker: '#1A1A19',
