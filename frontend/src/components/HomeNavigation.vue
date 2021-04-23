@@ -1,6 +1,6 @@
 <template>
   <header class="static flex flex-row items-center justify-between p-5 md:px-20 md:py-6">
-    <h1 class="py-2 font-sans text-base font-semibold cursor-pointer text-primary md:text-xl" @click="$router.push('/').catch((err) => {})"
+    <h1 class="py-2 text-base font-semibold cursor-pointer font-heading text-primary md:text-xl" @click="$router.push('/').catch((err) => {})"
       >Canute <span class="text-white">OS</span></h1
     >
 

@@ -2,7 +2,7 @@
   <HorizontalLayout>
     <VerticalContainer>
       <div>
-        <h1 class="my-2 font-medium text-md xl:text-lg xl:mx-5 text-primary">{{ $t('devices.title') }}</h1>
+        <h1 class="my-2 font-medium font-heading text-md xl:text-lg xl:mx-5 text-primary">{{ $t('devices.title') }}</h1>
         <p class="my-2 text-sm mb-7 xl:mx-5 text-gray">{{ $t('devices.subheading') }}</p>
 
         <div class="flex flex-row items-center justify-between w-full xl:px-5">

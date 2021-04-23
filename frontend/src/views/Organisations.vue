@@ -5,7 +5,7 @@
     <LoadingSpinner v-if="!isLoaded" class="self-center" />
 
     <div v-if="isLoaded && !organisations.length" class="self-center text-center ">
-      <h1 class="my-1 text-2xl font-semibold text-white md:my-5 md:text-4xl 2xl:text-5xl" v-html="$t('organisations.error.heading')"></h1>
+      <h1 class="my-1 text-2xl font-semibold text-white font-heading md:my-5 md:text-4xl 2xl:text-5xl" v-html="$t('organisations.error.heading')"></h1>
 
       <p class="my-5 text-sm md:my-8 md:text-base text-gray">{{ $t('organisations.error.about') }}</p>
     </div>

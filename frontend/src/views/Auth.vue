@@ -4,8 +4,8 @@
       <HomeNavigation noLogin />
 
       <div class="self-center text-center ">
-        <h1 class="my-1 text-2xl font-semibold text-white md:my-5 md:text-4xl 2xl:text-5xl">{{ $t('auth.login.heading') }}</h1>
-        <h2 class="my-1 text-2xl font-semibold md:my-5 text-primary md:text-4xl 2xl:text-5xl ">{{ $t('auth.login.subheading') }}</h2>
+        <h1 class="my-1 text-2xl font-semibold text-white font-heading md:my-5 md:text-4xl 2xl:text-5xl">{{ $t('auth.login.heading') }}</h1>
+        <h2 class="my-1 text-2xl font-semibold font-heading md:my-5 text-primary md:text-4xl 2xl:text-5xl ">{{ $t('auth.login.subheading') }}</h2>
 
         <p class="my-5 text-sm md:my-8 md:text-base text-gray">{{ $t('auth.login.about') }}</p>
       </div>
@@ -43,8 +43,8 @@
       <HomeNavigation noLogin />
 
       <div class="self-center text-center ">
-        <h1 class="my-1 text-2xl font-semibold text-white md:my-5 md:text-4xl 2xl:text-5xl">{{ $t('auth.success.heading') }}</h1>
-        <h2 class="my-1 text-2xl font-semibold md:my-5 text-primary md:text-4xl 2xl:text-5xl ">{{ $t('auth.success.subheading') }}</h2>
+        <h1 class="my-1 text-2xl font-semibold text-white font-heading md:my-5 md:text-4xl 2xl:text-5xl">{{ $t('auth.success.heading') }}</h1>
+        <h2 class="my-1 text-2xl font-semibold font-heading md:my-5 text-primary md:text-4xl 2xl:text-5xl ">{{ $t('auth.success.subheading') }}</h2>
 
         <p class="my-5 text-sm md:my-8 md:text-base text-gray">{{ $t('auth.success.about') }}</p>
       </div>
@@ -56,8 +56,8 @@
       <HomeNavigation noLogin />
 
       <div class="self-center text-center ">
-        <h1 class="my-1 text-2xl font-semibold text-white md:my-5 md:text-4xl 2xl:text-5xl">{{ $t('auth.failure.heading') }}</h1>
-        <h2 class="my-1 text-2xl font-semibold md:my-5 text-primary md:text-4xl 2xl:text-5xl ">{{ $t('auth.failure.subheading') }}</h2>
+        <h1 class="my-1 text-2xl font-semibold text-white font-heading md:my-5 md:text-4xl 2xl:text-5xl">{{ $t('auth.failure.heading') }}</h1>
+        <h2 class="my-1 text-2xl font-semibold font-heading md:my-5 text-primary md:text-4xl 2xl:text-5xl ">{{ $t('auth.failure.subheading') }}</h2>
 
         <p class="my-5 text-sm md:my-8 md:text-base text-gray">{{ $t('auth.failure.about') }}</p>
       </div>

@@ -24,7 +24,7 @@
             <!-- Description Section -->
             <div class="flex-grow-0 hidden 2xl:w-10/12 2xl:flex 2xl:ml-5 3xl:w-4/6">
               <div class="w-2/7">
-                <h1 class="my-2 text-md xl:text-lg text-primary">{{ $t('devices.form.basic.header') }}</h1>
+                <h1 class="my-2 font-heading text-md xl:text-lg text-primary">{{ $t('devices.form.basic.header') }}</h1>
                 <p class="my-2 text-sm text-gray">{{ $t('devices.form.basic.description') }}</p>
               </div>
             </div>
@@ -46,7 +46,7 @@
             <!-- Description Section -->
             <div class="flex-grow-0 hidden 2xl:flex 2xl:ml-5 2xl:w-10/12 3xl:w-4/6">
               <div class="w-2/7">
-                <h1 class="my-2 text-md xl:text-lg text-primary">{{ $t('forms.actions.title') }}</h1>
+                <h1 class="my-2 font-heading text-md xl:text-lg text-primary">{{ $t('forms.actions.title') }}</h1>
                 <p class="my-2 text-sm text-gray">{{ $t('forms.actions.subheader') }}</p>
               </div>
             </div>
@@ -68,7 +68,7 @@
 
         <!-- Shadows List -->
         <div class="w-full ">
-          <h1 class="py-2 font-sans text-xs xl:mx-5 text-gray">{{ $t('label.shadows') }}</h1>
+          <h1 class="py-2 font-sans text-sm xl:mx-5 text-gray">{{ $t('label.shadows') }} ({{ $t('label.preview') }})</h1>
           <div class="grid w-full grid-cols-1 2xl:grid-cols-2 3xl:grid-cols-3 lg:gap-6">
             <Shadow class="max-w-sm xl:mx-4 xl:hover:border-primary" v-for="item in device.shadows" :key="item._id" v-bind:shadow="item" />
 
@@ -81,7 +81,7 @@
     </VerticalContainer>
 
     <Modal v-if="showAuthModal" v-on:hide="this.$router.go(-1)">
-      <h1 class="my-1 text-3xl font-semibold text-primary ">{{ $t('devices.success.heading') }}</h1>
+      <h1 class="my-1 text-3xl font-semibold font-heading text-primary ">{{ $t('devices.success.heading') }}</h1>
       <h2 class="my-2 text-sm text-gray">{{ $t('devices.success.subheading') }}</h2>
 
       <div class="my-10">

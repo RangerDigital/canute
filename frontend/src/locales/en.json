@@ -32,7 +32,8 @@
     "annotation": "Annotation",
     "name": "Name",
     "shadows": "Shadows",
-    "permissions": "Permissions"
+    "permissions": "Permissions",
+    "preview": "Preview"
   },
   "home": {
     "heading": "One app. Whole building.",

@@ -31,7 +31,8 @@
     "annotation": "Adnotacja",
     "name": "Nazwa",
     "shadows": "Cienie",
-    "permissions": "Uprawnienia"
+    "permissions": "Uprawnienia",
+    "preview": "Podgląd"
   },
   "home": {
     "heading": "Budujemy lepsze miejsca",

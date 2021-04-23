@@ -4,8 +4,8 @@
 
     <section class="flex flex-col items-center justify-between p-5 md:px-12 xl:w-11/12 2xl:w-9/12 xl:flex-row xl:self-center">
       <div>
-        <h1 class="my-1 text-2xl font-semibold text-white md:my-5 md:text-4xl 2xl:text-5xl 3xl:text-6xl">{{ $t('home.heading') }}</h1>
-        <h2 class="my-1 text-2xl font-semibold md:my-5 text-primary md:text-4xl 2xl:text-5xl 3xl:text-6xl">{{ $t('home.subheading') }}</h2>
+        <h1 class="my-1 text-2xl font-semibold text-white font-heading md:my-5 md:text-4xl 2xl:text-5xl 3xl:text-6xl">{{ $t('home.heading') }}</h1>
+        <h2 class="my-1 text-2xl font-semibold font-heading md:my-5 text-primary md:text-4xl 2xl:text-5xl 3xl:text-6xl">{{ $t('home.subheading') }}</h2>
 
         <p class="my-5 text-sm md:my-8 xl:text-base text-gray">{{ $t('home.about') }}</p>
 
