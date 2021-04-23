@@ -59,8 +59,8 @@
     }
   },
   "dashboard": {
-    "title": "Pulpit Główny",
-    "subheading": "Przegląd całej Twojej organizacji."
+    "title": "Pulpit",
+    "subheading": "Przegląd całej aktywnej organizacji."
   },
   "organisations": {
     "heading": "Hej, Gdzie <span class='text-white'>teraz</span> jesteś? ",

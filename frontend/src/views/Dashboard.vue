@@ -8,21 +8,31 @@
         <p class="my-2 text-sm mb-7 xl:mx-5 text-gray">{{ $t('dashboard.subheading') }}</p>
 
         <!-- Organisation Stats -->
-        <div v-if="organisationAdmin" class="flex-row items-center justify-start hidden w-full my-5 2xl:flex xl:px-5">
-          <div class="w-2/12 max-w-xs p-4 mr-5 cursor-pointer" @click="$router.push('/users')">
-            <p class="text-2xl text-white">{{ organisationObject.users.length }}</p>
-            <p class="mt-1.5 text-sm text-primary">{{ $t('users.title') }}</p>
-          </div>
+        <div v-if="organisationAdmin" class="flex-row items-center justify-start hidden w-full my-5 2xl:flex xl:px-1">
+          <Stats v-bind:subheading="$t('users.title')" v-bind:value="organisationObject.users.length" @click="$router.push('/users')"
+            ><svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg
+          ></Stats>
 
-          <div class="w-2/12 max-w-xs p-4 mr-5 cursor-pointer" @click="$router.push('/devices')">
-            <p class="text-2xl text-white">{{ devices.length }}</p>
-            <p class=" mt-1.5 text-sm text-primary">{{ $t('devices.title') }}</p>
-          </div>
+          <Stats v-bind:subheading="$t('devices.title')" v-bind:value="devices.length" @click="$router.push('/devices')">
+            <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.8"
+                d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"
+              /></svg
+          ></Stats>
 
-          <div class="w-2/12 max-w-xs p-4 mr-5 cursor-pointer" @click="$router.push('/groups')">
-            <p class="text-2xl text-white">{{ organisationObject.roles.length }}</p>
-            <p class=" mt-1.5 text-sm text-primary">{{ $t('groups.title') }}</p>
-          </div>
+          <Stats v-bind:subheading="$t('groups.title')" v-bind:value="organisationObject.roles.length" @click="$router.push('/groups')">
+            <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.8"
+                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+              /></svg
+          ></Stats>
         </div>
 
         <div class="w-full h-px my-5 rounded-full xl:block bg-gray-darker"></div>
@@ -49,6 +59,7 @@
   import VerticalContainer from '@/components/layouts/VerticalContainer.vue';
 
   import Lock from '@/components/app/Lock.vue';
+  import Stats from '@/components/app/Stats.vue';
 
   export default {
     name: 'Dashboard',
@@ -57,6 +68,7 @@
       VerticalContainer,
       OrganisationPreview,
       Lock,
+      Stats,
     },
     data() {
       return {
