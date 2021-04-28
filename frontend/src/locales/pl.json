@@ -32,7 +32,9 @@
     "name": "Nazwa",
     "shadows": "Cienie",
     "permissions": "Uprawnienia",
-    "preview": "Podgląd"
+    "preview": "Podgląd",
+    "informations": "Informacje",
+    "nothinghere": "Ups, Nic tu jeszcze nie ma!"
   },
   "home": {
     "heading": "Budujemy lepsze miejsca",
@@ -60,7 +62,8 @@
   },
   "dashboard": {
     "title": "Pulpit",
-    "subheading": "Przegląd całej aktywnej organizacji."
+    "subheading": "Przegląd całej aktywnej organizacji.",
+    "empty": "W tym miejscu powinny znajdować się akcje, do których masz uprawnienia."
   },
   "organisations": {
     "heading": "Hej, Gdzie <span class='text-white'>teraz</span> jesteś? ",

@@ -33,7 +33,9 @@
     "name": "Name",
     "shadows": "Shadows",
     "permissions": "Permissions",
-    "preview": "Preview"
+    "preview": "Preview",
+    "informations": "Informations",
+    "nothinghere": "Ups, Nothing here yet!"
   },
   "home": {
     "heading": "One app. Whole building.",
@@ -61,7 +63,8 @@
   },
   "dashboard": {
     "title": "Dashboard",
-    "subheading": "Overview of your whole organisation. "
+    "subheading": "Overview of your whole organisation. ",
+    "empty": "This is where the actions you have permission should be listed."
   },
   "organisations": {
     "heading": "Select <span class='text-white'>your</span> organisation. ",

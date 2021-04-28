@@ -48,6 +48,14 @@
             <Lock v-for="item in locks" :key="item._id" v-bind:lock="item" />
           </div>
         </div>
+
+        <!-- Info List -->
+        <div v-if="!locks.length" class="w-full md:max-w-sm">
+          <p class="my-2 text-xs text-gray-dark ">{{ $t('label.informations') }}</p>
+          <div class="h-px rounded-full bg-gray-darker"></div>
+
+          <Info v-bind:title="$t('label.nothinghere')">{{ $t('dashboard.empty') }}</Info>
+        </div>
       </div>
     </VerticalContainer>
   </HorizontalLayout>
@@ -60,6 +68,7 @@
 
   import Lock from '@/components/app/Lock.vue';
   import Stats from '@/components/app/Stats.vue';
+  import Info from '@/components/app/Info.vue';
 
   export default {
     name: 'Dashboard',
@@ -69,6 +78,7 @@
       OrganisationPreview,
       Lock,
       Stats,
+      Info,
     },
     data() {
       return {
