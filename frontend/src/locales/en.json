@@ -22,7 +22,8 @@
     "deactivate": "Deactivate",
     "ready": "Ready",
     "done": "Done",
-    "delete": "Delete"
+    "delete": "Delete",
+    "offline": "Device Offline"
   },
   "label": {
     "email": "Your Email",

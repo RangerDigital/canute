@@ -18,9 +18,13 @@ router.get('/', checkAuth, checkOrg(), async (req, res) => {
     for (let shadow of device.shadows) {
       // Check if users have a role with permission to this shadow.
 
+      shadow = shadow.toObject();
+
       if (req.org.roles.filter((x) => x.permissions.includes(shadow._id) && x.users.includes(req.user._id)).length) {
         // Check if shadow class == lock.
         if (shadow.class === 'lock') {
+          shadow.online = device.online;
+
           locks.push(shadow);
         }
       }

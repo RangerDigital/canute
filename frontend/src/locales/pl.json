@@ -21,7 +21,8 @@
     "save": "Zapisz",
     "deactivate": "Deaktywuj",
     "done": "Zrobione",
-    "delete": "Usuń"
+    "delete": "Usuń",
+    "offline": "Błąd Połączenia"
   },
   "label": {
     "email": "Adres E-Mail",
