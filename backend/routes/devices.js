@@ -38,10 +38,16 @@ router.post('/', checkAuth, checkOrg(true), async (req, res) => {
 
   let device = new devices({ name: name, _orgId: orgId });
 
+  password = crypto.randomBytes(16).toString('hex');
+  salt = crypto.randomBytes(16).toString('hex');
+
+  device.auth.salt = salt;
   device.auth.username = crypto.randomBytes(16).toString('hex');
-  device.auth.password = crypto.randomBytes(16).toString('hex');
+  device.auth.password = crypto.createHmac('sha512', salt).update(password).digest('hex');
 
   device.save();
+
+  device.password = password;
 
   res.json(device);
 });

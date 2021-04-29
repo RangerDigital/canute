@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router({ mergeParams: true });
+const crypto = require('crypto');
 
 const devices = require('../models/devices');
 
@@ -11,9 +12,13 @@ router.post('/auth', async (req, res) => {
     return res.json({ msg: 'Access Granted!' });
   }
 
-  let device = await devices.findOne({ 'auth.username': username, 'auth.password': password });
+  let device = await devices.findOne({ 'auth.username': username });
 
-  if (device) {
+  if (!device) {
+    return res.status(403).json({ msg: 'Access Denied!' });
+  }
+
+  if (device.password == crypto.createHmac('sha512', device.salt).update(password).digest('hex')) {
     return res.json({ msg: 'Access Granted!' });
   }
 
