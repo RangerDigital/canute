@@ -47,9 +47,7 @@ router.post('/', checkAuth, checkOrg(true), async (req, res) => {
 
   device.save();
 
-  device.password = password;
-
-  res.json(device);
+  res.json({ _id: device._id, name: device.name, auth: { username: device.auth.username, password: password } });
 });
 
 router.patch('/:deviceId', checkAuth, checkOrg(true), async (req, res) => {
