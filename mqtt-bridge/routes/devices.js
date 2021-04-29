@@ -18,7 +18,7 @@ router.post('/auth', async (req, res) => {
     return res.status(403).json({ msg: 'Access Denied!' });
   }
 
-  if (device.password == crypto.createHmac('sha512', device.auth.salt).update(password).digest('hex')) {
+  if (device.auth.password == crypto.createHmac('sha512', device.auth.salt).update(password).digest('hex')) {
     return res.json({ msg: 'Access Granted!' });
   }
 
