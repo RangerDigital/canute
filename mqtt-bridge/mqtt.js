@@ -13,34 +13,38 @@ const connect = () => {
   client.on('connect', () => {
     console.log('Connected to broker!');
 
-    client.subscribe('hello/shadows/#');
+    client.subscribe('things/#');
   });
 
-  client.on('message', async function (topic, message) {
-    const deviceId = topic.split('/')[2];
+  // MQTT Routes
+  client.on('message', async function (topic, msg) {
+    const topicLevels = topic.split('/');
+    const message = JSON.parse(msg.toString());
 
-    let device = await devices.findOne({ _id: deviceId });
+    console.log(topicLevels);
+    console.log(message);
+
+    let device = await devices.findOne({ _id: topicLevels[1] });
 
     if (!device) {
       return;
     }
 
-    message = JSON.parse(message.toString());
+    if (topicLevels[2] == 'status') {
+      device.online = message.online;
+    }
 
-    let index = device.shadows.findIndex((x) => x.topic == topic);
-
-    if (index != -1) {
-      device.shadows[index].reported = message.value;
-    } else {
-      device.shadows.push({ topic: topic, reported: message.value });
+    if (topicLevels[2] == 'shadows' && device.initialised == false) {
+      device.shadows = message;
+      device.initialised = true;
     }
 
     device.save();
   });
 };
 
+// Module Exports
 const subscribe = (topic) => {
-  console.log('Subscribed to: ', topic);
   return client.subscribe(topic);
 };
 

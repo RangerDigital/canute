@@ -85,13 +85,18 @@
       <h2 class="my-2 text-sm text-gray">{{ $t('devices.success.subheading') }}</h2>
 
       <div class="my-10">
-        <p class="my-2 text-sm text-gray">Client ID</p>
-        <p class="my-2 text-white">{{ device.auth.clientId }}</p>
+        <p class="my-2 text-sm text-gray">Client</p>
+        <p class="my-2 text-white">{{ device._id }}</p>
       </div>
 
       <div class="my-10">
-        <p class="my-2 text-sm text-gray">Client Token</p>
-        <p class="my-2 text-white">{{ device.auth.clientToken }}</p>
+        <p class="my-2 text-sm text-gray">Username</p>
+        <p class="my-2 text-white">{{ device.auth.username }}</p>
+      </div>
+
+      <div class="my-10">
+        <p class="my-2 text-sm text-gray">Password</p>
+        <p class="my-2 text-white">{{ device.auth.password }}</p>
       </div>
 
       <Button solid @click="this.$router.go(-1)">{{ $t('btn.done') }}</Button>

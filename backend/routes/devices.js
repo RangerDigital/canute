@@ -38,8 +38,8 @@ router.post('/', checkAuth, checkOrg(true), async (req, res) => {
 
   let device = new devices({ name: name, _orgId: orgId });
 
-  device.auth.clientId = crypto.randomBytes(16).toString('hex');
-  device.auth.clientToken = crypto.randomBytes(16).toString('hex');
+  device.auth.username = crypto.randomBytes(16).toString('hex');
+  device.auth.password = crypto.randomBytes(16).toString('hex');
 
   device.save();
 

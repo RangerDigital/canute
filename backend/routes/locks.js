@@ -38,7 +38,8 @@ router.post('/:lockId', checkAuth, checkOrg(), async (req, res) => {
   let lock = device.shadows.filter((x) => x._id == lockId && x.class == 'lock')[0];
 
   if (req.org.roles.filter((x) => x.permissions.includes(lock._id) && x.users.includes(req.user._id)).length) {
-    catcher.publish(lock.topic, '{ "desired": "engage" }');
+    catcher.publish(lock.topic, '{"desired": "engaged"}');
+
     return res.json(lock);
   }
 

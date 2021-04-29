@@ -3,8 +3,10 @@ const mongoose = require('mongoose');
 const schema = mongoose.Schema({
   name: String,
   _orgId: mongoose.Types.ObjectId,
-  auth: { clientId: String, clientToken: String },
+  auth: { username: String, password: String },
   shadows: [{ name: String, topic: String, reported: String, class: String }],
+  online: { type: Boolean, default: false },
+  initialised: { type: Boolean, default: false },
 });
 
 module.exports = mongoose.model('device', schema);
