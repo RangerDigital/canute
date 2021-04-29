@@ -5,7 +5,7 @@
   >
     <h2 class="py-2 text-white font-heading">{{ organisation.name }}</h2>
     <p class="my-1 text-sm text-primary">{{ organisation.address }}</p>
-    <p v-if="organisation.isAdmin" class="my-1 text-xs text-gray-dark">Admin</p>
+    <p v-if="organisation.isAdmin" class="my-1 text-xs xl:text-sm text-gray-dark">Admin</p>
   </div>
 </template>
 

@@ -4,7 +4,7 @@
     :class="{ 'border-primary': isActive, 'border-gray-darker': !isActive }"
   >
     <h2 class="py-2 text-white font-heading">{{ shadow.name }}</h2>
-    <p class="my-1 text-sm capitalize text-primary">{{ shadow.class }}</p>
+    <p class="my-1 text-sm capitalize xl:text-sm text-primary">{{ shadow.class }}</p>
   </div>
 </template>
 
