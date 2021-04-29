@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
+const mailer = require('../mailer');
+
 const checkAuth = require('../middleware/checkAuth');
 const checkOrg = require('../middleware/checkOrg');
 
@@ -126,7 +128,7 @@ router.patch('/:orgId/users/:userId', checkAuth, checkOrg(true), async (req, res
 });
 
 router.post('/:orgId/users', checkAuth, checkOrg(true), async (req, res) => {
-  const { email, annotation, isAdmin } = req.body;
+  const { email, annotation, isAdmin, locale } = req.body;
 
   let organisation = req.org;
   let user = await users.findOne({ email: email });
@@ -134,6 +136,23 @@ router.post('/:orgId/users', checkAuth, checkOrg(true), async (req, res) => {
   if (!user) {
     user = new users({ email: email });
     user.save();
+
+    const from = process.env.MAGIC_FROM;
+    const prefix = process.env.MAGIC_URL_PREFIX;
+
+    if (locale == 'pl') {
+      mailer.sendTemplate(
+        'templates/invite_pl.html',
+        { from: from, to: req.body.email, subject: 'Canute OS - Zaproszenie do ' + organisation.name },
+        { organisationName: organisation.name, organisationAddress: organisation.address, magicUrlPrefix: prefix }
+      );
+    } else {
+      mailer.sendTemplate(
+        'templates/invite_en.html',
+        { from: from, to: req.body.email, subject: 'Canute OS - Invite to' + organisation.name },
+        { organisationName: organisation.name, organisationAddress: organisation.address, magicUrlPrefix: prefix }
+      );
+    }
   }
 
   organisation.users.push({ _userId: user._id, isAdmin: isAdmin, annotation: annotation });
