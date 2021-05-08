@@ -12,8 +12,17 @@ mongoose
     useFindAndModify: false,
   })
   .then(() => {
-    app.listen(3000, () => {
-      console.log('App listening at: http://localhost:3000');
+    app.listen(3000, function (err, address) {
+      if (err) {
+        fastify.log.error(err);
+      }
+
+      app.log.info(`Server listening on ${address}`);
+
+      app.ready((err) => {
+        if (err) throw err;
+        app.swagger();
+      });
     });
   })
   .catch((err) => {

@@ -1,33 +1,58 @@
-const express = require('express');
-const router = express.Router({ mergeParams: true });
-
 const mqtt = require('../mqtt');
 const devices = require('../models/devices');
 
-router.get('/', async (req, res) => {
-  let errors = false;
-  let response = {};
+async function routes(router) {
+  router.get(
+    '/',
+    {
+      schema: {
+        summary: 'Get current health status.',
+        tags: ['Health'],
+        response: {
+          200: {
+            type: 'object',
+            properties: {
+              mongo: { type: 'string' },
+              mqtt: { type: 'string' },
+            },
+          },
 
-  if (mqtt.connected() === true) {
-    response['mqtt'] = 'connected';
-  } else {
-    response['mqtt'] = 'error';
-    errors = true;
-  }
+          503: {
+            type: 'object',
+            properties: {
+              mongo: { type: 'string' },
+              mqtt: { type: 'string' },
+            },
+          },
+        },
+      },
+    },
+    async (req, res) => {
+      let errors = false;
+      let response = {};
 
-  try {
-    await devices.findOne();
-    response['mongo'] = 'connected';
-  } catch {
-    response['mongo'] = 'error';
-    errors = true;
-  }
+      if (mqtt.connected() === true) {
+        response['mqtt'] = 'connected';
+      } else {
+        response['mqtt'] = 'error';
+        errors = true;
+      }
 
-  if (errors) {
-    return res.status(500).json(response);
-  }
+      try {
+        await devices.findOne();
+        response['mongo'] = 'connected';
+      } catch {
+        response['mongo'] = 'error';
+        errors = true;
+      }
 
-  return res.json(response);
-});
+      if (errors) {
+        return res.code(503).send(response);
+      }
 
-module.exports = router;
+      return res.send(response);
+    }
+  );
+}
+
+module.exports = routes;

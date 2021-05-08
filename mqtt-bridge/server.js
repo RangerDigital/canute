@@ -1,23 +1,31 @@
-const express = require('express');
-const helmet = require('helmet');
-
 require('dotenv').config();
-require('express-async-errors');
+
+const app = (fastify = require('fastify')({
+  logger: true,
+}));
+
+app.register(require('fastify-formbody'));
+app.register(require('fastify-swagger'), {
+  routePrefix: '/docs',
+  exposeRoute: true,
+
+  openapi: {
+    info: {
+      title: 'Canute - MQTT Service',
+      description: '🔒 Multi-family building internet-connected access control system.',
+      version: '0.1.0',
+    },
+    tags: [
+      { name: 'Auth', description: 'Auth/ACL endpoint for MQTT broker.' },
+      { name: 'Health', description: 'Health check endpoint for monitoring.' },
+    ],
+  },
+});
 
 const devices = require('./routes/devices');
 const health = require('./routes/health');
 
-const app = express();
-
-app.use(express.json());
-app.use(express.urlencoded());
-
-app.use(helmet());
-app.use('/devices', devices);
-app.use('/health', health);
-
-app.use((req, res) => {
-  res.status(404).json({ msg: 'This route or method is not defined!' });
-});
+app.register(health, { prefix: '/health' });
+app.register(devices, { prefix: '/devices' });
 
 module.exports = app;
