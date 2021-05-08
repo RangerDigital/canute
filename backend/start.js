@@ -12,7 +12,7 @@ mongoose
     useFindAndModify: false,
   })
   .then(() => {
-    app.listen(3000, function (err, address) {
+    app.listen(3000, '0.0.0.0', function (err, address) {
       if (err) {
         fastify.log.error(err);
       }
