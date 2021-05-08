@@ -1,10 +1,11 @@
 const mqtt = require('mqtt');
 const devices = require('./models/devices');
+const config = require('./configs/config');
 
 let client;
 
 const connect = () => {
-  client = mqtt.connect(process.env.MQTT_URL, { username: process.env.MQTT_USERNAME, password: process.env.MQTT_PASSWORD });
+  client = mqtt.connect(config.mqtt.url, { username: config.mqtt.username, password: config.mqtt.password });
 
   client.on('error', (err) => {
     console.log(err);

@@ -1,9 +1,10 @@
 const app = require('./server');
 const mongoose = require('mongoose');
 const mqtt = require('./mqtt');
+const config = require('./configs/config');
 
 mongoose
-  .connect(process.env.MONGO_URL, {
+  .connect(config.mongo.url, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
@@ -12,15 +13,11 @@ mongoose
   .then(() => {
     app.listen(3000, '0.0.0.0', function (err, address) {
       if (err) {
-        fastify.log.error(err);
+        app.log.error(err);
+        process.exit(1);
       }
 
-      app.log.info(`Server listening on ${address}`);
-
-      app.ready((err) => {
-        if (err) throw err;
-        app.swagger();
-      });
+      app.swagger();
     });
   })
   .catch((err) => {

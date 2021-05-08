@@ -1,5 +1,4 @@
-const crypto = require('crypto');
-const devices = require('../models/devices');
+const AuthService = require('../services/AuthService');
 
 async function routes(router) {
   router.post(
@@ -37,21 +36,13 @@ async function routes(router) {
     async (req, res) => {
       const { username, password } = req.body;
 
-      if (username == process.env.MQTT_USERNAME && password == process.env.MQTT_PASSWORD) {
+      const success = await AuthService.checkCredentials(username, password);
+
+      if (success) {
         return res.send({ msg: 'Access Granted!' });
-      }
-
-      let device = await devices.findOne({ 'auth.username': username });
-
-      if (!device) {
+      } else {
         return res.code(403).send({ msg: 'Access Denied!' });
       }
-
-      if (device.auth.password == crypto.createHmac('sha512', device.auth.salt).update(password).digest('hex')) {
-        return res.send({ msg: 'Access Granted!' });
-      }
-
-      return res.code(403).send({ msg: 'Access Denied!' });
     }
   );
 
@@ -89,11 +80,13 @@ async function routes(router) {
     async (req, res) => {
       const { username, password } = req.body;
 
-      if (username == process.env.MQTT_USERNAME && password == process.env.MQTT_PASSWORD) {
-        return res.send({ msg: 'Access Granted!' });
-      }
+      const success = await AuthService.checkSuperUser(username, password);
 
-      return res.code(403).send({ msg: 'Access Denied!' });
+      if (success) {
+        return res.send({ msg: 'Access Granted!' });
+      } else {
+        return res.code(403).send({ msg: 'Access Denied!' });
+      }
     }
   );
 
@@ -131,15 +124,13 @@ async function routes(router) {
     async (req, res) => {
       const { client, topic } = req.body;
 
-      let topicLevels = topic.split('/');
+      const success = await AuthService.checkAccess(client, topic);
 
-      let device = await devices.findOne({ _id: client });
-
-      if (device && client == topicLevels[1]) {
+      if (success) {
         return res.send({ msg: 'Access Granted!' });
+      } else {
+        return res.code(403).send({ msg: 'Access Denied!' });
       }
-
-      return res.code(403).send({ msg: 'Access Denied!' });
     }
   );
 }

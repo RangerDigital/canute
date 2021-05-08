@@ -1,5 +1,3 @@
-require('dotenv').config();
-
 const app = (fastify = require('fastify')({
   logger: true,
 }));
