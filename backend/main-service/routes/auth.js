@@ -80,8 +80,6 @@ async function routes(router) {
 
       const { success, token } = await AuthService.validateMagic(code);
 
-      console.log(await AuthService.validateMagic(code));
-
       if (success) {
         return res.send({ authToken: token });
       }
