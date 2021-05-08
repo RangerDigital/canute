@@ -1,31 +1,12 @@
-const mailer = require('../mailer');
+const mailer = require('../../mailer');
 
-const orgs = require('../models/orgs');
-const users = require('../models/users');
+const orgs = require('../../models/orgs');
+const users = require('../../models/users');
 
 async function routes(router) {
-  router.register(require('../middleware/adminHook'));
+  router.register(require('../../hooks/adminHook'));
 
-  router.get('/:orgId', async (req, res) => {
-    const organisation = req.org;
-
-    res.send(organisation);
-  });
-
-  router.patch('/:orgId', async (req, res) => {
-    const { name, address } = req.body;
-    const organisation = req.org;
-
-    // TODO! It's not PATCH anymore
-    organisation.name = name;
-    organisation.address = address;
-
-    organisation.save();
-
-    res.send(organisation);
-  });
-
-  router.get('/:orgId/users', async (req, res) => {
+  router.get('/', async (req, res) => {
     const { orgId } = req.params;
 
     let users = await orgs.findOne({ _id: orgId, users: { $elemMatch: { _userId: req.userId, isAdmin: true } } }).populate('users.user', '-_id -__v -auth');
@@ -53,7 +34,7 @@ async function routes(router) {
     res.send(response);
   });
 
-  router.get('/:orgId/users/:userId', async (req, res) => {
+  router.get('/:userId', async (req, res) => {
     const { orgId, userId } = req.params;
 
     let users = await orgs.findOne({ _id: orgId, users: { $elemMatch: { _userId: req.userId, isAdmin: true } } }).populate('users.user', '-_id -__v -auth');
@@ -84,7 +65,7 @@ async function routes(router) {
     res.send(response[0]);
   });
 
-  router.patch('/:orgId/users/:userId', async (req, res) => {
+  router.patch('/:userId', async (req, res) => {
     const { orgId, userId } = req.params;
     const { annotation, isAdmin } = req.body;
 
@@ -93,7 +74,7 @@ async function routes(router) {
     res.send(users);
   });
 
-  router.post('/:orgId/users', async (req, res) => {
+  router.post('/', async (req, res) => {
     const { email, annotation, isAdmin, locale } = req.body;
 
     let organisation = req.org;
@@ -132,7 +113,7 @@ async function routes(router) {
     res.send(organisation.users[organisation.users.length - 1]);
   });
 
-  router.delete('/:orgId/users/:userId', async (req, res) => {
+  router.delete('/:userId', async (req, res) => {
     const { userId } = req.params;
 
     let organisation = req.org;

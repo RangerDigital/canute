@@ -1,8 +1,8 @@
-const catcher = require('../catcher');
-const devices = require('../models/devices');
+const mqtt = require('../../mqtt');
+const devices = require('../../models/devices');
 
 async function routes(router) {
-  router.register(require('../middleware/orgHook'));
+  router.register(require('../../hooks/orgHook'));
 
   router.get('/', async (req, res) => {
     const { orgId } = req.params;
@@ -39,7 +39,7 @@ async function routes(router) {
     let lock = device.shadows.filter((x) => x._id == lockId && x.class == 'lock')[0];
 
     if (req.org.roles.filter((x) => x.permissions.includes(lock._id) && x.users.includes(req.user._id)).length) {
-      catcher.publish(lock.topic, '{"desired": "engaged"}');
+      mqtt.publish(lock.topic, '{"desired": "engaged"}');
 
       return res.send(lock);
     }

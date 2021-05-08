@@ -1,7 +1,7 @@
-const orgs = require('../models/orgs');
+const orgs = require('../../models/orgs');
 
 async function routes(router) {
-  router.register(require('../middleware/adminHook'));
+  router.register(require('../../hooks/adminHook'));
 
   router.get('/', async (req, res) => {
     res.send(req.org.roles);

@@ -1,7 +1,7 @@
 const users = require('../models/users');
 
 async function routes(router) {
-  router.register(require('../middleware/authHook'));
+  router.register(require('../hooks/authHook'));
 
   router.get('/me', async (req, res) => {
     let user = await users.findById(req.userId).select('-auth');

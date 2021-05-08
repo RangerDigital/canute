@@ -1,8 +1,8 @@
 const app = require('./server');
 const mongoose = require('mongoose');
-const catcher = require('./catcher');
+const mqtt = require('./mqtt');
 
-catcher.connect();
+mqtt.connect();
 
 mongoose
   .connect(process.env.MONGO_URL, {

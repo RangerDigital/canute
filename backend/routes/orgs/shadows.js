@@ -1,7 +1,7 @@
-const devices = require('../models/devices');
+const devices = require('../../models/devices');
 
 async function routes(router) {
-  router.register(require('../middleware/adminHook'));
+  router.register(require('../../hooks/adminHook'));
 
   router.get('/', async (req, res) => {
     const { orgId } = req.params;

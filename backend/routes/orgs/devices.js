@@ -1,5 +1,5 @@
 const crypto = require('crypto');
-const devices = require('../models/devices');
+const devices = require('../../models/devices');
 
 async function routes(router) {
   router.get('/', async (req, res) => {

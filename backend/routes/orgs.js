@@ -1,7 +1,7 @@
 const orgs = require('../models/orgs');
 
 async function routes(router) {
-  router.register(require('../middleware/authHook'));
+  router.register(require('../hooks/authHook'));
 
   router.get('/', async (req, res) => {
     let organisations = await orgs.find({ 'users._userId': req.userId });
@@ -34,12 +34,13 @@ async function routes(router) {
   });
 
   // Admin Enpoints
-  router.register(require('./orgsAdmin'));
+  router.register(require('./orgs/manage'));
 
-  router.register(require('./roles'), { prefix: '/:orgId/roles' });
-  router.register(require('./devices'), { prefix: '/:orgId/devices' });
-  router.register(require('./locks'), { prefix: '/:orgId/locks' });
-  router.register(require('./shadows'), { prefix: '/:orgId/shadows' });
+  router.register(require('./orgs/users'), { prefix: '/:orgId/users' });
+  router.register(require('./orgs/roles'), { prefix: '/:orgId/roles' });
+  router.register(require('./orgs/devices'), { prefix: '/:orgId/devices' });
+  router.register(require('./orgs/locks'), { prefix: '/:orgId/locks' });
+  router.register(require('./orgs/shadows'), { prefix: '/:orgId/shadows' });
 }
 
 module.exports = routes;
