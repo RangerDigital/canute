@@ -17,6 +17,10 @@ app.register(require('fastify-swagger'), {
       { name: 'Auth', description: 'Auth/ACL endpoint for MQTT broker.' },
       { name: 'Health', description: 'Health check endpoint for monitoring.' },
     ],
+    servers: [
+      { url: 'http://127.0.0.1:3000', description: 'Development' },
+      { url: 'https://canute.bednarski.dev/api', description: 'Production' },
+    ],
   },
 });
 

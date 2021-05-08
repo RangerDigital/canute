@@ -1,5 +1,4 @@
-const mqtt = require('../mqtt');
-const devices = require('../models/devices');
+const HealthService = require('../services/HealthService');
 
 async function routes(router) {
   router.get(
@@ -28,23 +27,7 @@ async function routes(router) {
       },
     },
     async (req, res) => {
-      let errors = false;
-      let response = {};
-
-      if (mqtt.connected() === true) {
-        response['mqtt'] = 'connected';
-      } else {
-        response['mqtt'] = 'error';
-        errors = true;
-      }
-
-      try {
-        await devices.findOne();
-        response['mongo'] = 'connected';
-      } catch {
-        response['mongo'] = 'error';
-        errors = true;
-      }
+      const { response, errors } = await HealthService.checkStatus();
 
       if (errors) {
         return res.code(503).send(response);
