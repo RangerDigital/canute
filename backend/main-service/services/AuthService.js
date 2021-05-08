@@ -8,6 +8,10 @@ class AuthService {
   async sendEmail(email, locale) {
     let user = await users.findOne({ email: email });
 
+    if (user && new Date() - user.auth.createdAt < 300000) {
+      return { success: false };
+    }
+
     if (!user) {
       user = new users({ email: email });
     }
@@ -34,7 +38,7 @@ class AuthService {
 
     user.save();
 
-    return true;
+    return { success: true };
   }
   async validateMagic(code) {
     const user = await users.findOne({ 'auth.magicToken': code });

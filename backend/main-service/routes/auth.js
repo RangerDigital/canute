@@ -1,25 +1,94 @@
 const AuthService = require('../services/AuthService');
 
 async function routes(router) {
-  router.post('/magic', async (req, res) => {
-    const { email, locale } = req.body;
+  router.post(
+    '/magic',
+    {
+      schema: {
+        summary: 'Send the magic email to the user.',
+        tags: ['Auth'],
+        body: {
+          type: 'object',
+          properties: {
+            email: { type: 'string' },
+          },
+          required: ['email'],
+        },
 
-    await AuthService.sendEmail(email, locale);
+        response: {
+          200: {
+            type: 'object',
+            properties: {
+              email: { type: 'string' },
+            },
+          },
 
-    return res.send({ email: email });
-  });
+          429: {
+            type: 'object',
+            properties: {
+              msg: { type: 'string' },
+            },
+          },
+        },
+      },
+    },
+    async (req, res) => {
+      const { email, locale } = req.body;
 
-  router.post('/magic/:code', async (req, res) => {
-    const { code } = req.params;
+      const { success } = await AuthService.sendEmail(email, locale);
 
-    const { success, token } = await AuthService.validateMagic(code);
+      if (success) {
+        return res.send({ email: email });
+      }
 
-    if (success) {
-      return res.send({ authToken: token });
+      return res.code(429).send({ msg: 'Too Many Requests' });
     }
+  );
 
-    return res.code(403).send({ msg: 'Invalid magic token!' });
-  });
+  router.post(
+    '/magic/:code',
+    {
+      schema: {
+        summary: 'Validate magic code and retreive JWT.',
+        tags: ['Auth'],
+        params: {
+          type: 'object',
+          properties: {
+            code: { type: 'string' },
+          },
+        },
+
+        response: {
+          200: {
+            type: 'object',
+            properties: {
+              authToken: { type: 'string' },
+            },
+          },
+
+          403: {
+            type: 'object',
+            properties: {
+              msg: { type: 'string' },
+            },
+          },
+        },
+      },
+    },
+    async (req, res) => {
+      const { code } = req.params;
+
+      const { success, token } = await AuthService.validateMagic(code);
+
+      console.log(await AuthService.validateMagic(code));
+
+      if (success) {
+        return res.send({ authToken: token });
+      }
+
+      return res.code(403).send({ msg: 'Invalid magic token!' });
+    }
+  );
 }
 
 module.exports = routes;

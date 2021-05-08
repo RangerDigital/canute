@@ -4,8 +4,7 @@ const app = (fastify = require('fastify')({
   logger: { level: 'warn' },
 }));
 
-app.register(require('fastify-helmet'));
-
+app.register(require('fastify-helmet'), { contentSecurityPolicy: false });
 app.register(require('fastify-swagger'), {
   routePrefix: '/docs',
   exposeRoute: true,
@@ -16,10 +15,10 @@ app.register(require('fastify-swagger'), {
       description: '🔒 Multi-family building internet-connected access control system.',
       version: '0.1.0',
     },
-    tags: [
-      { name: 'Auth', description: '' },
-      { name: 'Users', description: '' },
-      { name: 'Orgs', description: '' },
+    tags: [{ name: 'Auth', description: 'User authentication endpoints.' }],
+    servers: [
+      { url: 'http://127.0.0.1:3000', description: 'Development' },
+      { url: 'https://canute.bednarski.dev/api', description: 'Production' },
     ],
   },
 });
