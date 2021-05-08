@@ -4,9 +4,6 @@ const config = require('../configs/config');
 
 class AuthService {
   async checkCredentials(username, password) {
-    console.log(username);
-    console.log(config.mqtt.username);
-
     if (username == config.mqtt.username && password == config.mqtt.password) {
       return true;
     }
