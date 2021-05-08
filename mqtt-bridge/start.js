@@ -2,8 +2,6 @@ const app = require('./server');
 const mongoose = require('mongoose');
 const mqtt = require('./mqtt');
 
-mqtt.connect();
-
 mongoose
   .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
@@ -28,3 +26,5 @@ mongoose
   .catch((err) => {
     console.log(err);
   });
+
+mqtt.connect();
