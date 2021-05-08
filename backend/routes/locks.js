@@ -1,53 +1,51 @@
-const express = require('express');
-const router = express.Router({ mergeParams: true });
-
 const catcher = require('../catcher');
-
-const checkAuth = require('../middleware/checkAuth');
-const checkOrg = require('../middleware/checkOrg');
 const devices = require('../models/devices');
 
-router.get('/', checkAuth, checkOrg(), async (req, res) => {
-  const { orgId } = req.params;
+async function routes(router) {
+  router.register(require('../middleware/orgHook'));
 
-  let deviceArray = await devices.find({ _orgId: orgId });
+  router.get('/', async (req, res) => {
+    const { orgId } = req.params;
 
-  let locks = [];
+    let deviceArray = await devices.find({ _orgId: orgId });
 
-  for (let device of deviceArray) {
-    for (let shadow of device.shadows) {
-      // Check if users have a role with permission to this shadow.
+    let locks = [];
 
-      shadow = shadow.toObject();
+    for (let device of deviceArray) {
+      for (let shadow of device.shadows) {
+        // Check if users have a role with permission to this shadow.
 
-      if (req.org.roles.filter((x) => x.permissions.includes(shadow._id) && x.users.includes(req.user._id)).length) {
-        // Check if shadow class == lock.
-        if (shadow.class === 'lock') {
-          shadow.online = device.online;
+        shadow = shadow.toObject();
 
-          locks.push(shadow);
+        if (req.org.roles.filter((x) => x.permissions.includes(shadow._id) && x.users.includes(req.user._id)).length) {
+          // Check if shadow class == lock.
+          if (shadow.class === 'lock') {
+            shadow.online = device.online;
+
+            locks.push(shadow);
+          }
         }
       }
     }
-  }
 
-  res.json(locks);
-});
+    res.send(locks);
+  });
 
-router.post('/:lockId', checkAuth, checkOrg(), async (req, res) => {
-  const { lockId } = req.params;
+  router.post('/:lockId', async (req, res) => {
+    const { lockId } = req.params;
 
-  let device = await devices.findOne({ 'shadows._id': lockId });
+    let device = await devices.findOne({ 'shadows._id': lockId });
 
-  let lock = device.shadows.filter((x) => x._id == lockId && x.class == 'lock')[0];
+    let lock = device.shadows.filter((x) => x._id == lockId && x.class == 'lock')[0];
 
-  if (req.org.roles.filter((x) => x.permissions.includes(lock._id) && x.users.includes(req.user._id)).length) {
-    catcher.publish(lock.topic, '{"desired": "engaged"}');
+    if (req.org.roles.filter((x) => x.permissions.includes(lock._id) && x.users.includes(req.user._id)).length) {
+      catcher.publish(lock.topic, '{"desired": "engaged"}');
 
-    return res.json(lock);
-  }
+      return res.send(lock);
+    }
 
-  return res.status(403).json({ msg: 'Permissions not sufficient for this operation!' });
-});
+    return res.code(403).send({ msg: 'Permissions not sufficient for this operation!' });
+  });
+}
 
-module.exports = router;
+module.exports = routes;

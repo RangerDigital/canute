@@ -1,21 +1,21 @@
-const express = require('express');
-const router = express.Router();
-
-const checkAuth = require('../middleware/checkAuth');
 const users = require('../models/users');
 
-router.get('/me', checkAuth, async (req, res) => {
-  let user = await users.findById(req.userId).select('-auth');
+async function routes(router) {
+  router.register(require('../middleware/authHook'));
 
-  res.json(user);
-});
+  router.get('/me', async (req, res) => {
+    let user = await users.findById(req.userId).select('-auth');
 
-router.patch('/me', checkAuth, async (req, res) => {
-  const { email } = req.body;
+    res.send(user);
+  });
 
-  let user = await users.findByIdAndUpdate(req.userId, { email: email }, { new: true });
+  router.patch('/me', async (req, res) => {
+    const { email } = req.body;
 
-  res.json(user);
-});
+    let user = await users.findByIdAndUpdate(req.userId, { email: email }, { new: true });
 
-module.exports = router;
+    res.send(user);
+  });
+}
+
+module.exports = routes;

@@ -1,62 +1,61 @@
-const express = require('express');
-const router = express.Router();
-
 const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 
 const mailer = require('../mailer');
 const users = require('../models/users');
 
-router.post('/magic', async (req, res) => {
-  const { email, locale } = req.body;
+async function routes(router) {
+  router.post('/magic', async (req, res) => {
+    const { email, locale } = req.body;
 
-  let user = await users.findOne({ email: email });
+    let user = await users.findOne({ email: email });
 
-  if (!user) {
-    user = new users({ email: email });
-  }
+    if (!user) {
+      user = new users({ email: email });
+    }
 
-  const magicToken = crypto.randomBytes(10).toString('hex');
-  user.auth = { magicToken: magicToken, createdAt: new Date() };
+    const magicToken = crypto.randomBytes(10).toString('hex');
+    user.auth = { magicToken: magicToken, createdAt: new Date() };
 
-  await user.save().catch((err) => {
-    res.status(400).json({ msg: err.message });
+    await user.save().catch((err) => {
+      res.code(400).send({ msg: err.message });
+    });
+
+    const from = process.env.MAGIC_FROM;
+    const prefix = process.env.MAGIC_URL_PREFIX;
+
+    if (locale == 'pl') {
+      mailer.sendTemplate(
+        'templates/magic_pl.html',
+        { from: from, to: req.body.email, subject: 'Canute OS - Zaloguj Się - Kod: ' + magicToken },
+        { magicToken: magicToken, magicUrlPrefix: prefix }
+      );
+    } else {
+      mailer.sendTemplate(
+        'templates/magic_en.html',
+        { from: from, to: req.body.email, subject: 'Canute OS - Sign In - Code: ' + magicToken },
+        { magicToken: magicToken, magicUrlPrefix: prefix }
+      );
+    }
+
+    res.send({ msg: 'Magic token sent!' });
   });
 
-  const from = process.env.MAGIC_FROM;
-  const prefix = process.env.MAGIC_URL_PREFIX;
+  router.post('/magic/:magicToken', async (req, res) => {
+    const { magicToken } = req.params;
 
-  if (locale == 'pl') {
-    mailer.sendTemplate(
-      'templates/magic_pl.html',
-      { from: from, to: req.body.email, subject: 'Canute OS - Zaloguj Się - Kod: ' + magicToken },
-      { magicToken: magicToken, magicUrlPrefix: prefix }
-    );
-  } else {
-    mailer.sendTemplate(
-      'templates/magic_en.html',
-      { from: from, to: req.body.email, subject: 'Canute OS - Sign In - Code: ' + magicToken },
-      { magicToken: magicToken, magicUrlPrefix: prefix }
-    );
-  }
+    const user = await users.findOne({ 'auth.magicToken': magicToken });
 
-  res.json({ msg: 'Magic token sent!' });
-});
+    if (user && new Date() - user.auth.createdAt < 300000) {
+      const authToken = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1w' });
+      res.send({ authToken: authToken });
+    } else {
+      res.code(403).send({ msg: 'Invalid magic token!' });
+    }
 
-router.post('/magic/:magicToken', async (req, res) => {
-  const { magicToken } = req.params;
+    user.auth = {};
+    await user.save();
+  });
+}
 
-  const user = await users.findOne({ 'auth.magicToken': magicToken });
-
-  if (user && new Date() - user.auth.createdAt < 300000) {
-    const authToken = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1w' });
-    res.json({ authToken: authToken });
-  } else {
-    res.status(403).json({ msg: 'Invalid magic token!' });
-  }
-
-  user.auth = {};
-  await user.save();
-});
-
-module.exports = router;
+module.exports = routes;

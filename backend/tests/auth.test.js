@@ -2,7 +2,8 @@ const db = require('./db');
 const app = require('../server');
 
 const supertest = require('supertest');
-const request = supertest(app);
+const request = supertest(app.server);
+fastify.ready();
 
 const users = require('../models/users');
 
@@ -39,14 +40,6 @@ describe('Magic Auth Flow', function () {
     {
       const res = await request.get('/users/me').set('Authorization', 'Bearer ' + user.authToken);
       expect(res.status).toBe(200);
-    }
-  });
-
-  it('Negative: Missing email field.', async () => {
-    {
-      const res = await request.post('/auth/magic');
-
-      expect(res.status).toBe(400);
     }
   });
 

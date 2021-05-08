@@ -1,87 +1,85 @@
-const express = require('express');
-const router = express.Router({ mergeParams: true });
-
-const checkAuth = require('../middleware/checkAuth');
-const checkOrg = require('../middleware/checkOrg');
-
 const orgs = require('../models/orgs');
 
-router.get('/', checkAuth, checkOrg(true), async (req, res) => {
-  res.json(req.org.roles);
-});
+async function routes(router) {
+  router.register(require('../middleware/adminHook'));
 
-router.get('/:roleId', checkAuth, checkOrg(true), async (req, res) => {
-  const { roleId } = req.params;
-
-  let role = req.org.roles.filter((x) => String(x._id) == String(roleId));
-
-  res.json(role[0]);
-});
-
-router.post('/', checkAuth, checkOrg(true), async (req, res) => {
-  const { name, permissions, users } = req.body;
-  let organisation = req.org;
-
-  organisation.roles.push({ name: name, permissions: permissions, users: users });
-
-  await organisation.validate().catch((err) => {
-    return res.status(400).json({ msg: err });
+  router.get('/', async (req, res) => {
+    res.send(req.org.roles);
   });
 
-  organisation.save();
+  router.get('/:roleId', async (req, res) => {
+    const { roleId } = req.params;
 
-  res.json(organisation.roles);
-});
+    let role = req.org.roles.filter((x) => String(x._id) == String(roleId));
 
-router.patch('/:roleId', checkAuth, checkOrg(true), async (req, res) => {
-  const { name, permissions } = req.body;
-  const { orgId, roleId } = req.params;
+    res.send(role[0]);
+  });
 
-  let roles = await orgs.updateOne({ _id: orgId, 'roles._id': roleId }, { $set: { 'roles.$.name': name, 'roles.$.permissions': permissions } });
+  router.post('/', async (req, res) => {
+    const { name, permissions, users } = req.body;
+    let organisation = req.org;
 
-  res.json(roles);
-});
+    organisation.roles.push({ name: name, permissions: permissions, users: users });
 
-router.post('/:roleId/users/:userId', checkAuth, checkOrg(true), async (req, res) => {
-  const { roleId, userId } = req.params;
+    await organisation.validate().catch((err) => {
+      return res.code(400).send({ msg: err });
+    });
 
-  let organisation = req.org;
+    organisation.save();
 
-  // Check if userId is in organisation
+    res.send(organisation.roles);
+  });
 
-  if (organisation.roles.find((x) => x._id == roleId).users.includes(userId)) {
-    res.json(organisation.roles);
-    return;
-  }
-  organisation.roles.find((x) => x._id == roleId).users.push(userId);
+  router.patch('/:roleId', async (req, res) => {
+    const { name, permissions } = req.body;
+    const { orgId, roleId } = req.params;
 
-  organisation.save();
+    let roles = await orgs.updateOne({ _id: orgId, 'roles._id': roleId }, { $set: { 'roles.$.name': name, 'roles.$.permissions': permissions } });
 
-  res.json(organisation.roles);
-});
+    res.send(roles);
+  });
 
-router.delete('/:roleId/users/:userId', checkAuth, checkOrg(true), async (req, res) => {
-  const { roleId, userId } = req.params;
+  router.post('/:roleId/users/:userId', async (req, res) => {
+    const { roleId, userId } = req.params;
 
-  let organisation = req.org;
+    let organisation = req.org;
 
-  organisation.roles.find((x) => x._id == roleId).users.pull(userId);
+    // Check if userId is in organisation
 
-  organisation.save();
+    if (organisation.roles.find((x) => x._id == roleId).users.includes(userId)) {
+      res.send(organisation.roles);
+      return;
+    }
+    organisation.roles.find((x) => x._id == roleId).users.push(userId);
 
-  res.json(organisation);
-});
+    organisation.save();
 
-router.delete('/:roleId', checkAuth, checkOrg(true), async (req, res) => {
-  const { orgId, roleId } = req.params;
+    res.send(organisation.roles);
+  });
 
-  let organisation = await orgs.findOne({ _id: orgId, 'roles._id': roleId });
+  router.delete('/:roleId/users/:userId', async (req, res) => {
+    const { roleId, userId } = req.params;
 
-  organisation.roles = organisation.roles.filter((x) => String(x._id) !== String(roleId));
+    let organisation = req.org;
 
-  organisation.save();
+    organisation.roles.find((x) => x._id == roleId).users.pull(userId);
 
-  res.json(organisation.roles);
-});
+    organisation.save();
 
-module.exports = router;
+    res.send(organisation);
+  });
+
+  router.delete('/:roleId', async (req, res) => {
+    const { orgId, roleId } = req.params;
+
+    let organisation = await orgs.findOne({ _id: orgId, 'roles._id': roleId });
+
+    organisation.roles = organisation.roles.filter((x) => String(x._id) !== String(roleId));
+
+    organisation.save();
+
+    res.send(organisation.roles);
+  });
+}
+
+module.exports = routes;

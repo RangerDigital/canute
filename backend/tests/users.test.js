@@ -4,7 +4,8 @@ const app = require('../server');
 const { getAuthToken } = require('./helpers');
 
 const supertest = require('supertest');
-const request = supertest(app);
+const request = supertest(app.server);
+fastify.ready();
 
 beforeAll(async () => await db.connect());
 beforeEach(async () => await db.clear());

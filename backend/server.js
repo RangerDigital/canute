@@ -1,37 +1,33 @@
-const express = require('express');
-const helmet = require('helmet');
-
 require('dotenv').config();
-require('express-async-errors');
+
+const app = (fastify = require('fastify')({
+  logger: { level: 'warn' },
+}));
+
+app.register(require('fastify-swagger'), {
+  routePrefix: '/docs',
+  exposeRoute: true,
+
+  openapi: {
+    info: {
+      title: 'Canute - API Service',
+      description: '🔒 Multi-family building internet-connected access control system.',
+      version: '0.1.0',
+    },
+    tags: [
+      { name: 'Auth', description: '' },
+      { name: 'Users', description: '' },
+      { name: 'Orgs', description: '' },
+    ],
+  },
+});
 
 const users = require('./routes/users');
 const auth = require('./routes/auth');
 const orgs = require('./routes/orgs');
 
-const app = express();
-
-app.use(express.json());
-app.use(express.urlencoded());
-
-app.use(helmet());
-
-app.use('/users', users);
-app.use('/auth', auth);
-app.use('/orgs', orgs);
-
-// 404 Error Handler
-app.use((req, res) => {
-  res.status(404);
-  res.json({ msg: 'This route or method is not defined!' });
-});
-
-// 500 Error Handler
-app.use((err, req, res) => {
-  res.status(500);
-  res.json({ msg: err.message, error: err });
-
-  console.log('Error status: ', err.status);
-  console.log('Message: ', err.message);
-});
+app.register(users, { prefix: '/users' });
+app.register(auth, { prefix: '/auth' });
+app.register(orgs, { prefix: '/orgs' });
 
 module.exports = app;
