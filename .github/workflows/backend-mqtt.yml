@@ -1,14 +1,14 @@
-name: Test & Build MQTT Bridge
+name: Test & Build MQTT Service
 
 on:
   push:
     branches: [master]
     paths:
-      - 'mqtt-bridge/**'
+      - 'backend/mqtt-service/**'
 
 defaults:
   run:
-    working-directory: mqtt-bridge
+    working-directory: backend/mqtt-service
 
 jobs:
   build:
@@ -26,5 +26,5 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          context: ./mqtt-bridge
+          context: backend/mqtt-service
           tags: rangerdigital/canute-mqtt:latest
