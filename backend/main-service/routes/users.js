@@ -31,7 +31,7 @@ async function routes(router) {
     '/me',
     {
       schema: {
-        summary: 'Update current user email.',
+        summary: 'Update user email.',
         tags: ['Users'],
         body: {
           type: 'object',
