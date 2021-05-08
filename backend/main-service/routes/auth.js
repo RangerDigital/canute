@@ -1,60 +1,24 @@
-const jwt = require('jsonwebtoken');
-const crypto = require('crypto');
-
-const mailer = require('../mailer');
-const users = require('../models/users');
+const AuthService = require('../services/AuthService');
 
 async function routes(router) {
   router.post('/magic', async (req, res) => {
     const { email, locale } = req.body;
 
-    let user = await users.findOne({ email: email });
+    await AuthService.sendEmail(email, locale);
 
-    if (!user) {
-      user = new users({ email: email });
-    }
-
-    const magicToken = crypto.randomBytes(10).toString('hex');
-    user.auth = { magicToken: magicToken, createdAt: new Date() };
-
-    await user.save().catch((err) => {
-      res.code(400).send({ msg: err.message });
-    });
-
-    const from = process.env.MAGIC_FROM;
-    const prefix = process.env.MAGIC_URL_PREFIX;
-
-    if (locale == 'pl') {
-      mailer.sendTemplate(
-        'templates/magic_pl.html',
-        { from: from, to: req.body.email, subject: 'Canute OS - Zaloguj Się - Kod: ' + magicToken },
-        { magicToken: magicToken, magicUrlPrefix: prefix }
-      );
-    } else {
-      mailer.sendTemplate(
-        'templates/magic_en.html',
-        { from: from, to: req.body.email, subject: 'Canute OS - Sign In - Code: ' + magicToken },
-        { magicToken: magicToken, magicUrlPrefix: prefix }
-      );
-    }
-
-    res.send({ msg: 'Magic token sent!' });
+    return res.send({ email: email });
   });
 
-  router.post('/magic/:magicToken', async (req, res) => {
-    const { magicToken } = req.params;
+  router.post('/magic/:code', async (req, res) => {
+    const { code } = req.params;
 
-    const user = await users.findOne({ 'auth.magicToken': magicToken });
+    const { success, token } = await AuthService.validateMagic(code);
 
-    if (user && new Date() - user.auth.createdAt < 300000) {
-      const authToken = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1w' });
-      res.send({ authToken: authToken });
-    } else {
-      res.code(403).send({ msg: 'Invalid magic token!' });
+    if (success) {
+      return res.send({ authToken: token });
     }
 
-    user.auth = {};
-    await user.save();
+    return res.code(403).send({ msg: 'Invalid magic token!' });
   });
 }
 
