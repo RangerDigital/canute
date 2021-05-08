@@ -1,39 +1,69 @@
 const orgs = require('../models/orgs');
 
+const OrgService = require('../services/OrgService');
+
 async function routes(router) {
   router.register(require('../hooks/authHook'));
 
-  router.get('/', async (req, res) => {
-    let organisations = await orgs.find({ 'users._userId': req.userId });
+  router.get(
+    '/',
+    {
+      schema: {
+        summary: 'Get all organisations user is a member.',
+        tags: ['Organisations'],
 
-    let response = [];
+        response: {
+          200: {
+            type: 'array',
+            items: {
+              type: 'object',
+              properties: {
+                _id: { type: 'string' },
+                name: { type: 'string' },
+                address: { type: 'string' },
+                isAdmin: { type: 'boolean' },
+              },
+            },
+          },
+        },
+      },
+    },
+    async (req, res) => {
+      let organisations = await OrgService.getUserOrgs(req.userId);
 
-    // Check if a logged user is an admin in this organisation.
-    for (let organisation of organisations) {
-      let isAdmin = false;
-      for (let user of organisation.users) {
-        if (user._userId == req.userId && user.isAdmin == true) {
-          isAdmin = true;
-        }
-      }
-
-      // Filter out unnecessary fields.
-      response.push({ _id: organisation._id, name: organisation.name, address: organisation.address, isAdmin: isAdmin });
+      res.send(organisations);
     }
+  );
 
-    res.send(response);
-  });
+  router.post(
+    '/',
+    {
+      schema: {
+        summary: 'Create a new organisation.',
+        tags: ['Organisations'],
 
-  router.post('/', async (req, res) => {
-    const { name, address } = req.body;
+        response: {
+          200: {
+            type: 'object',
+            properties: {
+              _id: { type: 'string' },
+              name: { type: 'string' },
+              users: { type: 'array' },
+              address: { type: 'string' },
+            },
+          },
+        },
+      },
+    },
+    async (req, res) => {
+      const { name, address } = req.body;
 
-    let organisation = new orgs({ name: name, address: address, users: [{ _userId: req.userId, isAdmin: true }] });
-    organisation.save();
+      let organisation = await OrgService.addOrg(req.userId, name, address);
 
-    res.send(organisation);
-  });
+      res.send(organisation);
+    }
+  );
 
-  // Admin Enpoints
   router.register(require('./orgs/manage'));
 
   router.register(require('./orgs/users'), { prefix: '/:orgId/users' });
