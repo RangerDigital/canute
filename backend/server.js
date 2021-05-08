@@ -4,6 +4,8 @@ const app = (fastify = require('fastify')({
   logger: { level: 'warn' },
 }));
 
+app.register(require('fastify-helmet'));
+
 app.register(require('fastify-swagger'), {
   routePrefix: '/docs',
   exposeRoute: true,
