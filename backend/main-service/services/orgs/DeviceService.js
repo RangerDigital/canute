@@ -1,5 +1,5 @@
 const crypto = require('crypto');
-const devices = require('../models/devices');
+const devices = require('../../models/devices');
 
 class DeviceService {
   async get(orgId) {

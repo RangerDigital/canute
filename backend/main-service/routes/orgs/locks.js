@@ -1,4 +1,4 @@
-const ShadowService = require('../../services/ShadowService');
+const ShadowService = require('../../services/orgs/ShadowService');
 
 async function routes(router) {
   router.register(require('../../hooks/orgHook'));

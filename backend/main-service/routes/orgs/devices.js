@@ -1,4 +1,4 @@
-const DeviceService = require('../../services/DeviceService');
+const DeviceService = require('../../services/orgs/DeviceService');
 
 async function routes(router) {
   router.register(require('../../hooks/adminHook'));

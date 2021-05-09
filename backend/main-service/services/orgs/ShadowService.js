@@ -1,7 +1,7 @@
-const mqtt = require('../mqtt');
+const mqtt = require('../../mqtt');
 
-const devices = require('../models/devices');
-const orgs = require('../models/orgs');
+const devices = require('../../models/devices');
+const orgs = require('../../models/orgs');
 
 class ShadowService {
   async get(orgId) {
