@@ -11,19 +11,19 @@ async function routes(router) {
     res.send(members);
   });
 
-  router.get('/:userId', async (req, res) => {
-    const { orgId, userId } = req.params;
+  router.get('/:memberId', async (req, res) => {
+    const { orgId, memberId } = req.params;
 
-    const member = await MemberService.getOne(orgId, userId);
+    const member = await MemberService.getOne(orgId, memberId);
 
     res.send(member);
   });
 
-  router.patch('/:userId', async (req, res) => {
-    const { orgId, userId } = req.params;
+  router.patch('/:memberId', async (req, res) => {
+    const { orgId, memberId } = req.params;
     const { annotation, isAdmin } = req.body;
 
-    const member = await MemberService.update(orgId, userId, annotation, isAdmin);
+    const member = await MemberService.update(orgId, memberId, annotation, isAdmin);
 
     res.send(member);
   });
@@ -37,10 +37,10 @@ async function routes(router) {
     res.send(member);
   });
 
-  router.delete('/:userId', async (req, res) => {
-    const { orgId, userId } = req.params;
+  router.delete('/:memberId', async (req, res) => {
+    const { orgId, memberId } = req.params;
 
-    const members = await MemberService.delete(orgId, userId);
+    const members = await MemberService.delete(orgId, memberId);
 
     res.send(members);
   });

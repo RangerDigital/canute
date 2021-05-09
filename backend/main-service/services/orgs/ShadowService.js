@@ -26,11 +26,9 @@ class ShadowService {
 
     for (let device of deviceArray) {
       for (let shadow of device.shadows) {
-        // Check if users have a role with permission to this shadow.
-
         shadow = shadow.toObject();
 
-        if (organisation.roles.filter((x) => x.permissions.includes(shadow._id) && x.users.includes(userId)).length) {
+        if (organisation.roles.filter((x) => x.permissions.includes(shadow._id) && x.members.includes(userId)).length) {
           // Check if shadow class == lock.
           if (shadow.class === 'lock') {
             shadow.online = device.online;
@@ -50,7 +48,7 @@ class ShadowService {
 
     let lock = device.shadows.filter((x) => x._id == lockId && x.class == 'lock')[0];
 
-    if (organisation.roles.filter((x) => x.permissions.includes(lock._id) && x.users.includes(userId)).length) {
+    if (organisation.roles.filter((x) => x.permissions.includes(lock._id) && x.members.includes(userId)).length) {
       mqtt.publish(lock.topic, '{"desired": "engaged"}');
 
       return { success: true, lock: lock };

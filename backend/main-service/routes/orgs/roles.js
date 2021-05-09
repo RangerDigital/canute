@@ -20,10 +20,10 @@ async function routes(router) {
   });
 
   router.post('/', async (req, res) => {
-    const { name, permissions, users } = req.body;
+    const { name, permissions, members } = req.body;
     const { orgId } = req.params;
 
-    const role = await RoleService.create(orgId, name, permissions, users);
+    const role = await RoleService.create(orgId, name, permissions, members);
 
     return res.send(role);
   });
@@ -45,18 +45,18 @@ async function routes(router) {
     return res.send(roles);
   });
 
-  router.post('/:roleId/users/:userId', async (req, res) => {
-    const { orgId, roleId, userId } = req.params;
+  router.post('/:roleId/members/:memberId', async (req, res) => {
+    const { orgId, roleId, memberId } = req.params;
 
-    const roles = await RoleService.addMember(orgId, roleId, userId);
+    const roles = await RoleService.addMember(orgId, roleId, memberId);
 
     return res.send(roles);
   });
 
-  router.delete('/:roleId/users/:userId', async (req, res) => {
-    const { orgId, roleId, userId } = req.params;
+  router.delete('/:roleId/members/:memberId', async (req, res) => {
+    const { orgId, roleId, memberId } = req.params;
 
-    const roles = await RoleService.deleteMember(orgId, roleId, userId);
+    const roles = await RoleService.deleteMember(orgId, roleId, memberId);
 
     return res.send(roles);
   });

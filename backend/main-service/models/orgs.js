@@ -3,13 +3,13 @@ const mongoose = require('mongoose');
 const schema = mongoose.Schema({
   name: String,
   address: String,
-  users: [{ _userId: { type: mongoose.Types.ObjectId }, isAdmin: { type: Boolean, default: false }, annotation: String }],
-  roles: [{ name: String, permissions: [mongoose.Types.ObjectId], users: [mongoose.Types.ObjectId] }],
+  members: [{ _userId: { type: mongoose.Types.ObjectId }, isAdmin: { type: Boolean, default: false }, annotation: String }],
+  roles: [{ name: String, permissions: [mongoose.Types.ObjectId], members: [mongoose.Types.ObjectId] }],
 });
 
-schema.virtual('users.user', {
+schema.virtual('members.user', {
   ref: 'user',
-  localField: 'users._userId',
+  localField: 'members._userId',
   foreignField: '_id',
   justOne: true,
 });

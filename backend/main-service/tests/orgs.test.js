@@ -37,7 +37,7 @@ describe('Orgs Resources', function () {
 
       expect(res.status).toBe(200);
       expect(res.body.name).toBe(name);
-      expect(res.body.users[0].isAdmin).toBe(true);
+      expect(res.body.members[0].isAdmin).toBe(true);
 
       orgId = res.body._id;
     }

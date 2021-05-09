@@ -5,25 +5,25 @@ const users = require('../../models/users');
 
 class MemberService {
   async get(orgId) {
-    const organisation = await orgs.findOne({ _id: orgId }).populate('users.user', '-_id -__v -auth');
+    const organisation = await orgs.findOne({ _id: orgId }).populate('members.user', '-_id -__v -auth');
 
     let response = [];
 
-    for (let user of organisation.users.toObject()) {
+    for (let member of organisation.members.toObject()) {
       let roles = [];
 
       for (let role of organisation.roles) {
-        if (role.users.includes(user._id)) {
+        if (role.members.includes(member._id)) {
           roles.push({ _id: role._id, name: role.name, permissions: role.permissions });
         }
       }
 
-      user = user;
-      user.roles = roles;
-      user.email = user.user.email;
+      member = member;
+      member.roles = roles;
+      member.email = member.user.email;
 
-      delete user.user;
-      response.push(user);
+      delete member.user;
+      response.push(member);
     }
 
     return response;
@@ -36,8 +36,8 @@ class MemberService {
   }
 
   async create(orgId, email, annotation, isAdmin, locale) {
-    const organisation = await orgs.findOne({ _id: orgId });
-    const user = await users.findOne({ email: email });
+    let organisation = await orgs.findOne({ _id: orgId });
+    let user = await users.findOne({ email: email });
 
     if (!user) {
       user = new users({ email: email });
@@ -61,26 +61,26 @@ class MemberService {
       }
     }
 
-    organisation.users.push({ _userId: user._id, isAdmin: isAdmin, annotation: annotation });
+    organisation.members.push({ _userId: user._id, isAdmin: isAdmin, annotation: annotation });
     organisation.save();
 
-    return organisation.users[organisation.users.length - 1];
+    return organisation.members[organisation.members.length - 1];
   }
 
   async update(orgId, memberId, annotation, isAdmin) {
-    return await orgs.updateOne({ _id: orgId, 'users._id': memberId }, { $set: { 'users.$.annotation': annotation, 'users.$.isAdmin': isAdmin } });
+    return await orgs.updateOne({ _id: orgId, 'members._id': memberId }, { $set: { 'members.$.annotation': annotation, 'members.$.isAdmin': isAdmin } });
   }
 
   async delete(orgId, memberId) {
     const organisation = await orgs.findOne({ _id: orgId });
 
-    organisation.users = organisation.users.filter((x) => String(x._id) !== String(memberId));
+    organisation.members = organisation.members.filter((x) => String(x._id) !== String(memberId));
 
     let roles = [];
 
-    // Remove deleted user from all roles.
+    // Remove deleted member from all roles.
     for (let role of organisation.roles) {
-      role.users = role.users.filter((x) => String(x._id) !== String(memberId));
+      role.members = role.members.filter((x) => String(x._id) !== String(memberId));
       roles.push(role);
     }
 
@@ -88,7 +88,7 @@ class MemberService {
 
     organisation.save();
 
-    return organisation.users;
+    return organisation.members;
   }
 }
 

@@ -148,7 +148,7 @@
 
       // When editing existing user.
       getUser(id) {
-        this.axios.get('/api/orgs/' + this.organisation + '/users/' + id).then((payload) => {
+        this.axios.get('/api/orgs/' + this.organisation + '/members/' + id).then((payload) => {
           this.user = payload.data;
 
           for (let role of payload.data.roles) {
@@ -160,20 +160,20 @@
       },
 
       deleteUser() {
-        this.axios.delete('/api/orgs/' + this.organisation + '/users/' + this.user._id).then(() => {
+        this.axios.delete('/api/orgs/' + this.organisation + '/members/' + this.user._id).then(() => {
           this.$router.go(-1);
         });
       },
 
       upsertUser() {
         if (this.editMode) {
-          this.axios.patch('/api/orgs/' + this.organisation + '/users/' + this.user._id, this.user).then(() => {
+          this.axios.patch('/api/orgs/' + this.organisation + '/members/' + this.user._id, this.user).then(() => {
             this.synchronizeGroups();
           });
         }
 
         if (!this.editMode) {
-          this.axios.post('/api/orgs/' + this.organisation + '/users', this.user).then((payload) => {
+          this.axios.post('/api/orgs/' + this.organisation + '/members', this.user).then((payload) => {
             this.user._id = payload.data._id;
 
             this.synchronizeGroups();
@@ -187,12 +187,12 @@
         for (let group of this.organisationGroups) {
           // Create all groups that were selected as new by user.
           if (!this.activeGroups.some((x) => x == group._id) && this.modifiedGroups.some((x) => x == group._id)) {
-            requests.push(this.axios.post('/api/orgs/' + this.organisation + '/roles/' + group._id + '/users/' + this.user._id));
+            requests.push(this.axios.post('/api/orgs/' + this.organisation + '/roles/' + group._id + '/members/' + this.user._id));
           }
 
           // Delete all groups that were unselected by user.
           if (this.activeGroups.some((x) => x == group._id) && !this.modifiedGroups.some((x) => x == group._id)) {
-            requests.push(this.axios.delete('/api/orgs/' + this.organisation + '/roles/' + group._id + '/users/' + this.user._id));
+            requests.push(this.axios.delete('/api/orgs/' + this.organisation + '/roles/' + group._id + '/members/' + this.user._id));
           }
         }
 

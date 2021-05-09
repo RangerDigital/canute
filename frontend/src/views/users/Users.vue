@@ -59,7 +59,7 @@
     },
     methods: {
       getUsers() {
-        this.axios.get('/api/orgs/' + this.organisation + '/users').then((payload) => {
+        this.axios.get('/api/orgs/' + this.organisation + '/members').then((payload) => {
           // Generate tags for searching from roles and admin.
           for (let user of payload.data) {
             user.tags = '';

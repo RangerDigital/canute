@@ -46,7 +46,7 @@ async function routes(router) {
             properties: {
               _id: { type: 'string' },
               name: { type: 'string' },
-              users: { type: 'array' },
+              members: { type: 'array' },
               address: { type: 'string' },
             },
           },
@@ -64,7 +64,7 @@ async function routes(router) {
 
   router.register(require('./orgs/admin'));
 
-  router.register(require('./orgs/members'), { prefix: '/:orgId/users' });
+  router.register(require('./orgs/members'), { prefix: '/:orgId/members' });
   router.register(require('./orgs/roles'), { prefix: '/:orgId/roles' });
   router.register(require('./orgs/devices'), { prefix: '/:orgId/devices' });
   router.register(require('./orgs/locks'), { prefix: '/:orgId/locks' });

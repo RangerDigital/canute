@@ -14,10 +14,10 @@ class RoleService {
     return role[0];
   }
 
-  async create(orgId, name, permissions, users) {
+  async create(orgId, name, permissions, members) {
     let organisation = await orgs.findOne({ _id: orgId });
 
-    organisation.roles.push({ name: name, permissions: permissions, users: users });
+    organisation.roles.push({ name: name, permissions: permissions, members: members });
 
     organisation.save();
 
@@ -37,23 +37,23 @@ class RoleService {
     return organisation.roles;
   }
 
-  async addMember(orgId, roleId, userId) {
+  async addMember(orgId, roleId, memberId) {
     let organisation = await orgs.findOne({ _id: orgId });
 
-    if (organisation.roles.find((x) => x._id == roleId).users.includes(userId)) {
+    if (organisation.roles.find((x) => x._id == roleId).members.includes(memberId)) {
       return organisation.roles;
     }
 
-    organisation.roles.find((x) => x._id == roleId).users.push(userId);
+    organisation.roles.find((x) => x._id == roleId).members.push(memberId);
     organisation.save();
 
     return organisation.roles;
   }
 
-  async deleteMember(orgId, roleId, userId) {
+  async deleteMember(orgId, roleId, memberId) {
     let organisation = await orgs.findOne({ _id: orgId });
 
-    organisation.roles.find((x) => x._id == roleId).users.pull(userId);
+    organisation.roles.find((x) => x._id == roleId).members.pull(memberId);
     organisation.save();
 
     return organisation.roles;
