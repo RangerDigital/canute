@@ -27,6 +27,21 @@ class OrgService {
 
     return organisation;
   }
+
+  async getOne(orgId) {
+    return await orgs.findOne({ _id: orgId });
+  }
+
+  async updateOne(orgId, name, address) {
+    let organisation = await orgs.findOne({ _id: orgId });
+
+    organisation.name = name;
+    organisation.address = address;
+
+    organisation.save();
+
+    return organisation;
+  }
 }
 
 module.exports = new OrgService();

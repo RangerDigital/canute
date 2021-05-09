@@ -62,7 +62,7 @@ async function routes(router) {
     }
   );
 
-  router.register(require('./orgs/manage'));
+  router.register(require('./orgs/admin'));
 
   router.register(require('./orgs/users'), { prefix: '/:orgId/users' });
   router.register(require('./orgs/roles'), { prefix: '/:orgId/roles' });
