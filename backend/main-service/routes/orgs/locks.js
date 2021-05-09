@@ -1,5 +1,4 @@
-const mqtt = require('../../mqtt');
-const devices = require('../../models/devices');
+const ShadowService = require('../../services/ShadowService');
 
 async function routes(router) {
   router.register(require('../../hooks/orgHook'));
@@ -7,40 +6,17 @@ async function routes(router) {
   router.get('/', async (req, res) => {
     const { orgId } = req.params;
 
-    let deviceArray = await devices.find({ _orgId: orgId });
-
-    let locks = [];
-
-    for (let device of deviceArray) {
-      for (let shadow of device.shadows) {
-        // Check if users have a role with permission to this shadow.
-
-        shadow = shadow.toObject();
-
-        if (req.org.roles.filter((x) => x.permissions.includes(shadow._id) && x.users.includes(req.user._id)).length) {
-          // Check if shadow class == lock.
-          if (shadow.class === 'lock') {
-            shadow.online = device.online;
-
-            locks.push(shadow);
-          }
-        }
-      }
-    }
+    const locks = await ShadowService.getLocks(orgId, req.user._id);
 
     res.send(locks);
   });
 
   router.post('/:lockId', async (req, res) => {
-    const { lockId } = req.params;
+    const { orgId, lockId } = req.params;
 
-    let device = await devices.findOne({ 'shadows._id': lockId });
+    const { success, lock } = await ShadowService.engageLock(orgId, lockId, req.user._id);
 
-    let lock = device.shadows.filter((x) => x._id == lockId && x.class == 'lock')[0];
-
-    if (req.org.roles.filter((x) => x.permissions.includes(lock._id) && x.users.includes(req.user._id)).length) {
-      mqtt.publish(lock.topic, '{"desired": "engaged"}');
-
+    if (success) {
       return res.send(lock);
     }
 

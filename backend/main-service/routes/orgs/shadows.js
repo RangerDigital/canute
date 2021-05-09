@@ -1,4 +1,4 @@
-const devices = require('../../models/devices');
+const ShadowService = require('../../services/ShadowService');
 
 async function routes(router) {
   router.register(require('../../hooks/adminHook'));
@@ -6,15 +6,7 @@ async function routes(router) {
   router.get('/', async (req, res) => {
     const { orgId } = req.params;
 
-    let deviceArray = await devices.find({ _orgId: orgId });
-
-    let shadows = [];
-
-    for (let device of deviceArray) {
-      for (let shadow of device.shadows) {
-        shadows.push(shadow);
-      }
-    }
+    const shadows = await ShadowService.get(orgId);
 
     res.send(shadows);
   });
