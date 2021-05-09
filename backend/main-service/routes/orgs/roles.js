@@ -8,8 +8,6 @@ async function routes(router) {
 
     const roles = await RoleService.get(orgId);
 
-    console.log(roles);
-
     res.send(roles);
   });
 
@@ -50,7 +48,7 @@ async function routes(router) {
   router.post('/:roleId/users/:userId', async (req, res) => {
     const { orgId, roleId, userId } = req.params;
 
-    const roles = await RoleService.addUser(orgId, roleId, userId);
+    const roles = await RoleService.addMember(orgId, roleId, userId);
 
     return res.send(roles);
   });
@@ -58,7 +56,7 @@ async function routes(router) {
   router.delete('/:roleId/users/:userId', async (req, res) => {
     const { orgId, roleId, userId } = req.params;
 
-    const roles = await RoleService.deleteUser(orgId, roleId, userId);
+    const roles = await RoleService.deleteMember(orgId, roleId, userId);
 
     return res.send(roles);
   });
