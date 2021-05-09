@@ -49,13 +49,13 @@ class MemberService {
       if (locale == 'pl') {
         mailer.sendTemplate(
           'templates/invite_pl.html',
-          { from: from, to: req.body.email, subject: 'Zostałeś zaproszony do organizacji ' + organisation.name + ' (' + organisation.address + ').' },
+          { from: from, to: email, subject: 'Zostałeś zaproszony do organizacji ' + organisation.name + ' (' + organisation.address + ').' },
           { organisationName: organisation.name, organisationAddress: organisation.address, magicUrlPrefix: prefix }
         );
       } else {
         mailer.sendTemplate(
           'templates/invite_en.html',
-          { from: from, to: req.body.email, subject: 'You have just been invited to ' + organisation.name + ' (' + organisation.address + ').' },
+          { from: from, to: email, subject: 'You have just been invited to ' + organisation.name + ' (' + organisation.address + ').' },
           { organisationName: organisation.name, organisationAddress: organisation.address, magicUrlPrefix: prefix }
         );
       }
