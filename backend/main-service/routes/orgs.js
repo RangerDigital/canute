@@ -1,5 +1,3 @@
-const orgs = require('../models/orgs');
-
 const OrgService = require('../services/OrgService');
 
 async function routes(router) {

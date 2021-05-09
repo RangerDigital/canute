@@ -1,19 +1,20 @@
-const crypto = require('crypto');
-const devices = require('../../models/devices');
+const DeviceService = require('../../services/DeviceService');
 
 async function routes(router) {
+  router.register(require('../../hooks/adminHook'));
+
   router.get('/', async (req, res) => {
     const { orgId } = req.params;
 
-    let device = await devices.find({ _orgId: orgId });
+    let devices = await DeviceService.get(orgId);
 
-    res.send(device);
+    res.send(devices);
   });
 
   router.get('/:deviceId', async (req, res) => {
     const { orgId, deviceId } = req.params;
 
-    let device = await devices.findOne({ _orgId: orgId, _id: deviceId });
+    let device = await DeviceService.getOne(orgId, deviceId);
 
     res.send(device);
   });
@@ -21,37 +22,25 @@ async function routes(router) {
   router.delete('/:deviceId', async (req, res) => {
     const { orgId, deviceId } = req.params;
 
-    let device = await devices.deleteOne({ _orgId: orgId, _id: deviceId });
+    await DeviceService.deleteOne(orgId, deviceId);
 
-    res.send(device);
+    res.code(204).send('');
   });
 
   router.post('/', async (req, res) => {
     const { name } = req.body;
     const { orgId } = req.params;
 
-    let device = new devices({ name: name, _orgId: orgId });
+    let device = await DeviceService.create(orgId, name);
 
-    password = crypto.randomBytes(16).toString('hex');
-    salt = crypto.randomBytes(16).toString('hex');
-
-    device.auth.salt = salt;
-    device.auth.username = crypto.randomBytes(16).toString('hex');
-    device.auth.password = crypto.createHmac('sha512', salt).update(password).digest('hex');
-
-    device.save();
-
-    res.send({ _id: device._id, name: device.name, auth: { username: device.auth.username, password: password } });
+    res.send(device);
   });
 
   router.patch('/:deviceId', async (req, res) => {
     const { name } = req.body;
     const { orgId, deviceId } = req.params;
 
-    let device = await devices.findOne({ _orgId: orgId, _id: deviceId });
-
-    device.name = name;
-    device.save();
+    let device = await DeviceService.updateName(orgId, deviceId, name);
 
     res.send(device);
   });
