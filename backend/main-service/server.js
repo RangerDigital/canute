@@ -20,6 +20,14 @@ app.register(require('fastify-swagger'), {
       { url: 'http://127.0.0.1:3000', description: 'Development' },
       { url: 'https://canute.bednarski.dev/api', description: 'Production' },
     ],
+    components: {
+      securitySchemes: {
+        BearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+        },
+      },
+    },
   },
 });
 

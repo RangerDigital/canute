@@ -9,6 +9,7 @@ async function routes(router) {
       schema: {
         summary: 'Get all organisations user is a member.',
         tags: ['Organisations'],
+        security: [{ BearerAuth: [] }],
 
         response: {
           200: {
@@ -39,6 +40,7 @@ async function routes(router) {
       schema: {
         summary: 'Create a new organisation.',
         tags: ['Organisations'],
+        security: [{ BearerAuth: [] }],
 
         response: {
           200: {

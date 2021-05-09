@@ -9,6 +9,7 @@ async function routes(router) {
       schema: {
         summary: 'Get currently authenticated user.',
         tags: ['Users'],
+        security: [{ BearerAuth: [] }],
 
         response: {
           200: {
@@ -33,6 +34,8 @@ async function routes(router) {
       schema: {
         summary: 'Update user email.',
         tags: ['Users'],
+        security: [{ BearerAuth: [] }],
+
         body: {
           type: 'object',
           properties: {

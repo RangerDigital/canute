@@ -3,47 +3,218 @@ const MemberService = require('../../services/orgs/MemberService');
 async function routes(router) {
   router.register(require('../../hooks/adminHook'));
 
-  router.get('/', async (req, res) => {
-    const { orgId } = req.params;
+  router.get(
+    '/',
+    {
+      schema: {
+        summary: 'Get members.',
+        tags: ['Members'],
+        security: [{ BearerAuth: [] }],
 
-    const members = await MemberService.get(orgId);
+        params: {
+          type: 'object',
+          properties: {
+            orgId: { type: 'string' },
+          },
+        },
 
-    res.send(members);
-  });
+        response: {
+          200: {
+            type: 'array',
+            items: {
+              type: 'object',
+              properties: {
+                _id: { type: 'string' },
+                _userId: { type: 'string' },
+                email: { type: 'string' },
+                isAdmin: { type: 'boolean' },
+                annotation: { type: 'string' },
+                roles: { type: 'array' },
+              },
+            },
+          },
+        },
+      },
+    },
+    async (req, res) => {
+      const { orgId } = req.params;
 
-  router.get('/:memberId', async (req, res) => {
-    const { orgId, memberId } = req.params;
+      const members = await MemberService.get(orgId);
 
-    const member = await MemberService.getOne(orgId, memberId);
+      res.send(members);
+    }
+  );
 
-    res.send(member);
-  });
+  router.get(
+    '/:memberId',
+    {
+      schema: {
+        summary: 'Get specific member.',
+        tags: ['Members'],
+        security: [{ BearerAuth: [] }],
 
-  router.patch('/:memberId', async (req, res) => {
-    const { orgId, memberId } = req.params;
-    const { annotation, isAdmin } = req.body;
+        params: {
+          type: 'object',
+          properties: {
+            orgId: { type: 'string' },
+            memberId: { type: 'string' },
+          },
+        },
 
-    const member = await MemberService.update(orgId, memberId, annotation, isAdmin);
+        response: {
+          200: {
+            type: 'object',
+            properties: {
+              _id: { type: 'string' },
+              _userId: { type: 'string' },
+              email: { type: 'string' },
+              isAdmin: { type: 'boolean' },
+              annotation: { type: 'string' },
+              roles: { type: 'array' },
+            },
+          },
+        },
+      },
+    },
+    async (req, res) => {
+      const { orgId, memberId } = req.params;
 
-    res.send(member);
-  });
+      const member = await MemberService.getOne(orgId, memberId);
 
-  router.post('/', async (req, res) => {
-    const { orgId } = req.params;
-    const { email, annotation, isAdmin, locale } = req.body;
+      res.send(member);
+    }
+  );
 
-    const member = await MemberService.create(orgId, email, annotation, isAdmin, locale);
+  router.patch(
+    '/:memberId',
+    {
+      schema: {
+        summary: 'Update member',
+        tags: ['Members'],
+        security: [{ BearerAuth: [] }],
 
-    res.send(member);
-  });
+        params: {
+          type: 'object',
+          properties: {
+            orgId: { type: 'string' },
+            memberId: { type: 'string' },
+          },
+        },
 
-  router.delete('/:memberId', async (req, res) => {
-    const { orgId, memberId } = req.params;
+        body: {
+          type: 'object',
+          properties: {
+            annotation: { type: 'string' },
+            isAdmin: { type: 'boolean' },
+          },
+          required: ['annotation', 'isAdmin'],
+        },
 
-    const members = await MemberService.delete(orgId, memberId);
+        response: {
+          200: {
+            type: 'object',
+            properties: {
+              _id: { type: 'string' },
+              _userId: { type: 'string' },
+              email: { type: 'string' },
+              isAdmin: { type: 'boolean' },
+              annotation: { type: 'string' },
+              roles: { type: 'array' },
+            },
+          },
+        },
+      },
+    },
+    async (req, res) => {
+      const { orgId, memberId } = req.params;
+      const { annotation, isAdmin } = req.body;
 
-    res.send(members);
-  });
+      const member = await MemberService.update(orgId, memberId, annotation, isAdmin);
+
+      res.send(member);
+    }
+  );
+
+  router.post(
+    '/',
+    {
+      schema: {
+        summary: 'Add member',
+        tags: ['Members'],
+        security: [{ BearerAuth: [] }],
+
+        params: {
+          type: 'object',
+          properties: {
+            orgId: { type: 'string' },
+          },
+        },
+
+        body: {
+          type: 'object',
+          properties: {
+            email: { type: 'string' },
+            annotation: { type: 'string' },
+            isAdmin: { type: 'boolean' },
+            locale: { type: 'string' },
+          },
+          required: ['email', 'annotation', 'isAdmin', 'locale'],
+        },
+
+        response: {
+          200: {
+            type: 'object',
+            properties: {
+              _id: { type: 'string' },
+              _userId: { type: 'string' },
+              email: { type: 'string' },
+              isAdmin: { type: 'boolean' },
+              annotation: { type: 'string' },
+              roles: { type: 'array' },
+            },
+          },
+        },
+      },
+    },
+    async (req, res) => {
+      const { orgId } = req.params;
+      const { email, annotation, isAdmin, locale } = req.body;
+
+      const member = await MemberService.create(orgId, email, annotation, isAdmin, locale);
+
+      res.send(member);
+    }
+  );
+
+  router.delete(
+    '/:memberId',
+    {
+      schema: {
+        summary: 'Delete member',
+        tags: ['Members'],
+        security: [{ BearerAuth: [] }],
+
+        params: {
+          type: 'object',
+          properties: {
+            orgId: { type: 'string' },
+            memberId: { type: 'string' },
+          },
+        },
+
+        response: {
+          204: {},
+        },
+      },
+    },
+    async (req, res) => {
+      const { orgId, memberId } = req.params;
+
+      await MemberService.delete(orgId, memberId);
+
+      res.code(204).send('');
+    }
+  );
 }
 
 module.exports = routes;

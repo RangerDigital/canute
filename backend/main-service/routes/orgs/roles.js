@@ -3,63 +3,293 @@ const RoleService = require('../../services/orgs/RoleService');
 async function routes(router) {
   router.register(require('../../hooks/adminHook'));
 
-  router.get('/', async (req, res) => {
-    const { orgId } = req.params;
+  router.get(
+    '/',
+    {
+      schema: {
+        summary: 'Get roles.',
+        tags: ['Roles'],
+        security: [{ BearerAuth: [] }],
 
-    const roles = await RoleService.get(orgId);
+        params: {
+          type: 'object',
+          properties: {
+            orgId: { type: 'string' },
+          },
+        },
 
-    res.send(roles);
-  });
+        response: {
+          200: {
+            type: 'array',
+            items: {
+              type: 'object',
+              properties: {
+                _id: { type: 'string' },
+                name: { type: 'string' },
+                permissions: { type: 'array' },
+                members: { type: 'array' },
+              },
+            },
+          },
+        },
+      },
+    },
+    async (req, res) => {
+      const { orgId } = req.params;
 
-  router.get('/:roleId', async (req, res) => {
-    const { orgId, roleId } = req.params;
+      const roles = await RoleService.get(orgId);
 
-    const role = await RoleService.getOne(orgId, roleId);
+      res.send(roles);
+    }
+  );
 
-    res.send(role);
-  });
+  router.get(
+    '/:roleId',
+    {
+      schema: {
+        summary: 'Get specific role',
+        tags: ['Roles'],
+        security: [{ BearerAuth: [] }],
 
-  router.post('/', async (req, res) => {
-    const { name, permissions, members } = req.body;
-    const { orgId } = req.params;
+        params: {
+          type: 'object',
+          properties: {
+            orgId: { type: 'string' },
+            roleId: { type: 'string' },
+          },
+        },
 
-    const role = await RoleService.create(orgId, name, permissions, members);
+        response: {
+          200: {
+            type: 'object',
+            properties: {
+              _id: { type: 'string' },
+              name: { type: 'string' },
+              permissions: { type: 'array' },
+              members: { type: 'array' },
+            },
+          },
+        },
+      },
+    },
+    async (req, res) => {
+      const { orgId, roleId } = req.params;
 
-    return res.send(role);
-  });
+      const role = await RoleService.getOne(orgId, roleId);
 
-  router.patch('/:roleId', async (req, res) => {
-    const { name, permissions } = req.body;
-    const { orgId, roleId } = req.params;
+      res.send(role);
+    }
+  );
 
-    const role = await RoleService.update(orgId, roleId, name, permissions);
+  router.post(
+    '/',
+    {
+      schema: {
+        summary: 'Create role.',
+        tags: ['Roles'],
+        security: [{ BearerAuth: [] }],
 
-    return res.send(role);
-  });
+        params: {
+          type: 'object',
+          properties: {
+            orgId: { type: 'string' },
+          },
+        },
 
-  router.delete('/:roleId', async (req, res) => {
-    const { orgId, roleId } = req.params;
+        body: {
+          type: 'object',
+          properties: {
+            name: { type: 'string' },
+            members: { type: 'array' },
+            permissions: { type: 'array' },
+          },
+          required: ['name', 'members', 'permissions'],
+        },
 
-    const roles = await RoleService.delete(orgId, roleId);
+        response: {
+          200: {
+            type: 'object',
+            properties: {
+              _id: { type: 'string' },
+              name: { type: 'string' },
+              permissions: { type: 'array' },
+              members: { type: 'array' },
+            },
+          },
+        },
+      },
+    },
+    async (req, res) => {
+      const { name, permissions, members } = req.body;
+      const { orgId } = req.params;
 
-    return res.send(roles);
-  });
+      const role = await RoleService.create(orgId, name, permissions, members);
 
-  router.post('/:roleId/members/:memberId', async (req, res) => {
-    const { orgId, roleId, memberId } = req.params;
+      return res.send(role);
+    }
+  );
 
-    const roles = await RoleService.addMember(orgId, roleId, memberId);
+  router.patch(
+    '/:roleId',
+    {
+      schema: {
+        summary: 'Update role.',
+        tags: ['Roles'],
+        security: [{ BearerAuth: [] }],
 
-    return res.send(roles);
-  });
+        params: {
+          type: 'object',
+          properties: {
+            orgId: { type: 'string' },
+            roleId: { type: 'string' },
+          },
+        },
 
-  router.delete('/:roleId/members/:memberId', async (req, res) => {
-    const { orgId, roleId, memberId } = req.params;
+        body: {
+          type: 'object',
+          properties: {
+            name: { type: 'string' },
+            permissions: { type: 'array' },
+          },
+          required: ['name', 'permissions'],
+        },
 
-    const roles = await RoleService.deleteMember(orgId, roleId, memberId);
+        response: {
+          200: {
+            type: 'object',
+            properties: {
+              _id: { type: 'string' },
+              name: { type: 'string' },
+              permissions: { type: 'array' },
+              members: { type: 'array' },
+            },
+          },
+        },
+      },
+    },
+    async (req, res) => {
+      const { name, permissions } = req.body;
+      const { orgId, roleId } = req.params;
 
-    return res.send(roles);
-  });
+      const role = await RoleService.update(orgId, roleId, name, permissions);
+
+      return res.send(role);
+    }
+  );
+
+  router.delete(
+    '/:roleId',
+    {
+      schema: {
+        summary: 'Delete role.',
+        tags: ['Roles'],
+        security: [{ BearerAuth: [] }],
+
+        params: {
+          type: 'object',
+          properties: {
+            orgId: { type: 'string' },
+            roleId: { type: 'string' },
+          },
+        },
+
+        response: {
+          204: {},
+        },
+      },
+    },
+    async (req, res) => {
+      const { orgId, roleId } = req.params;
+
+      await RoleService.delete(orgId, roleId);
+
+      res.code(204).send('');
+    }
+  );
+
+  router.post(
+    '/:roleId/members/:memberId',
+    {
+      schema: {
+        summary: 'Add member to role.',
+        tags: ['Roles'],
+        security: [{ BearerAuth: [] }],
+
+        params: {
+          type: 'object',
+          properties: {
+            orgId: { type: 'string' },
+            roleId: { type: 'string' },
+            memberId: { type: 'string' },
+          },
+        },
+
+        response: {
+          200: {
+            type: 'array',
+            items: {
+              type: 'object',
+              properties: {
+                _id: { type: 'string' },
+                name: { type: 'string' },
+                permissions: { type: 'array' },
+                members: { type: 'array' },
+              },
+            },
+          },
+        },
+      },
+    },
+    async (req, res) => {
+      const { orgId, roleId, memberId } = req.params;
+
+      const roles = await RoleService.addMember(orgId, roleId, memberId);
+
+      return res.send(roles);
+    }
+  );
+
+  router.delete(
+    '/:roleId/members/:memberId',
+    {
+      schema: {
+        summary: 'Delete member from role.',
+        tags: ['Roles'],
+        security: [{ BearerAuth: [] }],
+
+        params: {
+          type: 'object',
+          properties: {
+            orgId: { type: 'string' },
+            roleId: { type: 'string' },
+            memberId: { type: 'string' },
+          },
+        },
+
+        response: {
+          200: {
+            type: 'array',
+            items: {
+              type: 'object',
+              properties: {
+                _id: { type: 'string' },
+                name: { type: 'string' },
+                permissions: { type: 'array' },
+                members: { type: 'array' },
+              },
+            },
+          },
+        },
+      },
+    },
+    async (req, res) => {
+      const { orgId, roleId, memberId } = req.params;
+
+      const roles = await RoleService.deleteMember(orgId, roleId, memberId);
+
+      return res.send(roles);
+    }
+  );
 }
 
 module.exports = routes;

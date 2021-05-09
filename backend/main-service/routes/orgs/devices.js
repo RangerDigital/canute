@@ -3,47 +3,211 @@ const DeviceService = require('../../services/orgs/DeviceService');
 async function routes(router) {
   router.register(require('../../hooks/adminHook'));
 
-  router.get('/', async (req, res) => {
-    const { orgId } = req.params;
+  router.get(
+    '/',
+    {
+      schema: {
+        summary: 'Get devices.',
+        tags: ['Devices'],
+        security: [{ BearerAuth: [] }],
 
-    let devices = await DeviceService.get(orgId);
+        params: {
+          type: 'object',
+          properties: {
+            orgId: { type: 'string' },
+          },
+        },
 
-    res.send(devices);
-  });
+        response: {
+          200: {
+            type: 'array',
+            items: {
+              type: 'object',
+              properties: {
+                _id: { type: 'string' },
+                name: { type: 'string' },
+                online: { type: 'boolean' },
+                shadows: { type: 'array' },
+                initialised: { type: 'string' },
+              },
+            },
+          },
+        },
+      },
+    },
+    async (req, res) => {
+      const { orgId } = req.params;
 
-  router.get('/:deviceId', async (req, res) => {
-    const { orgId, deviceId } = req.params;
+      let devices = await DeviceService.get(orgId);
 
-    let device = await DeviceService.getOne(orgId, deviceId);
+      res.send(devices);
+    }
+  );
 
-    res.send(device);
-  });
+  router.get(
+    '/:deviceId',
+    {
+      schema: {
+        summary: 'Get specific device.',
+        tags: ['Devices'],
+        security: [{ BearerAuth: [] }],
 
-  router.delete('/:deviceId', async (req, res) => {
-    const { orgId, deviceId } = req.params;
+        params: {
+          type: 'object',
+          properties: {
+            orgId: { type: 'string' },
+            deviceId: { type: 'string' },
+          },
+        },
 
-    await DeviceService.deleteOne(orgId, deviceId);
+        response: {
+          200: {
+            type: 'object',
+            properties: {
+              _id: { type: 'string' },
+              name: { type: 'string' },
+              online: { type: 'boolean' },
+              shadows: { type: 'array' },
+              initialised: { type: 'string' },
+            },
+          },
+        },
+      },
+    },
+    async (req, res) => {
+      const { orgId, deviceId } = req.params;
 
-    res.code(204).send('');
-  });
+      let device = await DeviceService.getOne(orgId, deviceId);
 
-  router.post('/', async (req, res) => {
-    const { name } = req.body;
-    const { orgId } = req.params;
+      res.send(device);
+    }
+  );
 
-    let device = await DeviceService.create(orgId, name);
+  router.delete(
+    '/:deviceId',
+    {
+      schema: {
+        summary: 'Delete specific device.',
+        tags: ['Devices'],
+        security: [{ BearerAuth: [] }],
 
-    res.send(device);
-  });
+        params: {
+          type: 'object',
+          properties: {
+            orgId: { type: 'string' },
+            deviceId: { type: 'string' },
+          },
+        },
 
-  router.patch('/:deviceId', async (req, res) => {
-    const { name } = req.body;
-    const { orgId, deviceId } = req.params;
+        response: {
+          204: {},
+        },
+      },
+    },
+    async (req, res) => {
+      const { orgId, deviceId } = req.params;
 
-    let device = await DeviceService.updateName(orgId, deviceId, name);
+      await DeviceService.deleteOne(orgId, deviceId);
 
-    res.send(device);
-  });
+      res.code(204).send('');
+    }
+  );
+
+  router.post(
+    '/',
+    {
+      schema: {
+        summary: 'Create a device.',
+        tags: ['Devices'],
+        security: [{ BearerAuth: [] }],
+
+        params: {
+          type: 'object',
+          properties: {
+            orgId: { type: 'string' },
+          },
+        },
+
+        body: {
+          type: 'object',
+          properties: {
+            name: { type: 'string' },
+          },
+          required: ['name'],
+        },
+
+        response: {
+          200: {
+            type: 'object',
+            properties: {
+              _id: { type: 'string' },
+              name: { type: 'string' },
+              online: { type: 'boolean' },
+              shadows: { type: 'array' },
+              initialised: { type: 'string' },
+              auth: { type: 'object', properties: { username: { type: 'string' }, password: { type: 'string' } } },
+            },
+          },
+        },
+      },
+    },
+    async (req, res) => {
+      const { name } = req.body;
+      const { orgId } = req.params;
+
+      let device = await DeviceService.create(orgId, name);
+
+      res.send(device);
+    }
+  );
+
+  router.patch(
+    '/:deviceId',
+    {
+      schema: {
+        summary: 'Update device.',
+        tags: ['Devices'],
+        security: [{ BearerAuth: [] }],
+
+        params: {
+          type: 'object',
+          properties: {
+            orgId: { type: 'string' },
+            deviceId: { type: 'string' },
+          },
+        },
+
+        body: {
+          type: 'object',
+          properties: {
+            name: { type: 'string' },
+          },
+          required: ['name'],
+        },
+
+        response: {
+          200: {
+            type: 'object',
+            properties: {
+              _id: { type: 'string' },
+              name: { type: 'string' },
+              online: { type: 'boolean' },
+              shadows: { type: 'array' },
+              initialised: { type: 'string' },
+            },
+          },
+        },
+      },
+    },
+    async (req, res) => {
+      const { name } = req.body;
+      const { orgId, deviceId } = req.params;
+
+      let device = await DeviceService.updateName(orgId, deviceId, name);
+
+      res.send(device);
+    }
+  );
 }
 
 module.exports = routes;
