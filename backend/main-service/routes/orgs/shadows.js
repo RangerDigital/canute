@@ -7,7 +7,7 @@ async function routes(router) {
     '/',
     {
       schema: {
-        summary: 'Get shadows.',
+        summary: "Get all organisation's shadows.",
         tags: ['Shadows'],
         security: [{ BearerAuth: [] }],
 

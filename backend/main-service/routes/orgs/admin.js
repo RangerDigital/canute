@@ -7,7 +7,7 @@ async function routes(router) {
     '/:orgId',
     {
       schema: {
-        summary: 'Get specific organisation.',
+        summary: 'Get the specific organisation by ID.',
         tags: ['Organisations'],
         security: [{ BearerAuth: [] }],
 
@@ -44,7 +44,7 @@ async function routes(router) {
     '/:orgId',
     {
       schema: {
-        summary: 'Update organisation.',
+        summary: 'Update the specific organisation by ID.',
         tags: ['Organisations'],
         security: [{ BearerAuth: [] }],
 

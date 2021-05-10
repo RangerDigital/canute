@@ -7,7 +7,7 @@ async function routes(router) {
     '/',
     {
       schema: {
-        summary: 'Get members.',
+        summary: "Get all organisation's members.",
         tags: ['Members'],
         security: [{ BearerAuth: [] }],
 
@@ -49,7 +49,7 @@ async function routes(router) {
     '/:memberId',
     {
       schema: {
-        summary: 'Get specific member.',
+        summary: "Get the specific organisation's member by ID.",
         tags: ['Members'],
         security: [{ BearerAuth: [] }],
 
@@ -89,7 +89,7 @@ async function routes(router) {
     '/:memberId',
     {
       schema: {
-        summary: 'Update member',
+        summary: "Update the specific organisation's member by ID.",
         tags: ['Members'],
         security: [{ BearerAuth: [] }],
 
@@ -139,7 +139,7 @@ async function routes(router) {
     '/',
     {
       schema: {
-        summary: 'Add member',
+        summary: 'Add a new member to the organisation.',
         tags: ['Members'],
         security: [{ BearerAuth: [] }],
 
@@ -190,7 +190,7 @@ async function routes(router) {
     '/:memberId',
     {
       schema: {
-        summary: 'Delete member',
+        summary: "Delete the specific organisation's member by ID.",
         tags: ['Members'],
         security: [{ BearerAuth: [] }],
 

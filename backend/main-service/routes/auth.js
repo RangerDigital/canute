@@ -49,7 +49,7 @@ async function routes(router) {
     '/magic/:code',
     {
       schema: {
-        summary: 'Validate magic code and retreive JWT.',
+        summary: 'Validate magic code and retrieve JWT.',
         tags: ['Auth'],
         params: {
           type: 'object',

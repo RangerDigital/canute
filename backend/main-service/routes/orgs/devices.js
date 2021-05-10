@@ -7,7 +7,7 @@ async function routes(router) {
     '/',
     {
       schema: {
-        summary: 'Get devices.',
+        summary: "Get all organisation's devices.",
         tags: ['Devices'],
         security: [{ BearerAuth: [] }],
 
@@ -48,7 +48,7 @@ async function routes(router) {
     '/:deviceId',
     {
       schema: {
-        summary: 'Get specific device.',
+        summary: "Get the specific organisation's device by ID.",
         tags: ['Devices'],
         security: [{ BearerAuth: [] }],
 
@@ -87,7 +87,7 @@ async function routes(router) {
     '/:deviceId',
     {
       schema: {
-        summary: 'Delete specific device.',
+        summary: "Delete the specific organisation's device by ID.",
         tags: ['Devices'],
         security: [{ BearerAuth: [] }],
 
@@ -117,7 +117,7 @@ async function routes(router) {
     '/',
     {
       schema: {
-        summary: 'Create a device.',
+        summary: 'Create a new device in this organisation.',
         tags: ['Devices'],
         security: [{ BearerAuth: [] }],
 
@@ -165,7 +165,7 @@ async function routes(router) {
     '/:deviceId',
     {
       schema: {
-        summary: 'Update device.',
+        summary: "Update the specific organisation's device by ID.",
         tags: ['Devices'],
         security: [{ BearerAuth: [] }],
 

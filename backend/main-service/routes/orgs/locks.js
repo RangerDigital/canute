@@ -7,7 +7,7 @@ async function routes(router) {
     '/',
     {
       schema: {
-        summary: 'Get locks',
+        summary: "Get all organisation's locks user has permission to engage.",
         tags: ['Shadows'],
         security: [{ BearerAuth: [] }],
 
@@ -47,7 +47,7 @@ async function routes(router) {
     '/:lockId',
     {
       schema: {
-        summary: 'Engage the lock.',
+        summary: 'Engage lock user has permission to engage.',
         tags: ['Shadows'],
         security: [{ BearerAuth: [] }],
 

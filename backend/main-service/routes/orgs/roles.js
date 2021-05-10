@@ -7,7 +7,7 @@ async function routes(router) {
     '/',
     {
       schema: {
-        summary: 'Get roles.',
+        summary: "Get all organisation's roles.",
         tags: ['Roles'],
         security: [{ BearerAuth: [] }],
 
@@ -47,7 +47,7 @@ async function routes(router) {
     '/:roleId',
     {
       schema: {
-        summary: 'Get specific role',
+        summary: "Get the specific organisation's role by ID.",
         tags: ['Roles'],
         security: [{ BearerAuth: [] }],
 
@@ -85,7 +85,7 @@ async function routes(router) {
     '/',
     {
       schema: {
-        summary: 'Create role.',
+        summary: 'Create a new role in the organisation.',
         tags: ['Roles'],
         security: [{ BearerAuth: [] }],
 
@@ -133,7 +133,7 @@ async function routes(router) {
     '/:roleId',
     {
       schema: {
-        summary: 'Update role.',
+        summary: "Update the specific organisation's role by ID.",
         tags: ['Roles'],
         security: [{ BearerAuth: [] }],
 
@@ -181,7 +181,7 @@ async function routes(router) {
     '/:roleId',
     {
       schema: {
-        summary: 'Delete role.',
+        summary: "Delete the specific organisation's role by ID.",
         tags: ['Roles'],
         security: [{ BearerAuth: [] }],
 
@@ -211,7 +211,7 @@ async function routes(router) {
     '/:roleId/members/:memberId',
     {
       schema: {
-        summary: 'Add member to role.',
+        summary: 'Add an organisation member to this role.',
         tags: ['Roles'],
         security: [{ BearerAuth: [] }],
 
@@ -253,7 +253,7 @@ async function routes(router) {
     '/:roleId/members/:memberId',
     {
       schema: {
-        summary: 'Delete member from role.',
+        summary: 'Delete an organisation member from this role.',
         tags: ['Roles'],
         security: [{ BearerAuth: [] }],
 

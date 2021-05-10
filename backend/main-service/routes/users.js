@@ -7,7 +7,7 @@ async function routes(router) {
     '/me',
     {
       schema: {
-        summary: 'Get currently authenticated user.',
+        summary: 'Get the currently authenticated user.',
         tags: ['Users'],
         security: [{ BearerAuth: [] }],
 
@@ -32,7 +32,7 @@ async function routes(router) {
     '/me',
     {
       schema: {
-        summary: 'Update user email.',
+        summary: 'Update the currently authenticated user.',
         tags: ['Users'],
         security: [{ BearerAuth: [] }],
 

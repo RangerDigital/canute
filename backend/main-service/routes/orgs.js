@@ -7,7 +7,7 @@ async function routes(router) {
     '/',
     {
       schema: {
-        summary: 'Get all organisations user is a member.',
+        summary: 'Get all organisations the authenticated user belongs to.',
         tags: ['Organisations'],
         security: [{ BearerAuth: [] }],
 
