@@ -1,11 +1,12 @@
 const app = require('./server');
 const mongoose = require('mongoose');
 const mqtt = require('./mqtt');
+const config = require('./configs/config');
 
 mqtt.connect();
 
 mongoose
-  .connect(process.env.MONGO_URL, {
+  .connect(config.mongo.url, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,

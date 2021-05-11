@@ -1,6 +1,8 @@
 const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 
+const config = require('../configs/config');
+
 const mailer = require('../mailer');
 const users = require('../models/users');
 
@@ -19,8 +21,8 @@ class AuthService {
     const magicToken = crypto.randomBytes(10).toString('hex');
     user.auth = { magicToken: magicToken, createdAt: new Date() };
 
-    const from = process.env.MAGIC_FROM;
-    const prefix = process.env.MAGIC_URL_PREFIX;
+    const from = config.magic.from;
+    const prefix = config.magic.prefix;
 
     if (locale == 'pl') {
       mailer.sendTemplate(
@@ -44,7 +46,7 @@ class AuthService {
     const user = await users.findOne({ 'auth.magicToken': code });
 
     if (user && new Date() - user.auth.createdAt < 300000) {
-      const authToken = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1w' });
+      const authToken = jwt.sign({ userId: user._id }, config.jwt.secret, { expiresIn: '1w' });
 
       user.auth = {};
       await user.save();

@@ -1,14 +1,15 @@
 const fs = require('fs');
 const nodemailer = require('nodemailer');
 const handlebars = require('handlebars');
+const config = require('./configs/config');
 
 let mailerConfig = {
-  host: process.env.SMTP_HOST,
-  port: process.env.SMTP_PORT,
+  host: config.smtp.host,
+  port: config.smtp.port,
 
   auth: {
-    user: process.env.SMTP_USERNAME,
-    pass: process.env.SMTP_PASSWORD,
+    user: config.smtp.username,
+    pass: config.smtp.password,
   },
 };
 

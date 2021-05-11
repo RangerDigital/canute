@@ -1,6 +1,8 @@
 const fp = require('fastify-plugin');
 const jwt = require('jsonwebtoken');
 
+const config = require('../configs/config');
+
 module.exports = fp(function (fastify, options, next) {
   fastify.addHook('onRequest', async (req, res) => {
     const authHeader = req.headers['authorization'];
@@ -8,7 +10,7 @@ module.exports = fp(function (fastify, options, next) {
     if (authHeader) {
       const authToken = authHeader.split(' ')[1];
 
-      jwt.verify(authToken, process.env.JWT_SECRET, (err, data) => {
+      jwt.verify(authToken, config.jwt.secret, (err, data) => {
         if (err) {
           return res.code(401).send({ msg: 'Invalid authorization Bearer token!' });
         }
