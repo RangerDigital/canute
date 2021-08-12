@@ -11,10 +11,10 @@
     "organisations": "Switch Organisation"
   },
   "btn": {
-    "login": "SIGN IN",
+    "login": "Sign In",
     "locale": "Polski",
     "learn": "Learn More",
-    "continue": "CONTINUE",
+    "continue": "Continue",
     "open": "Open",
     "inprogress": "In Progress",
     "cancel": "Cancel",
@@ -108,7 +108,7 @@
         "destription": "Action will delete the group from an active organisation."
       },
       "manage": {
-        "header": "Operacje",
+        "header": "Operations",
         "subheader": "Actions on existing group."
       }
     },
