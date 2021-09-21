@@ -14,6 +14,8 @@
 
 <script>
   export default {
+    inheritAttrs: false,
+
     props: {
       modelValue: String,
       placeholder: String,
