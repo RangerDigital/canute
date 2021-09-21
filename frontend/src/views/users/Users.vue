@@ -8,16 +8,38 @@
         <div class="flex flex-row items-center justify-between w-full xl:px-5">
           <TextField class="w-full xl:mx-5" v-model="search" :placeholder="$t('label.search')" />
 
-          <Button tiny @click="$router.push('/users/create')"
-            ><svg class="inline h-5 text-white align-middle xl:hidden " fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="1.6"
-                d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"
-              /></svg
-            ><span class="hidden xl:inline">{{ $t('users.add') }}</span></Button
-          >
+          <div class="flex flex-row">
+            <Button class="inline lg:hidden" icon disabled @click="$router.push('/users/scan')"
+              ><svg class="h-5 align-middle " fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.6"
+                  d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"
+                /></svg
+            ></Button>
+
+            <Button icon class="hidden lg:inline" disabled @click="$router.push('/users/import')"
+              ><svg class="h-5 align-middle " fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.6"
+                  d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                /></svg
+            ></Button>
+
+            <Button tiny @click="$router.push('/users/create')"
+              ><svg class="inline h-5 align-middle xl:hidden " fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.6"
+                  d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"
+                /></svg
+              ><span class="hidden xl:inline">{{ $t('users.add') }}</span></Button
+            >
+          </div>
         </div>
         <div class="w-full h-px my-5 rounded-full xl:block bg-gray-darker"></div>
       </div>
