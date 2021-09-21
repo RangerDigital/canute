@@ -6,7 +6,7 @@
         <p class="my-2 text-sm mb-7 xl:mx-5 text-gray">{{ $t('users.subheading') }}</p>
 
         <div class="flex flex-row items-center justify-between w-full xl:px-5">
-          <TextField class="w-full xl:mx-5" v-model="search" v-bind:placeholder="$t('label.search')" />
+          <TextField class="w-full xl:mx-5" v-model="search" :placeholder="$t('label.search')" />
 
           <Button tiny @click="$router.push('/users/create')"
             ><svg class="inline h-5 text-white align-middle xl:hidden " fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -23,7 +23,7 @@
       </div>
 
       <div class="grid grid-cols-1 justify-items-center xl:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-5 lg:gap-2 xl:gap-3 2xl:gap-4">
-        <User class="max-w-sm xl:mx-4" v-for="item in searchedUsers" :key="item._id" v-bind:user="item" @click="$router.push('/users/' + item._id)" />
+        <User class="max-w-sm xl:mx-4" id="anime-item" v-for="item in searchedUsers" :key="item._id" v-bind:user="item" @click="$router.push('/users/' + item._id)" />
       </div>
     </VerticalContainer>
   </HorizontalLayout>
@@ -58,6 +58,19 @@
       };
     },
     methods: {
+      startAnimations() {
+        this.$nextTick(function() {
+          this.$anime({
+            targets: '#anime-item',
+            opacity: ['0%', '100%'],
+
+            translateY: ['-25%', '0%'],
+            delay: this.$anime.stagger(250, { start: 0, easing: 'easeOutQuad' }),
+            easing: 'easeOutQuad',
+          });
+        });
+      },
+
       getUsers() {
         this.axios.get('/api/orgs/' + this.organisation + '/members').then((payload) => {
           // Generate tags for searching from roles and admin.
@@ -75,6 +88,7 @@
             this.users.push(user);
           }
           this.searchedUsers = this.users;
+          this.startAnimations();
         });
       },
 
