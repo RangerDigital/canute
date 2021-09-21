@@ -22,7 +22,7 @@
         <div class="w-full h-px my-5 rounded-full xl:block bg-gray-darker"></div>
       </div>
 
-      <div class="grid grid-cols-1 justify-items-center xl:grid-cols-2 2xl:grid-cols-4 3xl:grid-cols-5 lg:gap-2">
+      <div class="grid grid-cols-1 justify-items-center xl:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-5 lg:gap-2 xl:gap-3 2xl:gap-4">
         <User class="max-w-sm xl:mx-4" v-for="item in searchedUsers" :key="item._id" v-bind:user="item" @click="$router.push('/users/' + item._id)" />
       </div>
     </VerticalContainer>

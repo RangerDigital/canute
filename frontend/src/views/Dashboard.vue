@@ -38,7 +38,7 @@
         <div class="w-full h-px my-5 rounded-full xl:block bg-gray-darker"></div>
       </div>
 
-      <div class="grid grid-cols-1 xl:mx-5 justify-items-center xl:grid-cols-2 2xl:grid-cols-4 3xl:grid-cols-5 lg:gap-7">
+      <div class="grid grid-cols-1 justify-items-center xl:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-5 lg:gap-2 xl:gap-3 2xl:gap-4">
         <!-- Locks List -->
         <div v-if="locks.length" class="w-full md:max-w-sm">
           <p class="my-2 text-xs text-gray-dark ">{{ $t('label.locks') }}</p>
