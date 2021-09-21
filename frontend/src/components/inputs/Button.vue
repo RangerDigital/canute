@@ -1,27 +1,5 @@
 <template>
-  <button
-    v-if="solid"
-    @click="$emit('click')"
-    v-bind:disabled="disabled"
-    class="w-full px-3 py-3 mx-1 text-sm font-medium text-white rounded-md whitespace-nowrap xl:w-auto xl:px-9 bg-primary hover:bg-primary-dark focus:outline-none disabled:bg-gray-darker disabled:text-gray "
-  >
-    <slot></slot>
-  </button>
-
-  <button
-    v-if="ghost"
-    @click="$emit('click')"
-    class="w-full px-3 py-3 mx-1 text-sm font-medium border rounded-md whitespace-nowrap xl:w-auto l xl:px-9 text-gray border-gray-darker focus:outline-none"
-  >
-    <slot></slot>
-  </button>
-
-  <button
-    v-if="tiny"
-    @click="$emit('click')"
-    v-bind:disabled="disabled"
-    class="px-3 py-3 ml-2 text-sm font-medium text-white rounded-md whitespace-nowrap xl:px-9 bg-primary hover:bg-primary-dark focus:outline-none disabled:bg-gray-darker disabled:text-gray "
-  >
+  <button @click="$emit('click')" v-bind:disabled="disabled" v-bind:class="[solid ? 'btn-solid' : '', ghost ? 'btn-ghost' : '', tiny ? 'btn-tiny' : '', icon ? 'btn-icon' : '']">
     <slot></slot>
   </button>
 </template>
@@ -33,7 +11,26 @@
       ghost: Boolean,
       solid: Boolean,
       tiny: Boolean,
+      icon: Boolean,
       disabled: Boolean,
     },
   };
 </script>
+
+<style scoped>
+  .btn-solid {
+    @apply w-full px-3 py-3 mx-1 text-sm font-medium text-white rounded-md whitespace-nowrap xl:w-auto xl:px-9 bg-primary hover:bg-primary-dark focus:outline-none disabled:bg-gray-darker disabled:text-gray disabled:cursor-default;
+  }
+
+  .btn-ghost {
+    @apply w-full px-3 py-3 mx-1 text-sm font-medium border rounded-md whitespace-nowrap xl:w-auto xl:px-9 text-gray border-gray-darker focus:outline-none;
+  }
+
+  .btn-tiny {
+    @apply px-3 py-3 ml-2 text-sm font-medium text-white rounded-md whitespace-nowrap xl:px-9 bg-primary hover:bg-primary-dark focus:outline-none disabled:bg-gray-darker disabled:text-gray disabled:cursor-default;
+  }
+
+  .btn-icon {
+    @apply px-3 py-3 ml-2 text-sm font-medium text-white rounded-md whitespace-nowrap bg-primary hover:bg-primary-dark focus:outline-none disabled:bg-gray-darker disabled:text-gray disabled:cursor-default;
+  }
+</style>
