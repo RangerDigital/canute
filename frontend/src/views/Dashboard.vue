@@ -9,12 +9,12 @@
 
         <!-- Organisation Stats -->
         <div v-if="organisationAdmin" class="flex-row items-center justify-start hidden w-full my-5 2xl:flex xl:px-1">
-          <Stats v-bind:subheading="$t('users.title')" v-bind:value="organisationObject.members.length" @click="$router.push('/users')"
+          <Stats v-bind:subheading="$t('users.title')" v-bind:value="(organisationObject.members || []).length" @click="$router.push('/users')"
             ><svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg
           ></Stats>
 
-          <Stats v-bind:subheading="$t('devices.title')" v-bind:value="devices.length" @click="$router.push('/devices')">
+          <Stats v-bind:subheading="$t('devices.title')" v-bind:value="(devices || []).length" @click="$router.push('/devices')">
             <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path
                 stroke-linecap="round"
@@ -24,7 +24,7 @@
               /></svg
           ></Stats>
 
-          <Stats v-bind:subheading="$t('groups.title')" v-bind:value="organisationObject.roles.length" @click="$router.push('/groups')">
+          <Stats v-bind:subheading="$t('groups.title')" v-bind:value="(organisationObject.roles || []).length || 0" @click="$router.push('/groups')">
             <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path
                 stroke-linecap="round"
