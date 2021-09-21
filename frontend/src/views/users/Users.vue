@@ -33,6 +33,8 @@
   import HorizontalLayout from '@/components/layouts/HorizontalLayout.vue';
   import VerticalContainer from '@/components/layouts/VerticalContainer.vue';
 
+  import { startGridAnimation } from '@/modules/AnimeUtils.js';
+
   import Button from '@/components/inputs/Button.vue';
   import TextField from '@/components/inputs/TextField.vue';
 
@@ -58,18 +60,7 @@
       };
     },
     methods: {
-      startAnimations() {
-        this.$nextTick(function() {
-          this.$anime({
-            targets: '#anime-item',
-            opacity: ['0%', '100%'],
-
-            translateY: ['-25%', '0%'],
-            delay: this.$anime.stagger(250, { start: 0, easing: 'easeOutQuad' }),
-            easing: 'easeOutQuad',
-          });
-        });
-      },
+      startGridAnimation,
 
       getUsers() {
         this.axios.get('/api/orgs/' + this.organisation + '/members').then((payload) => {
@@ -88,7 +79,7 @@
             this.users.push(user);
           }
           this.searchedUsers = this.users;
-          this.startAnimations();
+          this.startGridAnimation();
         });
       },
 

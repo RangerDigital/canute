@@ -23,7 +23,14 @@
       </div>
 
       <div class="grid grid-cols-1 justify-items-center xl:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-5 lg:gap-2 xl:gap-3 2xl:gap-4">
-        <Group class="max-w-sm xl:mx-4 xl:hover:border-primary" v-for="item in searchedGroups" :key="item._id" v-bind:group="item" @click="$router.push('/groups/' + item._id)" />
+        <Group
+          class="max-w-sm xl:mx-4 xl:hover:border-primary"
+          id="anime-item"
+          v-for="item in searchedGroups"
+          :key="item._id"
+          v-bind:group="item"
+          @click="$router.push('/groups/' + item._id)"
+        />
       </div>
     </VerticalContainer>
   </HorizontalLayout>
@@ -32,6 +39,8 @@
 <script>
   import HorizontalLayout from '@/components/layouts/HorizontalLayout.vue';
   import VerticalContainer from '@/components/layouts/VerticalContainer.vue';
+
+  import { startGridAnimation } from '@/modules/AnimeUtils.js';
 
   import Button from '@/components/inputs/Button.vue';
   import TextField from '@/components/inputs/TextField.vue';
@@ -58,10 +67,14 @@
       };
     },
     methods: {
+      startGridAnimation,
+
       getGroups() {
         this.axios.get('/api/orgs/' + this.organisation + '/roles').then((payload) => {
           this.groups = payload.data;
           this.searchedGroups = payload.data;
+
+          this.startGridAnimation();
         });
       },
 

@@ -23,7 +23,7 @@
       </div>
 
       <div class="grid grid-cols-1 justify-items-center xl:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-5 lg:gap-2 xl:gap-3 2xl:gap-4">
-        <Device class="max-w-sm xl:mx-4" v-for="item in searchedDevices" :key="item._id" v-bind:device="item" @click="$router.push('/devices/' + item._id)" />
+        <Device class="max-w-sm xl:mx-4" id="anime-item" v-for="item in searchedDevices" :key="item._id" v-bind:device="item" @click="$router.push('/devices/' + item._id)" />
       </div>
     </VerticalContainer>
   </HorizontalLayout>
@@ -32,6 +32,8 @@
 <script>
   import HorizontalLayout from '@/components/layouts/HorizontalLayout.vue';
   import VerticalContainer from '@/components/layouts/VerticalContainer.vue';
+
+  import { startGridAnimation } from '@/modules/AnimeUtils.js';
 
   import Button from '@/components/inputs/Button.vue';
   import TextField from '@/components/inputs/TextField.vue';
@@ -58,10 +60,14 @@
       };
     },
     methods: {
+      startGridAnimation,
+
       getDevices() {
         this.axios.get('/api/orgs/' + this.organisation + '/devices').then((payload) => {
           this.devices = payload.data;
           this.searchedDevices = payload.data;
+
+          this.startGridAnimation();
         });
       },
 
