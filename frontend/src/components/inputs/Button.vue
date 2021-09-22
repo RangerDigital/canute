@@ -19,7 +19,7 @@
 
 <style scoped>
   .btn-solid {
-    @apply w-full px-3 py-3 mx-1 text-sm font-medium text-white rounded-md whitespace-nowrap xl:w-auto xl:px-9 bg-primary hover:bg-primary-dark focus:outline-none disabled:bg-gray-darker disabled:text-gray-dark disabled:cursor-default;
+    @apply w-full px-3 py-3 mx-1 text-sm font-medium text-white rounded-md whitespace-nowrap xl:w-auto xl:px-9 bg-primary hover:bg-primary-dark focus:outline-none disabled:bg-gray-darker disabled:text-gray-dark;
   }
 
   .btn-ghost {
@@ -27,10 +27,10 @@
   }
 
   .btn-tiny {
-    @apply px-3 py-3 ml-2 text-sm font-medium text-white rounded-md whitespace-nowrap xl:px-9 bg-primary hover:bg-primary-dark focus:outline-none disabled:bg-gray-darker disabled:text-gray-dark disabled:cursor-default;
+    @apply px-3 py-3 ml-2 text-sm font-medium text-white rounded-md whitespace-nowrap xl:px-9 bg-primary hover:bg-primary-dark focus:outline-none disabled:bg-gray-darker disabled:text-gray-dark;
   }
 
   .btn-icon {
-    @apply px-3 py-3 ml-2 text-sm font-medium text-white rounded-md whitespace-nowrap bg-primary hover:bg-primary-dark focus:outline-none disabled:bg-gray-darker disabled:text-gray-dark disabled:cursor-default;
+    @apply px-3 py-3 ml-2 text-sm font-medium text-white rounded-md whitespace-nowrap bg-primary hover:bg-primary-dark focus:outline-none disabled:bg-gray-darker disabled:text-gray-dark;
   }
 </style>

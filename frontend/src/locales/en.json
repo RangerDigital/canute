@@ -23,7 +23,8 @@
     "ready": "Ready",
     "done": "Done",
     "delete": "Delete",
-    "offline": "Device Offline"
+    "offline": "Device Offline",
+    "return": "Return To App"
   },
   "label": {
     "email": "Your Email",
@@ -144,5 +145,12 @@
   },
   "user": {
     "user": "Resident"
+  },
+  "errors": {
+    "500": {
+      "heading": "Ops 🔥 Things went wrong...",
+      "subheading": "Please try again later",
+      "about": "We were notified and are working on a solution!"
+    }
   }
 }

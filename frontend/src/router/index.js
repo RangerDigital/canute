@@ -78,6 +78,11 @@ const routes = [
     name: 'Organisations',
     component: () => import(/* webpackChunkName: "organisations" */ '../views/Organisations.vue'),
   },
+  {
+    path: '/errors/500',
+    name: 'ServerError',
+    component: () => import(/* webpackChunkName: "errors" */ '../views/errors/ServerError.vue'),
+  },
 ];
 
 const router = createRouter({

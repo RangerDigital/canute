@@ -20,6 +20,7 @@
     "cancel": "Anuluj",
     "save": "Zapisz",
     "deactivate": "Deaktywuj",
+    "return": "Wróć Do Aplikacji",
     "done": "Zrobione",
     "delete": "Usuń",
     "offline": "Błąd Połączenia"
@@ -142,5 +143,12 @@
   },
   "user": {
     "user": "Mieszkańca"
+  },
+  "errors": {
+    "500": {
+      "heading": "Ups 🔥 Coś poszło nie tak...",
+      "subheading": "Spróbuj ponownie później",
+      "about": "Zostaliśmy już powiadomieni i pracujemy nad rozwiązaniem!"
+    }
   }
 }
