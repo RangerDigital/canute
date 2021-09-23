@@ -3,7 +3,7 @@
     <HomeNavigation noLogin noNav />
 
     <div class="flex flex-col self-center justify-start flex-grow w-full h-full xl:self-auto md:max-w-md xl:max-w-full xl:flex-row xl:justify-between xl:px-6 xl:py-6">
-      <AppNavigation class="hidden xl:flex" />
+      <AppNavigation class="hidden transition-all xl:flex" :style="y" />
 
       <div v-if="loading" class="flex items-center justify-center flex-grow"> <LoadingSpinner /></div>
 
@@ -30,6 +30,32 @@
     },
     props: {
       loading: Boolean,
+    },
+
+    computed: {
+      y() {
+        return `margin-top: ${this.scrollPosition}px`;
+      },
+    },
+
+    data() {
+      return {
+        scrollPosition: null,
+      };
+    },
+
+    methods: {
+      updateScroll() {
+        this.scrollPosition = window.scrollY;
+      },
+    },
+
+    mounted() {
+      window.addEventListener('scroll', this.updateScroll);
+    },
+
+    destroy() {
+      window.removeEventListener('scroll', this.updateScroll);
     },
   };
 </script>
