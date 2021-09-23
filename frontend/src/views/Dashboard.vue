@@ -111,6 +111,7 @@
     mounted() {
       if (!localStorage.organisation) {
         this.$router.push('/organisations/autoSelect');
+        return;
       } else {
         this.organisation = localStorage.organisation;
       }
