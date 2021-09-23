@@ -24,7 +24,10 @@
     "done": "Done",
     "delete": "Delete",
     "offline": "Device Offline",
-    "return": "Return To App"
+    "return": "Return To App",
+    "goto": "Go to",
+    "home": "Home",
+    "auth": "Auth"
   },
   "label": {
     "email": "Your Email",
@@ -147,6 +150,11 @@
     "user": "Resident"
   },
   "errors": {
+    "404": {
+      "heading": "404 🦄 Page not found...",
+      "subheading": "Lost? Don't worry!",
+      "about": " Maybe below you will find what you are looking for?"
+    },
     "500": {
       "heading": "Ops 🔥 Things went wrong...",
       "subheading": "Please try again later",
