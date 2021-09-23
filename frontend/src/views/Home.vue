@@ -4,8 +4,8 @@
 
     <section class="flex flex-col items-center justify-between p-5 my-5 2xl:my-14 md:px-8 xl:w-11/12 2xl:w-9/12 xl:flex-row xl:self-center">
       <div>
-        <div class="my-1 transform -translate-x-3 -rotate-3 ">
-          <h2 class="my-1 text-1xl font-marker md:my-10 text-primary md:text-3xl 2xl:text-4xl 3xl:text-5xl">{{ $t('home.for.developers') }}</h2>
+        <div class="transform -translate-x-2 md:-translate-x-3 md:my-1 -rotate-3">
+          <h2 class="my-5 text-1xl font-marker md:my-10 text-primary md:text-3xl 2xl:text-4xl 3xl:text-5xl">{{ $t('home.for.developers') }}</h2>
         </div>
 
         <h1 class="my-1 text-2xl font-semibold text-white font-heading md:my-5 md:text-4xl 2xl:text-5xl 3xl:text-6xl">{{ $t('home.heading') }}</h1>
@@ -17,14 +17,14 @@
         <div class="flex flex-row items-center justify-center mt-16 mb-8 md:justify-start">
           <Button solid @click="callToAction()">{{ $t('home.action') }}</Button>
 
-          <Button ghost @click="$router.push('/learn')">{{ $t('btn.learn') }}</Button>
+          <Button ghost class="hidden md:block" @click="$router.push('/learn')">{{ $t('btn.learn') }}</Button>
         </div>
       </div>
 
       <img class="my-10 transform -translate-x-5 w-100 xl:translate-x-0 xl:scale-125 xl:w-3/6" src="@/assets/images/hero.png" />
     </section>
 
-    <section>
+    <section class="hidden md:block">
       <div class="flex flex-col justify-center w-full my-7 md:flex-row md:my-16">
         <div
           id="anime-item"
