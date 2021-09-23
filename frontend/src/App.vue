@@ -16,9 +16,11 @@
           function(error) {
             if (error.response.status == 401) {
               localStorage.clear();
-
               that.$router.push('/auth');
+            } else if (error.response.status == 403 || error.response.status == 500) {
+              that.$router.push('/errors/500');
             }
+
             return Promise.reject(error);
           }
         );
