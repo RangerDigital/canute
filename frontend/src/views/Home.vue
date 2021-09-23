@@ -5,7 +5,7 @@
     <section class="flex flex-col items-center justify-between p-5 my-5 2xl:my-14 md:px-8 xl:w-11/12 2xl:w-9/12 xl:flex-row xl:self-center">
       <div>
         <div class="transform -translate-x-2 md:-translate-x-3 md:my-1 -rotate-3">
-          <h2 class="my-5 text-1xl font-marker md:my-10 text-primary md:text-3xl 2xl:text-4xl 3xl:text-5xl">{{ $t('home.for.developers') }}</h2>
+          <h2 class="my-5 text-1xl font-marker md:my-10 text-primary md:text-3xl 2xl:text-4xl 3xl:text-5xl">{{ $t('home.for.residents') }}</h2>
         </div>
 
         <h1 class="my-1 text-2xl font-semibold text-white font-heading md:my-5 md:text-4xl 2xl:text-5xl 3xl:text-6xl">{{ $t('home.heading') }}</h1>
