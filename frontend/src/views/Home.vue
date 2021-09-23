@@ -118,7 +118,7 @@
           opacity: ['0%', '100%'],
 
           translateY: ['-20%', '0%'],
-          delay: this.$anime.stagger(600, { start: 700, easing: 'easeOutQuad' }),
+          delay: this.$anime.stagger(600, { start: 100, easing: 'easeOutQuad' }),
           easing: 'easeInOutQuad',
         });
       });
