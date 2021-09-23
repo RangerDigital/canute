@@ -26,6 +26,7 @@ module.exports = {
     fontFamily: {
       sans: ['Inter', 'sans-serif'],
       heading: ['Poppins', 'sans-serif'],
+      marker: ['Permanent Marker', 'cursive'],
     },
     extend: {
       screens: {

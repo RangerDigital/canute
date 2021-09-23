@@ -46,7 +46,11 @@
     "heading": "One app. Whole building.",
     "subheading": "Happy residents!",
     "about": "Multi-family building internet-connected access control system.",
-    "action": "Get Started"
+    "action": "Get Started",
+    "for": {
+      "developers": "For Developers",
+      "residents": "For Residents"
+    }
   },
   "auth": {
     "login": {

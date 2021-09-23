@@ -45,7 +45,11 @@
     "heading": "Budujemy lepsze miejsca",
     "subheading": "do życia oraz pracy.",
     "about": "Inteligentny system kontroli dostępu dla budynków wielorodzinnych.",
-    "action": "Rozpocznij"
+    "action": "Rozpocznij",
+    "for": {
+      "developers": "Dla Developerów",
+      "residents": "Dla Społecznośći"
+    }
   },
   "auth": {
     "login": {
