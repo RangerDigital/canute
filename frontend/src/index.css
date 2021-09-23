@@ -5,13 +5,16 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 * {
   -webkit-tap-highlight-color: transparent;
   scrollbar-width: thin;
   scrollbar-color: #1a1a19 #151414;
 }
 
-/* Works on Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
   width: 12px;
 }
@@ -24,4 +27,9 @@
   background-color: #1a1a19;
   border-radius: 20px;
   border: 3px solid #151414;
+}
+
+*::selection {
+  background-color: #f94943;
+  color: #151414;
 }
