@@ -3,7 +3,7 @@
     <HomeNavigation noLogin noNav />
 
     <div class="flex flex-col self-center justify-start flex-grow w-full h-full xl:self-auto md:max-w-md xl:max-w-full xl:flex-row xl:justify-between xl:px-6 xl:py-6">
-      <AppNavigation class="hidden transition-all xl:flex" :style="y" />
+      <AppNavigation class="hidden xl:flex" :style="y" />
 
       <div v-if="loading" class="flex items-center justify-center flex-grow"> <LoadingSpinner /></div>
 
@@ -46,7 +46,9 @@
 
     methods: {
       updateScroll() {
-        this.scrollPosition = window.scrollY;
+        if (window.scrollY < window.innerHeight) {
+          this.scrollPosition = window.scrollY;
+        }
       },
     },
 
