@@ -30,20 +30,7 @@
     <Divider />
 
     <!-- Canute Access -->
-    <section class="flex flex-col p-5 my-5 2xl:my-14 md:px-8 xl:self-center xl:w-11/12 2xl:w-9/12">
-      <div class="transform -translate-x-2 md:-translate-x-3 -rotate-3">
-        <h3 id="anime-item" class="my-5 md:my-10 text-1xl md:text-xl font-marker text-primary 2xl:text-3xl 3xl:text-4xl">🔐 Canute Access</h3>
-      </div>
-
-      <h2 class="my-1 mb-5 text-2xl font-semibold text-white md:my-5 font-heading md:text-3xl 2xl:text-4xl 3xl:text-5xl">Kontrola Dostępu</h2>
-      <p class="my-2 text-sm xl:text-base text-gray max-w-prose"
-        >Moduł Canute Access oferuje użytkownikom wygodniejszy sposób otwierania przejść oraz ułatwia administratorom budynku zarządzanie dostępem.
-      </p>
-
-      <p class="my-2 text-sm prose-sm prose xl:text-base text-gray"
-        >Urządzenia Canute Access działają na każdych drzwiach z istniejącym elektrozaczepem, ryglem lub elektromagnesem.</p
-      >
-    </section>
+    <AccessSection />
 
     <HomeFooter />
   </section>
@@ -54,6 +41,8 @@
   import HomeFooter from '@/components/HomeFooter.vue';
 
   import ModulesGrid from './components/ModulesGrid.vue';
+  import AccessSection from './components/AccessSection.vue';
+
   import Divider from './components/Divider.vue';
   import Button from '@/components/inputs/Button.vue';
 
@@ -62,6 +51,7 @@
     components: {
       HomeNavigation,
       HomeFooter,
+      AccessSection,
       Divider,
       ModulesGrid,
       Button,
