@@ -38,5 +38,5 @@ module.exports = {
     backgroundColor: ({ after }) => after(['disabled']),
     textColor: ({ after }) => after(['disabled']),
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
 };
