@@ -44,17 +44,19 @@
           <p class="my-2 text-xs text-gray-dark ">{{ $t('label.locks') }}</p>
           <div class="h-px rounded-full bg-gray-darker"></div>
 
-          <div class="flex flex-col xl:justify-center">
-            <Lock v-for="item in locks" :key="item._id" v-bind:lock="item" />
+          <div id="anime-item" class="flex flex-col xl:justify-center">
+            <Lock id="anime-item" v-for="item in locks" :key="item._id" v-bind:lock="item" />
           </div>
         </div>
 
         <!-- Info List -->
-        <div v-if="!locks.length" class="w-full md:max-w-sm">
+        <div v-if="!locks.length && isLocksLoaded" class="w-full md:max-w-sm">
           <p class="my-2 text-xs text-gray-dark ">{{ $t('label.informations') }}</p>
           <div class="h-px rounded-full bg-gray-darker"></div>
 
-          <Info v-bind:title="$t('label.nothinghere')">{{ $t('dashboard.empty') }}</Info>
+          <div id="anime-item" class="hidden"></div>
+
+          <Info id="anime-item" v-bind:title="$t('label.nothinghere')">{{ $t('dashboard.empty') }}</Info>
         </div>
       </div>
     </VerticalContainer>
@@ -65,6 +67,8 @@
   import HorizontalLayout from '@/components/layouts/HorizontalLayout.vue';
   import OrganisationPreview from '@/components/OrganisationPreview.vue';
   import VerticalContainer from '@/components/layouts/VerticalContainer.vue';
+
+  import { startGridAnimation } from '@/modules/AnimeUtils.js';
 
   import Lock from '@/components/app/Lock.vue';
   import Stats from '@/components/app/Stats.vue';
@@ -82,6 +86,7 @@
     },
     data() {
       return {
+        isLocksLoaded: false,
         locks: [],
         organisation: null,
         organisationAdmin: false,
@@ -90,9 +95,14 @@
       };
     },
     methods: {
+      startGridAnimation,
+
       getLocks() {
         this.axios.get('/api/orgs/' + this.organisation + '/locks').then((payload) => {
           this.locks = payload.data;
+          this.isLocksLoaded = true;
+
+          this.startGridAnimation();
         });
       },
 
