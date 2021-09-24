@@ -19,7 +19,7 @@
       <div class="h-px rounded-full bg-gray-darker"></div>
 
       <div class="flex flex-col">
-        <Organisation v-for="item in organisations" :key="item._id" v-bind:organisation="item" />
+        <Organisation id="anime-item" v-for="item in organisations" :key="item._id" v-bind:organisation="item" />
       </div>
     </div>
 
@@ -35,6 +35,8 @@
 
   import Organisation from '@/components/app/Organisation.vue';
   import LoadingSpinner from '@/components/app/LoadingSpinner.vue';
+
+  import { startGridAnimation } from '@/modules/AnimeUtils.js';
 
   export default {
     name: 'Organisations',
@@ -52,6 +54,8 @@
       };
     },
     methods: {
+      startGridAnimation,
+
       getOrganisations() {
         this.axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.token;
 
@@ -70,6 +74,7 @@
           }
 
           this.isLoaded = true;
+          this.startGridAnimation();
         });
       },
     },
