@@ -18,7 +18,8 @@
     "vue": "^3.2.12",
     "vue-axios": "^3.3.7",
     "vue-i18n": "^9.1.7",
-    "vue-router": "^4.0.11"
+    "vue-router": "^4.0.11",
+    "vue-toastification": "^2.0.0-rc.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss7-compat": "^2.2.14",

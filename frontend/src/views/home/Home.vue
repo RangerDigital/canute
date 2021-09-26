@@ -32,6 +32,8 @@
     <!-- Canute Access -->
     <AccessSection />
 
+    <Button ghost class="self-center max-w-xs" @click="showToast">Show Toast</Button>
+
     <HomeFooter />
   </section>
 </template>
@@ -45,6 +47,8 @@
 
   import Divider from './components/Divider.vue';
   import Button from '@/components/inputs/Button.vue';
+
+  import ToastService from '@/modules/ToastService';
 
   export default {
     name: 'Home',
@@ -71,6 +75,10 @@
         if (el) {
           el.$el.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
+      },
+
+      showToast() {
+        ToastService.success();
       },
     },
     mounted() {

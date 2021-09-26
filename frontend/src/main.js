@@ -7,6 +7,9 @@ import axios from 'axios';
 import VueAxios from 'vue-axios';
 import anime from 'animejs';
 
+import Toast from 'vue-toastification';
+import 'vue-toastification/dist/index.css';
+
 import './registerServiceWorker';
 import './index.css';
 
@@ -22,7 +25,8 @@ const i18n = createI18n({ locale: 'en', messages: messages });
 const app = createApp(App)
   .use(router)
   .use(i18n)
-  .use(VueAxios, axios);
+  .use(VueAxios, axios)
+  .use(Toast, { maxToasts: 3 });
 
 app.config.globalProperties.$anime = anime;
 app.mount('#app');

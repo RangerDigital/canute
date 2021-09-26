@@ -1,5 +1,5 @@
-<template
-  ><section ref="access" id="anime-access" class="flex flex-col p-5 my-5 2xl:my-14 md:px-8 xl:self-center xl:w-11/12 2xl:w-9/12">
+<template>
+  <section ref="access" id="anime-access" class="flex flex-col p-5 my-5 2xl:my-14 md:px-8 xl:self-center xl:w-11/12 2xl:w-9/12">
     <div class="transform -translate-x-2 md:-translate-x-3 -rotate-3">
       <h3 id="anime-access" class="my-5 md:my-10 text-1xl md:text-xl font-marker text-primary 2xl:text-3xl 3xl:text-4xl">🔐 Canute Access</h3>
     </div>
