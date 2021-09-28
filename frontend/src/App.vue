@@ -80,6 +80,8 @@
 
       // Prevent multiple refreshes.
       navigator.serviceWorker.addEventListener('controllerchange', () => {
+        console.log('Detected controllerchange!');
+
         if (this.refreshing) return;
         this.refreshing = true;
 
