@@ -10,9 +10,9 @@
     </svg>
 
     <div>
-      <h2 class="mb-1 text-sm text-white font-heading">Hey!?</h2>
+      <h2 class="mb-1 text-sm text-white font-heading">Update Available</h2>
 
-      <p class="mt-1 text-xs text-gray">An new updated verion is available</p>
+      <p class="mt-1 text-xs text-gray">An new updated version is available!</p>
       <button @click="refreshCache" class="mt-1 text-xs font-semibold text-gray">Refresh Site</button>
     </div>
   </div>
@@ -29,7 +29,9 @@
 
     methods: {
       refreshCache() {
-        if (!this.workerInstance || !this.workerInstance.waiting) return;
+        console.log('Refresh button pressed!');
+
+        if (!this.workerInstance) return;
         console.log('Service worker refreshed.');
         this.workerInstance.waiting.postMessage({ type: 'SKIP_WAITING' });
       },
