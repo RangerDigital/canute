@@ -28,11 +28,10 @@
     <ModulesGrid ref="modules" />
 
     <Divider />
+    <Button ghost class="self-center max-w-xs m-5" @click="showToast">DEV: Show Toast</Button>
 
     <!-- Canute Access -->
     <AccessSection />
-
-    <Button ghost class="self-center max-w-xs m-5" @click="showToast">DEV: Show Toast</Button>
 
     <HomeFooter />
   </section>
