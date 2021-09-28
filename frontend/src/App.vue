@@ -79,14 +79,16 @@
       document.addEventListener('WorkerRefresh', this.showRefreshPrompt, { once: true });
 
       // Prevent multiple refreshes.
-      navigator.serviceWorker.addEventListener('controllerchange', () => {
-        console.log('Detected controllerchange!');
+      if (navigator.serviceWorker) {
+        navigator.serviceWorker.addEventListener('controllerchange', () => {
+          console.log('Detected controllerchange!');
 
-        if (this.refreshing) return;
-        this.refreshing = true;
+          if (this.refreshing) return;
+          this.refreshing = true;
 
-        window.location.reload();
-      });
+          window.location.reload();
+        });
+      }
     },
   };
 </script>
