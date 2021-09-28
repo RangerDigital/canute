@@ -35,8 +35,6 @@
       },
 
       showRefreshPrompt(event) {
-        console.log('WorkerRefresh received!');
-
         ToastService.refresh({ timeout: 10000 }, event.detail);
       },
     },
@@ -81,12 +79,11 @@
       // Prevent multiple refreshes.
       if (navigator.serviceWorker) {
         navigator.serviceWorker.addEventListener('controllerchange', () => {
-          console.log('Detected controllerchange!');
+          if (!this.refreshing) {
+            this.refreshing = true;
 
-          if (this.refreshing) return;
-          this.refreshing = true;
-
-          window.location.reload();
+            window.location.reload();
+          }
         });
       }
     },
