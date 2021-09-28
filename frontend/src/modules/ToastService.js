@@ -1,6 +1,8 @@
 import { useToast, POSITION } from 'vue-toastification';
-import SuccessToast from '@/components/toasts/SuccessToast.vue';
 import CloseButton from '@/components/toasts/CloseButton.vue';
+
+import SuccessToast from '@/components/toasts/SuccessToast.vue';
+import RefreshToast from '@/components/toasts/RefreshToast.vue';
 
 class ToastService {
   constructor() {
@@ -24,6 +26,24 @@ class ToastService {
       ...styling,
       ...options,
     });
+  }
+
+  refresh(options, workerInstance) {
+    const styling = { toastClassName: ['p-3', 'bg-gray-darker', 'text-white', 'md:rounded', 'md:shadow-md'] };
+
+    this.toast(
+      {
+        component: RefreshToast,
+        props: {
+          workerInstance: workerInstance,
+        },
+      },
+      {
+        ...this.options,
+        ...styling,
+        ...options,
+      }
+    );
   }
 }
 

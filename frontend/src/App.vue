@@ -4,6 +4,8 @@
 </template>
 
 <script>
+  import ToastService from '@/modules/ToastService.js';
+
   export default {
     methods: {
       createInterceptors() {
@@ -24,6 +26,10 @@
             return Promise.reject(error);
           }
         );
+      },
+
+      showRefreshPrompt(workerInstance) {
+        ToastService.refresh({}, workerInstance);
       },
     },
 
@@ -60,6 +66,9 @@
             localStorage.removeItem('organisationAddress');
           });
       }
+
+      // Listen for Service Worker events.
+      document.addEventListener('WorkerRefresh', this.showRefreshPrompt, { once: true });
     },
   };
 </script>
