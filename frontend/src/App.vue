@@ -7,6 +7,12 @@
   import ToastService from '@/modules/ToastService.js';
 
   export default {
+    data() {
+      return {
+        refreshing: false,
+      };
+    },
+
     methods: {
       createInterceptors() {
         const that = this;
@@ -30,6 +36,7 @@
 
       showRefreshPrompt(workerInstance) {
         console.log('WorkerRefresh received!');
+
         ToastService.refresh({ timeout: 10000 }, workerInstance);
       },
     },
@@ -70,6 +77,14 @@
 
       // Listen for Service Worker events.
       document.addEventListener('WorkerRefresh', this.showRefreshPrompt, { once: true });
+
+      // Prevent multiple refreshes.
+      navigator.serviceWorker.addEventListener('controllerchange', () => {
+        if (this.refreshing) return;
+        this.refreshing = true;
+
+        window.location.reload();
+      });
     },
   };
 </script>

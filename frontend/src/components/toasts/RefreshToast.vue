@@ -24,7 +24,7 @@
     props: { workerInstance: Object },
 
     mounted() {
-      console.log('Refresh toast shown!');
+      console.log('RefreshToast mounted', this.workerInstance);
     },
 
     methods: {
@@ -32,8 +32,6 @@
         if (!this.workerInstance || !this.workerInstance.waiting) return;
         console.log('Service worker refreshed.');
         this.workerInstance.waiting.postMessage({ type: 'SKIP_WAITING' });
-
-        // window.location.reload();
       },
     },
   };
