@@ -29,12 +29,11 @@
 
     methods: {
       refreshCache() {
-        if (this.workerInstance || this.workerInstance.waiting) {
-          console.log('Service worker refreshed.');
-          this.workerInstance.waiting.postMessage({ type: 'SKIP_WAITING' });
+        if (!this.workerInstance || !this.workerInstance.waiting) return;
+        console.log('Service worker refreshed.');
+        this.workerInstance.waiting.postMessage({ type: 'SKIP_WAITING' });
 
-          window.location.reload();
-        }
+        // window.location.reload();
       },
     },
   };
