@@ -20,6 +20,7 @@ if (process.env.NODE_ENV === 'production') {
       console.log('New content is available; please refresh.');
 
       document.dispatchEvent(new CustomEvent('WorkerRefresh', { workerInstance: registration }));
+      console.log('WorkerRefresh sent!');
     },
     offline() {
       console.log('No internet connection found. App is running in offline mode.');

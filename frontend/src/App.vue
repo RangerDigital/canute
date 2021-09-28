@@ -29,6 +29,7 @@
       },
 
       showRefreshPrompt(workerInstance) {
+        console.log('WorkerRefresh received!');
         ToastService.refresh({}, workerInstance);
       },
     },

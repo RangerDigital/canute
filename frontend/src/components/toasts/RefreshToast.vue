@@ -23,10 +23,16 @@
     name: 'RefreshToast',
     props: { workerInstance: Object },
 
+    mounted() {
+      console.log('Refresh toast shown!');
+    },
+
     methods: {
       refreshCache() {
         if (!this.workerInstance || !this.workerInstance.waiting) return;
         this.workerInstance.waiting.postMessage({ type: 'SKIP_WAITING' });
+
+        console.log('Refreshed!');
       },
     },
   };
