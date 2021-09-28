@@ -19,7 +19,7 @@ if (process.env.NODE_ENV === 'production') {
     updated(registration) {
       console.log('New content is available; please refresh.');
 
-      document.dispatchEvent(new CustomEvent('WorkerRefresh', { workerInstance: registration }));
+      document.dispatchEvent(new CustomEvent('WorkerRefresh', { detail: registration }));
       console.log('WorkerRefresh sent!');
     },
     offline() {

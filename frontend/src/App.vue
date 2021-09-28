@@ -34,10 +34,10 @@
         );
       },
 
-      showRefreshPrompt(workerInstance) {
+      showRefreshPrompt(event) {
         console.log('WorkerRefresh received!');
 
-        ToastService.refresh({ timeout: 10000 }, workerInstance);
+        ToastService.refresh({ timeout: 10000 }, event.detail);
       },
     },
 
