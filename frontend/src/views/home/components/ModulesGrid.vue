@@ -1,6 +1,6 @@
 <template
   ><section class="hidden my-8 md:block md:my-14 3xl:mt-36">
-    <div class="flex flex-col justify-center w-full md:flex-row ">
+    <div id="anime-item" class="flex flex-col justify-center w-full md:flex-row ">
       <p class="text-xs xl:text-sm text-gray-dark">Canute OS składa się z modułów, które rozwiązują określone problemy mieszkańców.</p>
     </div>
 
