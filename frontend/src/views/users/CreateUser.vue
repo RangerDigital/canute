@@ -118,7 +118,7 @@
       return {
         organisation: null,
         organisationGroups: [],
-        user: { email: '', locale: this.$i18n.locale },
+        user: { email: '', annotation: '', isAdmin: false, locale: this.$i18n.locale },
         isLoading: true,
 
         activeGroups: [],
