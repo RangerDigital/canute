@@ -144,14 +144,14 @@
 
       upsertGroup() {
         if (this.editMode) {
-          this.group.members = [];
-
           this.axios.patch('/api/orgs/' + this.organisation + '/roles/' + this.group._id, this.group).then(() => {
             this.$router.go(-1);
           });
         }
 
         if (!this.editMode) {
+          this.group.members = [];
+
           this.axios.post('/api/orgs/' + this.organisation + '/roles', this.group).then(() => {
             this.$router.go(-1);
           });
