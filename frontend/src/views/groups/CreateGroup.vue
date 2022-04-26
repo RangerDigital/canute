@@ -20,7 +20,7 @@
         <!-- Forms Vertical Container-->
         <div class="flex flex-col w-full">
           <!-- Basic Information -->
-          <section class="flex flex-row w-full ">
+          <section class="flex flex-row w-full">
             <!-- Description Section -->
             <div class="flex-grow-0 hidden 2xl:w-10/12 2xl:flex 2xl:ml-5 3xl:w-4/6">
               <div class="w-2/7">
@@ -42,7 +42,7 @@
           </section>
 
           <!-- Group Deletion -->
-          <section v-if="editMode" class="flex flex-row w-full my-10 ">
+          <section v-if="editMode" class="flex flex-row w-full my-10">
             <!-- Description Section -->
             <div class="flex-grow-0 hidden 2xl:flex 2xl:ml-5 2xl:w-10/12 3xl:w-4/6">
               <div class="w-2/7">
@@ -67,7 +67,7 @@
         <div class="w-px h-full mx-5 my-5 rounded-full bg-gray-darker"></div>
 
         <!-- Shadows List -->
-        <div class="w-full ">
+        <div class="w-full">
           <h1 class="py-2 font-sans text-sm xl:mx-5 text-gray">{{ $t('label.permissions') }} ({{ $t('forms.multiselect') }})</h1>
           <div class="grid w-full grid-cols-1 2xl:grid-cols-2 3xl:grid-cols-3 lg:gap-6">
             <Shadow
@@ -144,6 +144,8 @@
 
       upsertGroup() {
         if (this.editMode) {
+          this.group.members = [];
+
           this.axios.patch('/api/orgs/' + this.organisation + '/roles/' + this.group._id, this.group).then(() => {
             this.$router.go(-1);
           });
